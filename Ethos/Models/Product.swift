@@ -11,7 +11,7 @@ import Foundation
 class Product : NSObject {
     
     var id, prod_id: Int?
-    var sku, name, brand, prod_brand, gender, url, imgUrl, title, isSalable, prod_collection: String?
+    var sku, name, prod_brand, gender, url, imgUrl, title, isSalable, prod_collection: String?
     var attributeSetID, price, status, visibility: Int?
     var typeID: String?
     var createdAt: String?
@@ -30,12 +30,11 @@ class Product : NSObject {
     var recentDate : Date?
     
     
-    init(id: Int? = nil, prod_id: Int? = nil, sku: String? = nil, name: String? = nil, brand: String? = nil, prod_brand: String? = nil, gender: String? = nil, url: String? = nil, imgUrl: String? = nil, title: String? = nil, isSalable: String? = nil, prod_collection: String? = nil, attributeSetID: Int? = nil, price: Int? = nil, status: Int? = nil, visibility: Int? = nil, typeID: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, weight: Double? = nil, extensionAttributes: ExtensionAttributes? = nil, tierPrices: [TierPrice]? = nil, relatedStories: RelatedStories? = nil, movement: [String : String]? = nil, video: String? = nil, aboutCollection: String? = nil, specifications: [Specification]? = nil, assets: [ProductAsset]? = nil, currency: String? = nil) {
+    init(id: Int? = nil, prod_id: Int? = nil, sku: String? = nil, name: String? = nil, prod_brand: String? = nil, gender: String? = nil, url: String? = nil, imgUrl: String? = nil, title: String? = nil, isSalable: String? = nil, prod_collection: String? = nil, attributeSetID: Int? = nil, price: Int? = nil, status: Int? = nil, visibility: Int? = nil, typeID: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, weight: Double? = nil, extensionAttributes: ExtensionAttributes? = nil, tierPrices: [TierPrice]? = nil, relatedStories: RelatedStories? = nil, movement: [String : String]? = nil, video: String? = nil, aboutCollection: String? = nil, specifications: [Specification]? = nil, assets: [ProductAsset]? = nil, currency: String? = nil) {
         self.id = id
         self.prod_id = prod_id
         self.sku = sku
         self.name = name
-        self.brand = brand
         self.prod_brand = prod_brand
         self.gender = gender
         self.title = title
@@ -193,13 +192,11 @@ class Product : NSObject {
             self.name = name
         }
         
-        if let brand = json[EthosConstants.brand] as? String {
-            self.brand = brand
-        }
-        
         if let visibility = json[EthosConstants.visibility] as? Int {
             self.visibility = visibility
         }
         
     }
 }
+
+

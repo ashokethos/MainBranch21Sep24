@@ -21,8 +21,6 @@ class PurchaseHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var orderIDLbl: UILabel!
     @IBOutlet weak var orderDateTitleLbl: UILabel!
     @IBOutlet weak var orderIDTitleLbl: UILabel!
-    @IBOutlet weak var downloadInvoiceImg: UIImageView!
-    @IBOutlet weak var downloadInvoiceBtn: UIButton!
     
     var purchaseHistoryData = GetPurchaseHistoryData()
     
@@ -41,7 +39,6 @@ class PurchaseHistoryTableViewCell: UITableViewCell {
         orderIDLbl.isSkeletonable = true
         orderDateTitleLbl.isSkeletonable = true
         orderIDTitleLbl.isSkeletonable = true
-        downloadInvoiceImg.isSkeletonable = true
 //        showSkeleton()
     }
     
@@ -63,7 +60,6 @@ class PurchaseHistoryTableViewCell: UITableViewCell {
             self.orderIDLbl.showAnimatedGradientSkeleton()
             self.orderDateTitleLbl.showAnimatedGradientSkeleton()
             self.orderIDTitleLbl.showAnimatedGradientSkeleton()
-            self.downloadInvoiceImg.showAnimatedGradientSkeleton()
         }
     }
     
@@ -81,13 +77,6 @@ class PurchaseHistoryTableViewCell: UITableViewCell {
             self.orderIDLbl.hideSkeleton()
             self.orderDateTitleLbl.hideSkeleton()
             self.orderIDTitleLbl.hideSkeleton()
-            self.downloadInvoiceImg.hideSkeleton()
-            
-            if (self.purchaseHistoryData.invoiceAttachmentPath ?? "").isValidURL{
-                self.downloadInvoiceImg.isHidden = false
-            }else{
-                self.downloadInvoiceImg.isHidden = true
-            }
             if let url = URL(string: (self.purchaseHistoryData.image ?? "")) {
                 self.productImg.kf.setImage(with: url)
             }

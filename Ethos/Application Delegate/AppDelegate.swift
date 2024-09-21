@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.wail()
         EthosLoader.shared.instantiate()
         IQKeyboardManager.shared.enable = true
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         
         
         requestPhotoLibraryPermission()
@@ -43,11 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Mixpanel.mainInstance().loggingEnabled = true
         }
         
-//        DispatchQueue.main.async {
-//            let config = PostHogConfig(apiKey: EthosIdentifiers.postHogApiKey, host: EthosIdentifiers.postHogHost)
-//            config.sessionReplay = true
-//            PostHogSDK.shared.setup(config)
-//        }
+        DispatchQueue.main.async {
+            let config = PostHogConfig(apiKey: EthosIdentifiers.postHogApiKey, host: EthosIdentifiers.postHogHost)
+            config.sessionReplay = true
+            PostHogSDK.shared.setup(config)
+        }
         
         DispatchQueue.main.async {
             OneSignal.Debug.setLogLevel(.LL_VERBOSE)

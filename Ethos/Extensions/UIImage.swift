@@ -16,7 +16,7 @@ extension UIImage {
     
     class func loadFromURL(url: String, callback: @escaping(UIImage)->()) {
         guard let replacedString = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-              let url = URL(string: replacedString) else {
+         let url = URL(string: replacedString) else {
             return
         }
         
@@ -34,7 +34,7 @@ extension UIImage {
     
     class func loadAsyncFromURL(url: String, index : IndexPath, callback: @escaping(UIImage, IndexPath)->()) {
         guard let replacedString = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-              let url = URL(string: replacedString) else {
+         let url = URL(string: replacedString) else {
             return
         }
         DispatchQueue.global().async {
@@ -65,11 +65,5 @@ extension UIImage {
             }
         }
         task.resume()
-    }
-    
-    func imageResized(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
     }
 }

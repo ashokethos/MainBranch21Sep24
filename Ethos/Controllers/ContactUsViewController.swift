@@ -263,7 +263,6 @@ extension ContactUsViewController : UITextFieldDelegate {
         
         if textField == txtFieldMessage {
             maxLength = 30
-            return (string.containsValidCharacter)
         }
     
         let currentText = textField.text ?? ""

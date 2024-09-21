@@ -20,12 +20,10 @@ class ProductDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var lblProductName: UILabel!
     @IBOutlet weak var lblProductPrice: UILabel!
     @IBOutlet weak var lblProductPriceMessage: UILabel!
-    @IBOutlet weak var lblSpecialOrderMessage: UILabel!
     @IBOutlet weak var btnCheckOurSellingPrice: UIButton!
     @IBOutlet weak var btnWishList: UIButton!
     
     @IBOutlet weak var viewWishList: UIView!
-    @IBOutlet weak var constraintSpecialOrderMessageSpacing: NSLayoutConstraint!
     @IBOutlet weak var constraintSpacingPriceMessage: NSLayoutConstraint!
     @IBOutlet weak var constraintSpacingPrice: NSLayoutConstraint!
     
@@ -97,6 +95,7 @@ class ProductDetailTableViewCell: UITableViewCell {
                                 self.animaedView.play(fromProgress: exist ? 0 : 0.5, toProgress: exist ? 0.5 : 1)
                                 
                                 self.superViewController?.showToast(message: exist ? "Product added to your wishlist" : "Product removed from your wishlist")
+                                
                             }
                         }
                     } else {
@@ -131,16 +130,7 @@ class ProductDetailTableViewCell: UITableViewCell {
         
         self.lblProductName.setAttributedTitleWithProperties(title: title, font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24), foregroundColor: .black, lineHeightMultiple: 1.25, kern: 0.5)
         
-        self.lblProductPriceMessage.setAttributedTitleWithProperties(title: "*Inclusive of all taxes" , font: EthosFont.Brother1816Regular(size: 10), foregroundColor: EthosColor.seperatorDarkColor, lineHeightMultiple: 1, kern: 0.1)
-        
-        let displayNameMsg = product.extensionAttributes?.ethProdCustomeData?.attributes?.stockstatus?.value?.displayName ?? ""
-        if displayNameMsg.contains("On Special Order") {
-            self.constraintSpecialOrderMessageSpacing.constant = 24
-            self.lblSpecialOrderMessage.setAttributedTitleWithProperties(title: "Available \((product.extensionAttributes?.ethProdCustomeData?.attributes?.stockstatus?.value?.displayName ?? ""))" , font: EthosFont.Brother1816Regular(size: 12), foregroundColor: EthosColor.blackColor, lineHeightMultiple: 1, kern: 0.1)
-        }else{
-            self.constraintSpecialOrderMessageSpacing.constant = 0
-            self.lblSpecialOrderMessage.setAttributedTitleWithProperties(title: "" , font: EthosFont.Brother1816Regular(size: 12), foregroundColor: EthosColor.blackColor, lineHeightMultiple: 1, kern: 0.1)
-        }
+        self.lblProductPriceMessage.setAttributedTitleWithProperties(title: "*Inclusive of all taxes" , font: EthosFont.Brother1816Regular(size: 10), foregroundColor: EthosColor.seperatorColor, lineHeightMultiple: 1, kern: 0.1)
         
         if let btnText = product.extensionAttributes?.ethProdCustomeData?.buttonText, btnText != "" {
             self.btnCheckOurSellingPrice.setAttributedTitleWithProperties(title: btnText.uppercased(), font: EthosFont.Brother1816Bold(size: 10),foregroundColor: .white,kern: 0.5)
@@ -170,11 +160,11 @@ class ProductDetailTableViewCell: UITableViewCell {
             self.lblProductPrice.setAttributedTitleWithProperties(title: "" , font: EthosFont.Brother1816Bold(size: 12), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
             self.lblProductPriceMessage.setAttributedTitleWithProperties(title: "" , font: EthosFont.Brother1816Bold(size: 12), foregroundColor: .black, lineHeightMultiple: 1, kern: 0.1)
             self.btnCheckOurSellingPrice.setAttributedTitleWithProperties(title: EthosConstants.RequestAnOffer.uppercased(), font: EthosFont.Brother1816Bold(size: 10),foregroundColor: .white,kern: 0.5)
-//            self.constraintSpacingPrice.constant = 0
-//            self.constraintSpacingPriceMessage.constant = 0
+            self.constraintSpacingPrice.constant = 0
+            self.constraintSpacingPriceMessage.constant = 0
         } else {
-//            self.constraintSpacingPrice.constant = 10
-//            self.constraintSpacingPriceMessage.constant = 24
+            self.constraintSpacingPrice.constant = 10
+            self.constraintSpacingPriceMessage.constant = 24
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
@@ -214,6 +204,7 @@ extension ProductDetailTableViewCell : UIScrollViewDelegate {
                 constraintHeightScrollIndicator.constant = multiplier*(collectionViewProductImage.contentOffset.y + collectionViewProductImage.frame.height)
             }
         }
+        
     }
 }
 
