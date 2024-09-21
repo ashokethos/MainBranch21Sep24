@@ -1744,6 +1744,7 @@
 				16F28A242C12E25F008F189A /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AA0B3A942C9E97FE008A3D9C /* XCRemoteSwiftPackageReference "RangeSlider" */,
 			);
 			productRefGroup = 045C6B182A42C5A600AEC183 /* Products */;
 			projectDirPath = "";
@@ -2659,6 +2660,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.31.0;
+			};
+		};
+		AA0B3A942C9E97FE008A3D9C /* XCRemoteSwiftPackageReference "RangeSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/warchimede/RangeSlider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
 			};
 		};
 		AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
