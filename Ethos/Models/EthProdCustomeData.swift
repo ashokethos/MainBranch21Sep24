@@ -44,9 +44,6 @@ class EthProdCustomeData : NSObject {
     var images : ProductImageData?
     var hidePrice : Bool = false
     var collectionImage : String?
-    var showEditosNote : Bool?
-    var editorHeading : String?
-    var editorDescription : String?
     
     init(json : [String : Any]) {
         
@@ -233,21 +230,9 @@ class EthProdCustomeData : NSObject {
                 self.hidePrice = true
             }
         }
-        
-        if let showEditosNote = json[EthosConstants.showEditosNote] as? Bool {
-            self.showEditosNote = showEditosNote
-        }
-        
-        if let editorHeading = json[EthosConstants.editorHeading] as? String {
-            self.editorHeading = editorHeading
-        }
-        
-        if let editorDescription = json[EthosConstants.editorDescription] as? String {
-            self.editorDescription = editorDescription
-        }
     }
     
-    init(sku: String? = nil, pid: String? = nil, url: String? = nil, brand: String? = nil, isSaleable: Int? = nil, isBuyNow: Int? = nil, buttonText: String? = nil, collection: String? = nil, series: String? = nil, collectionDescription: String? = nil, showVideo: Bool? = nil, productVideo: String? = nil, seriesVideo: String? = nil, collectionVideo: String? = nil, calibreImage: String? = nil, calibreDescription: String? = nil, movement: [String : String]? = nil, attributes: Attributes? = nil, movementKey: [String]? = nil, caseKey: [String]? = nil, dialKey: [String]? = nil, strapKey: [String]? = nil, otherKey: [String]? = nil, productName : String? = nil, images : ProductImageData?, hidePrice : Bool = false, price : Int? = nil, showEditosNote: Bool? = nil, editorHeading: String? = nil, editorDescription: String? = nil) {
+    init(sku: String? = nil, pid: String? = nil, url: String? = nil, brand: String? = nil, isSaleable: Int? = nil, isBuyNow: Int? = nil, buttonText: String? = nil, collection: String? = nil, series: String? = nil, collectionDescription: String? = nil, showVideo: Bool? = nil, productVideo: String? = nil, seriesVideo: String? = nil, collectionVideo: String? = nil, calibreImage: String? = nil, calibreDescription: String? = nil, movement: [String : String]? = nil, attributes: Attributes? = nil, movementKey: [String]? = nil, caseKey: [String]? = nil, dialKey: [String]? = nil, strapKey: [String]? = nil, otherKey: [String]? = nil, productName : String? = nil, images : ProductImageData?, hidePrice : Bool = false, price : Int? = nil) {
         self.sku = sku
         self.pid = pid
         self.url = url
@@ -275,8 +260,5 @@ class EthProdCustomeData : NSObject {
         self.images = images
         self.hidePrice = hidePrice
         self.price = price
-        self.showEditosNote = showEditosNote
-        self.editorHeading = editorHeading
-        self.editorDescription = editorDescription
     }
 }

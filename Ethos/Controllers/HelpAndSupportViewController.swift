@@ -435,25 +435,24 @@ extension HelpAndSupportViewController : UITableViewDataSource, UITableViewDeleg
             switch state {
             case .fixedTopics:
                 switch indexPath.row {
-                case 0,2, 3 :
-                    print("select index")
-//                    self.state = .searchByTopic
-//                    if let selectedCategory = viewModel.categories.first(where: { category in
-//                        category.id == self.ArrFixedTopics[safe : indexPath.row]?.categoryId
-//                    }) {
-//                        self.selectedIndex = viewModel.categories.firstIndex(where: { category in
-//                            category.id == self.ArrFixedTopics[safe : indexPath.row]?.categoryId
-//                        }) ?? 0
-//                        self.textFieldBrowseByTopic.text = selectedCategory.name
-//                    }
+//                case 0,2, 3 :
+                case 2, 3 :
+                    self.state = .searchByTopic
+                    if let selectedCategory = viewModel.categories.first(where: { category in
+                        category.id == self.ArrFixedTopics[safe : indexPath.row]?.categoryId
+                    }) {
+                        self.selectedIndex = viewModel.categories.firstIndex(where: { category in
+                            category.id == self.ArrFixedTopics[safe : indexPath.row]?.categoryId
+                        }) ?? 0
+                        self.textFieldBrowseByTopic.text = selectedCategory.name
+                    }
                     
                     
                     
                 case 1 :
-                    print("select index")
-//                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ContactUsViewController.self)) as? ContactUsViewController {
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//                    }
+                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ContactUsViewController.self)) as? ContactUsViewController {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                     
                 default : break
                     

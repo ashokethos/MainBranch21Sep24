@@ -39,7 +39,6 @@ class ProductImageCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        self.scrollViewImage.zoomScale = 1
         self.btnYoutube.isHidden = true
         self.imageProduct.image = nil
         self.imageProduct.frame = self.scrollViewImage.frame

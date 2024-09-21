@@ -66,4 +66,9 @@ enum EthosKeys {
     case showWarrantyPopup
     case forStoryRoute
     case story
+    case lowerPriceLimit
+    case upperPriceLimit
+    case minPriceLimit
+    case maxPriceLimit
+    case selectedValues
 }

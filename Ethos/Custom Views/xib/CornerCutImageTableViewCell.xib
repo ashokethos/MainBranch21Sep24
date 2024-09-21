@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -44,20 +44,14 @@
                                     <constraint firstAttribute="trailing" secondItem="c0v-fc-ZpO" secondAttribute="trailing" id="gE7-nC-dcj"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsI-NA-3p9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY9-0P-wo8">
                                 <rect key="frame" x="47" y="60" width="241" height="0.0"/>
                                 <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY9-0P-wo8">
-                                <rect key="frame" x="47" y="76" width="241" height="0.0"/>
-                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9W-Rg-gUM">
-                                <rect key="frame" x="47" y="108" width="241" height="0.0"/>
+                                <rect key="frame" x="47" y="92" width="241" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,15 +60,12 @@
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="o9W-Rg-gUM" firstAttribute="top" secondItem="cY9-0P-wo8" secondAttribute="bottom" constant="32" id="0Vc-48-OlH"/>
-                            <constraint firstItem="SsI-NA-3p9" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="8Y1-bn-c4F"/>
                             <constraint firstAttribute="trailing" secondItem="o9W-Rg-gUM" secondAttribute="trailing" constant="47" id="ALm-9r-TII"/>
-                            <constraint firstItem="SsI-NA-3p9" firstAttribute="top" secondItem="EVj-xl-I1v" secondAttribute="bottom" constant="60" id="McN-jf-AzB"/>
+                            <constraint firstItem="cY9-0P-wo8" firstAttribute="top" secondItem="EVj-xl-I1v" secondAttribute="bottom" constant="60" id="CUF-cr-25r"/>
                             <constraint firstItem="cY9-0P-wo8" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="QvV-z1-f8X"/>
                             <constraint firstItem="EVj-xl-I1v" firstAttribute="top" secondItem="A6Q-GR-Hux" secondAttribute="top" id="SY5-kr-aM9"/>
-                            <constraint firstItem="cY9-0P-wo8" firstAttribute="top" secondItem="SsI-NA-3p9" secondAttribute="bottom" constant="16" id="YBZ-B3-JaA"/>
                             <constraint firstAttribute="trailing" secondItem="EVj-xl-I1v" secondAttribute="trailing" id="adP-0J-GNg"/>
                             <constraint firstItem="o9W-Rg-gUM" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="o7A-d6-UKe"/>
-                            <constraint firstAttribute="trailing" secondItem="SsI-NA-3p9" secondAttribute="trailing" constant="47" id="ozz-Uw-TTb"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o9W-Rg-gUM" secondAttribute="bottom" constant="60" id="px6-fU-X6X"/>
                             <constraint firstAttribute="trailing" secondItem="cY9-0P-wo8" secondAttribute="trailing" constant="47" id="vu1-aj-5Td"/>
                             <constraint firstItem="EVj-xl-I1v" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" id="xDj-zf-eV6"/>
@@ -89,12 +80,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="constraintHeadingBottom" destination="0Vc-48-OlH" id="Nho-Cq-wbt"/>
                 <outlet property="constraintHeightImage" destination="S1Y-83-OmN" id="cjU-Qm-Szh"/>
                 <outlet property="imageViewMain" destination="c0v-fc-ZpO" id="Sdc-YC-fSf"/>
                 <outlet property="lblDescription" destination="o9W-Rg-gUM" id="KCr-Kh-97t"/>
                 <outlet property="lblHeading" destination="cY9-0P-wo8" id="9eD-NV-ZrM"/>
-                <outlet property="lblType" destination="SsI-NA-3p9" id="Mew-s3-v5y"/>
             </connections>
             <point key="canvasLocation" x="409.92366412213738" y="345.07042253521126"/>
         </tableViewCell>

@@ -14,11 +14,9 @@ class HtmlContainerForAboutCollectionTableViewCell: UITableViewCell {
     @IBOutlet weak var webKitView: WKWebView!
     @IBOutlet weak var constraintHeightWebView: NSLayoutConstraint!
     @IBOutlet weak var imageViewProductGallery: UIImageView!
-    @IBOutlet weak var constraintHeightImgPreOwned: NSLayoutConstraint!
     
     var superTableView : UITableView?
     var index : IndexPath?
-    var isForPreOwned = false
     var delegate : SuperViewDelegate?
     var activityViewModel : UserActivityViewModel = UserActivityViewModel()
     
@@ -27,15 +25,7 @@ class HtmlContainerForAboutCollectionTableViewCell: UITableViewCell {
             if let data = self.data {
                 if let image = data.0 {
                     UIImage.loadFromURL(url: image) { image in
-                        self.imageViewProductGallery.contentMode = .scaleAspectFit
-                        if image.size.height > 1500{
-                            self.constraintHeightImgPreOwned.constant = 680
-                        }else{
-                            self.constraintHeightImgPreOwned.constant = 700
-                        }
-//
                         self.imageViewProductGallery.image = image
-//                        self.imageViewProductGallery.image = image.imageResized(to: CGSize(width: self.imageViewProductGallery.frame.width + 200, height: self.imageViewProductGallery.frame.height))
                         if let html = data.1 {
                             self.loadHtml(string: html)
                         }

@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF277E33-0D4A-4BFB-97EC-C9431A4037B7"
+            uuid = "71633A86-8AAA-47A2-B07F-5AF9A110BF75"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ethos/Controllers/ShopViewController.swift"
+            filePath = "Ethos/ViewModels/GetProductsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
-            landmarkName = "updateView(info:)"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "getUpdatedFilters(site:screenType:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "51624B7C-C47D-4A91-9B9F-3400E5E3B4E3"
+            uuid = "9D41DF92-2005-4EA3-8CD3-567DE88F15A5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ethos/Controllers/PreOwnedViewController.swift"
+            filePath = "Ethos/Application Delegate/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1239"
-            endingLineNumber = "1239"
-            landmarkName = "updateView(info:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
