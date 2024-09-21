@@ -102,7 +102,8 @@ class EthosVideoTableViewCell: UITableViewCell {
                 self.playerLayer.player?.currentItem?.seek(to: CMTime.zero){_ in
                     self.playerLayer.player?.pause()
                     DispatchQueue.main.async {
-                        self.stopVideo()
+                        self.btnPlayPause.isSelected = false
+                        self.btnPlayPause.isHidden = false
                     }
                 }
             }
@@ -113,15 +114,8 @@ class EthosVideoTableViewCell: UITableViewCell {
         self.btnPlayPauseDidTapped(self.btnPlayPause)
     }
     
-    func stopVideo() {
-            btnPlayPause.isSelected = false
-            playerLayer.player?.pause()
-            btnPlayPause.isHidden = false
-        }
-    
     @IBAction func  btnPlayPauseDidTapped(_ sender : UIButton) {
         if !btnPlayPause.isSelected {
-            VideoPlaybackManager.shared.playVideo(in: self)
             btnPlayPause.isSelected = true
             playerLayer.player?.play()
             btnPlayPause.isHidden = true
@@ -139,7 +133,9 @@ class EthosVideoTableViewCell: UITableViewCell {
                 EthosConstants.Price : product?.price
             ])
         } else {
-            self.stopVideo()
+            btnPlayPause.isSelected = false
+            playerLayer.player?.pause()
+            btnPlayPause.isHidden = false
         }
     }
     
@@ -194,23 +190,5 @@ extension EthosVideoTableViewCell : GetVideoModelDelegate {
                 self.addObserverToPlayer()
             }
         }
-    }
-}
-
-class VideoPlaybackManager {
-    static let shared = VideoPlaybackManager()
-    
-    private(set) weak var currentlyPlayingCell: EthosVideoTableViewCell?
-    
-    func playVideo(in cell: EthosVideoTableViewCell) {
-        if let currentCell = currentlyPlayingCell, currentCell != cell {
-            currentCell.stopVideo()
-        }
-        currentlyPlayingCell = cell
-    }
-    
-    func stopVideo() {
-        currentlyPlayingCell?.stopVideo()
-        currentlyPlayingCell = nil
     }
 }

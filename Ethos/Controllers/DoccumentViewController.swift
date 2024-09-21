@@ -10,6 +10,7 @@ import Mixpanel
 
 class DoccumentViewController: UIViewController {
 
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     

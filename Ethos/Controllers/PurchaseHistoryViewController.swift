@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Mixpanel
 import SkeletonView
 
 class PurchaseHistoryViewController: UIViewController {
@@ -25,11 +24,6 @@ class PurchaseHistoryViewController: UIViewController {
         setup()
         
         callApi()
-        
-//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: PDFViewerViewController.self)) as? PDFViewerViewController {
-//            vc.pdfUrl = ""
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
     }
     
     func setup() {
@@ -80,16 +74,6 @@ class PurchaseHistoryViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    @objc func downloadInvoiceBtn(sender: UIButton){
-        if (purchaseHistoryDataArr[sender.tag].invoiceAttachmentPath ?? "").isValidURL{
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: PDFViewerViewController.self)) as? PDFViewerViewController {
-                vc.pdfUrl = purchaseHistoryDataArr[sender.tag].invoiceAttachmentPath ?? ""
-                vc.invoiceNumber = purchaseHistoryDataArr[sender.tag].invoice_number ?? ""
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-    }
 }
 
 extension PurchaseHistoryViewController : SkeletonTableViewDataSource {
@@ -115,7 +99,7 @@ extension PurchaseHistoryViewController : UITableViewDataSource, UITableViewDele
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if purchaseHistoryDataArr.count == 0{
-            purchaseHistoryTableView.setEmptyMessageTitleWithDes(emptyMsg)
+            purchaseHistoryTableView.setEmptyMessage(emptyMsg)
         }else{
             purchaseHistoryTableView.restore()
         }
@@ -125,14 +109,8 @@ extension PurchaseHistoryViewController : UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PurchaseHistoryTableViewCell.self), for: indexPath) as? PurchaseHistoryTableViewCell {
-            cell.downloadInvoiceImg.isHidden = true
             if purchaseHistoryDataArr.count > 0{
                 cell.purchaseHistoryData = purchaseHistoryDataArr[indexPath.row]
-                if (purchaseHistoryDataArr[indexPath.row].invoiceAttachmentPath ?? "").isValidURL{
-                    cell.downloadInvoiceImg.isHidden = false
-                }else{
-                    cell.downloadInvoiceImg.isHidden = true
-                }
                 if let url = URL(string: (purchaseHistoryDataArr[indexPath.row].image ?? "")) {
                     cell.productImg.kf.setImage(with: url)
                 }
@@ -197,9 +175,6 @@ extension PurchaseHistoryViewController : UITableViewDataSource, UITableViewDele
                     lineHeightMultiple: 1.25,
                     kern: 0.1
                 )
-                
-                cell.downloadInvoiceBtn.tag = indexPath.row
-                cell.downloadInvoiceBtn.addTarget(self, action: #selector(downloadInvoiceBtn(sender:)), for: .touchUpInside)
             }
             cell.hideSkeleton()
             return cell
@@ -220,12 +195,6 @@ extension PurchaseHistoryViewController : UITableViewDataSource, UITableViewDele
         //                self.navigationController?.pushViewController(vc, animated: true)
         //            }
         //        }
-        
-//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: PDFViewerViewController.self)) as? PDFViewerViewController {
-//            vc.pdfUrl = self.purchaseHistoryDataArr[indexPath.row].invoiceAttachmentPath ?? ""
-//            vc.invoiceNumber = purchaseHistoryDataArr[indexPath.row].invoice_number ?? ""
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
     }
 }
 
@@ -280,25 +249,6 @@ extension PurchaseHistoryViewController : GetPurchaseHistoryViewModelDelegate {
             emptyMsg = ""
         }
         self.purchaseHistoryDataArr = purchaseHistoryData
-        
-
-        let brandNames = Set(self.purchaseHistoryDataArr.compactMap { $0.brand_name })
-        var brandNameData = [String]()
-        for brandName in brandNames {
-            brandNameData.append(brandName)
-        }
-        print("fgsadcsgahbfgkhj\(brandNameData.joined(separator: ", "))")
-        Mixpanel.mainInstance().track(event: "Purchase History Count", properties: [
-            EthosConstants.Email : Userpreference.email,
-            EthosConstants.UID : Userpreference.userID,
-            EthosConstants.Gender : Userpreference.gender,
-            EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
-            EthosConstants.UserLocation : Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines),
-            EthosConstants.Description : "When a user enters the purchase history section",
-            EthosConstants.Platform : EthosConstants.IOS,
-            EthosConstants.Count : "\(purchaseHistoryData.count)",
-            EthosConstants.Brands : brandNameData.joined(separator: ", "),
-        ])
         
         DispatchQueue.main.async {
             self.purchaseHistoryTableView.stopSkeletonAnimation()

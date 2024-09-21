@@ -122,7 +122,6 @@
 		045EE7B82AB350C000DA40F2 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EE7B72AB350C000DA40F2 /* ProductDetailViewController.swift */; };
 		04627EBE2B8CB9F100F95305 /* StoreTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04627EBD2B8CB9F100F95305 /* StoreTiming.swift */; };
 		046358562B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046358552B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift */; };
-		046489462AB86EE700AB4CA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046489452AB86EE700AB4CA8 /* MenuViewController.swift */; };
 		046512902ACEEFC500AF37DF /* UserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465128F2ACEEFC500AF37DF /* UserActivityViewModel.swift */; };
 		04679D342A9E142E00726F09 /* ArticleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04679D332A9E142E00726F09 /* ArticleCategories.swift */; };
 		04679D372A9E31DD00726F09 /* GetBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04679D362A9E31DD00726F09 /* GetBrands.swift */; };
@@ -417,6 +416,9 @@
 		1697BCCF2BFF64FC00F41B0F /* Brother-1816-ExtraBold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1697BCB92BFF64FB00F41B0F /* Brother-1816-ExtraBold-Italic.otf */; };
 		1697BCD02BFF64FC00F41B0F /* Brother-1816-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1697BCBA2BFF64FB00F41B0F /* Brother-1816-Book.otf */; };
 		1697BCD12BFF64FC00F41B0F /* Brother-1816-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1697BCBB2BFF64FB00F41B0F /* Brother-1816-Black.otf */; };
+		169E8AD72C89D439000A1664 /* RangeSeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E8AD32C89D439000A1664 /* RangeSeekSlider.swift */; };
+		169E8AD82C89D439000A1664 /* RangeSeekSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E8AD42C89D439000A1664 /* RangeSeekSliderDelegate.swift */; };
+		169E8AD92C89D439000A1664 /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E8AD52C89D439000A1664 /* TapticEngine.swift */; };
 		16A0483D2C2418D800C769B6 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 16A0483C2C2418D800C769B6 /* FirebasePerformance */; };
 		16A717992C5772510094C4F2 /* SettingsCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A717982C5772510094C4F2 /* SettingsCategoryModel.swift */; };
 		16AC8B032C53C9DA0047CE56 /* ValidDomains.txt in Resources */ = {isa = PBXBuildFile; fileRef = 16AC8B022C53C9DA0047CE56 /* ValidDomains.txt */; };
@@ -428,19 +430,16 @@
 		16B340B12C005D27000CAB2C /* Brother-Bold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16B340B02C005D27000CAB2C /* Brother-Bold-Italic.otf */; };
 		16B340B32C005E98000CAB2C /* Brother-Medium-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16B340B22C005E98000CAB2C /* Brother-Medium-Italic.otf */; };
 		16B340B62C007661000CAB2C /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 16B340B52C007661000CAB2C /* Mixpanel */; };
-		16BF2EC42C6B560A005CA875 /* WARangeSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 16BF2EC32C6B560A005CA875 /* WARangeSlider */; };
+		16BF2EC02C6B53DC005CA875 /* PriceSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BF2EBE2C6B53DC005CA875 /* PriceSliderTableViewCell.swift */; };
+		16BF2EC12C6B53DC005CA875 /* PriceSliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BF2EBF2C6B53DC005CA875 /* PriceSliderTableViewCell.xib */; };
+		16C23EFF2C91AF71001CE7F6 /* ethos_loader_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 16C23EFE2C91AF71001CE7F6 /* ethos_loader_animation.json */; };
 		16C667B62C32896600EF7CFF /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 16C667B52C32896600EF7CFF /* PostHog */; };
 		16DB31132BC921BE0059252F /* libPhoneNumber in Frameworks */ = {isa = PBXBuildFile; productRef = 16DB31122BC921BE0059252F /* libPhoneNumber */; };
 		16DB31152BC92E920059252F /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB31142BC92E920059252F /* ValidationHelper.swift */; };
 		16DB31172BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB31162BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift */; };
 		16F28A262C12E25F008F189A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 16F28A252C12E25F008F189A /* SkeletonView */; };
 		9F0B16062A713B890082275F /* GetCategoryViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0B16052A713B890082275F /* GetCategoryViewModelDelegate.swift */; };
-		AA0B3A922C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A902C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift */; };
-		AA0B3A932C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3A912C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib */; };
 		AA28CAB32C6C8A380009CEC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA28CAB22C6C8A380009CEC6 /* IQKeyboardManagerSwift */; };
-		AAA009BA2C8ED87800C3CEAF /* EditorNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */; };
-		AAA009BB2C8ED87800C3CEAF /* EditorNotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */; };
-		AAA009BD2C92D9F500C3CEAF /* PDFViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */; };
 		AAA65A192C41131B00270456 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A0C2C41131B00270456 /* DPDConstants.swift */; };
 		AAA65A1A2C41131B00270456 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A0D2C41131B00270456 /* DPDKeyboardListener.swift */; };
 		AAA65A1B2C41131B00270456 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A0E2C41131B00270456 /* DPDUIView+Extension.swift */; };
@@ -599,7 +598,6 @@
 		045EE7B72AB350C000DA40F2 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		04627EBD2B8CB9F100F95305 /* StoreTiming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTiming.swift; sourceTree = "<group>"; };
 		046358552B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthosSpecificationsLayout.swift; sourceTree = "<group>"; };
-		046489452AB86EE700AB4CA8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0465128F2ACEEFC500AF37DF /* UserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewModel.swift; sourceTree = "<group>"; };
 		04679D332A9E142E00726F09 /* ArticleCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategories.swift; sourceTree = "<group>"; };
 		04679D362A9E31DD00726F09 /* GetBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBrands.swift; sourceTree = "<group>"; };
@@ -887,6 +885,9 @@
 		1697BCB92BFF64FB00F41B0F /* Brother-1816-ExtraBold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-1816-ExtraBold-Italic.otf"; sourceTree = "<group>"; };
 		1697BCBA2BFF64FB00F41B0F /* Brother-1816-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-1816-Book.otf"; sourceTree = "<group>"; };
 		1697BCBB2BFF64FB00F41B0F /* Brother-1816-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-1816-Black.otf"; sourceTree = "<group>"; };
+		169E8AD32C89D439000A1664 /* RangeSeekSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSlider.swift; sourceTree = "<group>"; };
+		169E8AD42C89D439000A1664 /* RangeSeekSliderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSliderDelegate.swift; sourceTree = "<group>"; };
+		169E8AD52C89D439000A1664 /* TapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
 		16A717972C576BB80094C4F2 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		16A717982C5772510094C4F2 /* SettingsCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCategoryModel.swift; sourceTree = "<group>"; };
 		16AC8B022C53C9DA0047CE56 /* ValidDomains.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ValidDomains.txt; sourceTree = "<group>"; };
@@ -897,14 +898,12 @@
 		16B340AE2C005C71000CAB2C /* Brother-Regular-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-Regular-Italic.otf"; sourceTree = "<group>"; };
 		16B340B02C005D27000CAB2C /* Brother-Bold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-Bold-Italic.otf"; sourceTree = "<group>"; };
 		16B340B22C005E98000CAB2C /* Brother-Medium-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brother-Medium-Italic.otf"; sourceTree = "<group>"; };
+		16BF2EBE2C6B53DC005CA875 /* PriceSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceSliderTableViewCell.swift; sourceTree = "<group>"; };
+		16BF2EBF2C6B53DC005CA875 /* PriceSliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceSliderTableViewCell.xib; sourceTree = "<group>"; };
+		16C23EFE2C91AF71001CE7F6 /* ethos_loader_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ethos_loader_animation.json; sourceTree = "<group>"; };
 		16DB31142BC92E920059252F /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		16DB31162BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthosBottomSheetTableViewControllerWithTitle.swift; sourceTree = "<group>"; };
 		9F0B16052A713B890082275F /* GetCategoryViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryViewModelDelegate.swift; sourceTree = "<group>"; };
-		AA0B3A902C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift; sourceTree = "<group>"; };
-		AA0B3A912C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib; sourceTree = "<group>"; };
-		AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorNotesTableViewCell.swift; sourceTree = "<group>"; };
-		AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorNotesTableViewCell.xib; sourceTree = "<group>"; };
-		AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerViewController.swift; sourceTree = "<group>"; };
 		AAA65A0C2C41131B00270456 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
 		AAA65A0D2C41131B00270456 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
 		AAA65A0E2C41131B00270456 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
@@ -936,7 +935,6 @@
 				04CF1F802AB1D5F000AF904C /* FirebaseAnalytics in Frameworks */,
 				AA28CAB32C6C8A380009CEC6 /* IQKeyboardManagerSwift in Frameworks */,
 				16662ABD2BC8FDB100A3651C /* Siren in Frameworks */,
-				16BF2EC42C6B560A005CA875 /* WARangeSlider in Frameworks */,
 				16DB31132BC921BE0059252F /* libPhoneNumber in Frameworks */,
 				04D1739B2B47FB4E003032E7 /* Kingfisher in Frameworks */,
 				16B340B62C007661000CAB2C /* Mixpanel in Frameworks */,
@@ -1063,7 +1061,6 @@
 				048662C02A73D42900B0673C /* LoginOrSignUpViewController.swift */,
 				048662C62A73FB7300B0673C /* LoginWithEmailViewController.swift */,
 				048662C42A73FB5F00B0673C /* LoginWithMobileViewController.swift */,
-				046489452AB86EE700AB4CA8 /* MenuViewController.swift */,
 				048CD2D62BC3C8CB000DA770 /* NewCatalogViewController.swift */,
 				04181E952ABB503700DE9933 /* NotificationsViewController.swift */,
 				042EAC002A7A972700C41FBE /* PasswordChangeAlertController.swift */,
@@ -1080,7 +1077,6 @@
 				048662C22A73E74800B0673C /* SignUpViewController.swift */,
 				046FE9912AA5A64800BA29DA /* SplashViewController.swift */,
 				AAA65A2E2C4508C300270456 /* PurchaseHistoryViewController.swift */,
-				AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1110,6 +1106,7 @@
 				16AC8B022C53C9DA0047CE56 /* ValidDomains.txt */,
 				048B8EA92A79034300D272A5 /* loader.gif */,
 				048B8EA32A78DA5700D272A5 /* Countries.json */,
+				16C23EFE2C91AF71001CE7F6 /* ethos_loader_animation.json */,
 				166DF5272BD63C8000C8BA1E /* wishlist_animation.json */,
 				16101FBB2BDA2BE000A05D92 /* Rolex.png */,
 				048B8E9D2A78D6D400D272A5 /* Demo.xcassets */,
@@ -1181,6 +1178,8 @@
 			children = (
 				1603999D2A5D8A32007E1345 /* classes */,
 				1603999C2A5D8A22007E1345 /* xib */,
+				16BF2EBE2C6B53DC005CA875 /* PriceSliderTableViewCell.swift */,
+				16BF2EBF2C6B53DC005CA875 /* PriceSliderTableViewCell.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1254,7 +1253,6 @@
 				165966402BED001400B93651 /* HorizontalCollectionTableViewCell.xib */,
 				165966532BED001500B93651 /* HtmlContainerForAboutCollectionTableViewCell.xib */,
 				165966312BED001300B93651 /* HtmlContainerTableViewCell.xib */,
-				AA0B3A912C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib */,
 				165966612BED001600B93651 /* ImageCollectionViewCell.xib */,
 				1659664B2BED001500B93651 /* ImageTitleDescriptionTableViewCell.xib */,
 				165966292BED001300B93651 /* MovementTableViewCell.xib */,
@@ -1295,7 +1293,6 @@
 				165966282BED001300B93651 /* WatchGlossaryTableViewCell.xib */,
 				165966352BED001400B93651 /* WatchGlossaryTableViewHeaderCell.xib */,
 				1659665B2BED001600B93651 /* WhereToLocateUsTableViewCell.xib */,
-				AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -1342,7 +1339,6 @@
 				165966CE2BED00F100B93651 /* HomeTableViewCell.swift */,
 				165966B02BED00EF00B93651 /* HorizontalCollectionTableViewCell.swift */,
 				165966CA2BED00F100B93651 /* HtmlContainerForAboutCollectionTableViewCell.swift */,
-				AA0B3A902C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift */,
 				165966F52BED00F400B93651 /* HtmlContainerTableViewCell.swift */,
 				165966F22BED00F400B93651 /* ImageCollectionViewCell.swift */,
 				165966B72BED00F000B93651 /* ImageTitleDescriptionTableViewCell.swift */,
@@ -1384,7 +1380,6 @@
 				165966AE2BED00EF00B93651 /* WhereToLocateUsTableViewCell.swift */,
 				AAA65A262C41165D00270456 /* RecentSearchCollectionViewCell.swift */,
 				AAA65A2A2C44FF1900270456 /* PurchaseHistoryTableViewCell.swift */,
-				AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -1590,6 +1585,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		169E8AD62C89D439000A1664 /* RangeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				169E8AD32C89D439000A1664 /* RangeSeekSlider.swift */,
+				169E8AD42C89D439000A1664 /* RangeSeekSliderDelegate.swift */,
+				169E8AD52C89D439000A1664 /* TapticEngine.swift */,
+			);
+			path = RangeSlider;
+			sourceTree = "<group>";
+		};
 		AAA65A0F2C41131B00270456 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,6 +1637,7 @@
 		AAA65A182C41131B00270456 /* ThirdPartyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				169E8AD62C89D439000A1664 /* RangeSlider */,
 				AAA65A172C41131B00270456 /* DropDown */,
 			);
 			path = ThirdPartyClasses;
@@ -1672,7 +1678,6 @@
 				16F28A252C12E25F008F189A /* SkeletonView */,
 				16A0483C2C2418D800C769B6 /* FirebasePerformance */,
 				16C667B52C32896600EF7CFF /* PostHog */,
-				16BF2EC32C6B560A005CA875 /* WARangeSlider */,
 				AA28CAB22C6C8A380009CEC6 /* IQKeyboardManagerSwift */,
 			);
 			productName = Ethos;
@@ -1738,8 +1743,8 @@
 				16B340B42C007660000CAB2C /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 				16F28A242C12E25F008F189A /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */,
-				16BF2EC22C6B560A005CA875 /* XCRemoteSwiftPackageReference "RangeSlider" */,
 				AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AA0B3A942C9E97FE008A3D9C /* XCRemoteSwiftPackageReference "RangeSlider" */,
 			);
 			productRefGroup = 045C6B182A42C5A600AEC183 /* Products */;
 			projectDirPath = "";
@@ -1805,6 +1810,7 @@
 				1637D1F32C60FBD40024CF5C /* RevolutionReviewTableViewCell.xib in Resources */,
 				1637D1F22C60FBD40024CF5C /* RevolutionTableViewHeaderCell.xib in Resources */,
 				165966682BED001700B93651 /* BoutiqueImageCollectionViewCell.xib in Resources */,
+				16C23EFF2C91AF71001CE7F6 /* ethos_loader_animation.json in Resources */,
 				1659668C2BED001700B93651 /* SingleButtonTableViewCell.xib in Resources */,
 				165966962BED001700B93651 /* ImageTitleDescriptionTableViewCell.xib in Resources */,
 				1659666D2BED001700B93651 /* GetAQuoteTradeTableViewCell.xib in Resources */,
@@ -1839,9 +1845,7 @@
 				1697BCC42BFF64FB00F41B0F /* Brother-1816-ExtraBold.otf in Resources */,
 				1697BCCB2BFF64FB00F41B0F /* Brother-1816-Thin.otf in Resources */,
 				165966802BED001700B93651 /* WatchGlossaryTableViewHeaderCell.xib in Resources */,
-				AA0B3A932C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib in Resources */,
 				1659666E2BED001700B93651 /* SingleCollectionTableViewCell.xib in Resources */,
-				AAA009BB2C8ED87800C3CEAF /* EditorNotesTableViewCell.xib in Resources */,
 				165966A22BED001700B93651 /* SpecificationPairTableViewCell.xib in Resources */,
 				AAA65A2D2C44FF1900270456 /* PurchaseHistoryTableViewCell.xib in Resources */,
 				165966A32BED001700B93651 /* EthosStoryCollectionViewCell.xib in Resources */,
@@ -1868,6 +1872,7 @@
 				165966812BED001700B93651 /* AboutCollectionTableViewCell.xib in Resources */,
 				1659667F2BED001700B93651 /* FavreLeubaHeaderTableViewCell.xib in Resources */,
 				165966842BED001700B93651 /* ProductDetailTableViewCell.xib in Resources */,
+				16BF2EC12C6B53DC005CA875 /* PriceSliderTableViewCell.xib in Resources */,
 				1659667D2BED001700B93651 /* BrandImageCollectionViewCell.xib in Resources */,
 				165966672BED001700B93651 /* SectionHeaderCell.xib in Resources */,
 				1697BCC62BFF64FB00F41B0F /* Brother-1816-Book-Italic.otf in Resources */,
@@ -1981,7 +1986,6 @@
 				04227FFA2A8DF69B007526F3 /* TitleDescriptionImageModel.swift in Sources */,
 				165967022BED00F500B93651 /* ImageTitleDescriptionTableViewCell.swift in Sources */,
 				168617C32BECF8E100615C6F /* MainText.swift in Sources */,
-				AAA009BA2C8ED87800C3CEAF /* EditorNotesTableViewCell.swift in Sources */,
 				042EFBEF2A96165800266506 /* GetCategory.swift in Sources */,
 				043128EE2B3EBC67000CF78B /* EthosFeaturedVideoCollectionLayout.swift in Sources */,
 				048662BB2A73B9BF00B0673C /* GetCategoryViewModel.swift in Sources */,
@@ -1992,6 +1996,7 @@
 				0412333D2A7D0CF800B3B9AA /* EthosProductLayout.swift in Sources */,
 				042B4EA62AAF0BDE000B7D7B /* GetAQuoteViewModel.swift in Sources */,
 				165967062BED00F500B93651 /* NotificationTableViewCell.swift in Sources */,
+				169E8AD72C89D439000A1664 /* RangeSeekSlider.swift in Sources */,
 				045C6B472A42F78D00AEC183 /* UIColor.swift in Sources */,
 				045C6B522A42FD2100AEC183 /* PreOwnedViewController.swift in Sources */,
 				04172F9F2AB4B32D00A8E460 /* DataBaseModel.swift in Sources */,
@@ -2052,7 +2057,6 @@
 				165966FB2BED00F400B93651 /* HorizontalCollectionTableViewCell.swift in Sources */,
 				165B513F2A60286E000D459C /* EthosConstants.swift in Sources */,
 				042EFBE72A96051500266506 /* GreetingText.swift in Sources */,
-				046489462AB86EE700AB4CA8 /* MenuViewController.swift in Sources */,
 				04133F4E2AA5E65C0090B3DC /* ArticleDetails.swift in Sources */,
 				049097432A80E542001E211F /* ContactUsViewController.swift in Sources */,
 				045C6B4E2A42FCD800AEC183 /* ShopViewController.swift in Sources */,
@@ -2064,8 +2068,8 @@
 				04315DE52ABC518C007E240B /* PersistantContainer.swift in Sources */,
 				AAA65A1E2C41131B00270456 /* DropDown+Appearance.swift in Sources */,
 				168617BD2BECF7D500615C6F /* Value.swift in Sources */,
-				AAA009BD2C92D9F500C3CEAF /* PDFViewerViewController.swift in Sources */,
 				045C6B252A42C5A600AEC183 /* Ethos.xcdatamodeld in Sources */,
+				16BF2EC02C6B53DC005CA875 /* PriceSliderTableViewCell.swift in Sources */,
 				041C442E2AA0E2CA0069E8ED /* ArticlesCategory.swift in Sources */,
 				04116BF22A9A0C2600700019 /* GetCustomerViewModelDelegate.swift in Sources */,
 				048CD2D72BC3C8CB000DA770 /* NewCatalogViewController.swift in Sources */,
@@ -2188,6 +2192,7 @@
 				0423B3322AD5300900C905DE /* ArticleDetailViewController.swift in Sources */,
 				161C73692A618966001A88DF /* EthosGIFHelper.swift in Sources */,
 				168617912BECEDB800615C6F /* FilterValue.swift in Sources */,
+				169E8AD92C89D439000A1664 /* TapticEngine.swift in Sources */,
 				AAA65A232C4113F100270456 /* SearchSuggestionModel.swift in Sources */,
 				161C73492A6116E9001A88DF /* RequestType.swift in Sources */,
 				0448BA482A4B0A580039CBAD /* EthosContentSizedTableView.swift in Sources */,
@@ -2197,7 +2202,7 @@
 				041C2A582A98710B0075B871 /* UIButton.swift in Sources */,
 				16AD35982C5380EE004DF30C /* Array.swift in Sources */,
 				042B4EA42AAF0B0A000B7D7B /* FormMedia.swift in Sources */,
-				AA0B3A922C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift in Sources */,
+				169E8AD82C89D439000A1664 /* RangeSeekSliderDelegate.swift in Sources */,
 				168617932BECEDEB00615C6F /* AlphabeticFilters.swift in Sources */,
 				1659673A2BED00F500B93651 /* SpecificationPairTableViewCell.swift in Sources */,
 				163FF5402A6E5E4800185CA5 /* HorizontalCollectionKeys.swift in Sources */,
@@ -2392,7 +2397,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ethos/Ethos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5258457F8U;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2412,10 +2417,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.0.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2454,7 +2460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.0.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2632,14 +2638,6 @@
 				kind = branch;
 			};
 		};
-		16BF2EC22C6B560A005CA875 /* XCRemoteSwiftPackageReference "RangeSlider" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/warchimede/RangeSlider";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
@@ -2662,6 +2660,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.31.0;
+			};
+		};
+		AA0B3A942C9E97FE008A3D9C /* XCRemoteSwiftPackageReference "RangeSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/warchimede/RangeSlider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
 			};
 		};
 		AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
@@ -2738,11 +2744,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16B340B42C007660000CAB2C /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
-		};
-		16BF2EC32C6B560A005CA875 /* WARangeSlider */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16BF2EC22C6B560A005CA875 /* XCRemoteSwiftPackageReference "RangeSlider" */;
-			productName = WARangeSlider;
 		};
 		16C667B52C32896600EF7CFF /* PostHog */ = {
 			isa = XCSwiftPackageProductDependency;

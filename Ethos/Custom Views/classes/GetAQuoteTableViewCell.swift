@@ -69,6 +69,8 @@ class GetAQuoteTableViewCell: UITableViewCell {
         }
     }
     
+    
+    
     var selectedBrand : FormBrand? {
         didSet {
             if let brand = self.selectedBrand {
@@ -115,7 +117,10 @@ class GetAQuoteTableViewCell: UITableViewCell {
         txtFieldBrand.initWithUIParameters(
             placeHolderText: EthosConstants.SelectBrand,
             rightView: UIImageView(
-                image: UIImage.imageWithName(name: EthosConstants.downArrow)),
+                image: UIImage.imageWithName(
+                    name: EthosConstants.downArrow
+                )
+            ),
             placeholderColor: .black,
             underLineColor: .clear,
             textInset: 0
