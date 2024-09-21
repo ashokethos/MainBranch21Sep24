@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FavreLeubaCatalogHeaderView" rowHeight="804" id="awD-3F-Anx" customClass="FavreLeubaCatalogHeaderView" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="804"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="awD-3F-Anx" id="cGi-nW-GqY">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="804"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favre leuba" translatesAutoresizingMaskIntoConstraints="NO" id="R6O-Y5-3qT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="201"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="R6O-Y5-3qT" secondAttribute="height" multiplier="430:220" id="sDN-Fl-Wge"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr8-1e-Tth">
+                        <rect key="frame" x="30" y="233" width="333" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egT-X0-4dF">
+                        <rect key="frame" x="30" y="257" width="30" height="34"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="">
+                            <attributedString key="attributedTitle"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38z-Hs-roM">
+                        <rect key="frame" x="30" y="257" width="333" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Rr8-1e-Tth" firstAttribute="top" secondItem="R6O-Y5-3qT" secondAttribute="bottom" constant="32" id="8wS-4Q-SYb"/>
+                    <constraint firstItem="38z-Hs-roM" firstAttribute="top" secondItem="Rr8-1e-Tth" secondAttribute="bottom" constant="24" id="9Zd-1Q-NFF"/>
+                    <constraint firstAttribute="trailing" secondItem="R6O-Y5-3qT" secondAttribute="trailing" id="AEm-Je-hH6"/>
+                    <constraint firstItem="R6O-Y5-3qT" firstAttribute="top" secondItem="cGi-nW-GqY" secondAttribute="top" id="DoU-Ep-X5F"/>
+                    <constraint firstItem="egT-X0-4dF" firstAttribute="leading" secondItem="cGi-nW-GqY" secondAttribute="leading" constant="30" id="EwD-67-ffW"/>
+                    <constraint firstItem="egT-X0-4dF" firstAttribute="top" secondItem="38z-Hs-roM" secondAttribute="bottom" id="Jax-eV-S8u"/>
+                    <constraint firstAttribute="trailing" secondItem="Rr8-1e-Tth" secondAttribute="trailing" constant="30" id="Rj5-CV-hHN"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="egT-X0-4dF" secondAttribute="bottom" constant="32" id="TUx-CU-Irp"/>
+                    <constraint firstAttribute="trailing" secondItem="38z-Hs-roM" secondAttribute="trailing" constant="30" id="jHq-cQ-TdU"/>
+                    <constraint firstItem="38z-Hs-roM" firstAttribute="leading" secondItem="cGi-nW-GqY" secondAttribute="leading" constant="30" id="s4s-iw-Pal"/>
+                    <constraint firstItem="Rr8-1e-Tth" firstAttribute="leading" secondItem="cGi-nW-GqY" secondAttribute="leading" constant="30" id="scq-1i-k3d"/>
+                    <constraint firstItem="R6O-Y5-3qT" firstAttribute="leading" secondItem="cGi-nW-GqY" secondAttribute="leading" id="xga-IE-CI3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnAction" destination="egT-X0-4dF" id="Xia-BQ-efF"/>
+                <outlet property="imageViewMain" destination="R6O-Y5-3qT" id="GB8-hv-zzL"/>
+                <outlet property="lblDescription" destination="38z-Hs-roM" id="Xoy-O5-FvK"/>
+                <outlet property="lblTitle" destination="Rr8-1e-Tth" id="7Og-R7-zT2"/>
+            </connections>
+            <point key="canvasLocation" x="819.08396946564881" y="404.92957746478874"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="favre leuba" width="2760" height="1080"/>
+    </resources>
+</document>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Medium.otf">
+            <string>Brother-1816-Medium</string>
+        </array>
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BrandsTableViewCell" rowHeight="901" id="uYf-VM-EPF" customClass="BrandsTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="901"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uYf-VM-EPF" id="71q-gY-TP4">
+                <rect key="frame" x="0.0" y="0.0" width="429" height="901"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOP BY BRANDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEP-LA-cLb">
+                        <rect key="frame" x="29.999999999999993" y="40" width="106.33333333333331" height="16"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Medium" family="Brother 1816" pointSize="12"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f5-wM-LHI">
+                        <rect key="frame" x="30" y="80" width="369" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="mow-ef-hJW"/>
+                        </constraints>
+                    </view>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Nc3-we-K85">
+                        <rect key="frame" x="107.33333333333333" y="637" width="214.33333333333337" height="2.6666666666666288"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </progressView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="tfS-LP-k51">
+                        <rect key="frame" x="196" y="340.66666666666669" width="37" height="37"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Cv-lS-4vj">
+                        <rect key="frame" x="342" y="31" width="57" height="34"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myj-pg-j7K">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="34"/>
+                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="VIEW ALL">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGn-JI-QFD">
+                                <rect key="frame" x="53" y="1" width="4" height="33"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="rightArrowEthos"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Los-0E-mrH">
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnViewAllDidTapped:" destination="uYf-VM-EPF" eventType="touchUpInside" id="bO3-Sa-8LB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xGn-JI-QFD" firstAttribute="top" secondItem="5Cv-lS-4vj" secondAttribute="top" constant="1" id="4Eh-WK-Mvk"/>
+                            <constraint firstAttribute="trailing" secondItem="Los-0E-mrH" secondAttribute="trailing" id="59P-ll-tHZ"/>
+                            <constraint firstItem="myj-pg-j7K" firstAttribute="leading" secondItem="5Cv-lS-4vj" secondAttribute="leading" id="68B-22-p0J"/>
+                            <constraint firstAttribute="trailing" secondItem="xGn-JI-QFD" secondAttribute="trailing" id="Jst-9d-8Jt"/>
+                            <constraint firstItem="Los-0E-mrH" firstAttribute="top" secondItem="5Cv-lS-4vj" secondAttribute="top" id="Pq4-kE-QqS"/>
+                            <constraint firstItem="Los-0E-mrH" firstAttribute="leading" secondItem="5Cv-lS-4vj" secondAttribute="leading" id="QYf-A0-wUT"/>
+                            <constraint firstAttribute="bottom" secondItem="xGn-JI-QFD" secondAttribute="bottom" id="gLJ-fh-dbZ"/>
+                            <constraint firstItem="xGn-JI-QFD" firstAttribute="leading" secondItem="myj-pg-j7K" secondAttribute="trailing" constant="5" id="jU9-aq-Esl"/>
+                            <constraint firstAttribute="bottom" secondItem="Los-0E-mrH" secondAttribute="bottom" id="kmi-Ir-nuS"/>
+                            <constraint firstItem="myj-pg-j7K" firstAttribute="top" secondItem="5Cv-lS-4vj" secondAttribute="top" id="pda-Hh-QEV"/>
+                            <constraint firstAttribute="bottom" secondItem="myj-pg-j7K" secondAttribute="bottom" id="sFS-J5-ch2"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-c9-wFd">
+                        <rect key="frame" x="30" y="113" width="369" height="492"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="forceLeftToRight" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl3-dS-wrg">
+                                <rect key="frame" x="0.0" y="0.0" width="369" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hl3-dS-wrg" secondAttribute="height" multiplier="3:4" id="BbM-k2-EgL"/>
+                                </constraints>
+                                <collectionViewLayout key="collectionViewLayout" id="s5L-CR-g7t" customClass="EthosBrandsLayout" customModule="Ethos" customModuleProvider="target"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hl3-dS-wrg" secondAttribute="bottom" id="I6Y-PI-JwR"/>
+                            <constraint firstItem="hl3-dS-wrg" firstAttribute="top" secondItem="RLG-c9-wFd" secondAttribute="top" id="gEg-YT-64q"/>
+                            <constraint firstItem="hl3-dS-wrg" firstAttribute="leading" secondItem="RLG-c9-wFd" secondAttribute="leading" id="pH6-To-DOf"/>
+                            <constraint firstAttribute="trailing" secondItem="hl3-dS-wrg" secondAttribute="trailing" id="tnt-Nu-99O"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zw-Hu-uaJ">
+                        <rect key="frame" x="199.66666666666666" y="670.66666666666663" width="30" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ZLB-Dv-Gov"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnViewAllProductsDidTapped:" destination="uYf-VM-EPF" eventType="touchUpInside" id="H4d-Fb-y4L"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrowEthos" translatesAutoresizingMaskIntoConstraints="NO" id="8D4-3j-NOc">
+                        <rect key="frame" x="229.66666666666666" y="686.66666666666663" width="8" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="Aha-Qs-XDZ"/>
+                            <constraint firstAttribute="height" constant="8" id="sXf-0B-nlR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="1f5-wM-LHI" firstAttribute="leading" secondItem="71q-gY-TP4" secondAttribute="leading" constant="30" id="0w4-wB-DRA"/>
+                    <constraint firstAttribute="trailing" secondItem="RLG-c9-wFd" secondAttribute="trailing" constant="30" id="3Tf-wd-8bt"/>
+                    <constraint firstItem="XEP-LA-cLb" firstAttribute="top" secondItem="71q-gY-TP4" secondAttribute="top" constant="40" id="5YD-gI-fX0"/>
+                    <constraint firstItem="myj-pg-j7K" firstAttribute="centerY" secondItem="XEP-LA-cLb" secondAttribute="centerY" id="5eO-Xu-l1m"/>
+                    <constraint firstAttribute="trailing" secondItem="5Cv-lS-4vj" secondAttribute="trailing" constant="30" id="A66-Xr-63S"/>
+                    <constraint firstItem="RLG-c9-wFd" firstAttribute="leading" secondItem="71q-gY-TP4" secondAttribute="leading" constant="30" id="Aj6-xx-EU9"/>
+                    <constraint firstItem="1f5-wM-LHI" firstAttribute="top" secondItem="XEP-LA-cLb" secondAttribute="bottom" constant="24" id="Crh-le-ctp"/>
+                    <constraint firstItem="Nc3-we-K85" firstAttribute="width" secondItem="71q-gY-TP4" secondAttribute="width" multiplier="0.5" id="GkV-3Z-tle"/>
+                    <constraint firstItem="Nc3-we-K85" firstAttribute="centerX" secondItem="71q-gY-TP4" secondAttribute="centerX" id="IlP-2U-mdX"/>
+                    <constraint firstItem="XEP-LA-cLb" firstAttribute="leading" secondItem="71q-gY-TP4" secondAttribute="leading" constant="30" id="K0W-dA-9xt"/>
+                    <constraint firstAttribute="trailing" secondItem="1f5-wM-LHI" secondAttribute="trailing" constant="30" id="MQT-Jk-CzP"/>
+                    <constraint firstItem="8D4-3j-NOc" firstAttribute="centerY" secondItem="5zw-Hu-uaJ" secondAttribute="centerY" id="MoS-Z5-aQR"/>
+                    <constraint firstItem="RLG-c9-wFd" firstAttribute="top" secondItem="1f5-wM-LHI" secondAttribute="bottom" constant="32" id="SoY-pc-GLE"/>
+                    <constraint firstItem="tfS-LP-k51" firstAttribute="centerY" secondItem="RLG-c9-wFd" secondAttribute="centerY" id="Ti2-xf-gza"/>
+                    <constraint firstItem="8D4-3j-NOc" firstAttribute="leading" secondItem="5zw-Hu-uaJ" secondAttribute="trailing" id="V8L-2F-7ek"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5zw-Hu-uaJ" secondAttribute="bottom" constant="40" id="eBL-na-JS1"/>
+                    <constraint firstItem="5zw-Hu-uaJ" firstAttribute="top" secondItem="Nc3-we-K85" secondAttribute="bottom" constant="32" id="jLu-aL-6uJ"/>
+                    <constraint firstItem="tfS-LP-k51" firstAttribute="centerX" secondItem="RLG-c9-wFd" secondAttribute="centerX" id="jVn-J6-MlD"/>
+                    <constraint firstItem="Nc3-we-K85" firstAttribute="top" secondItem="RLG-c9-wFd" secondAttribute="bottom" constant="32" id="loA-XC-riG"/>
+                    <constraint firstItem="5zw-Hu-uaJ" firstAttribute="centerX" secondItem="71q-gY-TP4" secondAttribute="centerX" id="oKF-wb-FXs"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Uwa-w4-nxG"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="btnViewAll" destination="Los-0E-mrH" id="XCK-7x-Zvz"/>
+                <outlet property="btnViewAllDisclosureBtn" destination="xGn-JI-QFD" id="Je3-Ba-ijq"/>
+                <outlet property="btnViewAllProducts" destination="5zw-Hu-uaJ" id="oOu-Vf-byO"/>
+                <outlet property="collectionView" destination="hl3-dS-wrg" id="cAl-a1-IVa"/>
+                <outlet property="indicator" destination="tfS-LP-k51" id="hgu-2o-PpF"/>
+                <outlet property="labelHeading" destination="XEP-LA-cLb" id="7o4-Hs-uxR"/>
+                <outlet property="progressView" destination="Nc3-we-K85" id="Elg-5z-hWQ"/>
+                <outlet property="txtBtnViewAll" destination="myj-pg-j7K" id="nFC-mS-Fyg"/>
+                <outlet property="viewBtnViewAll" destination="5Cv-lS-4vj" id="zMx-vO-lRh"/>
+            </connections>
+            <point key="canvasLocation" x="278.62595419847327" y="985.56338028169023"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightArrowEthos" width="4" height="7"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

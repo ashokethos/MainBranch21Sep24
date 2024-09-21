@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageTitleDescriptionTableViewCell" rowHeight="943" id="KGk-i7-Jjw" customClass="ImageTitleDescriptionTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="943"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="943"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D51-QA-eBC">
+                        <rect key="frame" x="0.0" y="0.0" width="498" height="375.33333333333331"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="D51-QA-eBC" secondAttribute="height" multiplier="430:324" id="gIk-0l-TBg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-eQ-QFU">
+                        <rect key="frame" x="30" y="407.33333333333331" width="438" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E59-RL-Dz9">
+                        <rect key="frame" x="30" y="427.33333333333331" width="438" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLi-OV-2FN">
+                        <rect key="frame" x="30" y="451.33333333333331" width="30" height="34"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btnActionDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zOw-z9-2p0"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIp-Sr-Rh2">
+                        <rect key="frame" x="70" y="457.33333333333331" width="16" height="22"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="rightLongArrow"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mLi-OV-2FN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Frg-uM-1na"/>
+                    <constraint firstItem="E59-RL-Dz9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="L0b-Cb-NOl"/>
+                    <constraint firstAttribute="trailing" secondItem="9iM-eQ-QFU" secondAttribute="trailing" constant="30" id="R5H-M0-48I"/>
+                    <constraint firstItem="D51-QA-eBC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ryo-xQ-wJ7"/>
+                    <constraint firstItem="9iM-eQ-QFU" firstAttribute="top" secondItem="D51-QA-eBC" secondAttribute="bottom" constant="32" id="Tv7-Gx-aYP"/>
+                    <constraint firstItem="D51-QA-eBC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Xxv-Ih-a7X"/>
+                    <constraint firstItem="mLi-OV-2FN" firstAttribute="top" secondItem="E59-RL-Dz9" secondAttribute="bottom" constant="24" id="ZvZ-tB-fTx"/>
+                    <constraint firstAttribute="trailing" secondItem="E59-RL-Dz9" secondAttribute="trailing" constant="30" id="ahE-4S-n5N"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mLi-OV-2FN" secondAttribute="bottom" constant="50" id="kfL-p5-YKg"/>
+                    <constraint firstItem="E59-RL-Dz9" firstAttribute="top" secondItem="9iM-eQ-QFU" secondAttribute="bottom" constant="20" id="m1v-UJ-KQa"/>
+                    <constraint firstAttribute="trailing" secondItem="D51-QA-eBC" secondAttribute="trailing" id="oW5-bE-rt6"/>
+                    <constraint firstItem="iIp-Sr-Rh2" firstAttribute="centerY" secondItem="mLi-OV-2FN" secondAttribute="centerY" id="ote-Ns-Wfv"/>
+                    <constraint firstItem="iIp-Sr-Rh2" firstAttribute="leading" secondItem="mLi-OV-2FN" secondAttribute="trailing" constant="10" id="pBh-Fy-hov"/>
+                    <constraint firstItem="9iM-eQ-QFU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="xlO-QX-Iyw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnAction" destination="mLi-OV-2FN" id="Jz8-t1-ilT"/>
+                <outlet property="btnActionDisclosure" destination="iIp-Sr-Rh2" id="9j4-dA-ibd"/>
+                <outlet property="constraintSpacingDisclosureSubTitleAndCTA" destination="ZvZ-tB-fTx" id="CTe-7s-5OW"/>
+                <outlet property="imageViewMain" destination="D51-QA-eBC" id="vXg-xG-YJT"/>
+                <outlet property="lblSubTitle" destination="E59-RL-Dz9" id="Q8g-ek-4um"/>
+                <outlet property="lblTitle" destination="9iM-eQ-QFU" id="eUI-JN-Yne"/>
+            </connections>
+            <point key="canvasLocation" x="265.64885496183206" y="304.57746478873241"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightLongArrow" width="16" height="4.3333334922790527"/>
+    </resources>
+</document>

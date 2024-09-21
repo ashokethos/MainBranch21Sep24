@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Medium.otf">
+            <string>Brother-1816-Medium</string>
+        </array>
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeaturedVideoTableViewCell" rowHeight="849" id="KGk-i7-Jjw" customClass="FeaturedVideoTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="870"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="870"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="FEATURED VIDEO ARTICLES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcB-Ec-Au8">
+                        <rect key="frame" x="30" y="40" width="166.33333333333334" height="16"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Medium" family="Brother 1816" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEp-jE-4an">
+                        <rect key="frame" x="349" y="43" width="5" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="nO3-Fh-7Hh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="rightArrowEthosWhite">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btnViewAllDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LBh-mP-XBD"/>
+                        </connections>
+                    </button>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JWl-7z-8Zk">
+                        <rect key="frame" x="30" y="626" width="324" height="0.0"/>
+                        <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="currentPageIndicatorTintColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </pageControl>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="b5l-j6-s7V" customClass="EthosContentSizedCollectionView" customModule="Ethos" customModuleProvider="target">
+                        <rect key="frame" x="30" y="80" width="324" height="522"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="522" id="iF6-fi-Y92"/>
+                        </constraints>
+                        <collectionViewLayout key="collectionViewLayout" id="caO-dX-iaD" customClass="EthosFeaturedVideoCollectionLayout" customModule="Ethos" customModuleProvider="target"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </collectionView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="W4g-fr-jQY">
+                        <rect key="frame" x="30" y="80" width="324" height="522"/>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYM-bs-eVM">
+                        <rect key="frame" x="296" y="36" width="48" height="26"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="VIEW ALL">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnViewAllDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e2B-wA-RXJ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="fEp-jE-4an" firstAttribute="leading" secondItem="TYM-bs-eVM" secondAttribute="trailing" constant="5" id="96y-Ny-SWM"/>
+                    <constraint firstAttribute="trailing" secondItem="JWl-7z-8Zk" secondAttribute="trailing" constant="30" id="PO0-6C-6nT"/>
+                    <constraint firstItem="W4g-fr-jQY" firstAttribute="leading" secondItem="b5l-j6-s7V" secondAttribute="leading" id="TIi-7g-OPM"/>
+                    <constraint firstItem="W4g-fr-jQY" firstAttribute="top" secondItem="b5l-j6-s7V" secondAttribute="top" id="TVT-iJ-3Bn"/>
+                    <constraint firstItem="TYM-bs-eVM" firstAttribute="centerY" secondItem="GcB-Ec-Au8" secondAttribute="centerY" constant="1" id="YBp-US-w77"/>
+                    <constraint firstItem="W4g-fr-jQY" firstAttribute="trailing" secondItem="b5l-j6-s7V" secondAttribute="trailing" id="Z01-sT-ZhS"/>
+                    <constraint firstItem="GcB-Ec-Au8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="aAQ-AA-H1P"/>
+                    <constraint firstAttribute="trailing" secondItem="fEp-jE-4an" secondAttribute="trailing" constant="30" id="d15-bh-2U5"/>
+                    <constraint firstItem="JWl-7z-8Zk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="e5t-la-2CE"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JWl-7z-8Zk" secondAttribute="bottom" constant="40" id="gFF-r6-Sfa"/>
+                    <constraint firstItem="JWl-7z-8Zk" firstAttribute="top" secondItem="b5l-j6-s7V" secondAttribute="bottom" constant="24" id="ien-Rw-N4j"/>
+                    <constraint firstItem="JWl-7z-8Zk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lMA-px-kxY"/>
+                    <constraint firstItem="fEp-jE-4an" firstAttribute="centerY" secondItem="GcB-Ec-Au8" secondAttribute="centerY" constant="2" id="m8d-sr-6Po"/>
+                    <constraint firstItem="b5l-j6-s7V" firstAttribute="top" secondItem="GcB-Ec-Au8" secondAttribute="bottom" constant="24" id="nMN-5j-ulA"/>
+                    <constraint firstItem="GcB-Ec-Au8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="r8q-wT-cvV"/>
+                    <constraint firstItem="b5l-j6-s7V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="sg4-F4-vdc"/>
+                    <constraint firstAttribute="trailing" secondItem="b5l-j6-s7V" secondAttribute="trailing" constant="30" id="tFP-CG-hGn"/>
+                    <constraint firstItem="W4g-fr-jQY" firstAttribute="bottom" secondItem="b5l-j6-s7V" secondAttribute="bottom" id="xqn-1d-hH4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnViewAll" destination="TYM-bs-eVM" id="IM3-yZ-Qyd"/>
+                <outlet property="collectionViewFeaturedVideos" destination="b5l-j6-s7V" id="KiP-fd-YQa"/>
+                <outlet property="indicator" destination="W4g-fr-jQY" id="9Oo-CA-GbR"/>
+                <outlet property="lblHeading" destination="GcB-Ec-Au8" id="Sk4-WH-owY"/>
+                <outlet property="pageControl" destination="JWl-7z-8Zk" id="eMl-Xt-UbK"/>
+            </connections>
+            <point key="canvasLocation" x="209.16030534351145" y="294.36619718309862"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightArrowEthosWhite" width="5" height="7"/>
+    </resources>
+</document>

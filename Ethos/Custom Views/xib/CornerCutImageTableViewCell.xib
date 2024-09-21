@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="CornerCutImageTableViewCell" rowHeight="1286" id="KGk-i7-Jjw" customClass="CornerCutImageTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="1286"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="1286"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6Q-GR-Hux">
+                        <rect key="frame" x="30" y="30" width="335" height="1226"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVj-xl-I1v">
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0v-fc-ZpO">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="c0v-fc-ZpO" secondAttribute="bottom" id="6zs-Mf-dZf"/>
+                                    <constraint firstAttribute="height" id="S1Y-83-OmN"/>
+                                    <constraint firstItem="c0v-fc-ZpO" firstAttribute="leading" secondItem="EVj-xl-I1v" secondAttribute="leading" id="VkU-C6-JCP"/>
+                                    <constraint firstItem="c0v-fc-ZpO" firstAttribute="top" secondItem="EVj-xl-I1v" secondAttribute="top" id="aQO-I2-3Yy"/>
+                                    <constraint firstAttribute="trailing" secondItem="c0v-fc-ZpO" secondAttribute="trailing" id="gE7-nC-dcj"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsI-NA-3p9">
+                                <rect key="frame" x="47" y="60" width="241" height="0.0"/>
+                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY9-0P-wo8">
+                                <rect key="frame" x="47" y="76" width="241" height="0.0"/>
+                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9W-Rg-gUM">
+                                <rect key="frame" x="47" y="108" width="241" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="o9W-Rg-gUM" firstAttribute="top" secondItem="cY9-0P-wo8" secondAttribute="bottom" constant="32" id="0Vc-48-OlH"/>
+                            <constraint firstItem="SsI-NA-3p9" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="8Y1-bn-c4F"/>
+                            <constraint firstAttribute="trailing" secondItem="o9W-Rg-gUM" secondAttribute="trailing" constant="47" id="ALm-9r-TII"/>
+                            <constraint firstItem="SsI-NA-3p9" firstAttribute="top" secondItem="EVj-xl-I1v" secondAttribute="bottom" constant="60" id="McN-jf-AzB"/>
+                            <constraint firstItem="cY9-0P-wo8" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="QvV-z1-f8X"/>
+                            <constraint firstItem="EVj-xl-I1v" firstAttribute="top" secondItem="A6Q-GR-Hux" secondAttribute="top" id="SY5-kr-aM9"/>
+                            <constraint firstItem="cY9-0P-wo8" firstAttribute="top" secondItem="SsI-NA-3p9" secondAttribute="bottom" constant="16" id="YBZ-B3-JaA"/>
+                            <constraint firstAttribute="trailing" secondItem="EVj-xl-I1v" secondAttribute="trailing" id="adP-0J-GNg"/>
+                            <constraint firstItem="o9W-Rg-gUM" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" constant="47" id="o7A-d6-UKe"/>
+                            <constraint firstAttribute="trailing" secondItem="SsI-NA-3p9" secondAttribute="trailing" constant="47" id="ozz-Uw-TTb"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o9W-Rg-gUM" secondAttribute="bottom" constant="60" id="px6-fU-X6X"/>
+                            <constraint firstAttribute="trailing" secondItem="cY9-0P-wo8" secondAttribute="trailing" constant="47" id="vu1-aj-5Td"/>
+                            <constraint firstItem="EVj-xl-I1v" firstAttribute="leading" secondItem="A6Q-GR-Hux" secondAttribute="leading" id="xDj-zf-eV6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="A6Q-GR-Hux" secondAttribute="trailing" constant="30" id="AuV-jf-Oob"/>
+                    <constraint firstAttribute="bottom" secondItem="A6Q-GR-Hux" secondAttribute="bottom" constant="30" id="f5a-v4-7MV"/>
+                    <constraint firstItem="A6Q-GR-Hux" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="uLj-fB-Ped"/>
+                    <constraint firstItem="A6Q-GR-Hux" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="wjM-vq-3Va"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="constraintHeadingBottom" destination="0Vc-48-OlH" id="Nho-Cq-wbt"/>
+                <outlet property="constraintHeightImage" destination="S1Y-83-OmN" id="cjU-Qm-Szh"/>
+                <outlet property="imageViewMain" destination="c0v-fc-ZpO" id="Sdc-YC-fSf"/>
+                <outlet property="lblDescription" destination="o9W-Rg-gUM" id="KCr-Kh-97t"/>
+                <outlet property="lblHeading" destination="cY9-0P-wo8" id="9eD-NV-ZrM"/>
+                <outlet property="lblType" destination="SsI-NA-3p9" id="Mew-s3-v5y"/>
+            </connections>
+            <point key="canvasLocation" x="409.92366412213738" y="345.07042253521126"/>
+        </tableViewCell>
+    </objects>
+</document>

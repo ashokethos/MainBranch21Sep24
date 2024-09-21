@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellOrTradeTableViewCell" rowHeight="493" id="KGk-i7-Jjw" customClass="SellOrTradeTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="493"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="493"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-S2-XFa">
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="493"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd6-Yp-gwX">
+                                <rect key="frame" x="30" y="40" width="299" height="43.333333333333343"/>
+                                <string key="text">Sell or trade your watch in
+four easy steps</string>
+                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UBr-NY-PEN">
+                                <rect key="frame" x="0.0" y="313.66666666666669" width="359" height="179.33333333333331"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-Yx-3kR">
+                                        <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="179.33333333333334"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H8b-Wj-5bA">
+                                                <rect key="frame" x="33.666666666666657" y="56.666666666666629" width="112" height="66"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sellIcon" translatesAutoresizingMaskIntoConstraints="NO" id="n7e-z1-3K5">
+                                                        <rect key="frame" x="43.333333333333336" y="0.0" width="25.333333333333336" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="NsX-Fz-3ep"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuS-7X-2w6">
+                                                        <rect key="frame" x="0.0" y="50" width="112" height="16"/>
+                                                        <string key="text" base64-UTF8="YES">
+U0VMTCBZT1VSIFdBVENIAw
+</string>
+                                                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJA-TU-ihb">
+                                                <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="179.33333333333334"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="btnSellDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H4K-6c-nqh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.3921568627" green="0.38823529410000002" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="UG5-Yx-3kR" secondAttribute="height" id="2JK-Tg-p3h"/>
+                                            <constraint firstAttribute="bottom" secondItem="lJA-TU-ihb" secondAttribute="bottom" id="E0S-xm-IeQ"/>
+                                            <constraint firstItem="lJA-TU-ihb" firstAttribute="top" secondItem="UG5-Yx-3kR" secondAttribute="top" id="GQE-DS-aEf"/>
+                                            <constraint firstAttribute="trailing" secondItem="lJA-TU-ihb" secondAttribute="trailing" id="P7A-bZ-yPV"/>
+                                            <constraint firstItem="H8b-Wj-5bA" firstAttribute="centerX" secondItem="UG5-Yx-3kR" secondAttribute="centerX" id="kcy-hM-eAR"/>
+                                            <constraint firstItem="lJA-TU-ihb" firstAttribute="leading" secondItem="UG5-Yx-3kR" secondAttribute="leading" id="l1D-gq-bZh"/>
+                                            <constraint firstItem="H8b-Wj-5bA" firstAttribute="centerY" secondItem="UG5-Yx-3kR" secondAttribute="centerY" id="m6t-g7-be4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXi-xq-sEo">
+                                        <rect key="frame" x="179.66666666666663" y="0.0" width="179.33333333333337" height="179.33333333333334"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KXM-4G-mRL">
+                                                <rect key="frame" x="27.333333333333336" y="56.666666666666629" width="124.33333333333331" height="66"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tradeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eZe-22-GUy">
+                                                        <rect key="frame" x="46" y="0.0" width="32.666666666666657" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="tl1-Hr-nts"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-68-RhZ">
+                                                        <rect key="frame" x="0.0" y="50" width="124.33333333333333" height="16"/>
+                                                        <string key="text" base64-UTF8="YES">
+VFJBREUgWU9VUiBXQVRDSAM
+</string>
+                                                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-PM-W3c">
+                                                <rect key="frame" x="0.0" y="0.0" width="179.33333333333334" height="179.33333333333334"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="btnTradeDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8QW-1j-EQK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Xjl-PM-W3c" secondAttribute="trailing" id="MKP-l8-xsb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xjl-PM-W3c" secondAttribute="bottom" id="ndQ-IP-UjX"/>
+                                            <constraint firstItem="Xjl-PM-W3c" firstAttribute="leading" secondItem="PXi-xq-sEo" secondAttribute="leading" id="pP3-YL-P2B"/>
+                                            <constraint firstItem="KXM-4G-mRL" firstAttribute="centerY" secondItem="PXi-xq-sEo" secondAttribute="centerY" id="siT-jr-npM"/>
+                                            <constraint firstItem="Xjl-PM-W3c" firstAttribute="top" secondItem="PXi-xq-sEo" secondAttribute="top" id="xBa-dI-HcD"/>
+                                            <constraint firstItem="KXM-4G-mRL" firstAttribute="centerX" secondItem="PXi-xq-sEo" secondAttribute="centerX" id="y9I-6M-WbB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sellOrTrade" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-ZQ-kfw">
+                                <rect key="frame" x="0.0" y="107.33333333333333" width="359" height="206.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xtf-ZQ-kfw" secondAttribute="height" multiplier="430:247" id="r2E-nc-SuU"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PjY-AH-Bvr"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xtf-ZQ-kfw" firstAttribute="leading" secondItem="tCa-S2-XFa" secondAttribute="leading" id="1M2-P5-efZ"/>
+                            <constraint firstItem="Pd6-Yp-gwX" firstAttribute="top" secondItem="tCa-S2-XFa" secondAttribute="top" constant="40" id="6fm-hy-Ieg"/>
+                            <constraint firstAttribute="bottom" secondItem="UBr-NY-PEN" secondAttribute="bottom" id="8Ew-Mo-bd6"/>
+                            <constraint firstItem="UBr-NY-PEN" firstAttribute="top" secondItem="xtf-ZQ-kfw" secondAttribute="bottom" id="FyN-Nm-JfU"/>
+                            <constraint firstItem="UBr-NY-PEN" firstAttribute="leading" secondItem="tCa-S2-XFa" secondAttribute="leading" id="T0Z-mn-tcV"/>
+                            <constraint firstAttribute="trailing" secondItem="xtf-ZQ-kfw" secondAttribute="trailing" id="UIn-Sh-lI5"/>
+                            <constraint firstItem="Pd6-Yp-gwX" firstAttribute="leading" secondItem="tCa-S2-XFa" secondAttribute="leading" constant="30" id="jpn-1Z-nch"/>
+                            <constraint firstItem="xtf-ZQ-kfw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pd6-Yp-gwX" secondAttribute="bottom" constant="24" id="kZA-ZI-Cwg"/>
+                            <constraint firstAttribute="trailing" secondItem="UBr-NY-PEN" secondAttribute="trailing" id="tRe-HB-whp"/>
+                            <constraint firstAttribute="trailing" secondItem="Pd6-Yp-gwX" secondAttribute="trailing" constant="30" id="xHm-Cf-209"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tCa-S2-XFa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8H3-4V-GFP"/>
+                    <constraint firstAttribute="bottom" secondItem="tCa-S2-XFa" secondAttribute="bottom" id="BtS-wg-F4W"/>
+                    <constraint firstAttribute="trailing" secondItem="tCa-S2-XFa" secondAttribute="trailing" id="FgH-xG-haH"/>
+                    <constraint firstItem="tCa-S2-XFa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XqR-nr-JAK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="159.54198473282443" y="75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sellIcon" width="25.333333969116211" height="32.666667938232422"/>
+        <image name="sellOrTrade" width="430" height="247"/>
+        <image name="tradeIcon" width="32.666667938232422" height="32"/>
+    </resources>
+</document>

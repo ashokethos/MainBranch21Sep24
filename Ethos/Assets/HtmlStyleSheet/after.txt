@@ -1,0 +1,1160 @@
+</div>
+<style>
+    .eth-overlay {
+        background-color: #000;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1060;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s ease-in-out;
+    }
+    .eth-overlay.show {
+        opacity: .9;
+        visibility: visible;
+    }
+    .eth-mdl{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        outline: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s ease-in-out;
+    }
+    .eth-mdl.open{
+        z-index: 1061;
+        opacity: 1;
+        visibility: visible;
+    }
+    .trfm-scl{
+        transform: scale(0);
+    }
+    .trfm-scl.open{
+        transform: scale(1);
+    }
+    .eth-mdl *{
+        box-sizing: border-box;
+    }
+    .mdl-dilg {
+        position: relative;
+    }
+    .mdl-cls-btn{
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0!important;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+    }
+
+    .mdl-scrt-nwsltr{
+        background: #fff;
+        padding: 24px 64px;
+        max-width: 440px;
+        margin: 0 auto;
+        min-height: 440px;
+        display: flex;
+        align-items: center;
+        width: 440px;
+        position: relative;
+    }
+    .mdl-scrt-nwsltr .mdl-cnt{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 48px;
+    }
+    .mdl-scrt-nwsltr .mdl-frm > * {
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    img[alt="Ethos Summit Logo"]{
+        margin-bottom: 48px;
+    }
+    .mdl-scrt-nwsltr span{
+        color: #404040;
+        display: block;
+        font-family: "mrs-eaves-xl-serif-narrow", serif;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: .5px;
+        line-height: 22px;
+    }
+    .mdl-scrt-nwsltr h4{
+        color: #000;
+        font-family: "brother-1816", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        line-height: 28px;
+        margin: 8px 0 24px;
+        text-transform: uppercase;
+    }
+
+    #newsletter-success_popup h4{
+        font-size: 16px;
+        line-height: 24px;
+        margin: 16px 0 8px;
+    }
+
+    .mdl-scrt-nwsltr form > a{
+        color: #808080;
+        font-family: "brother-1816", sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: .5px;
+        line-height: 22px;
+        margin: 16px auto 0;
+        text-decoration: underline;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+        display: inline-block!important;
+        width: auto!important;
+    }
+    .mdl-scrt-nwsltr a{
+        text-decoration: underline;
+    }
+    .mdl-scrt-nwsltr a:hover{
+        color: #000;
+    }
+    .mdl-scrt-nwsltr a img{
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+    .mdl-scrt-nwsltr a:hover img{
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);;
+    }
+    .mdl-scrt-nwsltr p{
+        color: #808080;
+        font-family: "brother-1816", sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: .1px;
+        line-height: 14px;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 23px;
+        width: 64%;
+        left: 18%;
+    }
+    .scrt-nwsltr input,
+    .scrt-nwsltr  button{
+        font-family: "brother-1816", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        height: 44px;
+        letter-spacing: .1px;
+        line-height: 22px;
+        transition: all .3s ease-in-out;
+    }
+    .scrt-nwsltr input{
+        background: transparent;
+        color: #000;
+        font-weight: 400;
+        letter-spacing: .1px;
+        margin-bottom: 8px;
+        text-align: left!important;
+        -webkit-border-radius:0px;
+        border-radius: none;
+        -webkit-appearance: none;
+        transition: all .3s ease-in-out;
+    }
+    .scrt-nwsltr input:focus{
+        outline: 0;
+        border: 1px solid #c2c2c2;
+    }
+    .scrt-nwsltr input:placeholder{
+        color: #000;
+    }
+    .scrt-nwsltr input::placeholder{
+        color: #000;
+    }
+    input.mage-error{
+        border-color: #c2c2c2;
+    }
+    .scrt-nwsltr button{
+        background: #9d0000;
+        border: 1px solid #9d0000;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 500;
+        letter-spacing: .5px;
+        line-height: 0;
+        text-transform: uppercase;
+        box-shadow: none!important;
+        transition: all .3s ease-in-out;
+    }
+    .scrt-nwsltr button:hover{
+        background: #9d0000;
+        border-color: #9d0000;
+        color: #fff;
+    }
+    .scrt-nwsltr input + .mage-error[generated]{
+        margin-bottom: 8px;
+        text-align: left!important;
+    }
+    #i-thank-you {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+        border-radius: 50%;
+        display: block;
+        stroke-width: 3.5;
+        stroke: #9d0000;
+        stroke-miterlimit: 10;
+        animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    }
+    #circle {
+        stroke-dasharray: 157;
+        stroke-dashoffset: 157;
+        stroke-width: 6;
+        stroke-miterlimit: 10;
+        stroke: #9d0000;
+        fill: none;
+        animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) .3s forwards;
+    }
+    #check {
+        transform-origin: 50% 50%;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .9s forwards;
+    }
+    @keyframes stroke {
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes scale {
+
+        0%,
+        100% {
+            transform: none;
+        }
+
+        50% {
+            transform: scale3d(1.1, 1.1, 1);
+        }
+    }
+    @keyframes fill {
+        100% {
+            box-shadow: inset 0px 0px 0px 30px transparent;
+        }
+    }
+
+    .newsletter-success{display:none;}
+    .scrt-nwsltr input{    border: 1px solid #c2c2c2;    padding: 0 9px;}
+    span.errMsg {color: #9d0000;text-align: left!important;display: block;width: 100%;margin: -5px 0 5px 0;font-size: 10px;font-family: "brother-1816",sans-serif;font-style: normal;letter-spacing: .1px;}
+    
+    @media (min-width: 1112px){
+        .mdl-dilg-wrp{
+            display: flex;
+            align-items: center;
+        }
+    }
+    @media (max-width: 1111px){
+        .mdl-dilg-wrp > img{
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px){
+        .scrt-nwsltr input{padding: 0 4%;}
+        .trfm-scl .mdl-dilg-wrp{width:100%;}
+        .mdl-scrt-nwsltr{background: #fff;padding: 24px;max-width: 86%;width:100%;margin: 0 auto;min-height: 470px;display: flex;align-items: center;    position: relative;flex-wrap: wrap;}
+        .mdl-scrt-nwsltr p{left: 0;right: 0;width:78%;}
+        .scrt-nwsltr input {border: 1px solid #e4e4e4;}
+        
+    }
+    
+    @media (max-width: 375px){
+        .mdl-scrt-nwsltr p{width: 73%;}
+    }
+    
+</style>
+<script>
+
+    function expirePopSteTime() {
+        var storedTime = 0;
+        var currentTime = new Date().getTime();
+
+        if (localStorage.getItem('expirePopSteTime')) {
+            storedTime = localStorage.getItem('expirePopSteTime');
+        } else {
+            setExpirePopSteTime();
+            storedTime = localStorage.getItem('expirePopSteTime');
+        }
+        if ((storedTime - currentTime) < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function setExpirePopSteTime() {
+        var limit = 15 * 24 * 60 * 60 * 1000;
+        return new Date().getTime() + limit;
+    }
+
+    function newSubscribePopup() {
+        if (localStorage.getItem('nscpPopSte') != 'nshown' || expirePopSteTime()) {
+            setTimeout(function () {
+                nscbEthOpen();
+            }, 20000);
+            localStorage.setItem('nscpPopSte', 'nshown');
+            localStorage.setItem('expirePopSteTime', setExpirePopSteTime());
+        }
+    }
+
+    window.onload = newSubscribePopup;
+    function nscbEthOpen() {
+        document.getElementById('nscbEth').classList.add("open");
+        document.getElementById('nscbEthOvrly').classList.add("show");
+    }
+
+    function nscbEthClose() {
+        if (document.getElementById('nscbEth').classList.contains("open")) {
+            document.getElementById('nscbEth').classList.remove("open");
+            document.getElementById('nscbEthOvrly').classList.remove("show");
+        }
+    }
+
+    var $ = jQuery.noConflict();
+    function validateForm(formId) {
+        var valid = true;
+        $('#'+formId).find('input, select, textarea').each(function () {
+            if ($(this).hasClass('required')) {
+                var tag = $(this).prop('tagName'),
+                        type = $(this).attr('type'),
+                        val = $(this).val(),
+                        fldName = $(this).attr('name'),
+                        errMsg = 'This is a required field.',
+                        parent = '#'+formId;
+
+                switch (tag) {
+                    case 'INPUT':
+                        val = val.trim();
+                        if (val == '' || val == null) {
+                            addErrorMessage(parent, fldName, errMsg);
+                            valid = false;
+                        }
+                        switch (type) {
+                            case 'email':
+                                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                                if ((val != '' || val != null) && regex.test(val) == false) {
+                                    errMsg = 'Please enter a valid email address (Ex: johndoe@domain.com).';
+                                    addErrorMessage(parent, fldName, errMsg);
+                                    valid = false;
+                                }
+                                break;
+                        }
+                        break;
+                }
+            }
+        });
+        return valid;
+    }
+
+    function addErrorMessage(parent, fieldName, message) {
+        if ($(parent +' #err' + fieldName).length != 1) {
+            $(parent +' input[name="' + fieldName + '"]').after('<span id="err' + fieldName + '" class="errMsg">' + message + '</span>')
+        }
+    }
+
+    $('#subscribe_btn_popup').on('click', function (e) {
+        e.preventDefault();
+        var _url = 'https://dev.ethoswatches.com/newsletter/subscriber/new/';
+        if (validateForm('subscribe_frmpopup')) {
+            var form_data = $("#subscribe_frmpopup").serialize();
+            form_data += '&is_ajax=' + true;
+
+            $.ajax({
+                url: _url,
+                type: 'POST',
+                dataType: 'json',
+                data: form_data,
+                complete: function (res) {
+                    console.log(res);
+                    message = res.responseJSON.msg;
+                    status = res.responseJSON.status;
+                    if (status == 'OK') {
+                        $("#newsletter-section_popup").css("display", "none");
+                        $("#newsletter-success_popup").css("display", "block");
+                        setTimeout(function () {
+                            nscbEthClose();
+                        }, 2000);
+                    } else {
+                        alert(message);
+                    }
+                },
+                error: function (xhr, status, errorThrown) {
+                    console.log(errorThrown)
+                }
+            });
+        } else {
+
+        }
+    });
+
+
+
+</script>
+
+
+<style>
+  .footer_links .col-md-4 {
+    flex: 0 0 162px;
+    max-width: 162px;
+  }
+
+  .footer_moreLinks {
+    max-width: 162px;
+  }
+
+  span.reading-time {
+    display: none;
+  }
+
+  .header_top {
+    z-index: 1049;
+  }
+
+  .logo_wrap {
+    background: #ffffff;
+  }
+
+  #mainNavMenu {
+    top: 39px;
+    -webkit-box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .04);
+    border-bottom: none !important;
+  }
+
+  .udTransition .header_wrapper {
+    transition: transform .5s ease-in-out;
+    transform: translateY(-195px);
+  }
+
+  /* .udOneTransition .logo_wrap {margin-top: -116px;} */
+  .logo_wrap>.container>.row>div {
+    height: 95px;
+  }
+
+  /*---transition with sticky style remove---*/
+  .twg_sideMenu.sticky-top,
+  .alphabetSection .sticky-top {
+    top: 0px;
+    position: static !important;
+  }
+
+  .pre_menuColumn a{
+   letter-spacing:.1px;
+  }
+
+  /*---new BOTB style---*/
+  .btn.twgBotb_btn {
+    padding: 10px 35px !important;
+  }
+
+  /*---menu clickable area---*/
+  .navbar li.dropdown:hover .dropdown-menu {
+    display: block !important;
+  }
+
+  nav .dropdown-menu {
+    border-top: 1px solid #f4f4f4;
+  }
+
+  nav .navbar>ul>li>a {
+    padding: 10px 9px
+  }
+
+  nav .navbar>ul>li:first-child>a {
+    padding-left: 0px;
+  }
+
+  nav .navbar>ul>li>a::after,
+  nav .navbar>ul>li>a:hover::after,
+  nav .navbar>ul>li>a.active::after,
+  nav .navbar>ul>li.dropdown.show>a::after {
+    content: none !important;
+  }
+
+  nav .navbar>ul>li>a span {
+    position: relative;
+  }
+
+  nav .navbar>ul>li>a span::after {
+    background: #9d0000;
+    border: none;
+    bottom: -13px;
+    content: "";
+    height: 2px;
+    left: 0;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    transition: width .3s ease-in-out;
+    width: 0;
+    z-index: 1029;
+  }
+
+  nav .navbar>ul>li>a.active {
+    color: #9d0000;
+  }
+
+  nav .navbar>ul>li>a:hover span::after,
+  nav .navbar>ul>li>a.active span::after,
+  nav .navbar>ul>li.dropdown.show>a span::after,
+  nav .navbar>ul>li>a.active span::after {
+    width: 100%;
+  }
+
+  nav .navbar>ul>li>a span.icon_search::after {
+    bottom: -15px;
+  }
+
+  .twgMenu_container {
+    max-width: 806px !important;
+  }
+
+  .twgMenu_container ul li a {
+    padding: 10px 20px;
+  }
+
+  .twgMenu_container {
+    max-width: 806px;
+  }
+
+  .twgMenu_container ul li a::after {
+    background: #9d0000;
+    bottom: -1px;
+    border-radius: 4px;
+    content: "";
+    height: 2px;
+    left: 20px !important;
+    position: absolute;
+    width: 0;
+    transition: width .3s ease-in-out;
+  }
+
+  .twgMenu_container ul li a:hover::after,
+  .twgMenu_container ul li a:focus::after,
+  .twgMenu_container ul li a.active::after {
+    width: calc(100% - 40px);
+  }
+
+  ul[class*="submenu_links"] li a {
+    letter-spacing: .1px !important;
+  }
+
+  @media (max-width: 992px) {
+
+    .ipad_portrait
+    {
+      display: none !important;
+    }
+
+    .accessories_menuColumn {
+      width: 100%;
+    }
+  }
+
+@media (min-width: 768px){
+    .twgNewsleeter_form button.btn {
+        right: 0px;
+        top: 1px;
+        bottom: 0px;
+    }
+    .twgNewsletter-desktop{
+        height: 330px;
+    }
+}
+
+  @media(min-width:1200px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 19px;
+    }
+
+    nav .navbar>ul>li:last-child>a {
+      padding-left: 17px;
+    }
+  }
+
+  @media(min-width:1280px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 22px;
+    }
+
+    nav .navbar>ul>li:last-child>a {
+      padding-left: 35px;
+    }
+  }
+
+  @media(min-width:1280px) and (max-width:1365px) {
+
+    _::-webkit-full-page-media,
+    _:future,
+    :root nav .navbar>ul>li>a {
+      padding: 10px 17px;
+    }
+
+    _::-webkit-full-page-media,
+    _:future,
+    :root nav .navbar>ul>li:first-child>a {
+      padding-left: 0px;
+    }
+
+    _::-webkit-full-page-media,
+    _:future,
+    :root nav .navbar>ul>li:last-child>a {
+      padding-left: 35px;
+      padding-right: 0px;
+    }
+  }
+
+  @media(min-width:1366px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 27px;
+    }
+  }
+
+  @media(min-width:1440px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 31px;
+    }
+  }
+
+  .desktop_subManu_brands {
+    height: 408px;
+  }
+
+  .subManu_topcollection {
+    height: 220px;
+  }
+
+  .desktop_subManu_features {
+    height: 190px;
+  }
+
+  /*--offer menu changes--*/
+  .ofr-mnu-col {
+    width: 49%;
+  }
+
+  .ofr-mnu-cnt {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .ofr-mnu-cnt h3 {
+    font-size: 14px;
+  }
+
+  .ofr-mnu-cnt hr {
+    border: none;
+    background: #e4e4e4;
+    width: 30px;
+    margin: 20px auto;
+    height: 1px;
+    display: block;
+  }
+
+  /* container wwidth change */
+  @media (min-width: 768px) and (max-width: 1440px) {
+
+    .container,
+    .container_max1116 {
+      max-width: 93% !important;
+    }
+  }
+
+  @media (min-width: 1441px) {
+
+    .container,
+    .container_max1116 {
+      max-width: 1340px;
+    }
+  }
+
+  /* navigation styling change */
+  nav .navbar ul.navbar-nav {
+    min-width: 100%;
+  }
+
+  nav .navbar>ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  nav .navbar>ul>li:first-child>a {
+    padding-left: 0px;
+  }
+
+  nav .navbar>ul>li:last-child {
+    position: relative;
+    margin-right: -10px;
+  }
+
+  nav .navbar>ul>li:last-child>a {
+    padding: 13px 12px;
+  }
+  
+
+ 
+  @media (max-width: 1194px) {
+    .brand_menuColumn_luxury {
+      width: 55%;
+    }
+
+    .brand_menuColumn_buyNow {
+      width: 35%;
+    }
+
+    .brand_menuColumn_banner,
+    .twg_brandMenu_banner {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 1012px) {
+    nav .navbar ul.navbar-nav {
+      display: block !important;
+      /*    overflow: visible;
+        overflow-x: scroll;*/
+      max-width: 100%;
+      white-space: nowrap;
+    }
+
+    nav .navbar ul.navbar-nav p {
+      white-space: normal;
+    }
+
+    nav .navbar ul.navbar-nav>li {
+      height: auto !important;
+      width: auto !important;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex !important;
+    }
+  }
+
+  nav .dropdown-menu {
+    background: #fff;
+    top: 41px !important;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .04);
+  }
+
+
+  #editor_picks.tab-pane,
+  #most_read.tab-pane,
+  #columns.tab-pane,
+  #botb.tab-pane {
+    padding-top: 24px;
+  }
+
+  .twg_subMenu_column {
+    width: 100%;
+    max-width: 18.527%;
+  }
+
+  .twg_columnMenu {
+    width: 15.15%;
+  }
+
+  .twg_subMenu_column .article_caption {
+    max-height: 65px;
+    overflow: hidden;
+    display: -webkit-box;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    letter-spacing: .1px;
+  }
+
+  @media all and (-ms-high-contrast:none)
+
+  /* IE10 IE11 */
+    {
+    nav#mainNavMenu .dropdown-menu {
+      top: auto !important
+    }
+
+    .twoColumn_row {
+      width: 100% !important;
+    }
+
+    .whatsNew_content {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .cards-wrapper .card {
+      width: 23% !important;
+    }
+
+    .pre-dd>.container>.row>.d-flex {
+      width: 100%;
+    }
+
+    .twgNewsleeter_form .form-group>.form-control {
+      padding-top: 16px !important;
+      padding-bottom: 16px !important;
+      line-height: 20px !important;
+    }
+
+    .newsletter_section #email {
+      padding-top: 16px !important;
+      padding-bottom: 16px !important;
+      line-height: 20px !important;
+    }
+
+    .request_form .form-control {
+      line-height: normal !important;
+    }
+  }
+
+  a.viewAll::after {
+    height: 8px;
+    top: 1px;
+    width: 5px;
+  }
+
+  .dropdown-menu a.viewAll {
+    font-size: 12px !important;
+  }
+
+  ul[class*="submenu_links"] li a.viewAll::after {
+    opacity: .8;
+    top: 8px;
+  }
+
+  .dropdown-menu .vertical_scroll::after {
+    border-right: 1px solid #f4f4f4;
+  }
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    height: 8px;
+    opacity: 0.2;
+  }
+
+
+  .accessories_menuColumn_banner {
+    width: 60%;
+  }
+
+  .accessories_submenuColumn_150 {
+    width: 32%;
+  }
+
+  .accessories_submenuColumn_150+.accessories_submenuColumn_150 ul.submenu_links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-height: 175px;
+  }
+
+  @media (min-width: 1112px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 6px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    nav .navbar>ul>li>a {
+      padding: 10px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 14px;
+    }
+
+  }
+
+  @media (min-width: 1366px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 20px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 24px;
+    }
+  }
+
+  @media (min-width: 993px) and (max-width: 1111px) {
+    nav .navbar>ul>li>a {
+      padding: 10px 4px;
+      font-size: 11px;
+    }
+    .brand_menuColumn_luxury {
+        width: 70%;
+    }
+    ul.submenu_links {
+        min-width: 200px;
+    }
+    .twg_brandMenu_list ul.submenu_links {
+        min-width:auto;
+    }
+  }
+
+  /*new menu css changes below top Menu */
+  
+  
+  a.viewAll {
+    font-size: 12px !important;
+    text-decoration: underline;
+    text-transform: capitalize;
+  }
+
+  a.viewAll:after {
+    display: none;
+  }
+
+  
+  @media (max-width: 1024px) {
+        .brand_menuColumn_buyNow {
+            width: 25%;
+        }
+  }
+  
+    @media (max-width:992px) {
+        
+        .brand_menuColumn_luxury {
+            width: 65%;
+        }
+        .brand_menuColumn_buyNow {
+            width: 28%;
+        }
+        
+        .accessories_menuColumn {
+            width: 37.3%;
+        }
+        .accessories_submenuColumn_150 {
+            width: 46%;
+        }
+        
+    }
+    
+    @media (min-width:992px) {
+        .accessories_menuColumn {
+            width: 33.3%;
+        }
+        .accessories_submenuColumn_150{
+            width: 40%;
+        }
+    }
+  
+
+  @media (min-width: 1200px) {
+    .brand_menuColumn_buyNow {
+      width: 17%;
+      min-width: 225px;
+    }
+
+    .brand_menuColumn_banner {
+      width: 25%;
+      overflow: hidden;
+      align-self: flex-start;
+    }
+  }
+
+.brand_menuColumn_all {
+  margin-top: 20px;
+}
+.brand_menuColumn_all ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 420px;
+}
+.brand_menuColumn_all ul li {
+  width: 25%;
+}
+.brand_menuColumn_all ul li a {
+  display: inline-block;
+  letter-spacing: 0.1px;
+  line-height: 24px;
+  text-transform: capitalize;
+}
+
+.swiper-horizontal > ul:after {
+    content: "";
+    height: 4px;
+    width: 200%;
+    position: absolute;
+    bottom: 0px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.swiper-horizontal > .swiper-scrollbar {
+    pointer-events: none;
+}
+
+/*  supports query for browsers that are not Internet Explorer */
+@supports not (-ms-high-contrast: none) {
+  .brand_menuColumn_all ul {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1380px) {
+    nav .navbar>ul>li>a{
+        padding:10px 14px;
+    }
+}
+
+@media (max-width: 1260px) {
+    nav .navbar>ul>li>a{
+        padding:10px;
+    }
+}
+@media (max-width: 1180px){
+    nav .navbar>ul>li>a {
+        padding: 10px 8px;
+        font-size: 11px;
+    }
+}
+@media (max-width: 1111px) {
+  .brand_menuColumn_all {
+    width: 100%;
+  }
+  .brand_menuColumn_banner-sale , .watchFinder_menuColumn_banner{
+    display: none;
+  }
+}
+@media (max-width: 1080px){
+    nav .navbar>ul>li>a {
+        padding: 10px 4px;
+        font-size: 11px;
+    }
+    nav .navbar > ul > li:last-child > a{
+        padding:10px 6px!important;
+    }
+}
+@media (min-width: 1112px) {
+  .brand_menuColumn_all {
+    width: 75%;
+  }
+  .brand_menuColumn_banner-sale , .watchFinder_menuColumn_banner {
+    width: 25%;
+  }
+  .brand_menuColumn_banner-sale img {
+    height: 402px;
+    object-fit: cover;
+  }
+  .watchFinder_menuColumn_banner img
+  {
+      height: 450px;
+  }
+}
+nav a.viewAll:after {
+  content: none !important;
+}
+
+</style>
+<script>
+    $("#desktopSearchBox_wrapper").on('shown.bs.modal', function() {
+    $('input#search').focus();
+  });
+  /* script to load menu images on menu a mouseover */
+</script>            <!-------Main wrapper------>
+
+
+<style>
+    .cmnLine{
+        border: 0;
+        border-top: 1px solid rgba(0,0,0,.1);
+    }
+@media (min-width: 1440px){
+    #offerForm_withImage .pop_container {
+        padding: 32px 40px 40px!important;
+    }
+}
+
+@media(min-width: 992px)
+{
+    #offerForm_withImage .request_form{
+        width: 54%;
+    }
+}
+
+@media(max-width:767px)
+{
+
+    #offerForm_withImage{
+        width:86%;
+    }
+    #offerForm_withImage .pop_container{
+        padding:26px;
+    }
+    .request_form #rqst_frm_series{
+        display:none;
+    }
+    .cmnLine{
+        border-color:#f4f4f4;
+        margin:4% 0px 2%;
+    }
+    .ofrLH{line-height:18px!important;}
+    .keepUp{line-height:14px!important;}
+
+}
+
+</style><link rel='stylesheet' id='gglcptch-css'  href='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/google-captcha/css/gglcptch.css?ver=1.66' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css-css'  href='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/css/jquery.fancybox.min.css?ver=2.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='photoswipe-css-css'  href='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/css/photoswipe.min.css?ver=4.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='photoswipe-ui-css-css'  href='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/css/default-skin.css?ver=4.1.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/js/jquery.fancybox.min.js?ver=2.1.7' id='fancybox-js-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/js/photoswipe.min.js?ver=4.1.3' id='photoswipe-js-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/image-video-meta-field/js/photoswipe-ui-default.min.js?ver=4.1.3' id='photoswipe-ui-js-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-includes/js/comment-reply.min.js?ver=5.9.2' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/bootstrap/js/bootstrap.min.js?ver=4.1.1' id='bootstrap-script-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/js/ethos/baron.min.js?ver=2019-03-19' id='baron-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/js/ethos/dragscroll.min.js?ver=2019-03-19' id='dragscroll-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/js/ethos/custom.js?v1_2_0&#038;ver=2019-03-19' id='custom-js-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/inc/twg-framework/web/js/swiper.min.js?ver=7.0.7' id='swiper-js-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/inc/instant-comment-validation/assets/js/jquery.validate.min.js?ver=2019-03-19' id='jqueryvalidate-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/inc/twg-framework/web/js/twg_script.js?ver=20221011' id='twg-script-js'></script>
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/themes/the-watch-guide/inc/twg-framework/web/js/formscript.js?ver=2.8.0' id='ofr_frm_scrpt-js'></script>
+
+
+<script type='text/javascript' src='https://dev.ethoswatches.com/the-watch-guide/wp-content/plugins/google-captcha/js/script.js?ver=1.66' id='gglcptch_script-js'></script>
+    </body>
+</html>

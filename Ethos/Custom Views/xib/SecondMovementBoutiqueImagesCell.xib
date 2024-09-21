@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SecondMovementBoutiqueImagesCell" rowHeight="968" id="KGk-i7-Jjw" customClass="SecondMovementBoutiqueImagesCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="968"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="968"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secondMovementBoutiqueImage" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-j7-oFE">
+                        <rect key="frame" x="30" y="24" width="340" height="461.33333333333331"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jCe-j7-oFE" secondAttribute="height" multiplier="370:502" id="YIR-8W-ZTO"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zMx-OL-FaQ">
+                        <rect key="frame" x="30" y="509.33333333333326" width="340" height="70"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51A-gy-KI1">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="tRc-fA-hSr"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="secondMovementBoutiqueImage"/>
+                                <connections>
+                                    <action selector="BtnImageDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bJR-3F-fSB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncs-Ym-fZI">
+                                <rect key="frame" x="70" y="0.0" width="60" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="WjJ-KD-BUs"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="secondMovementBoutiqueImage-I"/>
+                                <connections>
+                                    <action selector="BtnImageDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TgY-CA-5ha"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0H3-aU-Mme">
+                                <rect key="frame" x="140" y="0.0" width="60" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="tin-0a-xuh"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="secondMovementBoutiqueImage-II"/>
+                                <connections>
+                                    <action selector="BtnImageDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aUu-qe-pcr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEm-Ni-3cs">
+                                <rect key="frame" x="210" y="0.0" width="60" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Ozk-dV-OyO"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="secondMovementBoutiqueImage-III"/>
+                                <connections>
+                                    <action selector="BtnImageDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="snI-k2-glH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v4-ig-fpa">
+                                <rect key="frame" x="280" y="0.0" width="60" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="qqd-B8-cGs"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="secondMovementBoutiqueImage-IV"/>
+                                <connections>
+                                    <action selector="BtnImageDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="k7w-JV-xgO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="8IL-KS-RoR"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zMx-OL-FaQ" secondAttribute="bottom" constant="40" id="Bky-fc-SBC"/>
+                    <constraint firstItem="jCe-j7-oFE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="UmX-ek-47D"/>
+                    <constraint firstItem="zMx-OL-FaQ" firstAttribute="top" secondItem="jCe-j7-oFE" secondAttribute="bottom" constant="24" id="Vqi-Cg-aB2"/>
+                    <constraint firstAttribute="trailing" secondItem="zMx-OL-FaQ" secondAttribute="trailing" constant="30" id="Xr6-AU-Gok"/>
+                    <constraint firstItem="jCe-j7-oFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="fck-gB-xjJ"/>
+                    <constraint firstAttribute="trailing" secondItem="jCe-j7-oFE" secondAttribute="trailing" constant="30" id="hhC-4R-Ndm"/>
+                    <constraint firstItem="zMx-OL-FaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="zyW-vg-TTB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnImage_I" destination="51A-gy-KI1" id="gzy-6y-X1F"/>
+                <outlet property="btnImage_II" destination="ncs-Ym-fZI" id="9Tk-0b-Zix"/>
+                <outlet property="btnImage_III" destination="0H3-aU-Mme" id="alO-UX-JVA"/>
+                <outlet property="btnImage_IV" destination="JEm-Ni-3cs" id="8Qo-LO-pIY"/>
+                <outlet property="btnImage_V" destination="8v4-ig-fpa" id="Bu6-Lu-5Jq"/>
+                <outlet property="imageViewStore" destination="jCe-j7-oFE" id="x4q-ET-HLp"/>
+            </connections>
+            <point key="canvasLocation" x="490.83969465648852" y="277.46478873239437"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="secondMovementBoutiqueImage" width="1024" height="733.5"/>
+        <image name="secondMovementBoutiqueImage-I" width="1024" height="682.5"/>
+        <image name="secondMovementBoutiqueImage-II" width="1024" height="682.5"/>
+        <image name="secondMovementBoutiqueImage-III" width="1024" height="682.5"/>
+        <image name="secondMovementBoutiqueImage-IV" width="1024" height="682.5"/>
+    </resources>
+</document>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ProductCollectionViewCell" id="gTV-IL-0wX" customClass="ProductCollectionViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="227" height="415"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="227" height="415"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFo-VY-r78">
+                        <rect key="frame" x="0.0" y="0.0" width="227" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="94A-bf-oEu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbA-IP-D39">
+                        <rect key="frame" x="0.0" y="383" width="227" height="0.0"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKh-Ti-Tml">
+                        <rect key="frame" x="0.0" y="391" width="227" height="0.0"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-Go-OBr">
+                        <rect key="frame" x="207" y="0.0" width="20" height="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="height" id="Ozw-5v-xrL"/>
+                            <constraint firstAttribute="width" constant="20" id="l9z-zh-U2T"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="cross"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnCrossDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gLn-yp-6Sl"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfZ-n8-mzc">
+                        <rect key="frame" x="177" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="YPE-0T-7qw"/>
+                            <constraint firstAttribute="height" constant="50" id="xXH-kd-L8Q"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnCrossDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="EzE-mv-kTV"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fFo-VY-r78" secondAttribute="trailing" id="0z8-uR-ahI"/>
+                <constraint firstItem="fFo-VY-r78" firstAttribute="top" secondItem="eRm-Go-OBr" secondAttribute="bottom" id="1WW-jA-R3i"/>
+                <constraint firstAttribute="bottom" secondItem="MKh-Ti-Tml" secondAttribute="bottom" constant="24" id="7Fp-mU-UYf"/>
+                <constraint firstAttribute="trailing" secondItem="LfZ-n8-mzc" secondAttribute="trailing" id="CfX-lF-ZQG"/>
+                <constraint firstItem="eRm-Go-OBr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HIK-sd-2Xx"/>
+                <constraint firstAttribute="trailing" secondItem="nbA-IP-D39" secondAttribute="trailing" id="HVk-II-Sv0"/>
+                <constraint firstItem="nbA-IP-D39" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Jse-Kl-CSQ"/>
+                <constraint firstItem="fFo-VY-r78" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LBO-2A-k28"/>
+                <constraint firstItem="LfZ-n8-mzc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Mfo-Fr-4fb"/>
+                <constraint firstItem="MKh-Ti-Tml" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YsD-to-Cjd"/>
+                <constraint firstItem="MKh-Ti-Tml" firstAttribute="top" secondItem="nbA-IP-D39" secondAttribute="bottom" constant="8" id="aBy-er-qCR"/>
+                <constraint firstItem="fFo-VY-r78" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="o2y-0H-lqY"/>
+                <constraint firstItem="nbA-IP-D39" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fFo-VY-r78" secondAttribute="bottom" id="qcC-it-9ih"/>
+                <constraint firstAttribute="trailing" secondItem="eRm-Go-OBr" secondAttribute="trailing" id="sUg-1O-g2g"/>
+                <constraint firstAttribute="trailing" secondItem="MKh-Ti-Tml" secondAttribute="trailing" id="wKn-Qg-AiO"/>
+            </constraints>
+            <size key="customSize" width="291" height="388"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="btnCross" destination="eRm-Go-OBr" id="J75-iX-NQL"/>
+                <outlet property="btnCrossArea" destination="LfZ-n8-mzc" id="gqD-ET-pX8"/>
+                <outlet property="constraintBottomPrice" destination="7Fp-mU-UYf" id="1K2-PS-rll"/>
+                <outlet property="contraintHeightCrossBtn" destination="Ozw-5v-xrL" id="XEg-7X-NPg"/>
+                <outlet property="imageProduct" destination="fFo-VY-r78" id="0a1-1O-yOe"/>
+                <outlet property="lblDescription" destination="MKh-Ti-Tml" id="QbL-44-j9w"/>
+                <outlet property="lblTitle" destination="nbA-IP-D39" id="Tur-e8-f91"/>
+            </connections>
+            <point key="canvasLocation" x="203.4375" y="145.24647887323943"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cross" width="9" height="9"/>
+    </resources>
+</document>

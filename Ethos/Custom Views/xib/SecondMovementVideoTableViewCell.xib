@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SecondMovementVideoTableViewCell" rowHeight="513" id="VVJ-Re-1b9" customClass="SecondMovementVideoTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="513"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVJ-Re-1b9" id="UJ8-k0-cah">
+                <rect key="frame" x="0.0" y="0.0" width="426" height="513"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8I-Rd-NKK">
+                        <rect key="frame" x="30" y="241" width="366" height="30"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="MIH-ZS-ehs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NV3-Cr-LuT">
+                        <rect key="frame" x="30" y="291" width="366" height="0.0"/>
+                        <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLe-Gz-n3k">
+                        <rect key="frame" x="30" y="0.0" width="366" height="241"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fLe-Gz-n3k" secondAttribute="height" multiplier="369:243" id="tFw-ip-Fjq"/>
+                        </constraints>
+                    </imageView>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jLd-00-RcQ">
+                        <rect key="frame" x="28" y="213.66666666666666" width="370" height="50.999999999999972"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="o8b-As-b2J"/>
+                        </constraints>
+                        <color key="minimumTrackTintColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="thumbTintColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="sliderValueDidChange:" destination="VVJ-Re-1b9" eventType="valueChanged" id="aNW-ig-Vdm"/>
+                        </connections>
+                    </slider>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ij5-4g-1m2">
+                        <rect key="frame" x="193" y="105.66666666666667" width="40" height="30.000000000000014"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ij5-4g-1m2" secondAttribute="height" multiplier="65:49" id="q5D-p4-3vz"/>
+                            <constraint firstAttribute="height" constant="30" id="sCw-RD-MTZ"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="pdp_play"/>
+                        <state key="selected" image="pause"/>
+                        <connections>
+                            <action selector="btnPlayPauseDidTapped:" destination="VVJ-Re-1b9" eventType="touchUpInside" id="lnH-qq-t9l"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWI-mj-XnI">
+                        <rect key="frame" x="336" y="163.66666666666666" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="kKR-fS-8EX"/>
+                            <constraint firstAttribute="height" constant="50" id="ulG-zx-c3j"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="30" minY="30" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" image="maximize"/>
+                        <connections>
+                            <action selector="btnMaximizeDidTapped:" destination="VVJ-Re-1b9" eventType="touchUpInside" id="igu-sA-Psn"/>
+                        </connections>
+                    </button>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="a92-2c-iKp">
+                        <rect key="frame" x="203" y="110.66666666666667" width="20" height="20.000000000000014"/>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="f8I-Rd-NKK" firstAttribute="top" secondItem="fLe-Gz-n3k" secondAttribute="bottom" id="0HI-GJ-Gw6"/>
+                    <constraint firstItem="a92-2c-iKp" firstAttribute="centerX" secondItem="fLe-Gz-n3k" secondAttribute="centerX" id="0Kb-ZU-rNE"/>
+                    <constraint firstItem="fLe-Gz-n3k" firstAttribute="top" secondItem="UJ8-k0-cah" secondAttribute="top" id="8Ts-IL-DCz"/>
+                    <constraint firstItem="jLd-00-RcQ" firstAttribute="bottom" secondItem="fLe-Gz-n3k" secondAttribute="bottom" constant="22.5" id="DMc-7I-Fod"/>
+                    <constraint firstItem="ij5-4g-1m2" firstAttribute="centerX" secondItem="fLe-Gz-n3k" secondAttribute="centerX" id="FiV-OF-GZl"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NV3-Cr-LuT" secondAttribute="bottom" constant="20" id="IVO-tg-TTt"/>
+                    <constraint firstItem="NV3-Cr-LuT" firstAttribute="top" secondItem="f8I-Rd-NKK" secondAttribute="bottom" constant="20" id="KAh-wT-ah1"/>
+                    <constraint firstItem="f8I-Rd-NKK" firstAttribute="leading" secondItem="UJ8-k0-cah" secondAttribute="leading" constant="30" id="O8C-Rj-Jqo"/>
+                    <constraint firstItem="NV3-Cr-LuT" firstAttribute="leading" secondItem="UJ8-k0-cah" secondAttribute="leading" constant="30" id="Rdm-1M-kvt"/>
+                    <constraint firstAttribute="trailing" secondItem="fLe-Gz-n3k" secondAttribute="trailing" constant="30" id="VmN-7S-de8"/>
+                    <constraint firstItem="a92-2c-iKp" firstAttribute="centerY" secondItem="fLe-Gz-n3k" secondAttribute="centerY" id="a66-Nx-f94"/>
+                    <constraint firstAttribute="trailing" secondItem="f8I-Rd-NKK" secondAttribute="trailing" constant="30" id="abf-1C-gIa"/>
+                    <constraint firstItem="jLd-00-RcQ" firstAttribute="leading" secondItem="fLe-Gz-n3k" secondAttribute="leading" id="ezk-Me-9xX"/>
+                    <constraint firstItem="jLd-00-RcQ" firstAttribute="top" secondItem="YWI-mj-XnI" secondAttribute="bottom" id="f5K-Gv-wDZ"/>
+                    <constraint firstItem="jLd-00-RcQ" firstAttribute="trailing" secondItem="fLe-Gz-n3k" secondAttribute="trailing" id="fnw-le-oef"/>
+                    <constraint firstItem="ij5-4g-1m2" firstAttribute="centerY" secondItem="fLe-Gz-n3k" secondAttribute="centerY" id="hLX-ji-fPc"/>
+                    <constraint firstItem="fLe-Gz-n3k" firstAttribute="leading" secondItem="UJ8-k0-cah" secondAttribute="leading" constant="30" id="ptZ-Dd-wpr"/>
+                    <constraint firstAttribute="trailing" secondItem="NV3-Cr-LuT" secondAttribute="trailing" constant="30" id="tI1-kv-rEX"/>
+                    <constraint firstItem="fLe-Gz-n3k" firstAttribute="trailing" secondItem="YWI-mj-XnI" secondAttribute="trailing" constant="10" id="tJI-gK-opk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnPlayPause" destination="ij5-4g-1m2" id="Ff5-MA-tN7"/>
+                <outlet property="imageViewMain" destination="fLe-Gz-n3k" id="82d-6t-dYv"/>
+                <outlet property="indicator" destination="a92-2c-iKp" id="i7Y-gi-JCX"/>
+                <outlet property="lblDescription" destination="NV3-Cr-LuT" id="yx0-da-1Tj"/>
+                <outlet property="lblTitle" destination="f8I-Rd-NKK" id="4es-sg-M7O"/>
+                <outlet property="progressView" destination="jLd-00-RcQ" id="x6o-Ei-uoa"/>
+            </connections>
+            <point key="canvasLocation" x="85.496183206106863" y="163.02816901408451"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="maximize" width="50" height="50"/>
+        <image name="pause" width="260" height="196"/>
+        <image name="pdp_play" width="67" height="48"/>
+    </resources>
+</document>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FavreLeubaCollectionReusableView" id="lA6-Wh-1am" customClass="FavreLeubaCollectionReusableView" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="461"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favre leuba" translatesAutoresizingMaskIntoConstraints="NO" id="R6O-Y5-3qT">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="199.66666666666666"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="R6O-Y5-3qT" secondAttribute="height" multiplier="430:220" id="sDN-Fl-Wge"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38z-Hs-roM">
+                    <rect key="frame" x="30" y="231.66666666666666" width="330" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr8-1e-Tth">
+                    <rect key="frame" x="30" y="255.66666666666666" width="330" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egT-X0-4dF">
+                    <rect key="frame" x="30" y="260.66666666666669" width="30" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="mUV-p8-bnE"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="">
+                        <attributedString key="attributedTitle"/>
+                    </state>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="R6O-Y5-3qT" firstAttribute="top" secondItem="lA6-Wh-1am" secondAttribute="top" id="3mS-El-jbq"/>
+                <constraint firstItem="R6O-Y5-3qT" firstAttribute="leading" secondItem="lA6-Wh-1am" secondAttribute="leading" id="7Gu-ne-bQZ"/>
+                <constraint firstItem="38z-Hs-roM" firstAttribute="leading" secondItem="lA6-Wh-1am" secondAttribute="leading" constant="30" id="E97-Ie-gaD"/>
+                <constraint firstItem="Rr8-1e-Tth" firstAttribute="leading" secondItem="lA6-Wh-1am" secondAttribute="leading" constant="30" id="I4g-wS-10L"/>
+                <constraint firstItem="Rr8-1e-Tth" firstAttribute="top" secondItem="38z-Hs-roM" secondAttribute="bottom" constant="24" id="Je2-jD-U2N"/>
+                <constraint firstAttribute="trailing" secondItem="Rr8-1e-Tth" secondAttribute="trailing" constant="30" id="NKU-hy-wHZ"/>
+                <constraint firstItem="egT-X0-4dF" firstAttribute="top" secondItem="Rr8-1e-Tth" secondAttribute="bottom" constant="5" id="SUq-9i-mSf"/>
+                <constraint firstItem="egT-X0-4dF" firstAttribute="leading" secondItem="lA6-Wh-1am" secondAttribute="leading" constant="30" id="VJp-gO-EZR"/>
+                <constraint firstAttribute="trailing" secondItem="38z-Hs-roM" secondAttribute="trailing" constant="30" id="WxE-zB-APJ"/>
+                <constraint firstItem="38z-Hs-roM" firstAttribute="top" secondItem="R6O-Y5-3qT" secondAttribute="bottom" constant="32" id="YRZ-31-m4f"/>
+                <constraint firstAttribute="trailing" secondItem="R6O-Y5-3qT" secondAttribute="trailing" id="sEP-t9-mSC"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="egT-X0-4dF" secondAttribute="bottom" constant="32" id="uXG-La-ILK"/>
+            </constraints>
+            <connections>
+                <outlet property="btnAction" destination="egT-X0-4dF" id="w3r-Db-PiO"/>
+                <outlet property="imageViewMain" destination="R6O-Y5-3qT" id="Ds0-Xc-eci"/>
+                <outlet property="lblDescription" destination="Rr8-1e-Tth" id="n2I-3u-UVD"/>
+                <outlet property="lblTitle" destination="38z-Hs-roM" id="C5l-Po-6qU"/>
+            </connections>
+            <point key="canvasLocation" x="-251.90839694656486" y="137.67605633802819"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="favre leuba" width="2760" height="1080"/>
+    </resources>
+</document>

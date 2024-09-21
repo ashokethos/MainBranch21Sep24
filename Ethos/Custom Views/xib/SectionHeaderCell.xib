@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Medium.otf">
+            <string>Brother-1816-Medium</string>
+        </array>
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SectionHeaderCell" rowHeight="125" id="KGk-i7-Jjw" customClass="SectionHeaderCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEADING" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M58-l9-M7f">
+                        <rect key="frame" x="30.000000000000004" y="40" width="57.333333333333343" height="16"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Medium" family="Brother 1816" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drb-3I-IOS">
+                        <rect key="frame" x="30" y="80" width="354" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="cWc-NP-MGa"/>
+                        </constraints>
+                    </view>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7c-2R-c8R">
+                        <rect key="frame" x="380" y="41" width="4" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="B0N-l9-zO4"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="rightArrowEthos"/>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-NJ-aLJ">
+                        <rect key="frame" x="345" y="40" width="30" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="u9O-PT-fKe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btnViewAllDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ftA-Wd-eYs"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Drb-3I-IOS" secondAttribute="trailing" constant="30" id="6iV-Oe-bzh"/>
+                    <constraint firstItem="M58-l9-M7f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="CPK-ek-zmf"/>
+                    <constraint firstItem="gU8-NJ-aLJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="M58-l9-M7f" secondAttribute="trailing" constant="10" id="KuK-ou-OdH"/>
+                    <constraint firstItem="gU8-NJ-aLJ" firstAttribute="centerY" secondItem="H7c-2R-c8R" secondAttribute="centerY" constant="-1" id="QXr-Cd-Bli"/>
+                    <constraint firstAttribute="trailing" secondItem="H7c-2R-c8R" secondAttribute="trailing" constant="30" id="Wgq-NV-9wp"/>
+                    <constraint firstItem="M58-l9-M7f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Zsm-Eu-XnV"/>
+                    <constraint firstItem="Drb-3I-IOS" firstAttribute="leading" secondItem="M58-l9-M7f" secondAttribute="leading" id="cm9-FG-t5c"/>
+                    <constraint firstItem="Drb-3I-IOS" firstAttribute="top" secondItem="M58-l9-M7f" secondAttribute="bottom" constant="24" id="fVS-Ow-y2s"/>
+                    <constraint firstItem="H7c-2R-c8R" firstAttribute="leading" secondItem="gU8-NJ-aLJ" secondAttribute="trailing" constant="5" id="pJH-5A-SMw"/>
+                    <constraint firstItem="gU8-NJ-aLJ" firstAttribute="centerY" secondItem="M58-l9-M7f" secondAttribute="centerY" id="wHw-GB-jKB"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Drb-3I-IOS" secondAttribute="bottom" id="zD4-l1-1nd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="btnDisclosure" destination="H7c-2R-c8R" id="Vr2-zr-uEt"/>
+                <outlet property="btnViewAll" destination="gU8-NJ-aLJ" id="8Bf-Qr-rUL"/>
+                <outlet property="lblHeader" destination="M58-l9-M7f" id="aIc-Nx-CLn"/>
+                <outlet property="viewBottom" destination="Drb-3I-IOS" id="VsJ-kV-7Ht"/>
+            </connections>
+            <point key="canvasLocation" x="-4.5801526717557248" y="16.197183098591552"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightArrowEthos" width="4" height="7"/>
+    </resources>
+</document>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Medium.otf">
+            <string>Brother-1816-Medium</string>
+        </array>
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WatchGlossaryTableViewHeaderCell" rowHeight="387" id="KGk-i7-Jjw" customClass="WatchGlossaryTableViewHeaderCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGy-4I-Daf">
+                        <rect key="frame" x="30" y="80" width="260" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="5W1-hc-nAj"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-Ay-KRk">
+                        <rect key="frame" x="30" y="113" width="260" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="glossary" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-Y8-NTV">
+                        <rect key="frame" x="30" y="145" width="260" height="88"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="hUM-Y8-NTV" secondAttribute="height" multiplier="364:123" id="0MG-KB-l3Z"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lpm-f2-p75">
+                        <rect key="frame" x="30" y="257" width="260" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="GgM-UT-ofx"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="WEX-Vr-LpK">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rId-HM-Jii">
+                        <rect key="frame" x="30" y="313" width="260" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="WATCH GLOSSARY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f04-kF-b3x">
+                        <rect key="frame" x="30" y="40" width="260" height="16"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Medium" family="Brother 1816" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RGy-4I-Daf" firstAttribute="top" secondItem="f04-kF-b3x" secondAttribute="bottom" constant="24" id="3uc-qS-8iV"/>
+                    <constraint firstItem="hUM-Y8-NTV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="4QP-AJ-pAz"/>
+                    <constraint firstAttribute="trailing" secondItem="rId-HM-Jii" secondAttribute="trailing" constant="30" id="4wr-1e-cqQ"/>
+                    <constraint firstItem="rId-HM-Jii" firstAttribute="top" secondItem="lpm-f2-p75" secondAttribute="bottom" constant="24" id="6CI-Df-a1K"/>
+                    <constraint firstAttribute="trailing" secondItem="hUM-Y8-NTV" secondAttribute="trailing" constant="30" id="Bal-G6-1Y4"/>
+                    <constraint firstAttribute="trailing" secondItem="f04-kF-b3x" secondAttribute="trailing" constant="30" id="HWx-zy-4Qo"/>
+                    <constraint firstItem="RGy-4I-Daf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="JHy-Mx-Itv"/>
+                    <constraint firstItem="jMp-Ay-KRk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="MrC-tp-WDO"/>
+                    <constraint firstItem="lpm-f2-p75" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Nva-WU-4hR"/>
+                    <constraint firstItem="rId-HM-Jii" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="O9T-aO-X8K"/>
+                    <constraint firstItem="f04-kF-b3x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Vnh-pi-FK9"/>
+                    <constraint firstAttribute="trailing" secondItem="RGy-4I-Daf" secondAttribute="trailing" constant="30" id="Wvj-r2-gCo"/>
+                    <constraint firstItem="f04-kF-b3x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="a2S-Hb-awU"/>
+                    <constraint firstItem="jMp-Ay-KRk" firstAttribute="top" secondItem="RGy-4I-Daf" secondAttribute="bottom" constant="32" id="foN-st-sPu"/>
+                    <constraint firstItem="hUM-Y8-NTV" firstAttribute="top" secondItem="jMp-Ay-KRk" secondAttribute="bottom" constant="32" id="i7r-2n-6hv"/>
+                    <constraint firstAttribute="trailing" secondItem="jMp-Ay-KRk" secondAttribute="trailing" constant="30" id="iai-xS-PYj"/>
+                    <constraint firstItem="lpm-f2-p75" firstAttribute="top" secondItem="hUM-Y8-NTV" secondAttribute="bottom" constant="24" id="rMo-ex-K7M"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rId-HM-Jii" secondAttribute="bottom" id="va8-Jq-iDT"/>
+                    <constraint firstAttribute="trailing" secondItem="lpm-f2-p75" secondAttribute="trailing" constant="30" id="w1r-JP-xoe"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="collectionViewLetters" destination="lpm-f2-p75" id="9Xc-ib-e5Z"/>
+                <outlet property="imageGlossary" destination="hUM-Y8-NTV" id="PgR-Ds-TLg"/>
+                <outlet property="lblDescription" destination="jMp-Ay-KRk" id="SDR-08-RWJ"/>
+                <outlet property="lblSelectedLetter" destination="rId-HM-Jii" id="EaY-bs-TRQ"/>
+                <outlet property="lblTitle" destination="f04-kF-b3x" id="y5s-e1-ie7"/>
+            </connections>
+            <point key="canvasLocation" x="25.954198473282442" y="109.50704225352113"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="glossary" width="355" height="122.66666412353516"/>
+    </resources>
+</document>

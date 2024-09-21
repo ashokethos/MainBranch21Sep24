@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SecondMovementBoutiqueHeaderTableViewCell" rowHeight="1404" id="KGk-i7-Jjw" customClass="SecondMovementBoutiqueHeaderTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="470"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="430" height="470"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SecondMovementBoutiqueHeader" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-T2-fnI">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="403"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="lKW-T2-fnI" secondAttribute="height" multiplier="430:403" id="SbO-EV-yNX"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fullOverLay" translatesAutoresizingMaskIntoConstraints="NO" id="EM8-KT-9DS">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="403"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECOND MOVEMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYH-MO-jiT">
+                        <rect key="frame" x="20" y="139.66666666666666" width="390" height="64"/>
+                        <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="32"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A premium lounge where you can experience the finest pre-owned luxury watches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1R-hx-B7t">
+                        <rect key="frame" x="40" y="213.66666666666666" width="350" height="31.666666666666657"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-ao-zn9">
+                        <rect key="frame" x="30" y="423" width="370" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <lineBreakStrategy key="lineBreakStrategy"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="bottom" secondItem="lKW-T2-fnI" secondAttribute="bottom" id="CgC-c7-Gbs"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="AYH-MO-jiT" secondAttribute="trailing" id="Cyb-am-muZ"/>
+                    <constraint firstItem="J1R-hx-B7t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="EbX-vW-WIj"/>
+                    <constraint firstItem="AYH-MO-jiT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ISu-jQ-NJ8"/>
+                    <constraint firstAttribute="trailing" secondItem="EM8-KT-9DS" secondAttribute="trailing" id="QGu-Jh-S4z"/>
+                    <constraint firstAttribute="trailing" secondItem="J1R-hx-B7t" secondAttribute="trailing" constant="40" id="Qrn-09-3vC"/>
+                    <constraint firstItem="J1R-hx-B7t" firstAttribute="top" secondItem="AYH-MO-jiT" secondAttribute="bottom" constant="10" id="UYV-Jq-5im"/>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="trailing" secondItem="lKW-T2-fnI" secondAttribute="trailing" id="Vht-OI-UJk"/>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="leading" secondItem="lKW-T2-fnI" secondAttribute="leading" id="XTj-KZ-RIw"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GV3-ao-zn9" secondAttribute="bottom" constant="20" id="ayb-vw-idt"/>
+                    <constraint firstAttribute="trailing" secondItem="GV3-ao-zn9" secondAttribute="trailing" constant="30" id="cFv-8g-aPL"/>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gsq-TG-DpR"/>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hty-f1-ycZ"/>
+                    <constraint firstItem="AYH-MO-jiT" firstAttribute="centerX" secondItem="lKW-T2-fnI" secondAttribute="centerX" id="iOu-8K-6El"/>
+                    <constraint firstItem="AYH-MO-jiT" firstAttribute="centerY" secondItem="lKW-T2-fnI" secondAttribute="centerY" constant="-30" id="kqg-Un-14g"/>
+                    <constraint firstItem="GV3-ao-zn9" firstAttribute="top" secondItem="lKW-T2-fnI" secondAttribute="bottom" constant="20" id="meJ-qE-tn5"/>
+                    <constraint firstItem="EM8-KT-9DS" firstAttribute="top" secondItem="lKW-T2-fnI" secondAttribute="top" id="z25-7X-GkI"/>
+                    <constraint firstItem="GV3-ao-zn9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="zxr-Dq-Euw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageOverlay" destination="EM8-KT-9DS" id="khI-UO-aHt"/>
+                <outlet property="imageViewMain" destination="lKW-T2-fnI" id="aMT-cE-Gyw"/>
+                <outlet property="lblMainDescription" destination="GV3-ao-zn9" id="YLj-pb-ddS"/>
+                <outlet property="lblMainSubTitle" destination="J1R-hx-B7t" id="eB2-KN-JIN"/>
+                <outlet property="lblMainTilte" destination="AYH-MO-jiT" id="JwE-B1-Gl2"/>
+            </connections>
+            <point key="canvasLocation" x="1476.3358778625955" y="376.76056338028172"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="SecondMovementBoutiqueHeader" width="1024" height="682.5"/>
+        <image name="fullOverLay" width="430" height="403"/>
+    </resources>
+</document>

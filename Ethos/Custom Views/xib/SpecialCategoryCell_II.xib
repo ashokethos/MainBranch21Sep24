@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SpecialCategoryCell_II" rowHeight="1141" id="KGk-i7-Jjw" customClass="SpecialCategoryCell_II" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="469" height="1141"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="469" height="1141"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33k-an-QXh">
+                        <rect key="frame" x="30" y="40.000000000000028" width="409" height="483.66666666666674"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-Ph-c9O">
+                                <rect key="frame" x="0.0" y="0.0" width="409" height="483.66666666666669"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-eH-flN">
+                                <rect key="frame" x="0.0" y="189.66666666666663" width="409" height="294"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRl-e5-poQ">
+                                <rect key="frame" x="204.66666666666666" y="412.66666666666669" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne2-5x-lpc">
+                                <rect key="frame" x="189.66666666666666" y="422.66666666666669" width="30" height="26"/>
+                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fxA-GM-jI4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOS-GQ-2EB">
+                                <rect key="frame" x="222.66666666666666" y="429.66666666666669" width="5" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="6Tr-mG-JwX"/>
+                                    <constraint firstAttribute="height" constant="14" id="AVr-wb-uOz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="rightArrowEthosWhite"/>
+                                <connections>
+                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ex3-R0-fJ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETx-f0-iQ0">
+                                <rect key="frame" x="0.0" y="0.0" width="409" height="483.66666666666669"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PzT-vJ-ZkH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ne2-5x-lpc" secondAttribute="bottom" constant="35" id="4Mb-rZ-v5i"/>
+                            <constraint firstAttribute="trailing" secondItem="EAS-eH-flN" secondAttribute="trailing" id="5Ki-oH-jZu"/>
+                            <constraint firstItem="ETx-f0-iQ0" firstAttribute="leading" secondItem="33k-an-QXh" secondAttribute="leading" id="6ef-2x-t2z"/>
+                            <constraint firstItem="dOS-GQ-2EB" firstAttribute="centerY" secondItem="ne2-5x-lpc" secondAttribute="centerY" constant="1" id="7fT-Xx-MNT"/>
+                            <constraint firstItem="ETx-f0-iQ0" firstAttribute="top" secondItem="33k-an-QXh" secondAttribute="top" id="93V-ha-EIj"/>
+                            <constraint firstAttribute="bottom" secondItem="ETx-f0-iQ0" secondAttribute="bottom" id="FsE-64-hIR"/>
+                            <constraint firstAttribute="trailing" secondItem="Egg-Ph-c9O" secondAttribute="trailing" id="GsR-z6-GYB"/>
+                            <constraint firstItem="EAS-eH-flN" firstAttribute="leading" secondItem="33k-an-QXh" secondAttribute="leading" id="IK9-pK-0Dc"/>
+                            <constraint firstAttribute="trailing" secondItem="ETx-f0-iQ0" secondAttribute="trailing" id="IoL-Vq-ocR"/>
+                            <constraint firstAttribute="bottom" secondItem="EAS-eH-flN" secondAttribute="bottom" id="OMg-dD-xug"/>
+                            <constraint firstItem="Egg-Ph-c9O" firstAttribute="leading" secondItem="33k-an-QXh" secondAttribute="leading" id="Uib-nH-Pkn"/>
+                            <constraint firstItem="ne2-5x-lpc" firstAttribute="top" secondItem="bRl-e5-poQ" secondAttribute="bottom" constant="10" id="ZH3-cj-voP"/>
+                            <constraint firstAttribute="bottom" secondItem="Egg-Ph-c9O" secondAttribute="bottom" id="bby-N1-7C7"/>
+                            <constraint firstItem="bRl-e5-poQ" firstAttribute="centerX" secondItem="33k-an-QXh" secondAttribute="centerX" id="idV-f2-Apa"/>
+                            <constraint firstItem="dOS-GQ-2EB" firstAttribute="leading" secondItem="ne2-5x-lpc" secondAttribute="trailing" constant="3" id="l53-AL-eZ4"/>
+                            <constraint firstAttribute="width" secondItem="33k-an-QXh" secondAttribute="height" multiplier="186:220" id="osJ-hy-0iN"/>
+                            <constraint firstItem="Egg-Ph-c9O" firstAttribute="top" secondItem="33k-an-QXh" secondAttribute="top" id="s1N-qP-iuJ"/>
+                            <constraint firstItem="ne2-5x-lpc" firstAttribute="centerX" secondItem="33k-an-QXh" secondAttribute="centerX" id="uM8-FH-Hja"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1zm-YK-J2G">
+                        <rect key="frame" x="30" y="531.66666666666663" width="409" height="482.33333333333337"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tpj-N6-PNz">
+                                <rect key="frame" x="0.0" y="0.0" width="409" height="237.33333333333334"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-WJ-RQW">
+                                        <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237.33333333333334"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2TJ-p8-yIg">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237.33333333333334"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="2TJ-p8-yIg" secondAttribute="height" multiplier="186:220" id="Mv4-f7-fDO"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="13v-0u-bk5">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237.33333333333334"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYY-Vi-cp4">
+                                                <rect key="frame" x="10" y="181.33333333333337" width="180.66666666666666" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewf-he-Ef9">
+                                                <rect key="frame" x="85.333333333333329" y="191.33333333333337" width="30" height="26"/>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hga-fc-4EA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYP-6l-0hr">
+                                                <rect key="frame" x="118.33333333333334" y="198.33333333333337" width="5" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="MCN-2d-pRa"/>
+                                                    <constraint firstAttribute="width" constant="5" id="S5k-QT-BVs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="rightArrowEthosWhite"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="toV-gl-NUm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pe-2P-iVe">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237.33333333333334"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JNt-jI-oZA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="0Pe-2P-iVe" secondAttribute="trailing" id="2Ai-73-tzJ"/>
+                                            <constraint firstItem="ewf-he-Ef9" firstAttribute="centerX" secondItem="Lf7-WJ-RQW" secondAttribute="centerX" id="2rg-Kd-UOJ"/>
+                                            <constraint firstItem="13v-0u-bk5" firstAttribute="top" secondItem="Lf7-WJ-RQW" secondAttribute="top" id="35a-3t-ZXg"/>
+                                            <constraint firstItem="wYY-Vi-cp4" firstAttribute="leading" secondItem="Lf7-WJ-RQW" secondAttribute="leading" constant="10" id="3rK-PU-c5F"/>
+                                            <constraint firstAttribute="trailing" secondItem="13v-0u-bk5" secondAttribute="trailing" id="4pg-xe-17h"/>
+                                            <constraint firstItem="eYP-6l-0hr" firstAttribute="centerY" secondItem="ewf-he-Ef9" secondAttribute="centerY" constant="1" id="9YW-Qq-yWP"/>
+                                            <constraint firstItem="13v-0u-bk5" firstAttribute="leading" secondItem="Lf7-WJ-RQW" secondAttribute="leading" id="Ej2-A1-HiR"/>
+                                            <constraint firstItem="wYY-Vi-cp4" firstAttribute="centerX" secondItem="Lf7-WJ-RQW" secondAttribute="centerX" id="LfJ-KE-lk3"/>
+                                            <constraint firstAttribute="bottom" secondItem="ewf-he-Ef9" secondAttribute="bottom" constant="20" id="NOp-N2-vls"/>
+                                            <constraint firstItem="0Pe-2P-iVe" firstAttribute="leading" secondItem="Lf7-WJ-RQW" secondAttribute="leading" id="OIq-8p-yHA"/>
+                                            <constraint firstItem="2TJ-p8-yIg" firstAttribute="leading" secondItem="Lf7-WJ-RQW" secondAttribute="leading" id="OIy-yO-Pif"/>
+                                            <constraint firstItem="eYP-6l-0hr" firstAttribute="leading" secondItem="ewf-he-Ef9" secondAttribute="trailing" constant="3" id="TAy-4m-hut"/>
+                                            <constraint firstAttribute="bottom" secondItem="0Pe-2P-iVe" secondAttribute="bottom" id="V0i-Sd-V3V"/>
+                                            <constraint firstAttribute="bottom" secondItem="2TJ-p8-yIg" secondAttribute="bottom" id="aCn-lZ-8f1"/>
+                                            <constraint firstItem="ewf-he-Ef9" firstAttribute="top" secondItem="wYY-Vi-cp4" secondAttribute="bottom" constant="10" id="cIk-hI-aD6"/>
+                                            <constraint firstItem="2TJ-p8-yIg" firstAttribute="top" secondItem="Lf7-WJ-RQW" secondAttribute="top" id="cuj-aH-TCD"/>
+                                            <constraint firstAttribute="trailing" secondItem="wYY-Vi-cp4" secondAttribute="trailing" constant="10" id="gB2-24-eHp"/>
+                                            <constraint firstAttribute="trailing" secondItem="2TJ-p8-yIg" secondAttribute="trailing" id="gi5-yu-FO0"/>
+                                            <constraint firstAttribute="bottom" secondItem="13v-0u-bk5" secondAttribute="bottom" id="rg8-Lk-dKr"/>
+                                            <constraint firstItem="0Pe-2P-iVe" firstAttribute="top" secondItem="Lf7-WJ-RQW" secondAttribute="top" id="tij-3P-geG"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-TM-d3m">
+                                        <rect key="frame" x="208.66666666666663" y="0.0" width="200.33333333333337" height="237.33333333333334"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jqW-SD-ma6">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237.33333333333334"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="jqW-SD-ma6" secondAttribute="height" multiplier="186:220" id="tnU-NR-Cp7"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="gSW-xJ-hbx">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237.33333333333334"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBj-bK-ReA">
+                                                <rect key="frame" x="10" y="181.33333333333337" width="180.33333333333334" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDN-Oc-MOB">
+                                                <rect key="frame" x="85.000000000000028" y="191.33333333333337" width="30" height="26"/>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mPT-uP-POb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3S-DD-fXq">
+                                                <rect key="frame" x="118.00000000000003" y="198.33333333333337" width="5" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="5" id="2Cn-2t-qbY"/>
+                                                    <constraint firstAttribute="height" constant="14" id="hCT-bK-IEA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="rightArrowEthosWhite"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4sU-GS-RbB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pv1-AD-s7x">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237.33333333333334"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2WA-Go-FBs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Pv1-AD-s7x" firstAttribute="leading" secondItem="ewg-TM-d3m" secondAttribute="leading" id="0EQ-Sg-l3r"/>
+                                            <constraint firstAttribute="bottom" secondItem="gSW-xJ-hbx" secondAttribute="bottom" id="3nC-65-25u"/>
+                                            <constraint firstItem="BDN-Oc-MOB" firstAttribute="top" secondItem="RBj-bK-ReA" secondAttribute="bottom" constant="10" id="Aw7-95-FRh"/>
+                                            <constraint firstAttribute="trailing" secondItem="RBj-bK-ReA" secondAttribute="trailing" constant="10" id="FCm-Ss-96x"/>
+                                            <constraint firstItem="gSW-xJ-hbx" firstAttribute="leading" secondItem="ewg-TM-d3m" secondAttribute="leading" id="HNF-fZ-MRB"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pv1-AD-s7x" secondAttribute="bottom" id="IcA-2I-Kmc"/>
+                                            <constraint firstItem="jqW-SD-ma6" firstAttribute="top" secondItem="ewg-TM-d3m" secondAttribute="top" id="KSC-LM-adB"/>
+                                            <constraint firstItem="BDN-Oc-MOB" firstAttribute="centerX" secondItem="ewg-TM-d3m" secondAttribute="centerX" id="MkU-QM-ejj"/>
+                                            <constraint firstItem="RBj-bK-ReA" firstAttribute="leading" secondItem="ewg-TM-d3m" secondAttribute="leading" constant="10" id="QuW-ep-cMv"/>
+                                            <constraint firstItem="I3S-DD-fXq" firstAttribute="leading" secondItem="BDN-Oc-MOB" secondAttribute="trailing" constant="3" id="UFz-K5-8jF"/>
+                                            <constraint firstAttribute="trailing" secondItem="jqW-SD-ma6" secondAttribute="trailing" id="XkK-bT-L3w"/>
+                                            <constraint firstAttribute="trailing" secondItem="gSW-xJ-hbx" secondAttribute="trailing" id="esC-8v-lHI"/>
+                                            <constraint firstItem="I3S-DD-fXq" firstAttribute="centerY" secondItem="BDN-Oc-MOB" secondAttribute="centerY" constant="1" id="iy9-k7-R68"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pv1-AD-s7x" secondAttribute="trailing" id="kA2-qV-H5i"/>
+                                            <constraint firstAttribute="bottom" secondItem="BDN-Oc-MOB" secondAttribute="bottom" constant="20" id="nMJ-XE-xNA"/>
+                                            <constraint firstItem="Pv1-AD-s7x" firstAttribute="top" secondItem="ewg-TM-d3m" secondAttribute="top" id="qPx-Ny-dv4"/>
+                                            <constraint firstItem="RBj-bK-ReA" firstAttribute="centerX" secondItem="ewg-TM-d3m" secondAttribute="centerX" id="rMJ-oF-uXe"/>
+                                            <constraint firstAttribute="bottom" secondItem="jqW-SD-ma6" secondAttribute="bottom" id="vbz-gZ-uyf"/>
+                                            <constraint firstItem="jqW-SD-ma6" firstAttribute="leading" secondItem="ewg-TM-d3m" secondAttribute="leading" id="vfi-9T-iRv"/>
+                                            <constraint firstItem="gSW-xJ-hbx" firstAttribute="top" secondItem="ewg-TM-d3m" secondAttribute="top" id="ymZ-DJ-d4a"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-KH-k7Z">
+                                <rect key="frame" x="0.0" y="245.33333333333337" width="409" height="237"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-Gh-0Dy">
+                                        <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w9G-6K-m09">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="w9G-6K-m09" secondAttribute="height" multiplier="186:220" id="JaZ-KX-ieI"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="puE-rB-Kox">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XV-Nx-8i8">
+                                                <rect key="frame" x="10" y="181" width="180.66666666666666" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Top-pO-gvO">
+                                                <rect key="frame" x="85.333333333333329" y="191" width="30" height="26"/>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LmY-MF-rpj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K01-Cc-uWb">
+                                                <rect key="frame" x="118.33333333333334" y="198" width="5" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="6N4-Ao-4SJ"/>
+                                                    <constraint firstAttribute="width" constant="5" id="pFW-wq-XWA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="rightArrowEthosWhite"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yoW-Kl-a7o"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4X-t1-8N1">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="237"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ISZ-fc-Dnx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="w9G-6K-m09" secondAttribute="bottom" id="1F1-17-Qy3"/>
+                                            <constraint firstItem="K01-Cc-uWb" firstAttribute="leading" secondItem="Top-pO-gvO" secondAttribute="trailing" constant="3" id="A48-wE-xlE"/>
+                                            <constraint firstAttribute="bottom" secondItem="Top-pO-gvO" secondAttribute="bottom" constant="20" id="A9t-4A-jFB"/>
+                                            <constraint firstAttribute="trailing" secondItem="puE-rB-Kox" secondAttribute="trailing" id="BXe-Ip-552"/>
+                                            <constraint firstItem="Top-pO-gvO" firstAttribute="top" secondItem="2XV-Nx-8i8" secondAttribute="bottom" constant="10" id="DOC-xM-sde"/>
+                                            <constraint firstItem="2XV-Nx-8i8" firstAttribute="leading" secondItem="4dp-Gh-0Dy" secondAttribute="leading" constant="10" id="GRw-jz-N15"/>
+                                            <constraint firstItem="w9G-6K-m09" firstAttribute="top" secondItem="4dp-Gh-0Dy" secondAttribute="top" id="Gau-hX-cv0"/>
+                                            <constraint firstItem="puE-rB-Kox" firstAttribute="leading" secondItem="4dp-Gh-0Dy" secondAttribute="leading" id="LXF-88-VT8"/>
+                                            <constraint firstItem="C4X-t1-8N1" firstAttribute="top" secondItem="4dp-Gh-0Dy" secondAttribute="top" id="OKf-Hl-WUP"/>
+                                            <constraint firstItem="Top-pO-gvO" firstAttribute="centerX" secondItem="4dp-Gh-0Dy" secondAttribute="centerX" id="PFp-ln-41g"/>
+                                            <constraint firstAttribute="bottom" secondItem="C4X-t1-8N1" secondAttribute="bottom" id="Xrr-aX-lq2"/>
+                                            <constraint firstItem="K01-Cc-uWb" firstAttribute="centerY" secondItem="Top-pO-gvO" secondAttribute="centerY" constant="1" id="Yxi-s4-u7D"/>
+                                            <constraint firstItem="w9G-6K-m09" firstAttribute="leading" secondItem="4dp-Gh-0Dy" secondAttribute="leading" id="aOD-jZ-F6k"/>
+                                            <constraint firstItem="puE-rB-Kox" firstAttribute="top" secondItem="4dp-Gh-0Dy" secondAttribute="top" id="jwK-Zk-9kz"/>
+                                            <constraint firstItem="C4X-t1-8N1" firstAttribute="leading" secondItem="4dp-Gh-0Dy" secondAttribute="leading" id="nFI-pN-aNy"/>
+                                            <constraint firstAttribute="bottom" secondItem="puE-rB-Kox" secondAttribute="bottom" id="ns4-el-Mdn"/>
+                                            <constraint firstAttribute="trailing" secondItem="w9G-6K-m09" secondAttribute="trailing" id="olS-BN-jhL"/>
+                                            <constraint firstItem="2XV-Nx-8i8" firstAttribute="centerX" secondItem="4dp-Gh-0Dy" secondAttribute="centerX" id="qOc-NF-Ynl"/>
+                                            <constraint firstAttribute="trailing" secondItem="C4X-t1-8N1" secondAttribute="trailing" id="sM7-LZ-QvZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="2XV-Nx-8i8" secondAttribute="trailing" constant="10" id="uBO-jH-FuV"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WET-nV-xdp">
+                                        <rect key="frame" x="208.66666666666663" y="0.0" width="200.33333333333337" height="237"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x34-2g-D1y">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="x34-2g-D1y" secondAttribute="height" multiplier="186:220" id="1yL-Fb-RLW"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="LZi-XS-prr">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MD-OA-PCT">
+                                                <rect key="frame" x="10" y="181" width="180.33333333333334" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oJ-de-LnW">
+                                                <rect key="frame" x="85.000000000000028" y="191" width="30" height="26"/>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZLo-nT-gbc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJo-kw-7SE">
+                                                <rect key="frame" x="118.00000000000003" y="197" width="5" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="CIg-nW-Q7b"/>
+                                                    <constraint firstAttribute="width" constant="5" id="uHl-Me-KSm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="rightArrowEthosWhite"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2NH-9G-Dxn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHY-ol-BII">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="237"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="routeToWatchWinders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ekp-cC-RfP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="tHY-ol-BII" secondAttribute="bottom" id="2E6-Ix-h1k"/>
+                                            <constraint firstItem="cJo-kw-7SE" firstAttribute="leading" secondItem="6oJ-de-LnW" secondAttribute="trailing" constant="3" id="5Av-S5-0ud"/>
+                                            <constraint firstItem="6oJ-de-LnW" firstAttribute="top" secondItem="5MD-OA-PCT" secondAttribute="bottom" constant="10" id="D72-zb-a4z"/>
+                                            <constraint firstItem="LZi-XS-prr" firstAttribute="top" secondItem="WET-nV-xdp" secondAttribute="top" id="Ere-pi-wOX"/>
+                                            <constraint firstItem="cJo-kw-7SE" firstAttribute="centerY" secondItem="6oJ-de-LnW" secondAttribute="centerY" id="F2a-N4-vV4"/>
+                                            <constraint firstItem="x34-2g-D1y" firstAttribute="leading" secondItem="WET-nV-xdp" secondAttribute="leading" id="Jmn-GO-5Pq"/>
+                                            <constraint firstItem="x34-2g-D1y" firstAttribute="top" secondItem="WET-nV-xdp" secondAttribute="top" id="KNG-tP-LDU"/>
+                                            <constraint firstItem="6oJ-de-LnW" firstAttribute="centerX" secondItem="WET-nV-xdp" secondAttribute="centerX" id="ODi-Tw-mS1"/>
+                                            <constraint firstItem="tHY-ol-BII" firstAttribute="leading" secondItem="WET-nV-xdp" secondAttribute="leading" id="SS9-tF-NTt"/>
+                                            <constraint firstAttribute="trailing" secondItem="tHY-ol-BII" secondAttribute="trailing" id="Taq-3X-L5r"/>
+                                            <constraint firstAttribute="bottom" secondItem="x34-2g-D1y" secondAttribute="bottom" id="VDQ-fd-S2l"/>
+                                            <constraint firstAttribute="trailing" secondItem="LZi-XS-prr" secondAttribute="trailing" id="Vix-2T-9Hq"/>
+                                            <constraint firstItem="LZi-XS-prr" firstAttribute="leading" secondItem="WET-nV-xdp" secondAttribute="leading" id="WpH-zg-q3P"/>
+                                            <constraint firstAttribute="trailing" secondItem="5MD-OA-PCT" secondAttribute="trailing" constant="10" id="XEI-tj-aXB"/>
+                                            <constraint firstItem="5MD-OA-PCT" firstAttribute="leading" secondItem="WET-nV-xdp" secondAttribute="leading" constant="10" id="l0O-Hd-zxp"/>
+                                            <constraint firstAttribute="trailing" secondItem="x34-2g-D1y" secondAttribute="trailing" id="m6I-Np-W9o"/>
+                                            <constraint firstAttribute="bottom" secondItem="LZi-XS-prr" secondAttribute="bottom" id="owu-dk-hAK"/>
+                                            <constraint firstAttribute="bottom" secondItem="6oJ-de-LnW" secondAttribute="bottom" constant="20" id="vxB-o9-yig"/>
+                                            <constraint firstItem="5MD-OA-PCT" firstAttribute="centerX" secondItem="WET-nV-xdp" secondAttribute="centerX" id="yAi-uP-E0G"/>
+                                            <constraint firstItem="tHY-ol-BII" firstAttribute="top" secondItem="WET-nV-xdp" secondAttribute="top" id="yoS-gf-aN7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="33k-an-QXh" secondAttribute="trailing" constant="30" id="7DR-Fa-S9R"/>
+                    <constraint firstAttribute="trailing" secondItem="1zm-YK-J2G" secondAttribute="trailing" constant="30" id="FaD-Rc-itK"/>
+                    <constraint firstItem="1zm-YK-J2G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="LvQ-5E-f6x"/>
+                    <constraint firstAttribute="bottom" secondItem="1zm-YK-J2G" secondAttribute="bottom" constant="40" id="OOn-uX-u1x"/>
+                    <constraint firstItem="1zm-YK-J2G" firstAttribute="top" secondItem="33k-an-QXh" secondAttribute="bottom" constant="8" id="Ro8-15-qeD"/>
+                    <constraint firstItem="33k-an-QXh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Ugi-ec-MFY"/>
+                    <constraint firstItem="33k-an-QXh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="XB4-R3-KZZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnShopNow1" destination="ETx-f0-iQ0" id="pVO-Y9-c03"/>
+                <outlet property="btnShopNow2" destination="0Pe-2P-iVe" id="psw-ni-q1e"/>
+                <outlet property="btnShopNow3" destination="Pv1-AD-s7x" id="bjO-yM-6Vk"/>
+                <outlet property="btnShopNow4" destination="C4X-t1-8N1" id="QcG-RP-tJp"/>
+                <outlet property="btnShopNow5" destination="tHY-ol-BII" id="4ha-bz-1od"/>
+                <outlet property="imageViewFifthImage" destination="x34-2g-D1y" id="Xaz-wf-cnW"/>
+                <outlet property="imageViewFourthImage" destination="w9G-6K-m09" id="Aql-pv-Ef8"/>
+                <outlet property="imageViewSecondImage" destination="2TJ-p8-yIg" id="bQd-tt-CzV"/>
+                <outlet property="imageViewThirdImage" destination="jqW-SD-ma6" id="c45-Rn-VXU"/>
+                <outlet property="imageViewTopImage" destination="Egg-Ph-c9O" id="wA5-zR-Uuf"/>
+                <outlet property="lbl1" destination="bRl-e5-poQ" id="UaO-vh-M1n"/>
+                <outlet property="lbl2" destination="wYY-Vi-cp4" id="47y-Rv-sjw"/>
+                <outlet property="lbl3" destination="RBj-bK-ReA" id="zZb-Em-JYS"/>
+                <outlet property="lbl4" destination="2XV-Nx-8i8" id="3vi-eL-YGt"/>
+                <outlet property="lbl5" destination="5MD-OA-PCT" id="tf6-FR-yZh"/>
+                <outlet property="shopNow1" destination="ne2-5x-lpc" id="MLr-lR-ZQ4"/>
+                <outlet property="shopNow2" destination="ewf-he-Ef9" id="7pb-6P-cgm"/>
+                <outlet property="shopNow3" destination="BDN-Oc-MOB" id="DYo-Yv-On9"/>
+                <outlet property="shopNow4" destination="Top-pO-gvO" id="9vI-CQ-iGO"/>
+                <outlet property="shopNow5" destination="6oJ-de-LnW" id="qze-MS-kID"/>
+            </connections>
+            <point key="canvasLocation" x="153.43511450381678" y="205.28169014084509"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Overlay" width="368.33334350585938" height="294"/>
+        <image name="rightArrowEthosWhite" width="5" height="7"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

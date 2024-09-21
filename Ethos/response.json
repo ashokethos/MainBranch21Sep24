@@ -1,0 +1,32 @@
+{
+    "category_id" : 179,
+    "applied_filters" : [
+        {
+            "attr_name" : "Category",
+            "attr_code" : "category_type",
+            "value" :[
+                {
+                    "attr_value_name" : "Watch Winder",
+                    "attr_value_id" : "5775"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    "category_id" : 110,
+    "applied_filters" :
+    [
+        {
+            "attr_name" : "Features",
+            "attr_code" : "features",
+            "value" : [
+                {
+                    "attr_value_name" : "Chronograph",
+                    "attr_value_id" : 3497
+                }
+            ]
+        }
+    ]
+}

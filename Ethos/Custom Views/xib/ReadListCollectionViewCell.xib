@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReadListCollectionViewCell" id="gTV-IL-0wX" customClass="ReadListCollectionViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="383"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="383"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G6r-fY-Jv7">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="383"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="cw8-di-aoW">
+                        <rect key="frame" x="0.0" y="89" width="300" height="294"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-gq-YA2">
+                        <rect key="frame" x="40" y="309" width="240" height="0.0"/>
+                        <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Aa-za-Krv">
+                        <rect key="frame" x="73" y="327" width="5" height="22"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="rightArrowEthosWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkG-Mj-8VX">
+                        <rect key="frame" x="40" y="333" width="30" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="fUk-yE-Tjo"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="cw8-di-aoW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9eL-HP-Rr5"/>
+                <constraint firstItem="gUD-gq-YA2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="40" id="GX1-nr-qjf"/>
+                <constraint firstItem="1Aa-za-Krv" firstAttribute="leading" secondItem="LkG-Mj-8VX" secondAttribute="trailing" constant="3" id="KNA-l6-ovC"/>
+                <constraint firstAttribute="bottom" secondItem="LkG-Mj-8VX" secondAttribute="bottom" constant="40" id="MjX-N0-NyC"/>
+                <constraint firstItem="LkG-Mj-8VX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="40" id="Mpn-WG-MbV"/>
+                <constraint firstItem="LkG-Mj-8VX" firstAttribute="top" secondItem="gUD-gq-YA2" secondAttribute="bottom" constant="24" id="Q2F-6d-ALp"/>
+                <constraint firstAttribute="trailing" secondItem="gUD-gq-YA2" secondAttribute="trailing" constant="20" id="aX4-Sp-ohY"/>
+                <constraint firstItem="G6r-fY-Jv7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="be9-Sw-6oI"/>
+                <constraint firstItem="LkG-Mj-8VX" firstAttribute="centerY" secondItem="1Aa-za-Krv" secondAttribute="centerY" id="gU2-0c-w5Z"/>
+                <constraint firstAttribute="trailing" secondItem="G6r-fY-Jv7" secondAttribute="trailing" id="m52-ff-G7C"/>
+                <constraint firstAttribute="trailing" secondItem="cw8-di-aoW" secondAttribute="trailing" id="oTO-2I-660"/>
+                <constraint firstAttribute="bottom" secondItem="cw8-di-aoW" secondAttribute="bottom" id="pHe-pY-4Rk"/>
+                <constraint firstItem="G6r-fY-Jv7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="s4p-Ph-4kw"/>
+                <constraint firstAttribute="bottom" secondItem="G6r-fY-Jv7" secondAttribute="bottom" id="u3P-gn-S1z"/>
+            </constraints>
+            <size key="customSize" width="239" height="404"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="btnReadMore" destination="LkG-Mj-8VX" id="weo-sK-cDe"/>
+                <outlet property="disclosureBtn" destination="1Aa-za-Krv" id="PwL-Tn-Hk1"/>
+                <outlet property="imageOverLay" destination="cw8-di-aoW" id="Tih-ap-s7U"/>
+                <outlet property="imageThumNail" destination="G6r-fY-Jv7" id="5po-Qb-fGD"/>
+                <outlet property="lblTitle" destination="gUD-gq-YA2" id="AKy-XV-bdx"/>
+            </connections>
+            <point key="canvasLocation" x="174.80916030534351" y="82.394366197183103"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Overlay" width="368.33334350585938" height="294"/>
+        <image name="rightArrowEthosWhite" width="5" height="7"/>
+    </resources>
+</document>

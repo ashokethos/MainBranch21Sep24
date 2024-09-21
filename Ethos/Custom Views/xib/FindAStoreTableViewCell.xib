@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="330" id="KGk-i7-Jjw" customClass="FindAStoreTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="460" height="330"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="460" height="330"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVM-pR-UAb">
+                        <rect key="frame" x="0.0" y="0.0" width="460" height="330"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find an Ethos Store Near You" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrJ-b7-Vha">
+                                <rect key="frame" x="30" y="20" width="400" height="24"/>
+                                <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cko-Ph-dac">
+                                <rect key="frame" x="30" y="64" width="400" height="47.666666666666657"/>
+                                <string key="text">Established in 2003, Ethos Watch Boutiques is an authorised retailer of luxury watches with over 60 premium watch brands and more than 60 stores across India.</string>
+                                <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="12"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJ1-xs-vy7">
+                                <rect key="frame" x="30" y="141.66666666666666" width="400" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by City, State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-BT-uM5" customClass="EthosTextField" customModule="Ethos" customModuleProvider="target">
+                                        <rect key="frame" x="52" y="0.0" width="296" height="44"/>
+                                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAQ-nh-2dl">
+                                        <rect key="frame" x="364" y="12" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="f76-el-XjY"/>
+                                            <constraint firstAttribute="width" constant="20" id="mfU-jm-ayA"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="search"/>
+                                        <connections>
+                                            <action selector="btnSearchDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eFN-UF-Ssd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxb-Bo-FtU">
+                                        <rect key="frame" x="16" y="12" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="9KZ-Zj-ZmT"/>
+                                            <constraint firstAttribute="width" constant="20" id="fqB-K0-FyF"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="target"/>
+                                        <connections>
+                                            <action selector="btnLocationDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mvv-Jc-QHg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4l8-jd-jNQ">
+                                        <rect key="frame" x="348" y="0.0" width="52" height="44"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="btnSearchDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MeX-Rf-viC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="AAQ-nh-2dl" firstAttribute="centerY" secondItem="JJ1-xs-vy7" secondAttribute="centerY" id="88p-9K-7qg"/>
+                                    <constraint firstAttribute="trailing" secondItem="AAQ-nh-2dl" secondAttribute="trailing" constant="16" id="AYF-BG-uYf"/>
+                                    <constraint firstItem="3cn-BT-uM5" firstAttribute="top" secondItem="JJ1-xs-vy7" secondAttribute="top" id="AZX-rF-miW"/>
+                                    <constraint firstItem="3cn-BT-uM5" firstAttribute="leading" secondItem="Hxb-Bo-FtU" secondAttribute="trailing" constant="16" id="DQW-aE-eEF"/>
+                                    <constraint firstAttribute="bottom" secondItem="4l8-jd-jNQ" secondAttribute="bottom" id="DfW-q9-oze"/>
+                                    <constraint firstItem="Hxb-Bo-FtU" firstAttribute="leading" secondItem="JJ1-xs-vy7" secondAttribute="leading" constant="16" id="KFc-J1-KAf"/>
+                                    <constraint firstAttribute="trailing" secondItem="4l8-jd-jNQ" secondAttribute="trailing" id="KqJ-BI-fUu"/>
+                                    <constraint firstAttribute="bottom" secondItem="3cn-BT-uM5" secondAttribute="bottom" id="LdN-pW-TVF"/>
+                                    <constraint firstItem="4l8-jd-jNQ" firstAttribute="leading" secondItem="3cn-BT-uM5" secondAttribute="trailing" id="ONG-nH-F0l"/>
+                                    <constraint firstItem="AAQ-nh-2dl" firstAttribute="leading" secondItem="3cn-BT-uM5" secondAttribute="trailing" constant="16" id="P5c-x5-Fhj"/>
+                                    <constraint firstAttribute="height" constant="44" id="UTo-aN-ACF"/>
+                                    <constraint firstItem="4l8-jd-jNQ" firstAttribute="top" secondItem="JJ1-xs-vy7" secondAttribute="top" id="cY7-XR-1el"/>
+                                    <constraint firstItem="Hxb-Bo-FtU" firstAttribute="centerY" secondItem="3cn-BT-uM5" secondAttribute="centerY" id="hel-Wt-HJF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CrJ-b7-Vha" firstAttribute="leading" secondItem="AVM-pR-UAb" secondAttribute="leading" constant="30" id="47y-Vq-cTf"/>
+                            <constraint firstItem="CrJ-b7-Vha" firstAttribute="top" secondItem="AVM-pR-UAb" secondAttribute="top" constant="20" id="Mvs-MU-UOU"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JJ1-xs-vy7" secondAttribute="bottom" constant="30" id="UC1-Di-1cs"/>
+                            <constraint firstAttribute="trailing" secondItem="CrJ-b7-Vha" secondAttribute="trailing" constant="30" id="Ubz-hT-tlj"/>
+                            <constraint firstAttribute="trailing" secondItem="Cko-Ph-dac" secondAttribute="trailing" constant="30" id="WOa-UA-hMb"/>
+                            <constraint firstItem="CrJ-b7-Vha" firstAttribute="centerX" secondItem="AVM-pR-UAb" secondAttribute="centerX" id="Z8T-02-x8k"/>
+                            <constraint firstAttribute="trailing" secondItem="JJ1-xs-vy7" secondAttribute="trailing" constant="30" id="gz2-5a-BbY"/>
+                            <constraint firstItem="JJ1-xs-vy7" firstAttribute="top" secondItem="Cko-Ph-dac" secondAttribute="bottom" constant="30" id="hAb-tZ-nBw"/>
+                            <constraint firstItem="Cko-Ph-dac" firstAttribute="leading" secondItem="AVM-pR-UAb" secondAttribute="leading" constant="30" id="r1A-6p-cZp"/>
+                            <constraint firstItem="Cko-Ph-dac" firstAttribute="top" secondItem="CrJ-b7-Vha" secondAttribute="bottom" constant="20" id="rGl-Ah-v0T"/>
+                            <constraint firstItem="JJ1-xs-vy7" firstAttribute="leading" secondItem="AVM-pR-UAb" secondAttribute="leading" constant="30" id="uxl-NK-smw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="AVM-pR-UAb" secondAttribute="trailing" id="G7f-ao-Tjv"/>
+                    <constraint firstItem="AVM-pR-UAb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bqx-Nv-Zbe"/>
+                    <constraint firstAttribute="bottom" secondItem="AVM-pR-UAb" secondAttribute="bottom" id="bwp-zW-jpP"/>
+                    <constraint firstItem="AVM-pR-UAb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mVo-82-CjB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnSearch" destination="AAQ-nh-2dl" id="Gaf-gb-Atr"/>
+                <outlet property="btnTarget" destination="Hxb-Bo-FtU" id="I2T-PC-LVr"/>
+                <outlet property="lblDescription" destination="Cko-Ph-dac" id="U3p-ti-u1A"/>
+                <outlet property="lblTitle" destination="CrJ-b7-Vha" id="Fba-7F-lBX"/>
+                <outlet property="textFieldSearch" destination="3cn-BT-uM5" id="cjB-9U-CkX"/>
+                <outlet property="viewTextFieldSearch" destination="JJ1-xs-vy7" id="yN9-kT-0aV"/>
+            </connections>
+            <point key="canvasLocation" x="126.71755725190839" y="89.436619718309871"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="search" width="17.333333969116211" height="17.333333969116211"/>
+        <image name="target" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

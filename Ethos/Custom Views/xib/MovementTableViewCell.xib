@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Medium.otf">
+            <string>Brother-1816-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovementTableViewCell" rowHeight="336" id="KGk-i7-Jjw" customClass="MovementTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="336"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="336"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSk-46-Coh">
+                        <rect key="frame" x="30" y="0.0" width="357" height="0.0"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yae-c9-Hiv">
+                                <rect key="frame" x="0.0" y="0.0" width="357" height="0.0"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yae-c9-Hiv" secondAttribute="bottom" id="43z-VG-hLq"/>
+                            <constraint firstAttribute="height" id="9rU-be-A96"/>
+                            <constraint firstAttribute="trailing" secondItem="yae-c9-Hiv" secondAttribute="trailing" id="RKB-em-h8Z"/>
+                            <constraint firstItem="yae-c9-Hiv" firstAttribute="leading" secondItem="KSk-46-Coh" secondAttribute="leading" id="RtT-4z-Ibx"/>
+                            <constraint firstItem="yae-c9-Hiv" firstAttribute="top" secondItem="KSk-46-Coh" secondAttribute="top" id="dWa-Bj-HUg"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y20-lS-Ojl">
+                        <rect key="frame" x="30" y="16" width="357" height="0.0"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Medium" family="Brother 1816" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="337" placeholderIntrinsicHeight="415" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DId-rT-1Xh" customClass="EthosContentSizedCollectionView" customModule="Ethos" customModuleProvider="target">
+                        <rect key="frame" x="30" y="16" width="357" height="320"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewLayout key="collectionViewLayout" id="452-eI-DFe" customClass="EthosSpecificationsLayout" customModule="Ethos" customModuleProvider="target"/>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="DId-rT-1Xh" secondAttribute="trailing" constant="30" id="2ko-AB-AcP"/>
+                    <constraint firstAttribute="trailing" secondItem="Y20-lS-Ojl" secondAttribute="trailing" constant="30" id="Ifd-Ca-wEJ"/>
+                    <constraint firstItem="Y20-lS-Ojl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="W34-Wg-bMl"/>
+                    <constraint firstItem="DId-rT-1Xh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="deb-GQ-KR0"/>
+                    <constraint firstItem="DId-rT-1Xh" firstAttribute="top" secondItem="Y20-lS-Ojl" secondAttribute="bottom" id="eXu-Xa-qWT"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DId-rT-1Xh" secondAttribute="bottom" id="iCp-7n-CVz"/>
+                    <constraint firstItem="Y20-lS-Ojl" firstAttribute="top" secondItem="KSk-46-Coh" secondAttribute="bottom" constant="16" id="mTV-QF-UeH"/>
+                    <constraint firstAttribute="trailing" secondItem="KSk-46-Coh" secondAttribute="trailing" constant="30" id="nXh-jv-08l"/>
+                    <constraint firstItem="KSk-46-Coh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pgD-iZ-PXo"/>
+                    <constraint firstItem="KSk-46-Coh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="xGo-rj-jpo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionViewMovement" destination="DId-rT-1Xh" id="Qfy-V9-hYh"/>
+                <outlet property="constraintHeightImageView" destination="9rU-be-A96" id="Pm6-GO-ab6"/>
+                <outlet property="constraintTopCalibreDescription" destination="mTV-QF-UeH" id="CqC-nw-Tpw"/>
+                <outlet property="imgViewThumbNail" destination="yae-c9-Hiv" id="kC1-9S-2zM"/>
+                <outlet property="lblCallibreDescription" destination="Y20-lS-Ojl" id="L9i-BJ-oe1"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="-42.253521126760567"/>
+        </tableViewCell>
+    </objects>
+</document>

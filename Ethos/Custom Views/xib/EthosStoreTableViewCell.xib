@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MrsEavesXLSerifNarOT-Reg.otf">
+            <string>MrsEavesXLSerifNarOT-Reg</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EthosStoreTableViewCell" rowHeight="505" id="KGk-i7-Jjw" customClass="EthosStoreTableViewCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="505"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="413" height="505"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQT-bU-b2e">
+                        <rect key="frame" x="30" y="30" width="353" height="264.66666666666669"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ig3-FV-Wur">
+                                <rect key="frame" x="0.0" y="0.0" width="353" height="264.66666666666669"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MwV-n3-49f">
+                                <rect key="frame" x="249" y="226.66666666666669" width="94" height="28"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjr-m4-Fa6">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                        <color key="backgroundColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="18Z-by-DGN"/>
+                                            <constraint firstAttribute="height" constant="28" id="yfs-Ts-Fye"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="phone"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnMobileDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XXU-O4-Wrg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-P4-vmy">
+                                        <rect key="frame" x="33" y="0.0" width="28" height="28"/>
+                                        <color key="backgroundColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="eak-lp-HGz"/>
+                                            <constraint firstAttribute="height" constant="28" id="tKD-at-fhC"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="navigate"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnNavigationDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sem-ak-ktY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNW-cz-l7x">
+                                        <rect key="frame" x="66" y="0.0" width="28" height="28"/>
+                                        <color key="backgroundColor" red="0.61568627450000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="lDt-3G-cLr"/>
+                                            <constraint firstAttribute="height" constant="28" id="v1z-Mf-oL0"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="email_svg"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnEmailDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8pU-ff-oYo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="SQT-bU-b2e" secondAttribute="height" multiplier="192:144" id="2Xf-6m-9ny"/>
+                            <constraint firstAttribute="trailing" secondItem="ig3-FV-Wur" secondAttribute="trailing" id="Op4-MM-3XF"/>
+                            <constraint firstAttribute="bottom" secondItem="MwV-n3-49f" secondAttribute="bottom" constant="10" id="Zjv-u1-DSw"/>
+                            <constraint firstItem="ig3-FV-Wur" firstAttribute="leading" secondItem="SQT-bU-b2e" secondAttribute="leading" id="bNe-zQ-2hm"/>
+                            <constraint firstAttribute="trailing" secondItem="MwV-n3-49f" secondAttribute="trailing" constant="10" id="fYr-2U-NGY"/>
+                            <constraint firstAttribute="bottom" secondItem="ig3-FV-Wur" secondAttribute="bottom" id="qVo-po-gvJ"/>
+                            <constraint firstItem="ig3-FV-Wur" firstAttribute="top" secondItem="SQT-bU-b2e" secondAttribute="top" id="scM-rU-iRr"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMS-Yq-PX7">
+                        <rect key="frame" x="30" y="358.66666666666669" width="353" height="43"/>
+                        <string key="text">The Chanakya Mall
+111, The Chanakya, YPCC, Chanakyapuri,  New Delhi - 110021</string>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Ethos Summit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmf-w5-CUf">
+                        <rect key="frame" x="30" y="314.66666666666669" width="353" height="24"/>
+                        <fontDescription key="fontDescription" name="MrsEavesXLSerifNarOT-Reg" family="Mrs Eaves XL Serif Nar OT" pointSize="24"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="np7-nC-two">
+                        <rect key="frame" x="30" y="504" width="353" height="1"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="stE-oL-SKd"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="np7-nC-two" secondAttribute="bottom" id="13h-Zx-jod"/>
+                    <constraint firstItem="VMS-Yq-PX7" firstAttribute="top" secondItem="vmf-w5-CUf" secondAttribute="bottom" constant="20" id="1WC-II-F4N"/>
+                    <constraint firstItem="vmf-w5-CUf" firstAttribute="top" secondItem="SQT-bU-b2e" secondAttribute="bottom" constant="20" id="1pX-dE-Uft"/>
+                    <constraint firstAttribute="trailing" secondItem="np7-nC-two" secondAttribute="trailing" constant="30" id="87W-z5-n0c"/>
+                    <constraint firstItem="np7-nC-two" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VMS-Yq-PX7" secondAttribute="bottom" constant="40" id="D0J-o4-qR7"/>
+                    <constraint firstAttribute="trailing" secondItem="vmf-w5-CUf" secondAttribute="trailing" constant="30" id="Ext-Rf-osC"/>
+                    <constraint firstItem="vmf-w5-CUf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="dKw-TB-MIq"/>
+                    <constraint firstAttribute="trailing" secondItem="VMS-Yq-PX7" secondAttribute="trailing" constant="30" id="fD1-BB-Stv"/>
+                    <constraint firstItem="VMS-Yq-PX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lXS-Nf-oXP"/>
+                    <constraint firstAttribute="trailing" secondItem="SQT-bU-b2e" secondAttribute="trailing" constant="30" id="nCG-dU-jp9"/>
+                    <constraint firstItem="np7-nC-two" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="r2j-gy-Quy"/>
+                    <constraint firstItem="SQT-bU-b2e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="v1d-YG-JFU"/>
+                    <constraint firstItem="SQT-bU-b2e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="vyA-m8-rKD"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="btnEmail" destination="mNW-cz-l7x" id="3u4-ZX-ziV"/>
+                <outlet property="btnMobile" destination="wjr-m4-Fa6" id="eyL-kc-UtP"/>
+                <outlet property="btnNavigation" destination="8Qf-P4-vmy" id="U99-Q8-K7G"/>
+                <outlet property="imageViewStore" destination="ig3-FV-Wur" id="nkI-vy-1TW"/>
+                <outlet property="lblStoreAddress" destination="VMS-Yq-PX7" id="dGI-KB-juK"/>
+                <outlet property="lblTitle" destination="vmf-w5-CUf" id="ebk-od-3CU"/>
+            </connections>
+            <point key="canvasLocation" x="136.64122137404578" y="151.05633802816902"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="email_svg" width="12.666666984558105" height="12.666666984558105"/>
+        <image name="navigate" width="14" height="12"/>
+        <image name="phone" width="10" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

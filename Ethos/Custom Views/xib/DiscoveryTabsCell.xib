@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Brother-1816-Regular.otf">
+            <string>Brother-1816-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiscoveryTabsCell" id="gTV-IL-0wX" customClass="DiscoveryTabsCell" customModule="Ethos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Het-Bu-Pi8">
+                        <rect key="frame" x="21" y="18.333333333333332" width="8" height="13.333333333333332"/>
+                        <fontDescription key="fontDescription" name="Brother-1816-Regular" family="Brother 1816" pointSize="10"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fds-Ah-dv2">
+                        <rect key="frame" x="21" y="47.666666666666664" width="8" height="2.3333333333333357"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2.5" id="0rf-gu-d5L"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Het-Bu-Pi8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1bO-Oo-p4H"/>
+                <constraint firstItem="Het-Bu-Pi8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9p3-wL-ngF"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Het-Bu-Pi8" secondAttribute="trailing" id="Ge3-tm-Xkn"/>
+                <constraint firstItem="Het-Bu-Pi8" firstAttribute="trailing" secondItem="fds-Ah-dv2" secondAttribute="trailing" id="SRg-ez-i3b"/>
+                <constraint firstItem="Het-Bu-Pi8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Vd3-6X-6u4"/>
+                <constraint firstAttribute="bottom" secondItem="fds-Ah-dv2" secondAttribute="bottom" id="t0y-aV-GUB"/>
+                <constraint firstItem="fds-Ah-dv2" firstAttribute="leading" secondItem="Het-Bu-Pi8" secondAttribute="leading" id="uzO-wB-YUx"/>
+            </constraints>
+            <size key="customSize" width="182" height="97"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="constraintHeightIndicator" destination="0rf-gu-d5L" id="WjF-p6-wic"/>
+                <outlet property="lblTitle" destination="Het-Bu-Pi8" id="qHd-Li-Nl1"/>
+                <outlet property="viewIndicator" destination="fds-Ah-dv2" id="K0Q-Fz-bQH"/>
+            </connections>
+            <point key="canvasLocation" x="158.77862595419847" y="3.8732394366197185"/>
+        </collectionViewCell>
+    </objects>
+</document>
