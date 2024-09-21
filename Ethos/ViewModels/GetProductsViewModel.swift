@@ -9,12 +9,6 @@ import Foundation
 import Mixpanel
 
 class GetProductViewModel : NSObject {
-    var minPriceLimit : Int?
-    var maxPriceLimit : Int?
-    
-    var upperPriceLimit : Int?
-    var lowerPriceLimit : Int?
-    
     var limit = 20
     var product : Product?
     var products = [Product]()
@@ -24,8 +18,8 @@ class GetProductViewModel : NSObject {
     var categoryName : String?
     var filterProductCount = 0
     var currentDataCount = 0
-    var currentPage = 1
-    var totalCount = 0
+    var currentPage = 1;
+    var totalCount = 0;
     var isExpanded = false
     var gettingNewProducts = false
     var filters = [FilterModel]()
@@ -141,6 +135,12 @@ class GetProductViewModel : NSObject {
         
         if (self.selectedSortBy != nil || self.selectedFilters.count > 0) && searchString == "" {
             filters = getRequestBodyFromData()
+            
+        }else if (self.selectedSortBy == nil || self.selectedFilters.count == 0){
+            if let data = UserDefaults.standard.data(forKey: "filtersData"),
+               let retrievedFilterData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                filters = retrievedFilterData
+            }
         }
         
         self.delegate?.startIndicator()
@@ -277,11 +277,9 @@ class GetProductViewModel : NSObject {
                 if let key = filter.attributeCode {
                     var arrvalues = [[String : String]]()
                     for val in filter.values ?? [] {
-                        if let attrName = val.attributeValueName {
+                        if let attrid = val.attributeValueId, let attrName = val.attributeValueName {
                             var dict = [String : String]()
-                            if let attrid = val.attributeValueId {
-                                dict[EthosConstants.attrValueID] = String(attrid)
-                            }
+                            dict[EthosConstants.attrValueID] = String(attrid)
                             dict[EthosConstants.attrValueName] = String(attrName)
                             arrvalues.append(dict)
                         }
@@ -290,7 +288,6 @@ class GetProductViewModel : NSObject {
                 }
             }
         }
-        
         requestBody[EthosConstants.filters] = filters
         return requestBody
     }
@@ -340,7 +337,54 @@ class GetProductViewModel : NSObject {
         }
     }
     
-    func getFilters(site : Site, screenType: String?) {
+    func getFilters (
+        site : Site = .ethos
+    ) {
+        guard let id = self.categoryId else { return }
+        EthosApiManager().callApi(
+            endPoint: EthosApiEndPoints.getFilters,
+            RequestType: .GET,
+            RequestParameters: [
+                EthosConstants.categoryId : id == 3 ? "" : String(id),
+                EthosConstants.site : site.rawValue
+            ],
+            RequestBody: [:]
+        ) { data, response, error in
+            if let response = response as? HTTPURLResponse,
+               response.statusCode == 200,
+               let data = data ,
+               let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any],
+               json[EthosConstants.status] as? Bool == true,
+               let jsonData = json[EthosConstants.data] as? [String : Any],
+               let items = jsonData[EthosConstants.items] as? [[String : Any]] {
+                
+                var filters = [FilterModel]()
+                for item in items {
+                    let filter = FilterModel(json: item)
+                    if filter.values?.count ?? 0 > 1 {
+                        filters.append(filter)
+                    }
+                }
+                
+                if filters.contains(where: { model in
+                    model.attributeName?.uppercased() == EthosConstants.brand.uppercased()
+                }) && !(self.getSelectedFiltersFromSelectedValues().contains(where: { model in
+                    model.attributeName?.uppercased() == EthosConstants.brand.uppercased()
+                })) {
+                    filters.removeAll { model in
+                        model.attributeName?.uppercased() == EthosConstants.collection.uppercased() || model.attributeName?.uppercased() == EthosConstants.series.uppercased()
+                    }
+                }
+                
+                self.filters = filters
+                self.delegate?.didGetFilters()
+            } else {
+                self.delegate?.errorInGettingFilters()
+            }
+        }
+    }
+    
+    func getUpdatedFilters(site : Site, screenType: String?) {
         guard let id = self.categoryId else { return }
         var params = [String : Any]()
         var hasSelectedFilters = false
@@ -362,24 +406,9 @@ class GetProductViewModel : NSObject {
                 var filters = [FilterModel]()
                 for item in items {
                     let filter = FilterModel(json: item)
-                    
-                    if filter.attributeName?.uppercased() == "PRICE MAX" {
-                        if let maxPriceStr = filter.values?.first?.attributeValueName, let maxprice = Int(maxPriceStr) {
-                            if self.upperPriceLimit == nil {
-                                self.maxPriceLimit = maxprice
-                            }
-                            
-                        }
-                    } else if filter.attributeName?.uppercased() == "PRICE MIN" {
-                        if let minPriceStr = filter.values?.first?.attributeValueName, let minprice = Int(minPriceStr) {
-                            if self.lowerPriceLimit == nil {
-                                self.minPriceLimit = minprice
-                            }
-                        }
-                    } else if filter.values?.count ?? 0 > 1 {
+                    if filter.values?.count ?? 0 > 1 {
                         filters.append(filter)
                     }
-                    
                 }
                 
                 if filters.contains(where: { model in
@@ -394,13 +423,6 @@ class GetProductViewModel : NSObject {
                     }
                 }
                 
-                if !filters.contains(where: { model in
-                    model.attributeName?.uppercased() == "PRICE"
-                }) {
-                    if self.lowerPriceLimit != nil && self.upperPriceLimit != nil {
-                        filters.append(FilterModel(attributeName: "PRICE"))
-                    }
-                }
                 
                 self.filters = filters.sorted(by: { a, b in
                     b.attributeName ?? "" > a.attributeName ?? ""
@@ -413,10 +435,7 @@ class GetProductViewModel : NSObject {
         }
     }
     
-    func betterTogether (
-        sku : String,
-        site : Site = .ethos
-    ) {
+    func betterTogether (sku : String, site : Site = .ethos) {
         self.delegate?.startIndicator()
         EthosApiManager().callApi (
             endPoint : EthosApiEndPoints.betterTogether + sku.replacingOccurrences(of: EthosConstants.slash, with: EthosConstants.slashMark),
@@ -452,6 +471,28 @@ class GetProductViewModel : NSObject {
                     }
                     self.delegate?.errorInGettingProducts(error: (error?.localizedDescription ?? strCode) ?? EthosConstants.error)
                 }
+            }
+        }
+    }
+    
+    func getFavreLeubaCatalogHeaderView (site : Site = .ethos) {
+        guard let id = self.categoryId else { return }
+        EthosApiManager().callApi(
+            endPoint: EthosApiEndPoints.getFilters,
+            RequestType: .GET,
+            RequestParameters: [
+                EthosConstants.categoryId : id == 3 ? "" : String(id),
+                EthosConstants.site : site.rawValue
+            ],
+            RequestBody: [:]
+        ) { data, response, error in
+            if let response = response as? HTTPURLResponse,
+               response.statusCode == 200,
+               let data = data ,
+               let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any],
+               json[EthosConstants.status] as? Bool == true,
+               let jsonData = json[EthosConstants.data] as? [String : Any],
+               let items = jsonData[EthosConstants.items] as? [[String : Any]] {
             }
         }
     }

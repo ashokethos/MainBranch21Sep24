@@ -34,7 +34,7 @@ class EthosApiManager {
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     DispatchQueue.main.async {
-                        UIApplication.topViewController()?.showAlertWithSingleTitle(title: "", message: error.localizedDescription)
+                        UIApplication.topViewController()?.showAlertWithSingleTitle(title: error.localizedDescription, message: "")
                     }
                 }
                 

@@ -184,6 +184,7 @@ class SecondMovementProductDetailsVC: UIViewController {
         self.tableViewProductDetails.registerCell(className: HeadingCell.self)
         self.tableViewProductDetails.registerCell(className: SecondMovementVideoTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HtmlContainerForAboutCollectionTableViewCell.self)
+        self.tableViewProductDetails.registerCell(className: HtmlContainerForAboutCollectionPreOwnedTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HorizontalCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: SpacingTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: FavreLeubaHeaderTableViewCell.self)
@@ -725,7 +726,8 @@ extension SecondMovementProductDetailsVC : UITableViewDelegate, UITableViewDataS
                 
                 // About collection
                 if arrSections[indexPath.section - 2].0 == EthosConstants.AboutTheProduct {
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionTableViewCell {
+//                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionTableViewCell {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionPreOwnedTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionPreOwnedTableViewCell {
                         cell.delegate = self
                         cell.index = indexPath
                         cell.superTableView = self.tableViewProductDetails
@@ -750,6 +752,7 @@ extension SecondMovementProductDetailsVC : UITableViewDelegate, UITableViewDataS
                         return cell
                     }
                 }
+                
             } else if indexPath.section == (arrSections.count + 2) {
                 if self.loadingNewArrivals {
                     if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HorizontalCollectionTableViewCell.self), for: indexPath) as? HorizontalCollectionTableViewCell {

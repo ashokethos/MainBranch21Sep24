@@ -39,10 +39,11 @@ class LatestViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tableViewHome.reloadData()
+        tableViewHome.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableViewHome.setContentOffset(.zero, animated: true)
         updateNotificationCount()
         callCustomerDetailsApi()
         if tableViewHome.numberOfSections > 0 {
@@ -135,7 +136,6 @@ class LatestViewController: UIViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
     

@@ -138,9 +138,9 @@ class FavreLeubaHeaderTableViewCell: UITableViewCell {
                 }
                 
                 DispatchQueue.main.async {
-                    self.img1.clipRightCorner(offset: 50)
-                    self.img2.clipRightCorner(offset: 50)
-                    self.img3.clipRightCorner(offset: 50)
+//                    self.img1.clipRightCorner(offset: 50)
+//                    self.img2.clipRightCorner(offset: 50)
+//                    self.img3.clipRightCorner(offset: 50)
                 }
                 
                 
@@ -193,7 +193,6 @@ class FavreLeubaHeaderTableViewCell: UITableViewCell {
             self.imageHeader.layer.addSublayer(self.playerLayer)
             self.addObseverToPlayer()
         }
-        
     }
     
     @objc func tapOnImageOverlay(_ : UITapGestureRecognizer) {

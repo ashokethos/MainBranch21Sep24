@@ -64,6 +64,9 @@ class FilterModel : NSObject {
                 }
                 
                 if alphabeticValue.header == "#" {
+//                    let values : [FilterValue] = alphabeticValue.values.sorted { v1, v2 in
+//                        (v2.attributeValueName ?? "").getInt > (v1.attributeValueName ?? "").getInt
+//                    }
                     let values : [FilterValue] = alphabeticValue.values.sorted { v1, v2 in
                         (v2.numericValue ?? 0.0) > (v1.numericValue ?? 0.0)
                     }

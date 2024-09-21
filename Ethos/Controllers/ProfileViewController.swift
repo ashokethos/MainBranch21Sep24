@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 import PhotosUI
 import Mixpanel
 
@@ -20,6 +21,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var lblNumberOfNotifications: UILabel!
     
     var points = 0
+    
+    let picker = UIImagePickerController()
     
     var viewModel = GetCustomerViewModel()
     
@@ -128,11 +131,84 @@ class ProfileViewController: UIViewController {
     
     @IBAction func btnProfilePicDidTapped(_ sender: UIButton) {
         if Userpreference.token != nil {
-            let picker = UIImagePickerController()
             picker.delegate = self
             picker.allowsEditing = true
-            self.present(picker, animated: true)
+            //            self.present(picker, animated: true)
+            //            checkCameraPermission()
+            
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+                self.openCamera()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
+                self.openGallary()
+            }))
+            
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+            
+            switch UIDevice.current.userInterfaceIdiom {
+            case .pad:
+                alert.popoverPresentationController?.sourceView = sender
+                alert.popoverPresentationController?.sourceRect = sender.bounds
+                alert.popoverPresentationController?.permittedArrowDirections = .up
+            default:
+                break
+            }
+            
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func checkCameraPermission(){
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        case .authorized:
+            present(picker, animated: true, completion: nil)
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    self.present(self.picker, animated: true, completion: nil)
+                    print("success")
+                }
+            })
+            print("It is not determined until now")
+        case .restricted:
+            print("User do not have access to photo album.")
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        case .denied:
+            print("User has denied the permission.")
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        case .limited:
+            print("User has denied the permissions.")
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        @unknown default:
+            print("User has denied the permission default.")
+        }
+    }
+    
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
+            picker.sourceType = UIImagePickerController.SourceType.camera
+            picker.allowsEditing = true
+            picker.delegate = self
+            checkCameraPermission()
+        }
+        else{
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallary() {
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        checkCameraPermission()
     }
     
     @IBAction func btnNotificationDidTapped(_ sender: UIButton) {
@@ -267,7 +343,7 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+        
         switch indexPath.section {
         case 0 :
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self), for: indexPath) as? HeadingCell {
@@ -288,9 +364,6 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
                 )
                 return cell
             }
-            
-            
-            
         case 1 :
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self), for: indexPath) as? HeadingCell {
@@ -464,112 +537,112 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-            switch indexPath.section {
-                
-            case 0 : break
-                
-            case 1 :
-                if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosProfileTableViewController.self)) as? EthosProfileTableViewController {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
-            case 2 :
-                if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: PurchaseHistoryViewController.self)) as? PurchaseHistoryViewController {
-                    
-                    Mixpanel.mainInstance().track(event: "Puchase History", properties: [
-                        EthosConstants.Email : Userpreference.email,
-                        EthosConstants.UID : Userpreference.userID,
-                        EthosConstants.Gender : Userpreference.gender,
-                        EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
-                        EthosConstants.Platform : EthosConstants.IOS
-                    ])
-                    
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
-            case 3 :  if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosProfileCollectionViewController.self)) as? EthosProfileCollectionViewController {
+        switch indexPath.section {
+            
+        case 0 : break
+            
+        case 1 :
+            if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosProfileTableViewController.self)) as? EthosProfileTableViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            
+        case 2 :
+            if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: PurchaseHistoryViewController.self)) as? PurchaseHistoryViewController {
                 
-            case 4 : if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: HelpAndSupportViewController.self)) as? HelpAndSupportViewController {
+                Mixpanel.mainInstance().track(event: "Purchase History Clicked", properties: [
+                    EthosConstants.Email : Userpreference.email,
+                    EthosConstants.UID : Userpreference.userID,
+                    EthosConstants.Gender : Userpreference.gender,
+                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                    EthosConstants.UserLocation : Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    EthosConstants.Description : "When a user clicks on the purchase history in the profile section",
+                    EthosConstants.Platform : EthosConstants.IOS
+                ])
                 
-                Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.HelpCenterClicked, properties: [
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        case 3 :  if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosProfileCollectionViewController.self)) as? EthosProfileCollectionViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
+        case 4 : if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: HelpAndSupportViewController.self)) as? HelpAndSupportViewController {
+            
+            Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.HelpCenterClicked, properties: [
+                EthosConstants.Email : Userpreference.email,
+                EthosConstants.UID : Userpreference.userID,
+                EthosConstants.Gender : Userpreference.gender,
+                EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                EthosConstants.Platform : EthosConstants.IOS
+            ])
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
+        case 5 :
+            if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: ContactUsViewController.self)) as? ContactUsViewController {
+                Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.ContactUsClicked, properties: [
                     EthosConstants.Email : Userpreference.email,
                     EthosConstants.UID : Userpreference.userID,
                     EthosConstants.Gender : Userpreference.gender,
                     EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
                     EthosConstants.Platform : EthosConstants.IOS
                 ])
-                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            
+        case 6 :
+            let activityViewController = UIActivityViewController(activityItems: [EthosIdentifiers.appLink], applicationActivities: nil)
+            activityViewController.completionWithItemsHandler = {
+                type, complete, res, error in
+                if complete {
+                    Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.ShareThisAppClicked, properties: [
+                        EthosConstants.Email : Userpreference.email,
+                        EthosConstants.UID : Userpreference.userID,
+                        EthosConstants.Gender : Userpreference.gender,
+                        EthosConstants.Platform : EthosConstants.IOS,
+                        EthosConstants.Registered : Userpreference.token == nil || Userpreference.token == "" ? EthosConstants.N : EthosConstants.Y,
+                        EthosConstants.SharedVia : type?.rawValue
+                    ]
+                    )
+                }
+            }
+            self.present(activityViewController, animated: true, completion: nil)
+            
+        case 7 :
+            if let alertController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
+                Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.DeleteYourAccountClicked, properties: [
+                    EthosConstants.Email : Userpreference.email,
+                    EthosConstants.UID : Userpreference.userID,
+                    EthosConstants.Gender : Userpreference.gender,
+                    EthosConstants.Platform : EthosConstants.IOS,
+                    EthosConstants.Registered : Userpreference.token == nil || Userpreference.token == "" ? EthosConstants.N : EthosConstants.Y,
+                ])
                 
-            case 5 :
-                if let vc =  UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: ContactUsViewController.self)) as? ContactUsViewController {
-                    Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.ContactUsClicked, properties: [
+                alertController.setActions(title: EthosConstants.deleteAccountAlertTitle, message: EthosConstants.deleteAccountAlertMessage, firstActionTitle: EthosConstants.Cancel.uppercased(), secondActionTitle: EthosConstants.Confirm.uppercased(), secondAction:  {
+                    self.viewModel.deleteAccount()
+                })
+                self.present(alertController, animated: true)
+            }
+        case 8 :
+            if let alertController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
+                alertController.setActions(title: EthosConstants.logoutAlertTitle, message: "", firstActionTitle: EthosConstants.Cancel.uppercased(), secondActionTitle: EthosConstants.Confirm.uppercased(), secondAction:  {
+                    Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.UserLoggedOut, properties: [
                         EthosConstants.Email : Userpreference.email,
                         EthosConstants.UID : Userpreference.userID,
                         EthosConstants.Gender : Userpreference.gender,
                         EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
                         EthosConstants.Platform : EthosConstants.IOS
                     ])
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
-            case 6 :
-                let activityViewController = UIActivityViewController(activityItems: [EthosIdentifiers.appLink], applicationActivities: nil)
-                activityViewController.completionWithItemsHandler = {
-                    type, complete, res, error in
-                    if complete {
-                        Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.ShareThisAppClicked, properties: [
-                            EthosConstants.Email : Userpreference.email,
-                            EthosConstants.UID : Userpreference.userID,
-                            EthosConstants.Gender : Userpreference.gender,
-                            EthosConstants.Platform : EthosConstants.IOS,
-                            EthosConstants.Registered : Userpreference.token == nil || Userpreference.token == "" ? EthosConstants.N : EthosConstants.Y,
-                            EthosConstants.SharedVia : type?.rawValue
-                        ]
-                        )
-                    }
-                }
-                self.present(activityViewController, animated: true, completion: nil)
-                
-            case 7 :
-                if let alertController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
-                    
-                    Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.DeleteYourAccountClicked, properties: [
-                        EthosConstants.Email : Userpreference.email,
-                        EthosConstants.UID : Userpreference.userID,
-                        EthosConstants.Gender : Userpreference.gender,
-                        EthosConstants.Platform : EthosConstants.IOS,
-                        EthosConstants.Registered : Userpreference.token == nil || Userpreference.token == "" ? EthosConstants.N : EthosConstants.Y,
-                    ])
-                    
-                    alertController.setActions(title: EthosConstants.deleteAccountAlertTitle, message: EthosConstants.deleteAccountAlertMessage, firstActionTitle: EthosConstants.Cancel.uppercased(), secondActionTitle: EthosConstants.Confirm.uppercased(), secondAction:  {
-                        self.viewModel.deleteAccount()
-                    })
-                    self.present(alertController, animated: true)
-                }
-                
-            case 8 :
-                if let alertController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
-                    alertController.setActions(title: EthosConstants.logoutAlertTitle, message: "", firstActionTitle: EthosConstants.Cancel.uppercased(), secondActionTitle: EthosConstants.Confirm.uppercased(), secondAction:  {
-                        Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.UserLoggedOut, properties: [
-                            EthosConstants.Email : Userpreference.email,
-                            EthosConstants.UID : Userpreference.userID,
-                            EthosConstants.Gender : Userpreference.gender,
-                            EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
-                            EthosConstants.Platform : EthosConstants.IOS
-                        ])
-                        self.backToRoot()
-                    })
-                    self.present(alertController, animated: true)
-                }
-                
-            default: break
-                
+                    self.backToRoot()
+                })
+                self.present(alertController, animated: true)
             }
-      
+            
+        default: break
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

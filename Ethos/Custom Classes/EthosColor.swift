@@ -28,6 +28,10 @@ struct EthosColor {
     
     static let seperatorColor : UIColor = UIColor.colorWithHexString(hexString: "#c8c8c8")
     
+    static let seperatorDarkColor : UIColor = UIColor.colorWithHexString(hexString: "#818181")
+    
+    static let blackColor : UIColor = UIColor.colorWithHexString(hexString: "#000000")
+    
     static let green : UIColor = UIColor.colorWithHexString(hexString: "#0D9D00")
         
     static let descGrey : UIColor = UIColor.colorWithHexString(hexString: "#808080") 

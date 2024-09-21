@@ -11,4 +11,5 @@ enum BannerKeys : String {
     case preOwn = "pre-own"
     case shop = "shop"
     case discover = "discover"
+    case category = "category"
 }

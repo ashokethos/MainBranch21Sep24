@@ -102,13 +102,9 @@ class ProductPairTableViewCell: UITableViewCell {
             }
             
             if let urlfile = self.product1?.extensionAttributes?.ethProdCustomeData?.images?.catalogImage, let url = URL(string: urlfile) {
-                self.productImage1.kf.setImage(
-                    with: url
-                )
+                self.productImage1.kf.setImage(with: url)
             } else if let urlfile = self.product1?.assets?.first?.file, let url = URL(string: urlfile) {
-                self.productImage1.kf.setImage(
-                    with: url
-                )
+                self.productImage1.kf.setImage(with: url)
             }
             
             if let hidePrice = (product1?.extensionAttributes?.ethProdCustomeData?.hidePrice), self.isForPreOwned == true , hidePrice == true {
@@ -147,17 +143,12 @@ class ProductPairTableViewCell: UITableViewCell {
             } else if let price = self.isForPreOwned ? product2?.extensionAttributes?.ethProdCustomeData?.price : product2?.price,
                       let currency = product2?.currency {
                 self.lblDescription2.setAttributedTitleWithProperties(title: currency.uppercased() + " " + (price.getCommaSeperatedStringValue() ?? ""), font: EthosFont.Brother1816Medium(size: 10),alignment: .center, lineHeightMultiple: 1.32, kern: 1)
-                
             }
             
             if let urlfile = self.product2?.extensionAttributes?.ethProdCustomeData?.images?.catalogImage, let url = URL(string: urlfile) {
-                self.productImage2.kf.setImage(
-                    with: url
-                )
+                self.productImage2.kf.setImage(with: url)
             } else if let urlfile = self.product2?.assets?.first?.file, let url = URL(string: urlfile) {
-                self.productImage2.kf.setImage(
-                    with: url
-                )
+                self.productImage2.kf.setImage(with: url)
             }
             
             if let hidePrice = (product2?.extensionAttributes?.ethProdCustomeData?.hidePrice), self.isForPreOwned == true , hidePrice == true {
