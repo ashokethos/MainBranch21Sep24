@@ -78,6 +78,7 @@ class HomeTableViewCell: UITableViewCell {
                 kern: 0.5
             )
             
+            self.lblTitle.numberOfLines = 3
             self.lblTitle.setAttributedTitleWithProperties(
                 title: article?.title ?? "",
                 font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24),

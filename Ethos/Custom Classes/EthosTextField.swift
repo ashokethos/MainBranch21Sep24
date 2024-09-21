@@ -16,6 +16,7 @@ class EthosTextField: UITextField {
     private var underLineColor = EthosColor.seperatorColor
     private var errUnderLineColor = UIColor.red
     private var txtColor = UIColor.black
+    private var txtTintColor = UIColor.red
     private var errImage : UIImage? = UIImage(named: EthosConstants.required)
     private var textInset : CGFloat = 0
     
@@ -30,6 +31,7 @@ class EthosTextField: UITextField {
     func initWithUIParameters (
         placeHolderText : String,
         textColor : UIColor = .black,
+        txtTintColor : UIColor = .red,
         leftView : UIView? = nil,
         rightView : UIView? = nil,
         placeholderColor : UIColor = .black,
@@ -44,6 +46,7 @@ class EthosTextField: UITextField {
         textInset : CGFloat = 10
     ) {
         self.txtColor = textColor
+        self.txtTintColor = txtTintColor
         self.placeHolderColor = placeholderColor
         self.underLineColor = underLineColor
         self.errUnderLineColor = errUnderLineColor
@@ -53,6 +56,7 @@ class EthosTextField: UITextField {
         self.placeHolderText = placeHolderText
         self.font = EthosFont.Brother1816Regular(size: 12)
         self.textColor = txtColor
+        self.tintColor = txtTintColor
         
         self.attributedPlaceholder = NSAttributedString(string: self.placeHolderText, attributes: [NSAttributedString.Key.foregroundColor : self.placeHolderColor, NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12)])
        

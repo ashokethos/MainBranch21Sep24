@@ -45,6 +45,7 @@ class GetPurchaseHistoryData {
     var brand_name: String?
     var model_number: String?
     var billing_amount: Int?
+    var invoiceAttachmentPath: String?
     var watch_category_type: String?
     var price: Int?
     var name: String?
@@ -52,13 +53,14 @@ class GetPurchaseHistoryData {
     var gender: String?
     var image: String?
     
-    init(invoice_number: String? = nil, invoice_type: String? = nil, invoice_date: String? = nil, brand_name: String? = nil, model_number: String? = nil, billing_amount: Int? = nil, watch_category_type: String? = nil, price: Int? = nil, name: String? = nil, case_size: String? = nil, gender: String? = nil, image: String? = nil) {
+    init(invoice_number: String? = nil, invoice_type: String? = nil, invoice_date: String? = nil, brand_name: String? = nil, model_number: String? = nil, billing_amount: Int? = nil, invoiceAttachmentPath: String? = nil, watch_category_type: String? = nil, price: Int? = nil, name: String? = nil, case_size: String? = nil, gender: String? = nil, image: String? = nil) {
         self.invoice_number = invoice_number
         self.invoice_type = invoice_type
         self.invoice_date = invoice_date
         self.brand_name = brand_name
         self.model_number = model_number
         self.billing_amount = billing_amount
+        self.invoiceAttachmentPath = invoiceAttachmentPath
         self.watch_category_type = watch_category_type
         self.price = price
         self.name = name
@@ -90,6 +92,10 @@ class GetPurchaseHistoryData {
         
         if let billing_amount = json["billing_amount"] as? Int {
             self.billing_amount = billing_amount
+        }
+        
+        if let invoiceAttachmentPath = json["invoice_attachment_path"] as? String {
+            self.invoiceAttachmentPath = invoiceAttachmentPath
         }
         
         if let watch_category_type = json["watch_category_type"] as? String {

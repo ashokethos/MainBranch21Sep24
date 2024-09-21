@@ -152,6 +152,7 @@ class ProductDetailViewController: UIViewController {
         self.addTapGestureToDissmissKeyBoard()
         self.tableViewProductDetails.registerCell(className: SingleCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: SpecificationPairTableViewCell.self)
+        self.tableViewProductDetails.registerCell(className: EditorNotesTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: MovementTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: AdvertisementCell.self)
         self.tableViewProductDetails.registerCell(className: HeadingCell.self)
@@ -229,6 +230,12 @@ class ProductDetailViewController: UIViewController {
         addRecentProduct(product: product)
         
         self.arrSections.removeAll()
+        
+        if product.extensionAttributes?.ethProdCustomeData?.showEditosNote == true {
+            if product.extensionAttributes?.ethProdCustomeData?.editorDescription != nil && product.extensionAttributes?.ethProdCustomeData?.editorDescription != "" && self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.brand != EthosConstants.FavreLeuba{
+                self.arrSections.append((product.extensionAttributes?.ethProdCustomeData?.editorHeading?.uppercased() ?? "",false))
+            }
+        }
         
         if let customData = product.extensionAttributes?.ethProdCustomeData?.attributesDictionary {
             self.arrSections.append(((EthosConstants.FullSpecification), false))
@@ -573,7 +580,6 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                                 cell.constraintHeightTopSeperator.constant = 8
                             }
                             
-                            
                             cell.forSecondMovement = false
                             cell.key = .forBetterTogether
                             cell.setTitle(title: EthosConstants.BetterTogether.uppercased())
@@ -718,7 +724,15 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                         
                         cell.attribute = (str1, str2, str3, str4)
                         cell.layoutSubviews()
-                        
+                        return cell
+                    }
+                }
+                
+                if arrSections[indexPath.section - 3].0 == self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.editorHeading?.uppercased() {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditorNotesTableViewCell.self), for: indexPath) as? EditorNotesTableViewCell {
+                        if let descriptionStr = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.editorDescription {
+                                cell.descriptionString = descriptionStr
+                            }
                         return cell
                     }
                 }

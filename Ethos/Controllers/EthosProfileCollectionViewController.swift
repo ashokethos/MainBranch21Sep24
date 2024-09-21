@@ -95,6 +95,12 @@ class EthosProfileCollectionViewController: UIViewController {
     
     @IBAction func btnExploreNowDidTapped(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 2
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewCatalogViewController.self)) as? NewCatalogViewController {
+//            vc.screenType = "view_all"
+//            vc.productViewModel.categoryName = "All Watches"
+//            vc.productViewModel.categoryId = 110
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {

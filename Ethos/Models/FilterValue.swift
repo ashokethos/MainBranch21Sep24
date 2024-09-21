@@ -90,13 +90,13 @@ class FilterValue: NSObject {
     }
     
     init(json: [String: Any]) {
-        if let id = json[EthosConstants.attrValueID] as? Int {
+        if let id = json["attr_value_id"] as? Int {
             self.attributeValueId = id
-        } else if let id = json[EthosConstants.attrValueID] as? String {
+        } else if let id = json["attr_value_id"] as? String {
             self.attributeValueId = Int(id)
         }
         
-        if let name = json[EthosConstants.attrValueName] as? String {
+        if let name = json["attr_value_name"] as? String {
             self.attributeValueName = name
         }
     }
@@ -127,3 +127,4 @@ class FilterValue: NSObject {
         }
     }
 }
+

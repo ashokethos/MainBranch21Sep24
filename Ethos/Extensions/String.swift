@@ -106,6 +106,12 @@ extension String {
         return result
     }
     
+    var containsValidCharacter: Bool {
+        guard self != "" else { return true }
+        let hexSet = CharacterSet(charactersIn: "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+        let newSet = CharacterSet(charactersIn: self)
+        return hexSet.isSuperset(of: newSet)
+      }
     
     var htmlToAttributedString: NSMutableAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
@@ -130,9 +136,7 @@ extension String {
         return "tel://\(phoneNumber)"
     }
     
-    func checkNumeric() -> Bool {
-       return Double(self) != nil
-    }
+    
     
     func getVimeoId() -> String {
         let videoId = self.replacingOccurrences(of: "https://player.vimeo.com/video/", with: "")
@@ -198,6 +202,22 @@ extension String {
         }
         return (firstname , lastname)
     }
+    
+    func getAttributedString<T>(_ key: NSAttributedString.Key, value: T) -> NSAttributedString {
+           let applyAttribute = [ key: T.self ]
+           let attrString = NSAttributedString(string: self, attributes: applyAttribute)
+           return attrString
+        }
+    
+    var isValidURL: Bool {
+            let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+                // it is a link, if the match covers the whole string
+                return match.range.length == self.utf16.count
+            } else {
+                return false
+            }
+        }
 }
 
 
