@@ -27,6 +27,7 @@ class NewCatalogViewController: UIViewController {
     var story : Banner?
     var forStoryRoute : Bool = false
     let refreshControl = UIRefreshControl()
+    let bannerViewModel = GetBannersViewModel()
     var productViewModel = GetProductViewModel()
     var adViewModel = GetAdsViewModel()
     var isForPreOwned = false
@@ -47,7 +48,7 @@ class NewCatalogViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
     
     func addRefreshControl() {
@@ -60,9 +61,11 @@ class NewCatalogViewController: UIViewController {
     @objc func refreshTable() {
         callApi()
     }
-
+    
     
     func callApi() {
+        bannerViewModel.delegate = self
+        bannerViewModel.getBanners(key: .category)
         self.adViewModel.getAdvertisment(site: self.isForPreOwned ? Site.secondMovement : Site.ethos, location : "category") {
             
             self.productViewModel.getProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos)
@@ -86,7 +89,7 @@ class NewCatalogViewController: UIViewController {
         productTableView.register(UINib(nibName: String(describing: FavreLeubaCatalogHeaderView.self), bundle: nil), forHeaderFooterViewReuseIdentifier: String(describing: FavreLeubaCatalogHeaderView.self))
         
         productTableView.registerCell(className: SpacingTableViewCell.self)
-       
+        
         productViewModel.delegate = self
         self.btnFilter.isEnabled = false
         self.viewFilterAndSortBy.clipsToBounds = true
@@ -104,7 +107,7 @@ class NewCatalogViewController: UIViewController {
     }
     
     func getFilters() {
-            self.productViewModel.getFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
+        self.productViewModel.getUpdatedFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
     }
     
     @IBAction func didTapBack(_ sender: UIButton) {
@@ -142,7 +145,6 @@ class NewCatalogViewController: UIViewController {
             vc.isForPreOwned = self.isForPreOwned
             vc.screenType = self.screenType
             vc.viewModel.filters = productViewModel.filters
-            
             vc.viewModel.filterProductCount = productViewModel.totalCount
             vc.viewModel.initiate(id: self.productViewModel.categoryId, categoryName: self.productViewModel.categoryName, selectedSortBy: self.productViewModel.selectedSortBy) {
                 var selectedValues = [SelectedFilterData]()
@@ -152,21 +154,11 @@ class NewCatalogViewController: UIViewController {
                         selectedValues.append(item)
                     }
                 }
-                vc.viewModel.minPriceLimit = self.productViewModel.minPriceLimit
-                vc.viewModel.maxPriceLimit = self.productViewModel.maxPriceLimit
-                
-                vc.viewModel.lowerPriceLimit = self.productViewModel.lowerPriceLimit
-                vc.viewModel.upperPriceLimit = self.productViewModel.upperPriceLimit
-                
-                vc.viewModel.selectedFilters = self.productViewModel.selectedFilters
                 vc.viewModel.selectedValues = selectedValues
                 vc.delegate = self
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: false)
             }
         }
-
     }
     
     func updateView() {
@@ -175,7 +167,7 @@ class NewCatalogViewController: UIViewController {
         } else {
             self.btnRedDotSortBy.isHidden = false
         }
-        if self.productViewModel.selectedFilters.count == 0 && self.productViewModel.lowerPriceLimit == nil && self.productViewModel.upperPriceLimit == nil {
+        if self.productViewModel.selectedFilters.count == 0 {
             self.btnRedDot.isHidden = true
         } else {
             self.btnRedDot.isHidden = false
@@ -247,10 +239,26 @@ extension NewCatalogViewController : UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 && self.productViewModel.categoryId == 80 && self.isForPreOwned == false, let favreLeubaCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: FavreLeubaCatalogHeaderView.self)) as? FavreLeubaCatalogHeaderView {
-                favreLeubaCell.setUI(isExpanded: self.productViewModel.isExpanded)
-                favreLeubaCell.btnAction.addTarget(self, action: #selector(btnReadMoreTapped), for: .touchUpInside)
-                return favreLeubaCell
+//        if section == 0 && self.productViewModel.categoryId == 80 && self.isForPreOwned == false, let favreLeubaCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: FavreLeubaCatalogHeaderView.self)) as? FavreLeubaCatalogHeaderView {
+        if section == 0 && self.isForPreOwned == false, let favreLeubaCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: FavreLeubaCatalogHeaderView.self)) as? FavreLeubaCatalogHeaderView {
+            if let bannerData = bannerViewModel.banners.first(where: {$0.value == "\(productViewModel.categoryId ?? 0)"}) {
+                favreLeubaCell.imageViewMain.isHidden = false
+                favreLeubaCell.lblTitle.isHidden = false
+                favreLeubaCell.lblDescription.isHidden = false
+                favreLeubaCell.btnAction.isHidden = false
+                if productViewModel.products.count > 0 {
+                    favreLeubaCell.brandName = productViewModel.products[0].extensionAttributes?.ethProdCustomeData?.brand
+                }
+                favreLeubaCell.bannerData = bannerData
+            }else{
+                favreLeubaCell.imageViewMain.isHidden = true
+                favreLeubaCell.lblTitle.isHidden = true
+                favreLeubaCell.lblDescription.isHidden = true
+                favreLeubaCell.btnAction.isHidden = true
+            }
+            favreLeubaCell.setUI(isExpanded: self.productViewModel.isExpanded)
+            favreLeubaCell.btnAction.addTarget(self, action: #selector(btnReadMoreTapped), for: .touchUpInside)
+            return favreLeubaCell
         }
         
         return nil
@@ -362,6 +370,14 @@ extension NewCatalogViewController : UIScrollViewDelegate {
     }
 }
 
+extension NewCatalogViewController : GetBannersViewModelDelegate{
+    func didGetBanners(banners : [Banner]){
+        DispatchQueue.main.async {
+            self.productTableView.reloadData()
+        }
+    }
+}
+
 extension NewCatalogViewController : SuperViewDelegate {
     func updateView(info: [EthosKeys : Any?]?) {
         if let key = info?[EthosKeys.key] as? EthosKeys,
@@ -388,20 +404,7 @@ extension NewCatalogViewController : SuperViewDelegate {
             UserActivityViewModel().getDataFromActivityUrl(url: urlstr)
         }
         
-        if let key = info?[EthosKeys.key] as? EthosKeys, key == .applyFilters, let filters = info? [EthosKeys.filters] as? [FilterModel] , let selectedFilters = info? [EthosKeys.selectedFilters] as? [FilterModel] {
-            
-            if let minPriceLimit = info?[EthosKeys.minPriceLimit] as? Int,
-               let maxPriceLimit = info?[EthosKeys.maxPriceLimit] as? Int {
-                self.productViewModel.minPriceLimit = minPriceLimit
-                self.productViewModel.maxPriceLimit = maxPriceLimit
-            }
-            
-            if let lowerPriceLimit = info?[EthosKeys.lowerPriceLimit] as? Int,
-               let upperPriceLimit = info?[EthosKeys.upperPriceLimit] as? Int {
-                self.productViewModel.lowerPriceLimit = lowerPriceLimit
-                self.productViewModel.upperPriceLimit = upperPriceLimit
-            }
-            
+        if let key = info?[EthosKeys.key] as? EthosKeys, key == .applyFilters, let filters = info? [EthosKeys.filters] as? [FilterModel] , let selectedFilters = info? [EthosKeys.selectedFilters] as? [FilterModel]{
             self.productViewModel.selectedFilters = selectedFilters
             self.productViewModel.filters = filters
             updateView()
@@ -419,15 +422,13 @@ extension NewCatalogViewController : SuperViewDelegate {
                 EthosConstants.Brand : self.productViewModel.categoryName,
                 EthosConstants.RestOfTheFilters : self.productViewModel.getRequestBodyFromData()[EthosConstants.filters]
             ])
-            
         }
         
         if let key = info?[EthosKeys.key] as? EthosKeys, key == .resetFilters {
             self.productViewModel.selectedFilters = []
-            self.productViewModel.upperPriceLimit = nil
-            self.productViewModel.lowerPriceLimit = nil
             self.productViewModel.products.removeAll()
             self.btnFilter.isEnabled = false
+            UserDefaults.standard.removeObject(forKey: "filtersData")
             self.getFilters()
             updateView()
             self.productTableView.reloadData()
@@ -494,12 +495,7 @@ extension NewCatalogViewController : GetProductViewModelDelegate {
                 self.lblNumberOfItems.text = "\(self.productViewModel.totalCount) product".uppercased()
             } else {
                 if self.productViewModel.totalCount == 0{
-                    if self.productViewModel.selectedFilters.count > 0 {
-                        self.viewFilterAndSortBy.isHidden = false
-                    } else {
-                        self.viewFilterAndSortBy.isHidden = true
-                    }
-                    
+                    self.viewFilterAndSortBy.isHidden = true
                 } else {
                     self.viewFilterAndSortBy.isHidden = false
                 }

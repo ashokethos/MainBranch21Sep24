@@ -10,12 +10,14 @@ import UIKit
 class SubText {
     var heading: String?
     var text: String?
+    var mainHeading: String?
     var order: Int?
     var image: String?
 
-    init(heading: String?, text: String?, order: Int?, image: String?) {
+    init(heading: String?, text: String?, mainHeading: String?, order: Int?, image: String?) {
         self.heading = heading
         self.text = text
+        self.mainHeading = mainHeading
         self.order = order
         self.image = image
     }
@@ -35,6 +37,10 @@ class SubText {
         
         if let text = json[EthosConstants.text] as? String {
             self.text = text
+        }
+        
+        if let mainHeading = json[EthosConstants.mainHeading] as? String {
+            self.mainHeading = mainHeading
         }
     }
 }

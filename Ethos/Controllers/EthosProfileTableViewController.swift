@@ -74,7 +74,6 @@ class EthosProfileTableViewController: UIViewController {
     }
     
     func reloadView() {
-        
         self.tableViewArticles.reloadData()
         self.viewNoArticles.isHidden = !savedArticles.isEmpty
     }
@@ -91,7 +90,6 @@ class EthosProfileTableViewController: UIViewController {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
 }
@@ -110,7 +108,6 @@ extension EthosProfileTableViewController  : UITableViewDataSource, UITableViewD
         }
         
         return UITableViewCell()
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -148,8 +145,6 @@ extension EthosProfileTableViewController  : UITableViewDataSource, UITableViewD
         
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration
-        
-        
     }
     
 }
