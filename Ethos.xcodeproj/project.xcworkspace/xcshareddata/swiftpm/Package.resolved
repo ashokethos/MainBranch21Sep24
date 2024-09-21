@@ -1,5 +1,5 @@
 {
-  "originHash" : "f5811201f2d15e6aebf1a230ea1583be0197cc24e0b45e642eb5bb4a40e2dd71",
+  "originHash" : "099cc78d2f29966f6d66e6e3a5e258bf8279dc5085914ea3a5831b45e3e615ee",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -206,15 +206,6 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
-      }
-    },
-    {
-      "identity" : "rangeslider",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/warchimede/RangeSlider",
-      "state" : {
-        "revision" : "04ddecea8b0b4d267420c72aa8f5005844d841e6",
-        "version" : "1.2.0"
       }
     },
     {

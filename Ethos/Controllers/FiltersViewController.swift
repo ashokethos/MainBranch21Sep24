@@ -17,7 +17,8 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var btnReset: UIButton!
     @IBOutlet weak var btnApplyFilters: UIButton!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var constraintTextField: NSLayoutConstraint!
+    @IBOutlet weak var viewTextFieldSeperator: UIView!
     
     var viewModel = GetProductViewModel()
     var delegate : SuperViewDelegate?
@@ -29,6 +30,7 @@ class FiltersViewController: UIViewController {
         self.viewModel.delegate = self
         self.addTapGestureToDissmissKeyBoard()
         self.tableViewValues.registerCell(className: HeadingCell.self)
+        self.tableViewValues.registerCell(className: PriceSliderTableViewCell.self)
         self.tableViewFilters.registerCell(className: HeadingCell.self)
         self.tableViewFilters.registerCell(className: SingleButtonWithDisclosureTableViewCell.self)
         let image = UIImageView(image: UIImage.imageWithName(name: EthosConstants.search))
@@ -52,10 +54,22 @@ class FiltersViewController: UIViewController {
     }
     
     func reloadView() {
+        if self.viewModel.selectedFilter?.attributeName?.uppercased() == "PRICE" {
+            self.textFieldSearch.isHidden = true
+            self.viewTextFieldSeperator.isHidden = true
+            self.constraintTextField.constant = 0
+            
+        } else {
+            self.textFieldSearch.isHidden = false
+            self.viewTextFieldSeperator.isHidden = false
+            self.constraintTextField.constant = 50
+        }
+        
         self.tableViewFilters.reloadData()
         self.tableViewValues.reloadData()
         self.lblTitle.text = "Filter products".uppercased()
         self.textFieldSearch.initWithUIParameters(placeHolderText: "Search")
+        self.view.layoutIfNeeded()
     }
     
     
@@ -78,24 +92,27 @@ class FiltersViewController: UIViewController {
     
     @IBAction func btnApplyFiltersDidTapped(_ sender: UIButton) {
         self.dismiss(animated: true) {
-            self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.applyFilters, EthosKeys.selectedFilters : self.viewModel.selectedFilters, EthosKeys.filters : self.viewModel.filters])
+            self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.applyFilters, EthosKeys.selectedFilters : self.viewModel.selectedFilters, EthosKeys.filters : self.viewModel.filters, EthosKeys.lowerPriceLimit : self.viewModel.lowerPriceLimit, EthosKeys.upperPriceLimit : self.viewModel.upperPriceLimit, EthosKeys.minPriceLimit : self.viewModel.minPriceLimit, EthosKeys.maxPriceLimit : self.viewModel.maxPriceLimit])
         }
     }
 }
 
 
 extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == tableViewFilters {
             return 1
         }
         
         if tableView == tableViewValues {
-            if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
-                return viewModel.selectedFilter?.alphabeticFilterValues?.count ?? 0
+            if viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+                return 1
             } else {
-                return viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?.count ?? 0
+                if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
+                    return viewModel.selectedFilter?.alphabeticFilterValues?.count ?? 0
+                } else {
+                    return viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?.count ?? 0
+                }
             }
         }
         
@@ -109,10 +126,14 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
         }
         
         if tableView == tableViewValues {
-            if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
-                return viewModel.selectedFilter?.alphabeticFilterValues?[section].values.count ?? 0
+            if viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+                return 1
             } else {
-                return viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[section].values.count ?? 0
+                if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
+                    return viewModel.selectedFilter?.alphabeticFilterValues?[section].values.count ?? 0
+                } else {
+                    return viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[section].values.count ?? 0
+                }
             }
         }
         
@@ -121,25 +142,36 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView == self.tableViewValues {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
-                
-                if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
-                    cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[section].header.uppercased() ?? "", numberOfLines : 0, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+            if self.viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+                return nil
+            } else {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     
-                } else {
-                    cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[section].header.uppercased() ?? "", numberOfLines : 0, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                    if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
+                        cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[section].header.uppercased() ?? "", numberOfLines : 0, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                        
+                    } else {
+                        cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[section].header.uppercased() ?? "", numberOfLines : 0, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                    }
+                    
+                    return cell
                 }
-                
-                return cell
             }
         }
+        
         
         return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         if tableView == self.tableViewValues {
-            return UITableView.automaticDimension
+            if viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+                return 0
+            } else {
+                return UITableView.automaticDimension
+            }
+            
         }
         
         return 0
@@ -153,6 +185,7 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
                 cell.btn.isUserInteractionEnabled = false
                 cell.txtBtn.isUserInteractionEnabled = false
                 cell.btnDisClosure.isUserInteractionEnabled = false
+                cell.txtBtn.titleLabel?.numberOfLines = 0
                 cell.constraintSpacingBtnTitle.constant = 10
                 cell.constraintTopSpacing.constant = 10
                 cell.constraintBottomSpacing.constant = 10
@@ -160,6 +193,10 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
                 if viewModel.selectedValues.contains(where: { val in
                     val.filterModelName == viewModel.filters[safe : indexPath.row]?.attributeName
                 }) {
+                    containsvalue = true
+                }
+                
+                if viewModel.filters[safe : indexPath.row]?.attributeName?.uppercased() == "PRICE", self.viewModel.lowerPriceLimit != nil, self.viewModel.upperPriceLimit != nil {
                     containsvalue = true
                 }
                 
@@ -172,52 +209,65 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
                 }
                 
                 cell.btnDisClosure.setImage(containsvalue ? UIImage.imageWithName(name: "redDot") : nil , for: .normal)
+                
                 cell.constraintLeading.constant = 20
                 return cell
             }
         }
         
         if tableView == tableViewValues {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
+            if viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+              
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PriceSliderTableViewCell.self)) as? PriceSliderTableViewCell {
+                    cell.superController = self
+                    cell.setSliderWithValues(viewModel: self.viewModel)
+                  
+                    return cell
+                }
+            } else {
                 
-                if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
-                    if viewModel.selectedValues.contains(where: { value in
-                        (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
-                    }) {
-                        
-                        cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxSelected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
-                        
-                    } else {
-                        
-                        cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxUnselected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
-                        
-                    }
-                   
-                } else {
-                    if viewModel.selectedValues.contains(where: { value in
-                        (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
-                    }) {
-                        
-                        cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxSelected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
-                        
-                    } else {
-                        
-                        cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxUnselected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
-                        
-                    }
-
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     
-                }
-                
-                if let text = cell.titleLabel.text {
-                    let components = text.components(separatedBy: " ")
-                    if components.contains("MM") {
-                        cell.titleLabel.text = text.replacingOccurrences(of: "MM", with: "mm")
+                    if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
+                        if viewModel.selectedValues.contains(where: { value in
+                            (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
+                        }) {
+                            
+                            cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxSelected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                            
+                        } else {
+                            
+                            cell.setHeading(title: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxUnselected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                            
+                        }
+                        
+                        
+                    } else {
+                        if viewModel.selectedValues.contains(where: { value in
+                            (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
+                        }) {
+                            
+                            cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxSelected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                            
+                        } else {
+                            
+                            cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName?.uppercased() ?? "", font: EthosFont.Brother1816Regular(size: 12), numberOfLines : 0, image: UIImage.imageWithName(name: EthosConstants.checkboxUnselected), imageHeight: 16, spacingTitleImage: 10, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
+                            
+                        }
                     }
+                    
+                    
+                    if let text = cell.titleLabel.text {
+                        let components = text.components(separatedBy: " ")
+                        if components.contains("MM") {
+                            cell.titleLabel.text = text.replacingOccurrences(of: "MM", with: "mm")
+                        }
+                    }
+                    
+                    return cell
                 }
-                
-                return cell
             }
+            
         }
         
         return UITableViewCell()
@@ -230,56 +280,56 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == tableViewFilters {
+            self.textFieldSearch.text = ""
             viewModel.selectedFilter = viewModel.filters[safe : indexPath.row]
-//            if let encodedData = try? JSONEncoder().encode(viewModel.selectedFilters) {
-//                UserDefaults.standard.set(encodedData, forKey: "filtersData")
-//            }
             self.reloadView()
         }
         
         if tableView == tableViewValues {
-            if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
-                
-                if viewModel.selectedValues.contains(where: { value in
-                    (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId &&  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
-                }) {
-                    viewModel.selectedValues.removeAll { value in
-                        (value.filtervalue.attributeValueId ==  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId && value.filtervalue.attributeValueName ==  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName)
-                    }
-                    
-                   
-                    
-                } else {
-                    let selectedModel = SelectedFilterData(filterModelName: viewModel.selectedFilter?.attributeName ?? "", filterModelCode: viewModel.selectedFilter?.attributeCode ?? "", filterModelId: viewModel.selectedFilter?.attributeId ?? 0, filtervalue: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row] ?? FilterValue())
-                    viewModel.selectedValues.append(selectedModel)
-                    
-                }
+            if viewModel.selectedFilter?.attributeName?.lowercased() == "price" {
+               
             } else {
-                
-                if viewModel.selectedValues.contains(where: { value in
-                    (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
-                }) {
+                if self.textFieldSearch.text == "" || self.textFieldSearch.text == nil {
                     
-                    viewModel.selectedValues.removeAll { value in
-                        (value.filtervalue.attributeValueId ==  viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId) && (value.filtervalue.attributeValueName ==  viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName)
+                    if viewModel.selectedValues.contains(where: { value in
+                        (viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId &&  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
+                    }) {
+                        viewModel.selectedValues.removeAll { value in
+                            (value.filtervalue.attributeValueId ==  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId && value.filtervalue.attributeValueName ==  viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName)
+                        }
+                        
+                        
+                        
+                    } else {
+                        let selectedModel = SelectedFilterData(filterModelName: viewModel.selectedFilter?.attributeName ?? "", filterModelCode: viewModel.selectedFilter?.attributeCode ?? "", filterModelId: viewModel.selectedFilter?.attributeId ?? 0, filtervalue: viewModel.selectedFilter?.alphabeticFilterValues?[safe : indexPath.section]?.values[safe : indexPath.row] ?? FilterValue())
+                        viewModel.selectedValues.append(selectedModel)
+                        
                     }
-                    
-                    
                 } else {
                     
-                    let selectedModel = SelectedFilterData(filterModelName: viewModel.selectedFilter?.attributeName ?? "", filterModelCode: viewModel.selectedFilter?.attributeCode ?? "", filterModelId: viewModel.selectedFilter?.attributeId ?? 0, filtervalue: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row] ?? FilterValue())
-                    viewModel.selectedValues.append(selectedModel)
+                    if viewModel.selectedValues.contains(where: { value in
+                        (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId == value.filtervalue.attributeValueId) && (viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName == value.filtervalue.attributeValueName)
+                    }) {
+                        
+                        viewModel.selectedValues.removeAll { value in
+                            (value.filtervalue.attributeValueId ==  viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueId) && (value.filtervalue.attributeValueName ==  viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row]?.attributeValueName)
+                        }
+                        
+                        
+                    } else {
+                        
+                        let selectedModel = SelectedFilterData(filterModelName: viewModel.selectedFilter?.attributeName ?? "", filterModelCode: viewModel.selectedFilter?.attributeCode ?? "", filterModelId: viewModel.selectedFilter?.attributeId ?? 0, filtervalue: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[safe : indexPath.section]?.values[safe : indexPath.row] ?? FilterValue())
+                        viewModel.selectedValues.append(selectedModel)
+                    }
                 }
+                
+                viewModel.selectedFilters = viewModel.getSelectedFiltersFromSelectedValues()
+                
+                self.reloadView()
+                
+                viewModel.getFilters(site: self.isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
+                
             }
-            
-            viewModel.selectedFilters = viewModel.getSelectedFiltersFromSelectedValues()
-//            if let encodedData = try? JSONEncoder().encode(viewModel.selectedFilters) {
-//                UserDefaults.standard.set(encodedData, forKey: "filtersData")
-//            }
-            
-            self.reloadView()
-            
-            viewModel.getUpdatedFilters(site: self.isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
         }
     }
 }
@@ -299,13 +349,13 @@ extension FiltersViewController : GetProductViewModelDelegate {
     
     func startIndicator() {
         DispatchQueue.main.async {
-            self.indicator.startAnimating()
+            EthosLoader.shared.show(view: self.view, frame: self.view.frame)
         }
     }
     
     func stopIndicator() {
         DispatchQueue.main.async {
-            self.indicator.stopAnimating()
+            EthosLoader.shared.hide()
         }
     }
     

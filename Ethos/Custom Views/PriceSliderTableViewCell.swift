@@ -10,7 +10,7 @@ import UIKit
 class PriceSliderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewTxtFieldMinimum: UIView!
-
+    
     @IBOutlet weak var viewTxtFieldMaximum: UIView!
     
     @IBOutlet weak var lblDescription: UILabel!

@@ -1396,11 +1396,6 @@ extension PreOwnedViewController : SuperViewDelegate {
                let categoryId = info?[EthosKeys.categoryId] as? Int,
                let categoryName = info?[EthosKeys.categoryName] as? String {
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewCatalogViewController.self)) as? NewCatalogViewController {
-                    if categoryName == "All Watches"{
-                        vc.screenType = "view_all"
-                    }else{
-                        vc.screenType = ""
-                    }
                     vc.productViewModel.categoryName = categoryName
                     vc.isForPreOwned = true
                     vc.productViewModel.categoryId = categoryId

@@ -7,7 +7,6 @@
 
 import UIKit
 import PhotosUI
-import Photos
 import libPhoneNumber
 import Mixpanel
 
@@ -40,7 +39,6 @@ class ProfileDetailViewController: UIViewController {
     let viewModel = GetBrandsViewModel()
     var customerModel = GetCustomerViewModel()
     var datePicker = UIDatePicker()
-    let picker = UIImagePickerController()
     var delegate : SuperViewDelegate?
     
     var phoneNumberlimit : Int = 10
@@ -87,7 +85,7 @@ class ProfileDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+      
     }
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -214,85 +212,11 @@ class ProfileDetailViewController: UIViewController {
     
     @IBAction func btnUploadImageDidTapped(_ sender: UIButton) {
         if Userpreference.token != nil {
-            
+            let picker = UIImagePickerController()
             picker.delegate = self
             picker.allowsEditing = true
-            //            checkCameraPermission()
-            //            self.present(picker, animated: true)
-            
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-                self.openCamera()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
-                self.openGallary()
-            }))
-            
-            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-            
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                alert.popoverPresentationController?.sourceView = sender
-                alert.popoverPresentationController?.sourceRect = sender.bounds
-                alert.popoverPresentationController?.permittedArrowDirections = .up
-            default:
-                break
-            }
-            
-            self.present(alert, animated: true, completion: nil)
+            self.present(picker, animated: true)
         }
-    }
-    
-    func checkCameraPermission(){
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        switch photoAuthorizationStatus {
-        case .authorized:
-            present(picker, animated: true, completion: nil)
-            print("Access is granted by user")
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                (newStatus) in
-                print("status is \(newStatus)")
-                if newStatus ==  PHAuthorizationStatus.authorized {
-                    self.present(self.picker, animated: true, completion: nil)
-                    print("success")
-                }
-            })
-            print("It is not determined until now")
-        case .restricted:
-            print("User do not have access to photo album.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        case .denied:
-            print("User has denied the permission.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        case .limited:
-            print("User has denied the permissions.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        @unknown default:
-            print("User has denied the permission default.")
-        }
-    }
-    
-    func openCamera() {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
-            picker.sourceType = UIImagePickerController.SourceType.camera
-            picker.allowsEditing = true
-            picker.delegate = self
-            checkCameraPermission()
-        }
-        else{
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func openGallary() {
-        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        picker.allowsEditing = true
-        picker.delegate = self
-        checkCameraPermission()
     }
     
     @IBAction func collectionViewDidTapped(_ sender: UITapGestureRecognizer) {
@@ -438,7 +362,7 @@ extension ProfileDetailViewController : SuperViewDelegate {
 }
 
 extension ProfileDetailViewController : GetCustomerViewModelDelegate {
-    
+
     func userDeleteSuccess() {
         
     }
@@ -466,14 +390,14 @@ extension ProfileDetailViewController : GetCustomerViewModelDelegate {
     func startProfileIndicator() {
         DispatchQueue.main.async {
             self.showActivityIndicator()
-            //            self.indicator.startAnimating()
+//            self.indicator.startAnimating()
         }
     }
     
     func stopProfileIndicator() {
         DispatchQueue.main.async {
             self.hideActivityIndicator()
-            //            self.indicator.stopAnimating()
+//            self.indicator.stopAnimating()
         }
     }
     

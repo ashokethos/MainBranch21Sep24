@@ -38,7 +38,6 @@ class ShopViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableViewShopping.setContentOffset(.zero, animated: true)
         updateNotificationCount()
     }
     
@@ -120,9 +119,9 @@ class ShopViewController: UIViewController {
     }
     
     func callApi() {
-        bannerViewModel.getBanners(key: .shop)
-        categoryViewModel.getCategories(site: Site.ethos)
-        storeViewModel.getNewBoutiques(site: .ethos)
+        self.bannerViewModel.getBanners(key: .shop)
+        self.categoryViewModel.getCategories(site: Site.ethos)
+        self.storeViewModel.getNewBoutiques(site: .ethos)
         
         
         switch Userpreference.ethosJustINSort ?? "" {
@@ -605,7 +604,7 @@ extension ShopViewController : UITableViewDataSource, UITableViewDelegate {
                 vc.isForPreOwned = false
                 vc.productViewModel.categoryId = categoryViewModel.categories[safe : indexPath.row]?.id
                 vc.productViewModel.categoryName = categoryViewModel.categories[safe : indexPath.row]?.name
-                vc.screenType = "view_all"
+                
                 Mixpanel.mainInstance().trackWithLogs(event: "Shop By Category Clicked", properties: [
                     EthosConstants.Email : Userpreference.email,
                     EthosConstants.UID : Userpreference.userID,
@@ -614,6 +613,7 @@ extension ShopViewController : UITableViewDataSource, UITableViewDelegate {
                     EthosConstants.Platform : EthosConstants.IOS,
                     EthosConstants.Category : categoryViewModel.categories[safe : indexPath.row]?.name ?? ""
                 ])
+                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -894,6 +894,7 @@ extension ShopViewController : GetProductViewModelDelegate {
         if site == .ethos && CategoryId == 144 {
             self.loadingNewArrivals = false
         }
+        
     }
     
     
