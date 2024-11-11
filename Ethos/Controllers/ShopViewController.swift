@@ -38,7 +38,7 @@ class ShopViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableViewShopping.setContentOffset(.zero, animated: true)
+//        tableViewShopping.setContentOffset(.zero, animated: true)
         updateNotificationCount()
     }
     

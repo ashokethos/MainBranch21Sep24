@@ -23,6 +23,7 @@ class Product : NSObject {
     var movement: [String : String]?
     var video: String?
     var aboutCollection: String?
+    var newCollectionDescription: String?
     var specifications: [Specification]?
     var assets: [ProductAsset]?
     var currency: String?
@@ -30,7 +31,7 @@ class Product : NSObject {
     var recentDate : Date?
     
     
-    init(id: Int? = nil, prod_id: Int? = nil, sku: String? = nil, name: String? = nil, brand: String? = nil, prod_brand: String? = nil, gender: String? = nil, url: String? = nil, imgUrl: String? = nil, title: String? = nil, isSalable: String? = nil, prod_collection: String? = nil, attributeSetID: Int? = nil, price: Int? = nil, status: Int? = nil, visibility: Int? = nil, typeID: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, weight: Double? = nil, extensionAttributes: ExtensionAttributes? = nil, tierPrices: [TierPrice]? = nil, relatedStories: RelatedStories? = nil, movement: [String : String]? = nil, video: String? = nil, aboutCollection: String? = nil, specifications: [Specification]? = nil, assets: [ProductAsset]? = nil, currency: String? = nil) {
+    init(id: Int? = nil, prod_id: Int? = nil, sku: String? = nil, name: String? = nil, brand: String? = nil, prod_brand: String? = nil, gender: String? = nil, url: String? = nil, imgUrl: String? = nil, title: String? = nil, isSalable: String? = nil, prod_collection: String? = nil, attributeSetID: Int? = nil, price: Int? = nil, status: Int? = nil, visibility: Int? = nil, typeID: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, weight: Double? = nil, extensionAttributes: ExtensionAttributes? = nil, tierPrices: [TierPrice]? = nil, relatedStories: RelatedStories? = nil, movement: [String : String]? = nil, video: String? = nil, aboutCollection: String? = nil, newCollectionDescription: String? = nil, specifications: [Specification]? = nil, assets: [ProductAsset]? = nil, currency: String? = nil) {
         self.id = id
         self.prod_id = prod_id
         self.sku = sku
@@ -55,6 +56,7 @@ class Product : NSObject {
         self.movement = movement
         self.video = video
         self.aboutCollection = aboutCollection
+        self.newCollectionDescription = newCollectionDescription
         self.specifications = specifications
         self.assets = assets
         self.currency = currency
@@ -161,6 +163,10 @@ class Product : NSObject {
         
         if let aboutCollection = json[EthosConstants.aboutCollection] as? String {
             self.aboutCollection = aboutCollection
+        }
+        
+        if let newCollectionDescription = json[EthosConstants.newCollectionDescription] as? String {
+            self.newCollectionDescription = newCollectionDescription
         }
         
         if let specifications = json[EthosConstants.specifications] as? [[String : Any]] {

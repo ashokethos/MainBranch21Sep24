@@ -11,6 +11,8 @@ class ProductImageCell: UICollectionViewCell {
 
     @IBOutlet weak var scrollViewImage: UIScrollView!
     @IBOutlet weak var imageProduct: UIImageView!
+    @IBOutlet weak var playBtnBackView: UIView!
+    @IBOutlet weak var shareBtnBackView: UIView!
     @IBOutlet weak var btnYoutube: UIButton!
     @IBOutlet weak var btnShare: UIButton!
     
@@ -18,8 +20,10 @@ class ProductImageCell: UICollectionViewCell {
         didSet {
             if shouldShowVideo == true {
                 self.btnYoutube.isHidden = false
+                playBtnBackView.isHidden = false
             } else {
                 self.btnYoutube.isHidden = true
+                playBtnBackView.isHidden = true
             }
         }
     }
@@ -28,7 +32,9 @@ class ProductImageCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
+        self.btnYoutube.isHidden = true
+        playBtnBackView.isHidden = true
         self.scrollViewImage.delegate = self
         self.scrollViewImage.minimumZoomScale = 1
         self.scrollViewImage.maximumZoomScale = 4

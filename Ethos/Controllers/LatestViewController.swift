@@ -35,7 +35,6 @@ class LatestViewController: UIViewController {
         callCustomerDetailsApi()
         callGetArticlesApi()
         self.edgesForExtendedLayout = [.bottom]
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

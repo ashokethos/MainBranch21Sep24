@@ -8,6 +8,7 @@
 import UIKit
 import SkeletonView
 import Mixpanel
+import Kingfisher
 
 class ProductPairTableViewCell: UITableViewCell {
     
@@ -31,6 +32,9 @@ class ProductPairTableViewCell: UITableViewCell {
     
     @IBOutlet weak var btn2: UIButton!
     
+    var imageSetTask1 : DownloadTask?
+    var imageSetTask2 : DownloadTask?
+    
     var superViewController : NewCatalogViewController?
     var isForPreOwned : Bool = false
     
@@ -49,6 +53,8 @@ class ProductPairTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.imageSetTask1?.cancel()
+        self.imageSetTask2?.cancel()
         self.isForPreOwned = false
         self.contentView.hideSkeleton()
         
@@ -66,6 +72,8 @@ class ProductPairTableViewCell: UITableViewCell {
         
         self.lblDescription2.setAttributedTitleWithProperties(title: "", font: UIFont())
     }
+    
+    
     
     
     
@@ -102,9 +110,9 @@ class ProductPairTableViewCell: UITableViewCell {
             }
             
             if let urlfile = self.product1?.extensionAttributes?.ethProdCustomeData?.images?.catalogImage, let url = URL(string: urlfile) {
-                self.productImage1.kf.setImage(with: url)
+                self.imageSetTask1 = self.productImage1.kf.setImage(with: url)
             } else if let urlfile = self.product1?.assets?.first?.file, let url = URL(string: urlfile) {
-                self.productImage1.kf.setImage(with: url)
+                self.imageSetTask1 = self.productImage1.kf.setImage(with: url)
             }
             
             if let hidePrice = (product1?.extensionAttributes?.ethProdCustomeData?.hidePrice), self.isForPreOwned == true , hidePrice == true {
@@ -146,9 +154,9 @@ class ProductPairTableViewCell: UITableViewCell {
             }
             
             if let urlfile = self.product2?.extensionAttributes?.ethProdCustomeData?.images?.catalogImage, let url = URL(string: urlfile) {
-                self.productImage2.kf.setImage(with: url)
+                self.imageSetTask2 = self.productImage2.kf.setImage(with: url)
             } else if let urlfile = self.product2?.assets?.first?.file, let url = URL(string: urlfile) {
-                self.productImage2.kf.setImage(with: url)
+                self.imageSetTask2 = self.productImage2.kf.setImage(with: url)
             }
             
             if let hidePrice = (product2?.extensionAttributes?.ethProdCustomeData?.hidePrice), self.isForPreOwned == true , hidePrice == true {

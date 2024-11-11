@@ -32,7 +32,7 @@ class MovementTableViewCell: UITableViewCell {
         self.movement = nil
         self.imgViewThumbNail.image = nil
         self.constraintHeightImageView.constant = 0
-        self.lblCallibreDescription.setAttributedTitleWithProperties(title: "", font: EthosFont.Brother1816Regular(size: 12))
+        self.lblCallibreDescription.setAttributedTitleWithProperties(title: "", font: EthosFont.Brother1816Regular(size: 10))
     }
     
     var calibreImage : String? {
@@ -53,7 +53,8 @@ class MovementTableViewCell: UITableViewCell {
     var callibreDescription : String? {
         didSet {
             if let callibreDescription = self.callibreDescription {
-                self.lblCallibreDescription.setAttributedTitleWithProperties(title: callibreDescription.htmlToAttributedString?.string ?? "", font: EthosFont.Brother1816Regular(size: 14), lineHeightMultiple: 1.25, kern: 0.5)
+                let htmlStr = (callibreDescription).replacingOccurrences(of: "<p>",with: "<br>",options: .caseInsensitive).replacingOccurrences(of: "</p>",with: "</br>", options: .caseInsensitive)
+                self.lblCallibreDescription.setAttributedTitleWithProperties(title: htmlStr.htmlToAttributedString?.string ?? "", font: EthosFont.Brother1816Regular(size: 12), lineHeightMultiple: 1.25, kern: 0.5)
             }
         }
     }
@@ -100,7 +101,7 @@ extension MovementTableViewCell : UICollectionViewDataSource, UICollectionViewDe
             style.alignment = .left
             
             
-            let attr1 = NSMutableAttributedString(string: required.capitalized, attributes: [NSAttributedString.Key.font : EthosFont.Brother1816Medium(size: 12), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.kern : 0.1, NSAttributedString.Key.paragraphStyle : style])
+            let attr1 = NSMutableAttributedString(string: required.capitalized, attributes: [NSAttributedString.Key.font : EthosFont.Brother1816Bold(size: 12), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.kern : 0.1, NSAttributedString.Key.paragraphStyle : style])
             
             let attr2 = NSMutableAttributedString(string: value, attributes: [NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.kern : 0.1, NSAttributedString.Key.paragraphStyle : style])
             

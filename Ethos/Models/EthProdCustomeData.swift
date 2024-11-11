@@ -13,10 +13,11 @@ class EthProdCustomeData : NSObject {
     var brand: String?
     var isSaleable, isBuyNow: Int?
     var buttonText: String?
-    var collection, series, collectionDescription: String?
+    var collection, series, collectionDescription, newCollectionTitle: String?
     var showVideo: Bool?
     var productVideo: String?
     var productVideos : [ProductVideo] = []
+    var newCollectionDescription : [CollectionDescriptionTextData] = []
     var seriesVideo, collectionVideo: String?
     var calibreImage: String?
     var calibreDescription: String?
@@ -113,6 +114,20 @@ class EthProdCustomeData : NSObject {
             self.collectionDescription = collectionDescription
         }
         
+        if let newcollectionTitle = json[EthosConstants.newcollectionTitle] as? String {
+            self.newCollectionTitle = newcollectionTitle
+        }
+        
+        if let newCollectionDescription = json[EthosConstants.newCollectionDescription] as? [[String: String]] {
+                var descriptions = [CollectionDescriptionTextData]()
+                for item in newCollectionDescription {
+                    let head = item["head"] ?? ""
+                    let subhead = item["subhead"] ?? ""
+                    descriptions.append(CollectionDescriptionTextData(head: head, subhead: subhead))
+                }
+                self.newCollectionDescription = descriptions
+            }
+        
         if let showVideo = json[EthosConstants.showVideo] as? Int {
             if showVideo == 1 {
                 self.showVideo = true
@@ -202,8 +217,8 @@ class EthProdCustomeData : NSObject {
             self.purchaseYear = purchaseYear
         }
         
-        if let calibreDescription = json[EthosConstants.calibreDescription] as? String {
-            self.calibreDescription = calibreDescription
+        if let newCalibreDescription = json[EthosConstants.newcalibreDescription] as? String {
+            self.calibreDescription = newCalibreDescription
         }
         
         if let warrantyCard = json[EthosConstants.warrantyCard] as? String {
@@ -247,7 +262,7 @@ class EthProdCustomeData : NSObject {
         }
     }
     
-    init(sku: String? = nil, pid: String? = nil, url: String? = nil, brand: String? = nil, isSaleable: Int? = nil, isBuyNow: Int? = nil, buttonText: String? = nil, collection: String? = nil, series: String? = nil, collectionDescription: String? = nil, showVideo: Bool? = nil, productVideo: String? = nil, seriesVideo: String? = nil, collectionVideo: String? = nil, calibreImage: String? = nil, calibreDescription: String? = nil, movement: [String : String]? = nil, attributes: Attributes? = nil, movementKey: [String]? = nil, caseKey: [String]? = nil, dialKey: [String]? = nil, strapKey: [String]? = nil, otherKey: [String]? = nil, productName : String? = nil, images : ProductImageData?, hidePrice : Bool = false, price : Int? = nil, showEditosNote: Bool? = nil, editorHeading: String? = nil, editorDescription: String? = nil) {
+    init(sku: String? = nil, pid: String? = nil, url: String? = nil, brand: String? = nil, isSaleable: Int? = nil, isBuyNow: Int? = nil, buttonText: String? = nil, collection: String? = nil, series: String? = nil, collectionDescription: String? = nil, newCollectionTitle: String? = nil, newCollectionDescription: [CollectionDescriptionTextData]? = nil, showVideo: Bool? = nil, productVideo: String? = nil, seriesVideo: String? = nil, collectionVideo: String? = nil, calibreImage: String? = nil, calibreDescription: String? = nil, movement: [String : String]? = nil, attributes: Attributes? = nil, movementKey: [String]? = nil, caseKey: [String]? = nil, dialKey: [String]? = nil, strapKey: [String]? = nil, otherKey: [String]? = nil, productName : String? = nil, images : ProductImageData?, hidePrice : Bool = false, price : Int? = nil, showEditosNote: Bool? = nil, editorHeading: String? = nil, editorDescription: String? = nil) {
         self.sku = sku
         self.pid = pid
         self.url = url
@@ -258,6 +273,8 @@ class EthProdCustomeData : NSObject {
         self.collection = collection
         self.series = series
         self.collectionDescription = collectionDescription
+        self.newCollectionTitle = newCollectionTitle
+        self.newCollectionDescription = newCollectionDescription ?? []
         self.showVideo = showVideo
         self.productVideo = productVideo
         self.seriesVideo = seriesVideo

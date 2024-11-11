@@ -7,13 +7,27 @@
 
 import UIKit
 
+//class SelectedFilterData : NSObject {
+//    var filterModelName : String
+//    var filterModelCode : String
+//    var filterModelId : Int
+//    var filtervalue : FilterValue
+//    
+//    init(filterModelName: String, filterModelCode: String, filterModelId: Int, filtervalue: FilterValue) {
+//        self.filterModelName = filterModelName
+//        self.filterModelCode = filterModelCode
+//        self.filterModelId = filterModelId
+//        self.filtervalue = filtervalue
+//    }
+//}
+
 class SelectedFilterData : NSObject {
-    var filterModelName : String
-    var filterModelCode : String
-    var filterModelId : Int
+    var filterModelName : String?
+    var filterModelCode : String?
+    var filterModelId : Int?
     var filtervalue : FilterValue
     
-    init(filterModelName: String, filterModelCode: String, filterModelId: Int, filtervalue: FilterValue) {
+    init(filterModelName: String?, filterModelCode: String?, filterModelId: Int?, filtervalue: FilterValue) {
         self.filterModelName = filterModelName
         self.filterModelCode = filterModelCode
         self.filterModelId = filterModelId

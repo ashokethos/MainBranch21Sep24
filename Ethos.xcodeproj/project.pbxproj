@@ -122,7 +122,6 @@
 		045EE7B82AB350C000DA40F2 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EE7B72AB350C000DA40F2 /* ProductDetailViewController.swift */; };
 		04627EBE2B8CB9F100F95305 /* StoreTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04627EBD2B8CB9F100F95305 /* StoreTiming.swift */; };
 		046358562B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046358552B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift */; };
-		046489462AB86EE700AB4CA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046489452AB86EE700AB4CA8 /* MenuViewController.swift */; };
 		046512902ACEEFC500AF37DF /* UserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465128F2ACEEFC500AF37DF /* UserActivityViewModel.swift */; };
 		04679D342A9E142E00726F09 /* ArticleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04679D332A9E142E00726F09 /* ArticleCategories.swift */; };
 		04679D372A9E31DD00726F09 /* GetBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04679D362A9E31DD00726F09 /* GetBrands.swift */; };
@@ -275,7 +274,6 @@
 		165966A22BED001700B93651 /* SpecificationPairTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165966572BED001600B93651 /* SpecificationPairTableViewCell.xib */; };
 		165966A32BED001700B93651 /* EthosStoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165966582BED001600B93651 /* EthosStoryCollectionViewCell.xib */; };
 		165966A42BED001700B93651 /* SpecialCategoryCell_I.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165966592BED001600B93651 /* SpecialCategoryCell_I.xib */; };
-		165966A52BED001700B93651 /* EthosLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1659665A2BED001600B93651 /* EthosLoader.xib */; };
 		165966A62BED001700B93651 /* WhereToLocateUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1659665B2BED001600B93651 /* WhereToLocateUsTableViewCell.xib */; };
 		165966A72BED001700B93651 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1659665C2BED001600B93651 /* ContactTableViewCell.xib */; };
 		165966A82BED001700B93651 /* ReadListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1659665D2BED001600B93651 /* ReadListCollectionViewCell.xib */; };
@@ -335,7 +333,6 @@
 		165967292BED00F500B93651 /* SingleVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966DE2BED00F300B93651 /* SingleVideoTableViewCell.swift */; };
 		1659672A2BED00F500B93651 /* SpecialCategoryCell_II.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966DF2BED00F300B93651 /* SpecialCategoryCell_II.swift */; };
 		1659672B2BED00F500B93651 /* FavreLeubaCatalogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966E02BED00F300B93651 /* FavreLeubaCatalogHeaderView.swift */; };
-		1659672C2BED00F500B93651 /* EthosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966E12BED00F300B93651 /* EthosLoader.swift */; };
 		1659672D2BED00F500B93651 /* GetAQuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966E22BED00F300B93651 /* GetAQuoteTableViewCell.swift */; };
 		1659672E2BED00F500B93651 /* AdvertisementHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966E32BED00F300B93651 /* AdvertisementHeaderFooterView.swift */; };
 		1659672F2BED00F500B93651 /* ReadListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165966E42BED00F300B93651 /* ReadListCollectionViewCell.swift */; };
@@ -428,8 +425,6 @@
 		16B340B12C005D27000CAB2C /* Brother-Bold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16B340B02C005D27000CAB2C /* Brother-Bold-Italic.otf */; };
 		16B340B32C005E98000CAB2C /* Brother-Medium-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16B340B22C005E98000CAB2C /* Brother-Medium-Italic.otf */; };
 		16B340B62C007661000CAB2C /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 16B340B52C007661000CAB2C /* Mixpanel */; };
-		16BF2EC42C6B560A005CA875 /* WARangeSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 16BF2EC32C6B560A005CA875 /* WARangeSlider */; };
-		16C667B62C32896600EF7CFF /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 16C667B52C32896600EF7CFF /* PostHog */; };
 		16DB31132BC921BE0059252F /* libPhoneNumber in Frameworks */ = {isa = PBXBuildFile; productRef = 16DB31122BC921BE0059252F /* libPhoneNumber */; };
 		16DB31152BC92E920059252F /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB31142BC92E920059252F /* ValidationHelper.swift */; };
 		16DB31172BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB31162BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift */; };
@@ -437,7 +432,25 @@
 		9F0B16062A713B890082275F /* GetCategoryViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0B16052A713B890082275F /* GetCategoryViewModelDelegate.swift */; };
 		AA0B3A922C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A902C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift */; };
 		AA0B3A932C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3A912C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib */; };
+		AA0B3A992C9EABB1008A3D9C /* RangeSeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A952C9EABB1008A3D9C /* RangeSeekSlider.swift */; };
+		AA0B3A9A2C9EABB1008A3D9C /* RangeSeekSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A962C9EABB1008A3D9C /* RangeSeekSliderDelegate.swift */; };
+		AA0B3A9B2C9EABB1008A3D9C /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A972C9EABB1008A3D9C /* TapticEngine.swift */; };
+		AA0B3A9D2C9EABD0008A3D9C /* PriceSliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3A9C2C9EABD0008A3D9C /* PriceSliderTableViewCell.xib */; };
+		AA0B3A9F2C9EABD6008A3D9C /* PriceSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3A9E2C9EABD5008A3D9C /* PriceSliderTableViewCell.swift */; };
+		AA0B3AA52C9ECB37008A3D9C /* ethos_loader_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3AA42C9ECB37008A3D9C /* ethos_loader_animation.json */; };
+		AA0B3BEC2C9EE69D008A3D9C /* EthosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3BEB2C9EE69C008A3D9C /* EthosLoader.swift */; };
+		AA0B3BEE2C9EE6B4008A3D9C /* EthosLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3BED2C9EE6B4008A3D9C /* EthosLoader.xib */; };
+		AA0B3BF12C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3BF02C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.xib */; };
+		AA0B3BF22C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3BEF2C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.swift */; };
+		AA0B3BF52C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0B3BF42C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib */; };
+		AA0B3BF62C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B3BF32C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.swift */; };
 		AA28CAB32C6C8A380009CEC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA28CAB22C6C8A380009CEC6 /* IQKeyboardManagerSwift */; };
+		AA49A6EB2CBE4B3600A69B13 /* VWO_Insights in Frameworks */ = {isa = PBXBuildFile; productRef = AA49A6EA2CBE4B3600A69B13 /* VWO_Insights */; };
+		AA49A6ED2CCF6FE200A69B13 /* ClubEchoPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49A6EC2CCF6FDF00A69B13 /* ClubEchoPointsViewController.swift */; };
+		AA49A6EF2CCF764A00A69B13 /* EthosProfileBrandLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49A6EE2CCF764500A69B13 /* EthosProfileBrandLayout.swift */; };
+		AA49A6F12CCF7D3E00A69B13 /* FollowUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49A6F02CCF7D3E00A69B13 /* FollowUsTableViewCell.swift */; };
+		AA49A6F52CCF7DE300A69B13 /* FollowUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA49A6F42CCF7DE300A69B13 /* FollowUsTableViewCell.xib */; };
+		AA5D0C692CB010E500D2C6BF /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */; };
 		AAA009BA2C8ED87800C3CEAF /* EditorNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */; };
 		AAA009BB2C8ED87800C3CEAF /* EditorNotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */; };
 		AAA009BD2C92D9F500C3CEAF /* PDFViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */; };
@@ -458,6 +471,8 @@
 		AAA65A2F2C4508C300270456 /* PurchaseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A2E2C4508C300270456 /* PurchaseHistoryViewController.swift */; };
 		AAA65A312C450BF100270456 /* GetPuechaseHistoryViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A302C450BF000270456 /* GetPuechaseHistoryViewModelDelegate.swift */; };
 		AAA65A352C450DB500270456 /* GetPurchaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA65A342C450DB500270456 /* GetPurchaseHistory.swift */; };
+		AADE08A22CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AADE08A12CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib */; };
+		AADE08A32CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE08A02CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -599,7 +614,6 @@
 		045EE7B72AB350C000DA40F2 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		04627EBD2B8CB9F100F95305 /* StoreTiming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTiming.swift; sourceTree = "<group>"; };
 		046358552B4BD1E2001E2DDD /* EthosSpecificationsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthosSpecificationsLayout.swift; sourceTree = "<group>"; };
-		046489452AB86EE700AB4CA8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0465128F2ACEEFC500AF37DF /* UserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewModel.swift; sourceTree = "<group>"; };
 		04679D332A9E142E00726F09 /* ArticleCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategories.swift; sourceTree = "<group>"; };
 		04679D362A9E31DD00726F09 /* GetBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBrands.swift; sourceTree = "<group>"; };
@@ -747,7 +761,6 @@
 		165966572BED001600B93651 /* SpecificationPairTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecificationPairTableViewCell.xib; sourceTree = "<group>"; };
 		165966582BED001600B93651 /* EthosStoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EthosStoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		165966592BED001600B93651 /* SpecialCategoryCell_I.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCategoryCell_I.xib; sourceTree = "<group>"; };
-		1659665A2BED001600B93651 /* EthosLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EthosLoader.xib; sourceTree = "<group>"; };
 		1659665B2BED001600B93651 /* WhereToLocateUsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhereToLocateUsTableViewCell.xib; sourceTree = "<group>"; };
 		1659665C2BED001600B93651 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		1659665D2BED001600B93651 /* ReadListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadListCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -807,7 +820,6 @@
 		165966DE2BED00F300B93651 /* SingleVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleVideoTableViewCell.swift; sourceTree = "<group>"; };
 		165966DF2BED00F300B93651 /* SpecialCategoryCell_II.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCategoryCell_II.swift; sourceTree = "<group>"; };
 		165966E02BED00F300B93651 /* FavreLeubaCatalogHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavreLeubaCatalogHeaderView.swift; sourceTree = "<group>"; };
-		165966E12BED00F300B93651 /* EthosLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthosLoader.swift; sourceTree = "<group>"; };
 		165966E22BED00F300B93651 /* GetAQuoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAQuoteTableViewCell.swift; sourceTree = "<group>"; };
 		165966E32BED00F300B93651 /* AdvertisementHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertisementHeaderFooterView.swift; sourceTree = "<group>"; };
 		165966E42BED00F300B93651 /* ReadListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -902,6 +914,23 @@
 		9F0B16052A713B890082275F /* GetCategoryViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryViewModelDelegate.swift; sourceTree = "<group>"; };
 		AA0B3A902C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlContainerForAboutCollectionPreOwnedTableViewCell.swift; sourceTree = "<group>"; };
 		AA0B3A912C9992C3008A3D9C /* HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HtmlContainerForAboutCollectionPreOwnedTableViewCell.xib; sourceTree = "<group>"; };
+		AA0B3A952C9EABB1008A3D9C /* RangeSeekSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSlider.swift; sourceTree = "<group>"; };
+		AA0B3A962C9EABB1008A3D9C /* RangeSeekSliderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSliderDelegate.swift; sourceTree = "<group>"; };
+		AA0B3A972C9EABB1008A3D9C /* TapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
+		AA0B3A9C2C9EABD0008A3D9C /* PriceSliderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceSliderTableViewCell.xib; sourceTree = "<group>"; };
+		AA0B3A9E2C9EABD5008A3D9C /* PriceSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceSliderTableViewCell.swift; sourceTree = "<group>"; };
+		AA0B3AA42C9ECB37008A3D9C /* ethos_loader_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ethos_loader_animation.json; sourceTree = "<group>"; };
+		AA0B3BEB2C9EE69C008A3D9C /* EthosLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthosLoader.swift; sourceTree = "<group>"; };
+		AA0B3BED2C9EE6B4008A3D9C /* EthosLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EthosLoader.xib; sourceTree = "<group>"; };
+		AA0B3BEF2C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCollectionTextDataTableViewCell.swift; sourceTree = "<group>"; };
+		AA0B3BF02C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCollectionTextDataTableViewCell.xib; sourceTree = "<group>"; };
+		AA0B3BF32C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForAboutCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		AA0B3BF42C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForAboutCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		AA49A6EC2CCF6FDF00A69B13 /* ClubEchoPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEchoPointsViewController.swift; sourceTree = "<group>"; };
+		AA49A6EE2CCF764500A69B13 /* EthosProfileBrandLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthosProfileBrandLayout.swift; sourceTree = "<group>"; };
+		AA49A6F02CCF7D3E00A69B13 /* FollowUsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsTableViewCell.swift; sourceTree = "<group>"; };
+		AA49A6F42CCF7DE300A69B13 /* FollowUsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowUsTableViewCell.xib; sourceTree = "<group>"; };
+		AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
 		AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorNotesTableViewCell.swift; sourceTree = "<group>"; };
 		AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorNotesTableViewCell.xib; sourceTree = "<group>"; };
 		AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerViewController.swift; sourceTree = "<group>"; };
@@ -923,6 +952,8 @@
 		AAA65A2E2C4508C300270456 /* PurchaseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryViewController.swift; sourceTree = "<group>"; };
 		AAA65A302C450BF000270456 /* GetPuechaseHistoryViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPuechaseHistoryViewModelDelegate.swift; sourceTree = "<group>"; };
 		AAA65A342C450DB500270456 /* GetPurchaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurchaseHistory.swift; sourceTree = "<group>"; };
+		AADE08A02CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForAboutCollectionPreOwnedTableViewCell.swift; sourceTree = "<group>"; };
+		AADE08A12CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForAboutCollectionPreOwnedTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -930,13 +961,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA49A6EB2CBE4B3600A69B13 /* VWO_Insights in Frameworks */,
 				16A0483D2C2418D800C769B6 /* FirebasePerformance in Frameworks */,
 				046E4ED32BB6EEB40036331E /* FacebookLogin in Frameworks */,
 				04CF1F822AB1D5F000AF904C /* FirebaseAnalyticsSwift in Frameworks */,
 				04CF1F802AB1D5F000AF904C /* FirebaseAnalytics in Frameworks */,
 				AA28CAB32C6C8A380009CEC6 /* IQKeyboardManagerSwift in Frameworks */,
 				16662ABD2BC8FDB100A3651C /* Siren in Frameworks */,
-				16BF2EC42C6B560A005CA875 /* WARangeSlider in Frameworks */,
 				16DB31132BC921BE0059252F /* libPhoneNumber in Frameworks */,
 				04D1739B2B47FB4E003032E7 /* Kingfisher in Frameworks */,
 				16B340B62C007661000CAB2C /* Mixpanel in Frameworks */,
@@ -944,7 +975,6 @@
 				166DF5262BD630FB00C8BA1E /* Lottie in Frameworks */,
 				04CF1F862AB1D5F000AF904C /* FirebaseCrashlytics in Frameworks */,
 				04BDD4D32A9744A6002862F4 /* OneSignalFramework in Frameworks */,
-				16C667B62C32896600EF7CFF /* PostHog in Frameworks */,
 				04CF1F842AB1D5F000AF904C /* FirebaseAuth in Frameworks */,
 				040E5C612AB33B7900B5BE5C /* GoogleSignIn in Frameworks */,
 			);
@@ -1039,6 +1069,7 @@
 		045C6B3A2A42D2A800AEC183 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA49A6EC2CCF6FDF00A69B13 /* ClubEchoPointsViewController.swift */,
 				0423B3312AD5300900C905DE /* ArticleDetailViewController.swift */,
 				043BDA392AA8997700771458 /* ArticleListTableViewController.swift */,
 				0437A2A32B0CBCCB0024A53E /* BetterTogetherViewController.swift */,
@@ -1063,7 +1094,6 @@
 				048662C02A73D42900B0673C /* LoginOrSignUpViewController.swift */,
 				048662C62A73FB7300B0673C /* LoginWithEmailViewController.swift */,
 				048662C42A73FB5F00B0673C /* LoginWithMobileViewController.swift */,
-				046489452AB86EE700AB4CA8 /* MenuViewController.swift */,
 				048CD2D62BC3C8CB000DA770 /* NewCatalogViewController.swift */,
 				04181E952ABB503700DE9933 /* NotificationsViewController.swift */,
 				042EAC002A7A972700C41FBE /* PasswordChangeAlertController.swift */,
@@ -1081,6 +1111,7 @@
 				046FE9912AA5A64800BA29DA /* SplashViewController.swift */,
 				AAA65A2E2C4508C300270456 /* PurchaseHistoryViewController.swift */,
 				AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */,
+				AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1110,6 +1141,7 @@
 				16AC8B022C53C9DA0047CE56 /* ValidDomains.txt */,
 				048B8EA92A79034300D272A5 /* loader.gif */,
 				048B8EA32A78DA5700D272A5 /* Countries.json */,
+				AA0B3AA42C9ECB37008A3D9C /* ethos_loader_animation.json */,
 				166DF5272BD63C8000C8BA1E /* wishlist_animation.json */,
 				16101FBB2BDA2BE000A05D92 /* Rolex.png */,
 				048B8E9D2A78D6D400D272A5 /* Demo.xcassets */,
@@ -1155,6 +1187,7 @@
 		045C6B482A42F8A000AEC183 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AA49A6EE2CCF764500A69B13 /* EthosProfileBrandLayout.swift */,
 				04CD8A702AE155F00014CECA /* EthosBrandsLayout.swift */,
 				045C6B492A42F8C500AEC183 /* EthosColor.swift */,
 				160399A12A5D8CDD007E1345 /* EthosContentSizedCollectionView.swift */,
@@ -1181,6 +1214,12 @@
 			children = (
 				1603999D2A5D8A32007E1345 /* classes */,
 				1603999C2A5D8A22007E1345 /* xib */,
+				AA0B3BEF2C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.swift */,
+				AA0B3BF02C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.xib */,
+				AA0B3BF32C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.swift */,
+				AA0B3BF42C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib */,
+				AADE08A02CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift */,
+				AADE08A12CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1215,6 +1254,8 @@
 		1603999C2A5D8A22007E1345 /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				AA49A6F42CCF7DE300A69B13 /* FollowUsTableViewCell.xib */,
+				AA0B3A9C2C9EABD0008A3D9C /* PriceSliderTableViewCell.xib */,
 				AAA65A2B2C44FF1900270456 /* PurchaseHistoryTableViewCell.xib */,
 				AAA65A272C41165D00270456 /* RecentSearchCollectionViewCell.xib */,
 				165966362BED001400B93651 /* AboutCollectionTableViewCell.xib */,
@@ -1231,9 +1272,9 @@
 				1659664F2BED001500B93651 /* DiscoveryTabsCell.xib */,
 				165966262BED001200B93651 /* EthosBulletTableViewCell.xib */,
 				165966482BED001500B93651 /* EthosBulletTableViewCellForNumber.xib */,
-				1659665A2BED001600B93651 /* EthosLoader.xib */,
 				1659662E2BED001300B93651 /* EthosStoreTableViewCell.xib */,
 				165966182BED001100B93651 /* EthosStoryCell.xib */,
+				AA0B3BED2C9EE6B4008A3D9C /* EthosLoader.xib */,
 				165966582BED001600B93651 /* EthosStoryCollectionViewCell.xib */,
 				1659662D2BED001300B93651 /* EthosSwitchTableViewCell.xib */,
 				165966492BED001500B93651 /* EthosVideoTableViewCell.xib */,
@@ -1303,6 +1344,7 @@
 		1603999D2A5D8A32007E1345 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				AA0B3A9E2C9EABD5008A3D9C /* PriceSliderTableViewCell.swift */,
 				1637D1EC2C60FB860024CF5C /* RevolutionReviewTableViewCell.swift */,
 				1637D1ED2C60FB860024CF5C /* RevolutionTableViewHeaderCell.swift */,
 				165966DD2BED00F300B93651 /* AboutCollectionTableViewCell.swift */,
@@ -1320,8 +1362,8 @@
 				165966AF2BED00EF00B93651 /* DiscoveryTabsCell.swift */,
 				165966D42BED00F200B93651 /* EthosBulletTableViewCell.swift */,
 				165966BF2BED00F000B93651 /* EthosBulletTableViewCellForNumber.swift */,
-				165966E12BED00F300B93651 /* EthosLoader.swift */,
 				165966D62BED00F200B93651 /* EthosStoreTableViewCell.swift */,
+				AA0B3BEB2C9EE69C008A3D9C /* EthosLoader.swift */,
 				165966EB2BED00F400B93651 /* EthosStoryCell.swift */,
 				165966EC2BED00F400B93651 /* EthosStoryCollectionViewCell.swift */,
 				165966C42BED00F100B93651 /* EthosSwitchTableViewCell.swift */,
@@ -1333,6 +1375,7 @@
 				165966D02BED00F200B93651 /* FeaturedVideoCollectionViewCell.swift */,
 				165966CF2BED00F100B93651 /* FeaturedVideoTableViewCell.swift */,
 				165966C32BED00F100B93651 /* FindAStoreTableViewCell.swift */,
+				AA49A6F02CCF7D3E00A69B13 /* FollowUsTableViewCell.swift */,
 				165966E22BED00F300B93651 /* GetAQuoteTableViewCell.swift */,
 				165966C72BED00F100B93651 /* GetAQuoteTradeTableViewCell.swift */,
 				165966C92BED00F100B93651 /* GlossaryDescriptionCell.swift */,
@@ -1590,6 +1633,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		AA0B3A982C9EABB1008A3D9C /* RangeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				AA0B3A952C9EABB1008A3D9C /* RangeSeekSlider.swift */,
+				AA0B3A962C9EABB1008A3D9C /* RangeSeekSliderDelegate.swift */,
+				AA0B3A972C9EABB1008A3D9C /* TapticEngine.swift */,
+			);
+			path = RangeSlider;
+			sourceTree = "<group>";
+		};
 		AAA65A0F2C41131B00270456 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,6 +1685,7 @@
 		AAA65A182C41131B00270456 /* ThirdPartyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				AA0B3A982C9EABB1008A3D9C /* RangeSlider */,
 				AAA65A172C41131B00270456 /* DropDown */,
 			);
 			path = ThirdPartyClasses;
@@ -1671,9 +1725,8 @@
 				16B340B52C007661000CAB2C /* Mixpanel */,
 				16F28A252C12E25F008F189A /* SkeletonView */,
 				16A0483C2C2418D800C769B6 /* FirebasePerformance */,
-				16C667B52C32896600EF7CFF /* PostHog */,
-				16BF2EC32C6B560A005CA875 /* WARangeSlider */,
 				AA28CAB22C6C8A380009CEC6 /* IQKeyboardManagerSwift */,
+				AA49A6EA2CBE4B3600A69B13 /* VWO_Insights */,
 			);
 			productName = Ethos;
 			productReference = 045C6B172A42C5A600AEC183 /* Ethos.app */;
@@ -1737,9 +1790,9 @@
 				166DF5242BD630FB00C8BA1E /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				16B340B42C007660000CAB2C /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 				16F28A242C12E25F008F189A /* XCRemoteSwiftPackageReference "SkeletonView" */,
-				16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				16BF2EC22C6B560A005CA875 /* XCRemoteSwiftPackageReference "RangeSlider" */,
 				AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AA5D0C6A2CBE4A4A00D2C6BF /* XCRemoteSwiftPackageReference "ios-mobile-insights-artifacts" */,
 			);
 			productRefGroup = 045C6B182A42C5A600AEC183 /* Products */;
 			projectDirPath = "";
@@ -1769,9 +1822,11 @@
 				165966662BED001700B93651 /* FavreLeubaCollectionReusableView.xib in Resources */,
 				1697BCCE2BFF64FC00F41B0F /* Brother-1816-Bold.otf in Resources */,
 				165966AC2BED001700B93651 /* ImageCollectionViewCell.xib in Resources */,
+				AADE08A22CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib in Resources */,
 				165966652BED001700B93651 /* VisitOurBoutiqueCell.xib in Resources */,
 				165966912BED001700B93651 /* ShoppingCategoryTableViewCell.xib in Resources */,
 				1697BCCA2BFF64FB00F41B0F /* Brother-1816-Thin-Italic.otf in Resources */,
+				AA0B3A9D2C9EABD0008A3D9C /* PriceSliderTableViewCell.xib in Resources */,
 				165966942BED001700B93651 /* EthosVideoTableViewCell.xib in Resources */,
 				1697BCC52BFF64FB00F41B0F /* MrsEavesXLSerifNarOT-RegItalic.otf in Resources */,
 				0452680C2BA08AE300145195 /* SplashPreOwned.mp4 in Resources */,
@@ -1783,6 +1838,7 @@
 				1659666B2BED001700B93651 /* RepairAndServiceNew.xib in Resources */,
 				1659669F2BED001700B93651 /* HelpAndSupportCell.xib in Resources */,
 				165966632BED001700B93651 /* EthosStoryCell.xib in Resources */,
+				AA49A6F52CCF7DE300A69B13 /* FollowUsTableViewCell.xib in Resources */,
 				165966A12BED001700B93651 /* FavreLeubaCatalogHeaderView.xib in Resources */,
 				1659668B2BED001700B93651 /* HorizontalCollectionTableViewCell.xib in Resources */,
 				16AC8B032C53C9DA0047CE56 /* ValidDomains.txt in Resources */,
@@ -1797,7 +1853,6 @@
 				0452680A2BA08AB200145195 /* preownedSellTab.mp4 in Resources */,
 				1697BCD02BFF64FC00F41B0F /* Brother-1816-Book.otf in Resources */,
 				1659668E2BED001700B93651 /* CornerCutImageTableViewCell.xib in Resources */,
-				165966A52BED001700B93651 /* EthosLoader.xib in Resources */,
 				165966872BED001700B93651 /* RepairAndServiceCell.xib in Resources */,
 				048B8EAA2A79034300D272A5 /* loader.gif in Resources */,
 				165966752BED001700B93651 /* FeaturedVideoCollectionViewCell.xib in Resources */,
@@ -1819,10 +1874,13 @@
 				1659666F2BED001700B93651 /* WatchConditionDescriptionTableViewCell.xib in Resources */,
 				1697BCCC2BFF64FB00F41B0F /* Brother-1816-Regular-Italic.otf in Resources */,
 				1659669A2BED001700B93651 /* DiscoveryTabsCell.xib in Resources */,
+				AA0B3BF52C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib in Resources */,
 				048B8EA22A78D7F300D272A5 /* Flags.xcassets in Resources */,
 				165966A02BED001700B93651 /* AdvertisementCell.xib in Resources */,
 				16101FBC2BDA2BE100A05D92 /* Rolex.png in Resources */,
+				AA0B3BF12C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.xib in Resources */,
 				1659666A2BED001700B93651 /* HomeTableViewCell.xib in Resources */,
+				AA0B3AA52C9ECB37008A3D9C /* ethos_loader_animation.json in Resources */,
 				165966AA2BED001700B93651 /* FAQCell.xib in Resources */,
 				165966A82BED001700B93651 /* ReadListCollectionViewCell.xib in Resources */,
 				041A48BC2AA77743000857B4 /* before.txt in Resources */,
@@ -1864,6 +1922,7 @@
 				1697BCC22BFF64FB00F41B0F /* Brother-1816-Medium.otf in Resources */,
 				1659669E2BED001700B93651 /* HtmlContainerForAboutCollectionTableViewCell.xib in Resources */,
 				165966702BED001700B93651 /* FindAStoreTableViewCell.xib in Resources */,
+				AA0B3BEE2C9EE6B4008A3D9C /* EthosLoader.xib in Resources */,
 				1697BCC32BFF64FB00F41B0F /* Brother-1816-Light-Italic.otf in Resources */,
 				165966812BED001700B93651 /* AboutCollectionTableViewCell.xib in Resources */,
 				1659667F2BED001700B93651 /* FavreLeubaHeaderTableViewCell.xib in Resources */,
@@ -1931,6 +1990,7 @@
 				1629E5292A6A8BEB00BFDD8A /* GetGlossaryViewModelDelegate.swift in Sources */,
 				046FE9922AA5A64800BA29DA /* SplashViewController.swift in Sources */,
 				043A96052B6D2AF50070D215 /* FormBrand.swift in Sources */,
+				AA0B3A9B2C9EABB1008A3D9C /* TapticEngine.swift in Sources */,
 				042B4EA82AAF1B31000B7D7B /* GetAQuoteViewModelDelegate.swift in Sources */,
 				1659671F2BED00F500B93651 /* EthosBulletTableViewCell.swift in Sources */,
 				1659672A2BED00F500B93651 /* SpecialCategoryCell_II.swift in Sources */,
@@ -2011,7 +2071,6 @@
 				048662C32A73E74800B0673C /* SignUpViewController.swift in Sources */,
 				16DB31172BC9591F0059252F /* EthosBottomSheetTableViewControllerWithTitle.swift in Sources */,
 				165967222BED00F500B93651 /* SecondMovementBoutiqueImagesCell.swift in Sources */,
-				1659672C2BED00F500B93651 /* EthosLoader.swift in Sources */,
 				165967052BED00F500B93651 /* SecondMovementVideoTableViewCell.swift in Sources */,
 				1659671D2BED00F500B93651 /* FavreLeubaHeaderTableViewCell.swift in Sources */,
 				042EFBED2A96136200266506 /* GetProductViewModelDelegate.swift in Sources */,
@@ -2031,12 +2090,14 @@
 				1637D1EE2C60FB870024CF5C /* RevolutionReviewTableViewCell.swift in Sources */,
 				043BDA3C2AA89B5700771458 /* ArticleListKey.swift in Sources */,
 				1659672E2BED00F500B93651 /* AdvertisementHeaderFooterView.swift in Sources */,
+				AA49A6F12CCF7D3E00A69B13 /* FollowUsTableViewCell.swift in Sources */,
 				04679D392A9E31F000726F09 /* GetBrandsData.swift in Sources */,
 				04181E942ABB304E00DE9933 /* ContactUsViewModel.swift in Sources */,
 				161C73542A612B2A001A88DF /* GetArticlesData.swift in Sources */,
 				045EE7B82AB350C000DA40F2 /* ProductDetailViewController.swift in Sources */,
 				AAA65A252C41142400270456 /* GetSearchSuggestionViewModelDelegate.swift in Sources */,
 				045C6B502A42FD0000AEC183 /* ProfileViewController.swift in Sources */,
+				AA49A6ED2CCF6FE200A69B13 /* ClubEchoPointsViewController.swift in Sources */,
 				165967322BED00F500B93651 /* SellOrTradeTableViewCell.swift in Sources */,
 				168617B52BECF6A900615C6F /* ProductVideo.swift in Sources */,
 				161C735A2A612CB7001A88DF /* Asset.swift in Sources */,
@@ -2052,8 +2113,8 @@
 				165966FB2BED00F400B93651 /* HorizontalCollectionTableViewCell.swift in Sources */,
 				165B513F2A60286E000D459C /* EthosConstants.swift in Sources */,
 				042EFBE72A96051500266506 /* GreetingText.swift in Sources */,
-				046489462AB86EE700AB4CA8 /* MenuViewController.swift in Sources */,
 				04133F4E2AA5E65C0090B3DC /* ArticleDetails.swift in Sources */,
+				AA0B3A992C9EABB1008A3D9C /* RangeSeekSlider.swift in Sources */,
 				049097432A80E542001E211F /* ContactUsViewController.swift in Sources */,
 				045C6B4E2A42FCD800AEC183 /* ShopViewController.swift in Sources */,
 				165967102BED00F500B93651 /* CornerCutImageTableViewCell.swift in Sources */,
@@ -2061,6 +2122,7 @@
 				046512902ACEEFC500AF37DF /* UserActivityViewModel.swift in Sources */,
 				161C73562A612BA2001A88DF /* Article.swift in Sources */,
 				043BDA402AA8FADD00771458 /* RequestACallBackFormViewController.swift in Sources */,
+				AA49A6EF2CCF764A00A69B13 /* EthosProfileBrandLayout.swift in Sources */,
 				04315DE52ABC518C007E240B /* PersistantContainer.swift in Sources */,
 				AAA65A1E2C41131B00270456 /* DropDown+Appearance.swift in Sources */,
 				168617BD2BECF7D500615C6F /* Value.swift in Sources */,
@@ -2138,9 +2200,11 @@
 				04133F532AA5E7390090B3DC /* GetArticleDetailsData.swift in Sources */,
 				1659670C2BED00F500B93651 /* SingleCharacterCollectionViewCell.swift in Sources */,
 				165967272BED00F500B93651 /* BrandImageCollectionViewCell.swift in Sources */,
+				AA0B3BF62C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.swift in Sources */,
 				0417E6C52A79248D00FC5A15 /* EthosTableKey.swift in Sources */,
 				1686179D2BECF07900615C6F /* BrandForSellOrTrade.swift in Sources */,
 				165967152BED00F500B93651 /* HtmlContainerForAboutCollectionTableViewCell.swift in Sources */,
+				AADE08A32CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift in Sources */,
 				041C44272AA0BD4A0069E8ED /* BannerType.swift in Sources */,
 				165967042BED00F500B93651 /* ProductCollectionViewCell.swift in Sources */,
 				043BDA3A2AA8997700771458 /* ArticleListTableViewController.swift in Sources */,
@@ -2149,6 +2213,7 @@
 				165967312BED00F500B93651 /* BoutiqueImageCollectionViewCell.swift in Sources */,
 				165967402BED00F500B93651 /* HtmlContainerTableViewCell.swift in Sources */,
 				042EAC012A7A972700C41FBE /* PasswordChangeAlertController.swift in Sources */,
+				AA5D0C692CB010E500D2C6BF /* DashboardTabBarController.swift in Sources */,
 				04D773312AAF6B520089D58B /* RequestACallBackViewModelDelegate.swift in Sources */,
 				161C73602A6163AF001A88DF /* Site.swift in Sources */,
 				168617992BECEE8400615C6F /* FilterDataAttributes.swift in Sources */,
@@ -2183,6 +2248,8 @@
 				16A717992C5772510094C4F2 /* SettingsCategoryModel.swift in Sources */,
 				04627EBE2B8CB9F100F95305 /* StoreTiming.swift in Sources */,
 				04679D342A9E142E00726F09 /* ArticleCategories.swift in Sources */,
+				AA0B3A9F2C9EABD6008A3D9C /* PriceSliderTableViewCell.swift in Sources */,
+				AA0B3A9A2C9EABB1008A3D9C /* RangeSeekSliderDelegate.swift in Sources */,
 				048B8EA72A78DC4500D272A5 /* EthosCountry.swift in Sources */,
 				16687C242BDBC46A00D8ABFC /* VibrationHelper.swift in Sources */,
 				0423B3322AD5300900C905DE /* ArticleDetailViewController.swift in Sources */,
@@ -2211,6 +2278,7 @@
 				168617B92BECF71400615C6F /* Attributes.swift in Sources */,
 				041C44212AA0BABD0069E8ED /* GetBannersViewModelDelegate.swift in Sources */,
 				1659670A2BED00F500B93651 /* EthosBulletTableViewCellForNumber.swift in Sources */,
+				AA0B3BF22C9EEA39008A3D9C /* AboutCollectionTextDataTableViewCell.swift in Sources */,
 				168617A92BECF50D00615C6F /* Story.swift in Sources */,
 				165967432BED00F500B93651 /* WatchConditionDescriptionTableViewCell.swift in Sources */,
 				042EFBE92A960CB700266506 /* Date.swift in Sources */,
@@ -2220,6 +2288,7 @@
 				048662C72A73FB7300B0673C /* LoginWithEmailViewController.swift in Sources */,
 				042EABFF2A7A629100C41FBE /* EthosAlertController.swift in Sources */,
 				0412333F2A7D22E400B3B9AA /* EthosStoryKey.swift in Sources */,
+				AA0B3BEC2C9EE69D008A3D9C /* EthosLoader.swift in Sources */,
 				042DB0182A77C9150091109D /* String.swift in Sources */,
 				1637D1EF2C60FB870024CF5C /* RevolutionTableViewHeaderCell.swift in Sources */,
 				041C441F2AA0BA970069E8ED /* Banner.swift in Sources */,
@@ -2392,7 +2461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ethos/Ethos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5258457F8U;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2412,7 +2481,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2434,7 +2503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ethos/Ethos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 5258457F8U;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2454,7 +2523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2640,14 +2709,6 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.6.1;
-			};
-		};
 		16DB31112BC921BE0059252F /* XCRemoteSwiftPackageReference "libPhoneNumber-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/iziz/libPhoneNumber-iOS";
@@ -2670,6 +2731,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.1.1;
+			};
+		};
+		AA5D0C6A2CBE4A4A00D2C6BF /* XCRemoteSwiftPackageReference "ios-mobile-insights-artifacts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wingify/ios-mobile-insights-artifacts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.12;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2739,16 +2808,6 @@
 			package = 16B340B42C007660000CAB2C /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
 		};
-		16BF2EC32C6B560A005CA875 /* WARangeSlider */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16BF2EC22C6B560A005CA875 /* XCRemoteSwiftPackageReference "RangeSlider" */;
-			productName = WARangeSlider;
-		};
-		16C667B52C32896600EF7CFF /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16C667B42C32896600EF7CFF /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
 		16DB31122BC921BE0059252F /* libPhoneNumber */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16DB31112BC921BE0059252F /* XCRemoteSwiftPackageReference "libPhoneNumber-iOS" */;
@@ -2763,6 +2822,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA28C9EE2C6C875C0009CEC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		AA49A6EA2CBE4B3600A69B13 /* VWO_Insights */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA5D0C6A2CBE4A4A00D2C6BF /* XCRemoteSwiftPackageReference "ios-mobile-insights-artifacts" */;
+			productName = VWO_Insights;
 		};
 /* End XCSwiftPackageProductDependency section */
 

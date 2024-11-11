@@ -177,7 +177,13 @@ class StoreCollectionViewCell: UICollectionViewCell {
                     "Boutique Name" : self.store?.storeName,
                     "Connect Option" : "Email"
                 ])
-                UIApplication.shared.open(mailIdUrl)
+                UIApplication.shared.open(mailIdUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -196,7 +202,13 @@ class StoreCollectionViewCell: UICollectionViewCell {
                         "Boutique Name" : self.store?.storeName,
                         "Connect Option" : "Phone"
                     ])
-                    UIApplication.shared.open(numberUrl)
+                    UIApplication.shared.open(numberUrl){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
                 }
             }
         }
@@ -218,7 +230,13 @@ extension StoreCollectionViewCell : SuperViewDelegate {
                         "Boutique Name" : self.store?.storeName,
                         "Connect Option" : "Phone"
                     ])
-                    UIApplication.shared.open(numberUrl)
+                    UIApplication.shared.open(numberUrl){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
                 }
             }
         }

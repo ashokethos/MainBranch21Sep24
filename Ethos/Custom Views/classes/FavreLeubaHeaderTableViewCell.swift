@@ -105,17 +105,17 @@ class FavreLeubaHeaderTableViewCell: UITableViewCell {
                 
                 if text.image == nil && text.image2 == nil && text.image3 == nil {
                     self.constraintHeightOfImagesView.constant = 0
-                    self.constraintSpacingLblHeaderAndImages.constant = 0
                 } else {
-                    self.constraintSpacingLblHeaderAndImages.constant = 50
                     self.constraintHeightOfImagesView.constant = 500
                 }
                 
                 if let mainTextHeading = text.heading {
                     self.lblHeader.setAttributedTitleWithProperties(title: mainTextHeading, font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24),alignment: .center, lineHeightMultiple: 1.5, kern: 0.5)
-                    constraintSpacingImagesAndLblContent.constant = 60
+//                    constraintSpacingImagesAndLblContent.constant = 60
+                    self.constraintSpacingLblHeaderAndImages.constant = 50
                 } else {
-                    constraintSpacingImagesAndLblContent.constant = 0
+//                    constraintSpacingImagesAndLblContent.constant = 0
+                    self.constraintSpacingLblHeaderAndImages.constant = 0
                 }
                 
                 if let img1 = text.image, let url = URL(string: img1) {
@@ -133,8 +133,10 @@ class FavreLeubaHeaderTableViewCell: UITableViewCell {
                 if let textDescription = text.text {
                     self.lblContent.setAttributedTitleWithProperties(title: textDescription, font: EthosFont.Brother1816Regular(size: 14), lineHeightMultiple: 1.5, kern: 0.5)
                     self.constraintBottomLblContent.constant = 30
+                    self.constraintSpacingImagesAndLblContent.constant = 30
                 } else {
                     self.constraintBottomLblContent.constant = 0
+                    self.constraintSpacingImagesAndLblContent.constant = 0
                 }
                 
                 DispatchQueue.main.async {

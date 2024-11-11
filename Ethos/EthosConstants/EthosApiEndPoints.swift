@@ -43,6 +43,7 @@ struct EthosApiEndPoints {
     static let betterTogether = "/better-together/"
     static let getFiltersByAttribute = "/getFiltersByAttr"
     static let getFilteredProducts = "/filterProduct"
+    static let getNewproducts = "/newproducts"
     static let getProductsNewArrival = "/products/newArrival"
     static let getStores = "/getStores"
     static let getTopStores = "/topstores"

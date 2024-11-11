@@ -73,7 +73,7 @@ class NewCatalogViewController: UIViewController {
     }
     
     func setup() {
-        
+        self.viewFilterAndSortBy.isHidden = true
         self.productTableView.isSkeletonable = true
         self.productTableView.showAnimatedGradientSkeleton()
         self.btnRedDotSortBy.clipsToBounds = true
@@ -107,7 +107,8 @@ class NewCatalogViewController: UIViewController {
     }
     
     func getFilters() {
-        self.productViewModel.getUpdatedFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
+//        self.productViewModel.getUpdatedFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
+        self.productViewModel.getFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType)
     }
     
     @IBAction func didTapBack(_ sender: UIButton) {
@@ -154,8 +155,16 @@ class NewCatalogViewController: UIViewController {
                         selectedValues.append(item)
                     }
                 }
+                vc.viewModel.minPriceLimit = self.productViewModel.minPriceLimit
+                vc.viewModel.maxPriceLimit = self.productViewModel.maxPriceLimit
+                
+                vc.viewModel.lowerPriceLimit = self.productViewModel.lowerPriceLimit
+                vc.viewModel.upperPriceLimit = self.productViewModel.upperPriceLimit
+                vc.viewModel.selectedFilters = self.productViewModel.selectedFilters
                 vc.viewModel.selectedValues = selectedValues
                 vc.delegate = self
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: false)
             }
         }
@@ -167,7 +176,8 @@ class NewCatalogViewController: UIViewController {
         } else {
             self.btnRedDotSortBy.isHidden = false
         }
-        if self.productViewModel.selectedFilters.count == 0 {
+//        if self.productViewModel.selectedFilters.count == 0 {
+        if self.productViewModel.selectedFilters.count == 0 && self.productViewModel.lowerPriceLimit == nil && self.productViewModel.upperPriceLimit == nil {
             self.btnRedDot.isHidden = true
         } else {
             self.btnRedDot.isHidden = false
@@ -405,6 +415,17 @@ extension NewCatalogViewController : SuperViewDelegate {
         }
         
         if let key = info?[EthosKeys.key] as? EthosKeys, key == .applyFilters, let filters = info? [EthosKeys.filters] as? [FilterModel] , let selectedFilters = info? [EthosKeys.selectedFilters] as? [FilterModel]{
+            if let minPriceLimit = info?[EthosKeys.minPriceLimit] as? Int,
+               let maxPriceLimit = info?[EthosKeys.maxPriceLimit] as? Int {
+                self.productViewModel.minPriceLimit = minPriceLimit
+                self.productViewModel.maxPriceLimit = maxPriceLimit
+            }
+            
+            if let lowerPriceLimit = info?[EthosKeys.lowerPriceLimit] as? Int,
+               let upperPriceLimit = info?[EthosKeys.upperPriceLimit] as? Int {
+                self.productViewModel.lowerPriceLimit = lowerPriceLimit
+                self.productViewModel.upperPriceLimit = upperPriceLimit
+            }
             self.productViewModel.selectedFilters = selectedFilters
             self.productViewModel.filters = filters
             updateView()
@@ -426,6 +447,8 @@ extension NewCatalogViewController : SuperViewDelegate {
         
         if let key = info?[EthosKeys.key] as? EthosKeys, key == .resetFilters {
             self.productViewModel.selectedFilters = []
+            self.productViewModel.upperPriceLimit = nil
+            self.productViewModel.lowerPriceLimit = nil
             self.productViewModel.products.removeAll()
             self.btnFilter.isEnabled = false
             UserDefaults.standard.removeObject(forKey: "filtersData")
@@ -493,9 +516,19 @@ extension NewCatalogViewController : GetProductViewModelDelegate {
         DispatchQueue.main.async {
             if self.productViewModel.totalCount == 1 {
                 self.lblNumberOfItems.text = "\(self.productViewModel.totalCount) product".uppercased()
+                if self.productViewModel.selectedFilters.count > 0{
+                    self.viewFilterAndSortBy.isHidden = false
+                }else{
+                    self.viewFilterAndSortBy.isHidden = true
+                }
             } else {
                 if self.productViewModel.totalCount == 0{
-                    self.viewFilterAndSortBy.isHidden = true
+//                    self.viewFilterAndSortBy.isHidden = true
+                    if self.productViewModel.selectedFilters.count > 0 {
+                        self.viewFilterAndSortBy.isHidden = false
+                    } else {
+                        self.viewFilterAndSortBy.isHidden = true
+                    }
                 } else {
                     self.viewFilterAndSortBy.isHidden = false
                 }

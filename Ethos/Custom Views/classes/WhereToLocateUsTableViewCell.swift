@@ -46,7 +46,13 @@ class WhereToLocateUsTableViewCell: UITableViewCell {
         let phoneNumber = lblSellWatch.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -55,7 +61,13 @@ class WhereToLocateUsTableViewCell: UITableViewCell {
         let phoneNumber = lblBuyWatch.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -165,13 +177,17 @@ extension WhereToLocateUsTableViewCell : UITextViewDelegate {
         if URL.scheme == "tel" {
             
             if UIApplication.shared.canOpenURL(URL) {
-                UIApplication.shared.open(URL)
+                UIApplication.shared.open(URL) { success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
             
             return false
         }
         return true
     }
-    
-    
 }

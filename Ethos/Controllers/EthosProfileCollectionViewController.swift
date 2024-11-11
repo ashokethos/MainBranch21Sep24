@@ -9,7 +9,7 @@ import UIKit
 import Mixpanel
 
 class EthosProfileCollectionViewController: UIViewController {
-
+    
     @IBOutlet weak var viewNoArticles: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage: UILabel!
@@ -26,7 +26,7 @@ class EthosProfileCollectionViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       fetchProducts()
+        fetchProducts()
     }
     
     func setup() {
@@ -56,7 +56,7 @@ class EthosProfileCollectionViewController: UIViewController {
                     pro.currency = product.currency
                     
                     let imagedata = ProductImageData(catalogImage: product.thumbnailImage, gallery: [ProductImage(image: product.thumbnailImage, order: 0)] )
-                   
+                    
                     pro.extensionAttributes = ExtensionAttributes(categoryLinks: [CategoryLink(position: 0, categoryID: String(product.categoryId))], ethProdCustomeData: EthProdCustomeData(sku: product.sku, brand: product.brand, collection: product.collectionName , productName: product.name, images: imagedata, hidePrice: product.hidePrice, price: Int(product.customPrice)))
                     
                     pro.forPreOwned = product.preowned
@@ -95,12 +95,16 @@ class EthosProfileCollectionViewController: UIViewController {
     
     @IBAction func btnExploreNowDidTapped(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 2
-//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewCatalogViewController.self)) as? NewCatalogViewController {
-//            vc.screenType = "view_all"
-//            vc.productViewModel.categoryName = "All Watches"
-//            vc.productViewModel.categoryId = 110
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+        //        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewCatalogViewController.self)) as? NewCatalogViewController {
+        //            vc.screenType = "view_all"
+        //            vc.productViewModel.categoryName = "All Watches"
+        //            vc.productViewModel.categoryId = 110
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }
+        
+        DispatchQueue.main.async {
+            UIApplication.topViewController()?.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
@@ -146,24 +150,24 @@ extension EthosProfileCollectionViewController  : UICollectionViewDataSource, UI
                 Mixpanel.mainInstance().trackWithLogs(
                     event: EthosConstants.ProductClicked,
                     properties: [
-                    EthosConstants.Email : Userpreference.email,
-                    EthosConstants.UID : Userpreference.userID,
-                    EthosConstants.Gender : Userpreference.gender,
-                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
-                    EthosConstants.Platform : EthosConstants.IOS,
-                    EthosConstants.ProductSKU : savedProducts[indexPath.item].sku,
-                    EthosConstants.ProductType : savedProducts[indexPath.item].extensionAttributes?.ethProdCustomeData?.brand,
-                    EthosConstants.ProductName : savedProducts[indexPath.item].extensionAttributes?.ethProdCustomeData?.productName,
-                    EthosConstants.SKU : savedProducts[indexPath.item].sku,
-                    EthosConstants.Price : savedProducts[indexPath.item].price,
-                    EthosConstants.ShopType : EthosConstants.Ethos,
-                    EthosConstants.ProductSubCategory :  "Saved Products"
-                ]
+                        EthosConstants.Email : Userpreference.email,
+                        EthosConstants.UID : Userpreference.userID,
+                        EthosConstants.Gender : Userpreference.gender,
+                        EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                        EthosConstants.Platform : EthosConstants.IOS,
+                        EthosConstants.ProductSKU : savedProducts[indexPath.item].sku,
+                        EthosConstants.ProductType : savedProducts[indexPath.item].extensionAttributes?.ethProdCustomeData?.brand,
+                        EthosConstants.ProductName : savedProducts[indexPath.item].extensionAttributes?.ethProdCustomeData?.productName,
+                        EthosConstants.SKU : savedProducts[indexPath.item].sku,
+                        EthosConstants.Price : savedProducts[indexPath.item].price,
+                        EthosConstants.ShopType : EthosConstants.Ethos,
+                        EthosConstants.ProductSubCategory :  "Saved Products"
+                    ]
                 )
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
-
+        
     }
     
 }

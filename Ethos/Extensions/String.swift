@@ -136,7 +136,9 @@ extension String {
         return "tel://\(phoneNumber)"
     }
     
-    
+    func checkNumeric() -> Bool {
+       return Double(self) != nil
+    }
     
     func getVimeoId() -> String {
         let videoId = self.replacingOccurrences(of: "https://player.vimeo.com/video/", with: "")

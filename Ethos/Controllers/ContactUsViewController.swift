@@ -193,7 +193,13 @@ class ContactUsViewController: UIViewController {
         let phoneNumber = sender.titleLabel?.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -202,7 +208,13 @@ class ContactUsViewController: UIViewController {
         let phoneNumber = sender.titleLabel?.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "mailto:\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -212,9 +224,21 @@ class ContactUsViewController: UIViewController {
         let urlWhats = "whatsapp://send?phone=\(phoneNumber)&abid=12354&text=Hello"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
             if let watsappURL = URL(string: urlString), UIApplication.shared.canOpenURL(watsappURL) {
-                    UIApplication.shared.open(watsappURL)
+                    UIApplication.shared.open(watsappURL){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
             } else if let watsappURL =  URL(string: "https://itunes.apple.com/app/id310633997"), UIApplication.shared.canOpenURL(watsappURL) {
-                UIApplication.shared.open(watsappURL)
+                UIApplication.shared.open(watsappURL){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -371,7 +395,16 @@ extension ContactUsViewController : ContactUsViewModelDelegate {
     func requestSuccess(message: String) {
         DispatchQueue.main.async {
             self.resetFields()
-            self.showAlertWithSingleTitle(title: EthosConstants.requestSuccess, message: "" )
+//            self.showAlertWithSingleTitle(title: EthosConstants.requestSuccess, message: "" )
+            DispatchQueue.main.async {
+                if let alertController = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
+                    alertController.setActions(title: EthosConstants.requestSuccess, message: "", secondActionTitle:  EthosConstants.Ok.uppercased())
+                    alertController.secondButtonAction = {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    self.present(alertController, animated: true)
+                }
+            }
         }
         
     }

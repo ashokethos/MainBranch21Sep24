@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key></key>
-	<string></string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -27,6 +25,8 @@
 			</array>
 		</dict>
 	</array>
+    <key>NSPrincipalClass</key>
+    <string>VWOPrincipleClass</string>
 	<key>FacebookAppID</key>
 	<string>2766132223538341</string>
 	<key>FacebookClientToken</key>

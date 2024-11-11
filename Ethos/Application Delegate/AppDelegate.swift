@@ -14,7 +14,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 import Siren
 import Mixpanel
-import PostHog
+import VWO_Insights
 import IQKeyboardManagerSwift
 
 @main
@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.rulesManager = RulesManager(globalRules: .critical, showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
         
         siren.wail()
+//        VWO.configure(accountId: EthosIdentifiers.vWOAccountID, appId: EthosIdentifiers.vWOSDKKey, userId: "\(Userpreference.userID ?? 0)") { result in
+//            VWO.startSessionRecording()
+//        }
         EthosLoader.shared.instantiate()
         IQKeyboardManager.shared.enable = true
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -43,12 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Mixpanel.mainInstance().loggingEnabled = true
         }
         
-//        DispatchQueue.main.async {
-//            let config = PostHogConfig(apiKey: EthosIdentifiers.postHogApiKey, host: EthosIdentifiers.postHogHost)
-//            config.sessionReplay = true
-//            PostHogSDK.shared.setup(config)
-//        }
-        
         DispatchQueue.main.async {
             OneSignal.Debug.setLogLevel(.LL_VERBOSE)
             OneSignal.initialize(EthosIdentifiers.oneSignalApiKey, withLaunchOptions: launchOptions)
@@ -65,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
             print(properties.debugDescription)
             Mixpanel.mainInstance().trackWithLogs(
-                event: "App Open",
+                event: EthosConstants.AppOpen,
                 properties: properties
             )
         }
@@ -84,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(properties.debugDescription)
 
         Mixpanel.mainInstance().trackWithLogs(
-            event: "App Close",
+            event: EthosConstants.AppClose,
             properties: properties
         )
     }
@@ -99,15 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return [.portrait]
     }
     
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        
-        
-        ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+    func application(_ app: UIApplication,open url: URL,options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        ApplicationDelegate.shared.application(app,open: url,sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
         

@@ -9,6 +9,12 @@ import Foundation
 import Mixpanel
 
 class GetProductViewModel : NSObject {
+    var minPriceLimit : Int?
+    var maxPriceLimit : Int?
+    
+    var upperPriceLimit : Int?
+    var lowerPriceLimit : Int?
+    
     var limit = 20
     var product : Product?
     var products = [Product]()
@@ -18,10 +24,11 @@ class GetProductViewModel : NSObject {
     var categoryName : String?
     var filterProductCount = 0
     var currentDataCount = 0
-    var currentPage = 1;
-    var totalCount = 0;
+    var currentPage = 1
+    var totalCount = 1
     var isExpanded = false
     var gettingNewProducts = false
+    var searchInputData: SearchInputData?
     var filters = [FilterModel]()
     var selectedFilter : FilterModel?
     var selectedFilters = [FilterModel]()
@@ -82,17 +89,17 @@ class GetProductViewModel : NSObject {
         
     }
     
-    func getSelectedValuesFromSelectedFilters() -> [SelectedFilterData] {
-        var arrSelectedValues = [SelectedFilterData]()
-        for filter in selectedFilters {
-            for value in filter.values ?? [] {
-                let selectedModel = SelectedFilterData(filterModelName: filter.attributeName ?? "", filterModelCode: filter.attributeCode ?? "", filterModelId: filter.attributeId ?? 0, filtervalue: value)
-                
-                arrSelectedValues.append(selectedModel)
-            }
-        }
-        return arrSelectedValues
-    }
+//    func getSelectedValuesFromSelectedFilters() -> [SelectedFilterData] {
+//        var arrSelectedValues = [SelectedFilterData]()
+//        for filter in selectedFilters {
+//            for value in filter.values ?? [] {
+//                let selectedModel = SelectedFilterData(filterModelName: filter.attributeName ?? "", filterModelCode: filter.attributeCode ?? "", filterModelId: filter.attributeId ?? 0, filtervalue: value)
+//                
+//                arrSelectedValues.append(selectedModel)
+//            }
+//        }
+//        return arrSelectedValues
+//    }
     
     
     func getSelectedFiltersFromSelectedValues() -> [FilterModel] {
@@ -107,9 +114,7 @@ class GetProductViewModel : NSObject {
                     element.attributeName == selectedValue.filterModelName
                 }), index < selectedFilters.count {
                     selectedFilters[index].values?.append(selectedValue.filtervalue)
-                    
                 }
-                
                 
             } else {
                 
@@ -136,12 +141,13 @@ class GetProductViewModel : NSObject {
         if (self.selectedSortBy != nil || self.selectedFilters.count > 0) && searchString == "" {
             filters = getRequestBodyFromData()
             
-        }else if (self.selectedSortBy == nil || self.selectedFilters.count == 0){
-            if let data = UserDefaults.standard.data(forKey: "filtersData"),
-               let retrievedFilterData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                filters = retrievedFilterData
-            }
         }
+//        else if (self.selectedSortBy == nil || self.selectedFilters.count == 0){
+//            if let data = UserDefaults.standard.data(forKey: "filtersData"),
+//               let retrievedFilterData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                filters = retrievedFilterData
+//            }
+//        }
         
         self.delegate?.startIndicator()
         
@@ -151,7 +157,7 @@ class GetProductViewModel : NSObject {
             EthosConstants.site : site.rawValue,
             EthosConstants.limit : String(self.limit),
             EthosConstants.productString : searchString,
-            EthosConstants.page : "1",
+            EthosConstants.page : String(self.currentPage),
         ]
         
         if let filters = filters {
@@ -186,6 +192,78 @@ class GetProductViewModel : NSObject {
         }
     }
     
+    func getNewProductsFromCategory (site : Site = .ethos, searchString : String = "", searchStatus : Bool = false) {
+        guard let id = self.categoryId else { return }
+        
+        var filters : [String : Any]? = nil
+        if (self.selectedSortBy != nil || self.selectedFilters.count > 0) && searchStatus == false{
+            filters = getRequestBodyFromData()
+        }
+        
+        if self.products.count != totalCount {
+            self.delegate?.startIndicator()
+            if self.products.count == 0 {
+                currentPage = 1
+            }else{
+                currentPage += 1
+            }
+            
+            var body = [String: Any]()
+            var requestType = RequestType.POST
+            let params : [String : String] = [
+                EthosConstants.site : site.rawValue,
+                EthosConstants.limit : String(self.limit),
+                EthosConstants.productString : searchString,
+                EthosConstants.page : String(self.currentPage),
+            ]
+            
+            if let filters = filters {
+                requestType = .POST
+                body = filters
+            } else {
+                //            if id == 0{
+                //                params[EthosConstants.category] = "110"
+                //            }else{
+                //                params[EthosConstants.category] = String(id)
+                //            }
+            }
+            
+            EthosApiManager().callApi (
+                endPoint : EthosApiEndPoints.getNewproducts,
+                RequestType : requestType,
+                RequestParameters : params,
+                RequestBody : body
+            ) { data, response, error in
+                if let response = response as? HTTPURLResponse {
+                    self.delegate?.stopIndicator()
+                    if response.statusCode == 200 {
+                        if let data = data,
+                           let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any] {
+                            let products = GetProducts(json: json)
+                            self.currentDataCount = products.data?.currentDataCount ?? 0
+                            self.currentPage = products.data?.currentPage ?? 0
+                            if products.data?.totalCount ?? 0 == 0{
+                                self.totalCount = 1
+                            }else{
+                                self.totalCount = products.data?.totalCount ?? 0
+                            }
+                            let newProducts = products.data?.products ?? [Product]()
+                            if newProducts.count > 0 && self.products.count < products.data?.totalCount ?? 0{
+                                self.products.append(contentsOf: newProducts)
+                            }
+//                            self.products = products.data?.products ?? [Product]()
+                            self.categoryId = Int(products.search_input_data?.filter?.category_id?[0] ?? "")
+                            self.searchInputData = products.search_input_data
+                            self.delegate?.didGetProducts(site: site, CategoryId: self.categoryId)
+                        }
+                    } else {
+                        self.delegate?.errorInGettingProducts(error: EthosConstants.error)
+                    }
+                }
+            }
+        }
+    }
+    
     
     func getNewProducts (
         site : Site = .ethos,
@@ -208,7 +286,7 @@ class GetProductViewModel : NSObject {
             self.delegate?.startFooterIndicator()
             
             var requestBody : [String : Any] = [String : Any]()
-            var requestType : RequestType = .GET
+            var requestType : RequestType = .POST
             
             var params : [String:String] = [
                 EthosConstants.site : site.rawValue,
@@ -220,7 +298,6 @@ class GetProductViewModel : NSObject {
             if let filters = filters {
                 requestBody = filters
                 requestType = .POST
-                
             } else {
                 params[EthosConstants.category] = String(id)
             }
@@ -258,7 +335,11 @@ class GetProductViewModel : NSObject {
         
         var requestBody = [String: Any]()
         var filters = [String : Any]()
-        filters[EthosConstants.categoryId] = ["\(id)"]
+        if id == 0{
+            filters[EthosConstants.categoryId] = ["110"]
+        }else{
+            filters[EthosConstants.categoryId] = ["\(id)"]
+        }
         
         if let selectedSortBy = self.selectedSortBy {
             if selectedSortBy == EthosConstants.priceHighToLow {
@@ -277,12 +358,20 @@ class GetProductViewModel : NSObject {
                 if let key = filter.attributeCode {
                     var arrvalues = [[String : String]]()
                     for val in filter.values ?? [] {
-                        if let attrid = val.attributeValueId, let attrName = val.attributeValueName {
+                        if let attrName = val.attributeValueName {
                             var dict = [String : String]()
-                            dict[EthosConstants.attrValueID] = String(attrid)
+                            if let attrid = val.attributeValueId {
+                                dict[EthosConstants.attrValueID] = String(attrid)
+                            }
                             dict[EthosConstants.attrValueName] = String(attrName)
                             arrvalues.append(dict)
                         }
+//                        if let attrid = val.attributeValueId, let attrName = val.attributeValueName {
+//                            var dict = [String : String]()
+//                            dict[EthosConstants.attrValueID] = String(attrid)
+//                            dict[EthosConstants.attrValueName] = String(attrName)
+//                            arrvalues.append(dict)
+//                        }
                     }
                     filters[key] = arrvalues
                 }
@@ -337,19 +426,26 @@ class GetProductViewModel : NSObject {
         }
     }
     
-    func getFilters (
-        site : Site = .ethos
-    ) {
+    func getFilters (site : Site = .ethos, screenType: String?, loader: Bool? = false) {
         guard let id = self.categoryId else { return }
+        var params = [String : Any]()
+        var hasSelectedFilters = false
+        if let filters = self.filterData {
+            params[EthosConstants.filters] = filters.getDictionary()
+            hasSelectedFilters = true
+        }
+        if loader == false{
+            self.delegate?.startIndicator()
+        }
         EthosApiManager().callApi(
-            endPoint: EthosApiEndPoints.getFilters,
-            RequestType: .GET,
+            endPoint: hasSelectedFilters ? EthosApiEndPoints.getFiltersByAttribute : EthosApiEndPoints.getFilters,
+            RequestType: hasSelectedFilters ? .POST : .GET,
             RequestParameters: [
-                EthosConstants.categoryId : id == 3 ? "" : String(id),
+                /*EthosConstants.categoryId : id == 3 ? "" : String(id)*/EthosConstants.categoryId : String(id),
                 EthosConstants.site : site.rawValue
             ],
-            RequestBody: [:]
-        ) { data, response, error in
+            RequestBody: params) { data, response, error in
+            self.delegate?.stopIndicator()
             if let response = response as? HTTPURLResponse,
                response.statusCode == 200,
                let data = data ,
@@ -361,7 +457,20 @@ class GetProductViewModel : NSObject {
                 var filters = [FilterModel]()
                 for item in items {
                     let filter = FilterModel(json: item)
-                    if filter.values?.count ?? 0 > 1 {
+                    if filter.attributeName?.uppercased() == "PRICE MAX" {
+                        if let maxPriceStr = filter.values?.first?.attributeValueName, let maxprice = Int(maxPriceStr) {
+                            if self.upperPriceLimit == nil {
+                                self.maxPriceLimit = maxprice
+                            }
+                            
+                        }
+                    } else if filter.attributeName?.uppercased() == "PRICE MIN" {
+                        if let minPriceStr = filter.values?.first?.attributeValueName, let minprice = Int(minPriceStr) {
+                            if self.lowerPriceLimit == nil {
+                                self.minPriceLimit = minprice
+                            }
+                        }
+                    } else if filter.values?.count ?? 0 > 1 {
                         filters.append(filter)
                     }
                 }
@@ -371,12 +480,33 @@ class GetProductViewModel : NSObject {
                 }) && !(self.getSelectedFiltersFromSelectedValues().contains(where: { model in
                     model.attributeName?.uppercased() == EthosConstants.brand.uppercased()
                 })) {
-                    filters.removeAll { model in
-                        model.attributeName?.uppercased() == EthosConstants.collection.uppercased() || model.attributeName?.uppercased() == EthosConstants.series.uppercased()
+                    if screenType == "search" || screenType == "view_all"{
+                        filters.removeAll { model in
+                            model.attributeName?.uppercased() == EthosConstants.collection.uppercased() || model.attributeName?.uppercased() == EthosConstants.series.uppercased()
+                        }
                     }
                 }
                 
-                self.filters = filters
+                if !filters.contains(where: { model in
+                    model.attributeName?.uppercased() == "PRICE"
+                }) {
+                    if self.lowerPriceLimit != nil && self.upperPriceLimit != nil {
+                        filters.append(FilterModel(attributeName: "PRICE"))
+                    }
+                }
+                
+                self.filters = filters.sorted(by: { a, b in
+                    b.attributeName ?? "" > a.attributeName ?? ""
+                })
+                
+                self.selectedFilters.removeAll { filter in
+                    (filter.attributeName?.uppercased() != "PRICE MAX" && filter.attributeName?.uppercased() != "PRICE MIN" && !filters.contains(where: { model in
+                        model.attributeName == filter.attributeName
+                    })
+                    )
+                }
+                
+//                self.filters = filters
                 self.delegate?.didGetFilters()
             } else {
                 self.delegate?.errorInGettingFilters()
@@ -406,9 +536,24 @@ class GetProductViewModel : NSObject {
                 var filters = [FilterModel]()
                 for item in items {
                     let filter = FilterModel(json: item)
-                    if filter.values?.count ?? 0 > 1 {
+                    
+                    if filter.attributeName?.uppercased() == "PRICE MAX" {
+                        if let maxPriceStr = filter.values?.first?.attributeValueName, let maxprice = Int(maxPriceStr) {
+                            if self.upperPriceLimit == nil {
+                                self.maxPriceLimit = maxprice
+                            }
+                            
+                        }
+                    } else if filter.attributeName?.uppercased() == "PRICE MIN" {
+                        if let minPriceStr = filter.values?.first?.attributeValueName, let minprice = Int(minPriceStr) {
+                            if self.lowerPriceLimit == nil {
+                                self.minPriceLimit = minprice
+                            }
+                        }
+                    } else if filter.values?.count ?? 0 > 1 {
                         filters.append(filter)
                     }
+                    
                 }
                 
                 if filters.contains(where: { model in
@@ -423,10 +568,18 @@ class GetProductViewModel : NSObject {
                     }
                 }
                 
+                if !filters.contains(where: { model in
+                    model.attributeName?.uppercased() == "PRICE"
+                }) {
+                    if self.lowerPriceLimit != nil && self.upperPriceLimit != nil {
+                        filters.append(FilterModel(attributeName: "PRICE"))
+                    }
+                }
                 
                 self.filters = filters.sorted(by: { a, b in
                     b.attributeName ?? "" > a.attributeName ?? ""
                 })
+                
                 
                 self.delegate?.didGetFilters()
             } else {

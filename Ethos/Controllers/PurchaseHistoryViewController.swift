@@ -17,7 +17,7 @@ class PurchaseHistoryViewController: UIViewController {
     var viewModel = GetCustomerViewModel()
     var purchaseHistoryDataArr = [GetPurchaseHistoryData]()
     let refreshControl = UIRefreshControl()
-    var emptyMsg = "You haven't placed any orders yet.\nShop now and view your order history here."
+    var emptyMsg = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,82 +126,82 @@ extension PurchaseHistoryViewController : UITableViewDataSource, UITableViewDele
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PurchaseHistoryTableViewCell.self), for: indexPath) as? PurchaseHistoryTableViewCell {
             cell.downloadInvoiceImg.isHidden = true
+            cell.hideSkeleton()
             if purchaseHistoryDataArr.count > 0{
                 cell.purchaseHistoryData = purchaseHistoryDataArr[indexPath.row]
-                if (purchaseHistoryDataArr[indexPath.row].invoiceAttachmentPath ?? "").isValidURL{
-                    cell.downloadInvoiceImg.isHidden = false
-                }else{
-                    cell.downloadInvoiceImg.isHidden = true
-                }
-                if let url = URL(string: (purchaseHistoryDataArr[indexPath.row].image ?? "")) {
-                    cell.productImg.kf.setImage(with: url)
-                }
-                cell.brandNameLbl.numberOfLines = 1
-                cell.brandNameLbl.setAttributedTitleWithProperties(
-                    title: (self.purchaseHistoryDataArr[indexPath.row].brand_name ?? "").uppercased(),
-                    font: EthosFont.Brother1816Bold(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.nameLbl.numberOfLines = 1
-                cell.nameLbl.setAttributedTitleWithProperties(
-                    title: (self.purchaseHistoryDataArr[indexPath.row].name ?? "").uppercased(),
-                    font: EthosFont.Brother1816Regular(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.sizeLbl.numberOfLines = 1
-                cell.sizeLbl.setAttributedTitleWithProperties(
-                    title: (self.purchaseHistoryDataArr[indexPath.row].case_size ?? "").uppercased(),
-                    font: EthosFont.Brother1816Regular(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.modelLbl.numberOfLines = 1
-                cell.modelLbl.setAttributedTitleWithProperties(
-                    title: (self.purchaseHistoryDataArr[indexPath.row].model_number ?? "").uppercased(),
-                    font: EthosFont.Brother1816Regular(size: 11), foregroundColor: UIColor.init(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0000),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.billingAmtLbl.numberOfLines = 1
-                cell.billingAmtLbl.setAttributedTitleWithProperties(
-                    title: "MRP ₹ \((self.purchaseHistoryDataArr[indexPath.row].billing_amount ?? 0).getCommaSeperatedStringValue() ?? "")",
-                    font: EthosFont.Brother1816Regular(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.orderDateTitleLbl.setAttributedTitleWithProperties(
-                    title: "ORDER DATE",
-                    font: EthosFont.Brother1816Bold(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.orderDateLbl.numberOfLines = 1
-                cell.orderDateLbl.setAttributedTitleWithProperties(
-                    title: (self.purchaseHistoryDataArr[indexPath.row].invoice_date ?? "").uppercased(),
-                    font: EthosFont.Brother1816Regular(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.orderIDTitleLbl.setAttributedTitleWithProperties(
-                    title: "ORDER ID",
-                    font: EthosFont.Brother1816Bold(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
-                cell.orderIDLbl.numberOfLines = 1
-                cell.orderIDLbl.setAttributedTitleWithProperties(
-                    title: "#\(self.purchaseHistoryDataArr[indexPath.row].invoice_number ?? "")",
-                    font: EthosFont.Brother1816Regular(size: 11),
-                    lineHeightMultiple: 1.25,
-                    kern: 0.1
-                )
+//                if (purchaseHistoryDataArr[indexPath.row].invoiceAttachmentPath ?? "").isValidURL{
+//                    cell.downloadInvoiceImg.isHidden = false
+//                }else{
+//                    cell.downloadInvoiceImg.isHidden = true
+//                }
+//                if let url = URL(string: (purchaseHistoryDataArr[indexPath.row].image ?? "")) {
+//                    cell.productImg.kf.setImage(with: url)
+//                }
+//                cell.brandNameLbl.numberOfLines = 1
+//                cell.brandNameLbl.setAttributedTitleWithProperties(
+//                    title: (self.purchaseHistoryDataArr[indexPath.row].brand_name ?? "").uppercased(),
+//                    font: EthosFont.Brother1816Bold(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.nameLbl.numberOfLines = 1
+//                cell.nameLbl.setAttributedTitleWithProperties(
+//                    title: (self.purchaseHistoryDataArr[indexPath.row].name ?? "").uppercased(),
+//                    font: EthosFont.Brother1816Regular(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.sizeLbl.numberOfLines = 1
+//                cell.sizeLbl.setAttributedTitleWithProperties(
+//                    title: (self.purchaseHistoryDataArr[indexPath.row].case_size ?? "").uppercased(),
+//                    font: EthosFont.Brother1816Regular(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.modelLbl.numberOfLines = 1
+//                cell.modelLbl.setAttributedTitleWithProperties(
+//                    title: (self.purchaseHistoryDataArr[indexPath.row].model_number ?? "").uppercased(),
+//                    font: EthosFont.Brother1816Regular(size: 11), foregroundColor: UIColor.init(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0000),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.billingAmtLbl.numberOfLines = 1
+//                cell.billingAmtLbl.setAttributedTitleWithProperties(
+//                    title: "MRP ₹ \((self.purchaseHistoryDataArr[indexPath.row].billing_amount ?? 0).getCommaSeperatedStringValue() ?? "")",
+//                    font: EthosFont.Brother1816Regular(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.orderDateTitleLbl.setAttributedTitleWithProperties(
+//                    title: "ORDER DATE",
+//                    font: EthosFont.Brother1816Bold(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.orderDateLbl.numberOfLines = 1
+//                cell.orderDateLbl.setAttributedTitleWithProperties(
+//                    title: (self.purchaseHistoryDataArr[indexPath.row].invoice_date ?? "").uppercased(),
+//                    font: EthosFont.Brother1816Regular(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.orderIDTitleLbl.setAttributedTitleWithProperties(
+//                    title: "ORDER ID",
+//                    font: EthosFont.Brother1816Bold(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
+//                cell.orderIDLbl.numberOfLines = 1
+//                cell.orderIDLbl.setAttributedTitleWithProperties(
+//                    title: "#\(self.purchaseHistoryDataArr[indexPath.row].invoice_number ?? "")",
+//                    font: EthosFont.Brother1816Regular(size: 11),
+//                    lineHeightMultiple: 1.25,
+//                    kern: 0.1
+//                )
                 
                 cell.downloadInvoiceBtn.tag = indexPath.row
                 cell.downloadInvoiceBtn.addTarget(self, action: #selector(downloadInvoiceBtn(sender:)), for: .touchUpInside)
             }
-            cell.hideSkeleton()
             return cell
         }
         return UITableViewCell()
@@ -314,18 +314,6 @@ extension PurchaseHistoryViewController : GetPurchaseHistoryViewModelDelegate {
             self.purchaseHistoryTableView.reloadData()
         }
     }
-    
-    //func startIndicator() {
-//        DispatchQueue.main.async {
-//            self.showActivityIndicator()
-//        }
-    //}
-    
-    //func stopIndicator() {
-//        DispatchQueue.main.async {
-//            self.hideActivityIndicator()
-//        }
-    //}
     
     func startIndicator() {
         DispatchQueue.main.async {

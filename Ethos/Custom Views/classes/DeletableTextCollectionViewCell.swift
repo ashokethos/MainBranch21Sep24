@@ -19,7 +19,7 @@ class DeletableTextCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewMain.setBorder(borderWidth: 1, borderColor: EthosColor.red, radius: constraintHeight.constant/2)
+//        viewMain.setBorder(borderWidth: 1, borderColor: EthosColor.red, radius: constraintHeight.constant/2)
     }
     
     @IBAction func btnCrossDidTapped(_ sender: UIButton) {

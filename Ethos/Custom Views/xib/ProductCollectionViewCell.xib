@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +26,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbA-IP-D39">
-                        <rect key="frame" x="0.0" y="383" width="227" height="0.0"/>
+                        <rect key="frame" x="0.0" y="375" width="227" height="0.0"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                 <constraint firstItem="fFo-VY-r78" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LBO-2A-k28"/>
                 <constraint firstItem="LfZ-n8-mzc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Mfo-Fr-4fb"/>
                 <constraint firstItem="MKh-Ti-Tml" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YsD-to-Cjd"/>
-                <constraint firstItem="MKh-Ti-Tml" firstAttribute="top" secondItem="nbA-IP-D39" secondAttribute="bottom" constant="8" id="aBy-er-qCR"/>
+                <constraint firstItem="MKh-Ti-Tml" firstAttribute="top" secondItem="nbA-IP-D39" secondAttribute="bottom" constant="16" id="aBy-er-qCR"/>
                 <constraint firstItem="fFo-VY-r78" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="o2y-0H-lqY"/>
                 <constraint firstItem="nbA-IP-D39" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fFo-VY-r78" secondAttribute="bottom" id="qcC-it-9ih"/>
                 <constraint firstAttribute="trailing" secondItem="eRm-Go-OBr" secondAttribute="trailing" id="sUg-1O-g2g"/>

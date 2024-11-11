@@ -10,7 +10,7 @@ import UIKit
 
 class Userpreference : NSObject {
     
-    static let testingMode = true
+    static let testingMode = false
     
     static var shouldShowLifeStyle : Bool? = false
     

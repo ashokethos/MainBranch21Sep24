@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secondMovementBoutiqueImage" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-j7-oFE">
-                        <rect key="frame" x="30" y="24" width="340" height="461.33333333333331"/>
+                        <rect key="frame" x="30" y="0.0" width="340" height="461.33333333333331"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="jCe-j7-oFE" secondAttribute="height" multiplier="370:502" id="YIR-8W-ZTO"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zMx-OL-FaQ">
-                        <rect key="frame" x="30" y="509.33333333333326" width="340" height="70"/>
+                        <rect key="frame" x="30" y="485.33333333333326" width="340" height="70"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51A-gy-KI1">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
@@ -93,7 +93,7 @@
                     <constraint firstItem="jCe-j7-oFE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="UmX-ek-47D"/>
                     <constraint firstItem="zMx-OL-FaQ" firstAttribute="top" secondItem="jCe-j7-oFE" secondAttribute="bottom" constant="24" id="Vqi-Cg-aB2"/>
                     <constraint firstAttribute="trailing" secondItem="zMx-OL-FaQ" secondAttribute="trailing" constant="30" id="Xr6-AU-Gok"/>
-                    <constraint firstItem="jCe-j7-oFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="fck-gB-xjJ"/>
+                    <constraint firstItem="jCe-j7-oFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fck-gB-xjJ"/>
                     <constraint firstAttribute="trailing" secondItem="jCe-j7-oFE" secondAttribute="trailing" constant="30" id="hhC-4R-Ndm"/>
                     <constraint firstItem="zMx-OL-FaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="zyW-vg-TTB"/>
                 </constraints>

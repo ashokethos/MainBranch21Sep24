@@ -62,7 +62,13 @@ extension FAQCell : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "tel" {
             if UIApplication.shared.canOpenURL(URL) {
-                UIApplication.shared.open(URL)
+                UIApplication.shared.open(URL) { success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
             return false
         } else {

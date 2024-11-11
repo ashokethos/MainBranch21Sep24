@@ -11,13 +11,20 @@ import UIKit
 
 class UserActivityViewModel {
     
-    func getDataFromActivityUrl(url : String) {
-        DispatchQueue.main.async {
-            if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
-        }
-    }
+//    func getDataFromActivityUrl(url : String) {
+//        DispatchQueue.main.async {
+//            if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+////                UIApplication.shared.open(url)
+//                UIApplication.shared.open(url) { success in
+//                    if success {
+//                        print("URL opened successfully")
+//                    } else {
+//                        print("Failed to open URL")
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     
     
@@ -67,6 +74,75 @@ class UserActivityViewModel {
 //            }
 //        }
 //    }
+    
+    func getDataFromActivityUrl(url : String) {
+            
+            var site = Site.ethos.rawValue
+            
+            if url.contains("secondmovement.com") {
+                site = Site.secondMovement.rawValue
+            }
+            
+            if url.lowercased().contains("open_app") {
+                
+                DispatchQueue.main.async {
+                    let topController = UIApplication.topViewController()
+                    EthosLoader.shared.show(view: topController?.view ?? UIView(), frame: topController?.view.frame ?? CGRect.zero)
+                }
+                
+                
+                EthosApiManager().callApi(endPoint: EthosApiEndPoints.getUrlType, RequestType: .GET, RequestParameters: [EthosConstants.site : site , EthosConstants.url : url], RequestBody: [:]) { data, response, error in
+                    if let response = response as? HTTPURLResponse {
+                        
+                        DispatchQueue.main.async {
+                            EthosLoader.shared.hide()
+                        }
+                        
+                        if response.statusCode == 200,
+                           let data = data,
+                           let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any],
+                           json[EthosConstants.status] as? Bool == true,
+                           let responsedata = json[EthosConstants.data] as? [String : Any] {
+                            
+                            let id = responsedata[EthosConstants.id] as? Int
+                            let type = responsedata[EthosConstants.type] as? String
+                            let site =  responsedata[EthosConstants.site] as? String
+                            let sku = responsedata[EthosConstants.sku] as? String
+                            let name = responsedata[EthosConstants.name] as? String
+                            let categoryId = responsedata[EthosConstants.id] as? String
+                            
+                            
+                            self.handleUserActivity(id: id, categoryId: categoryId, type: type, site: site, sku: sku, name: name)
+                        } else {
+                            DispatchQueue.main.async {
+                                if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+                                    UIApplication.shared.open(url){ success in
+                                        if success {
+                                            print("URL opened successfully")
+                                        } else {
+                                            print("Failed to open URL")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url){ success in
+                            if success {
+                                print("URL opened successfully")
+                            } else {
+                                print("Failed to open URL")
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
     
     
     func handleUserActivity(id: Int?, categoryId: String?, type: String?, site: String?, sku: String?, name: String?) {

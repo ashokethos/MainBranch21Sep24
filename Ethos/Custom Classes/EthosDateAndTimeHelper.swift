@@ -31,6 +31,14 @@ class EthosDateAndTimeHelper {
         return dateFormatter.string(from: date)
     }
     
+    func getYearFromDate(str : String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: str) ?? Date()
+        dateFormatter.dateFormat = "YYYY"
+        return dateFormatter.string(from: date)
+    }
+    
     func getWelcomeTimeString() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()

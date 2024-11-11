@@ -185,6 +185,7 @@ class SecondMovementProductDetailsVC: UIViewController {
         self.tableViewProductDetails.registerCell(className: SecondMovementVideoTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HtmlContainerForAboutCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HtmlContainerForAboutCollectionPreOwnedTableViewCell.self)
+        self.tableViewProductDetails.registerCell(className: ForAboutCollectionPreOwnedTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HorizontalCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: SpacingTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: FavreLeubaHeaderTableViewCell.self)
@@ -344,6 +345,16 @@ class SecondMovementProductDetailsVC: UIViewController {
         }
         
         if product.aboutCollection?.htmlToString != nil && product.aboutCollection?.htmlToString != "" {
+//            let productName = product.extensionAttributes?.ethProdCustomeData?.productName ?? ""
+//            
+//            let productBrand = product.extensionAttributes?.ethProdCustomeData?.brand ?? ""
+//            
+//            var title = productBrand + "\n" + productName
+//            
+//            if title.last == "\n" {
+//                title.removeLast()
+//            }
+//            self.arrSections.append(("\(EthosConstants.AboutThe) \(title) \(EthosConstants.Product)",false))
             self.arrSections.append((EthosConstants.AboutTheProduct,false))
         }
         
@@ -497,6 +508,7 @@ extension SecondMovementProductDetailsVC : UITableViewDelegate, UITableViewDataS
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     cell.setHeading(
                         title: EthosConstants.FullSpecification.uppercased(),
+                        font: EthosFont.Brother1816Bold(size: 12),
                         leading: 30,
                         trailling: 30,
                         showDisclosure: true,
@@ -523,6 +535,7 @@ extension SecondMovementProductDetailsVC : UITableViewDelegate, UITableViewDataS
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     cell.setHeading(
                         title: arrSections[section - 2].0.uppercased(),
+                        font: EthosFont.Brother1816Bold(size: 12),
                         leading: 30,
                         trailling: 30,
                         showDisclosure: true,
@@ -727,30 +740,63 @@ extension SecondMovementProductDetailsVC : UITableViewDelegate, UITableViewDataS
                 // About collection
                 if arrSections[indexPath.section - 2].0 == EthosConstants.AboutTheProduct {
 //                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionTableViewCell {
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionPreOwnedTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionPreOwnedTableViewCell {
-                        cell.delegate = self
-                        cell.index = indexPath
-                        cell.superTableView = self.tableViewProductDetails
-                        if let html = self.viewModel.product?.aboutCollection {
-                            
-                            let imageCount = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
-                            
-                            if imageCount > 2, let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 2]?.image  {
-                                let htmlString = html
-                                cell.data = (image, htmlString)
-                            } else if imageCount > 1 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 1]?.image {
-                                let htmlString = html
-                                cell.data = (image, htmlString)
-                            } else if imageCount > 0 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.first?.image {
-                                let htmlString = html
-                                cell.data = (image, htmlString)
-                            } else {
-                                cell.htmlString = html
+//                    if self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionDescription.count == 0 {
+//                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionPreOwnedTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionPreOwnedTableViewCell {
+//                            cell.delegate = self
+//                            cell.index = indexPath
+//                            cell.superTableView = self.tableViewProductDetails
+//                            if let html = self.viewModel.product?.aboutCollection {
+//                                
+//                                let imageCount = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
+//                                
+//                                if imageCount > 2, let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 2]?.image  {
+//                                    let htmlString = html
+//                                    cell.data = (image, htmlString)
+//                                } else if imageCount > 1 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 1]?.image {
+//                                    let htmlString = html
+//                                    cell.data = (image, htmlString)
+//                                } else if imageCount > 0 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.first?.image {
+//                                    let htmlString = html
+//                                    cell.data = (image, htmlString)
+//                                } else {
+//                                    cell.htmlString = html
+//                                }
+//                                
+//                            }
+//                            return cell
+//                        }
+//                    }else{
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForAboutCollectionPreOwnedTableViewCell.self), for: indexPath) as? ForAboutCollectionPreOwnedTableViewCell {
+                            cell.delegate = self
+                            cell.index = indexPath
+                            cell.titleString = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionTitle
+                            if let html = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionDescription {
+                                _ = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
+                                let imageCount = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
+                                
+                                if imageCount > 2, let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 2]?.image  {
+                                    cell.data = (image, "")
+                                } else if imageCount > 1 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery[safe : 1]?.image {
+                                    cell.data = (image, "")
+                                } else if imageCount > 0 , let image = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.first?.image {
+                                    cell.data = (image, "")
+                                } else {
+                                    cell.htmlString = ""
+                                }
+                                cell.CollectionDescriptionTextDataArr.removeAll()
+                                for collection in html {
+                                    cell.CollectionDescriptionTextDataArr.append(CollectionDescriptionTextData.init(head: collection.head ?? "", subhead: collection.subhead ?? ""))
+                                }
+                                cell.textDataTableView.reloadData()
+                                cell.heightConstraintTextDataTableView.constant = cell.textDataTableView.contentSize.height
+                                cell.textDataTableView.layoutIfNeeded()
+                                cell.contentView.layoutIfNeeded()
+                                cell.textDataTableView.beginUpdates()
+                                cell.textDataTableView.endUpdates()
                             }
-                            
+                            return cell
                         }
-                        return cell
-                    }
+//                    }
                 }
                 
             } else if indexPath.section == (arrSections.count + 2) {

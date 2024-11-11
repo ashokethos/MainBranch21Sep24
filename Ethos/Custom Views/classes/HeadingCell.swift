@@ -42,6 +42,8 @@ class HeadingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        
+        titleLabel.numberOfLines = 0
     }
     
     func setHeading(
@@ -49,7 +51,7 @@ class HeadingCell: UITableViewCell {
         textColor : UIColor = .black,
         backgroundColor : UIColor = .clear,
         font : UIFont? = nil,
-        numberOfLines : Int = 1,
+        numberOfLines : Int = 0,
         alignment : NSTextAlignment? = nil,
         image : UIImage? = nil,
         imageHeight: CGFloat = 0,
@@ -73,10 +75,12 @@ class HeadingCell: UITableViewCell {
         traillingBulletLine : CGFloat = 0,
         action : (() -> ())? = nil,
         topSpacing : CGFloat = 0,
-        bottomSpacing : CGFloat = 0
+        bottomSpacing : CGFloat = 0,
+        kern : CGFloat = 0,
+        lineHeightMultiple : CGFloat = 1
     ) {
         self.backgroundColor = backgroundColor
-        self.titleLabel.text = title
+//        self.titleLabel.text = title
         self.titleLabel.numberOfLines = numberOfLines
         self.titleLabel.textColor = textColor
         self.constraintHeightImageView.constant = imageHeight
@@ -129,6 +133,12 @@ class HeadingCell: UITableViewCell {
         
         self.btnDisclosure.isSelected = isSelected
         self.bulletLine.isHidden = !showBulletLine
+        
+        if kern == 0 && lineHeightMultiple == 1 {
+            self.titleLabel.text = title
+        } else {
+            self.titleLabel.setAttributedTitleWithProperties(title: title, font: font ?? self.titleLabel.font, lineHeightMultiple: lineHeightMultiple, kern: kern)
+        }
     }
     
     

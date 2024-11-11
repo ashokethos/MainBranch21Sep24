@@ -155,7 +155,13 @@ class EthosStoreTableViewCell: UITableViewCell {
                     "Boutique Name" : self.store?.storeName,
                     "Connect Option" : "Email"
                 ])
-                UIApplication.shared.open(mailIdUrl)
+                UIApplication.shared.open(mailIdUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -170,7 +176,13 @@ class EthosStoreTableViewCell: UITableViewCell {
         if let phoneNumber = self.phoneNumbers.first {
             if let numberUrl = URL(string: "tel://\(phoneNumber.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "")") {
                 if UIApplication.shared.canOpenURL(numberUrl){
-                    UIApplication.shared.open(numberUrl)
+                    UIApplication.shared.open(numberUrl){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
                     Mixpanel.mainInstance().trackWithLogs(event: "Connect With Boutique Clicked", properties: [
                         EthosConstants.Email : Userpreference.email,
                         EthosConstants.UID : Userpreference.userID,
@@ -202,7 +214,13 @@ extension EthosStoreTableViewCell : SuperViewDelegate {
                         "Boutique Name" : self.store?.storeName,
                         "Connect Option" : "Phone"
                     ])
-                    UIApplication.shared.open(numberUrl)
+                    UIApplication.shared.open(numberUrl){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
                 }
             }
         }

@@ -69,5 +69,17 @@ class HomeTabBarController: UITabBarController {
                 EthosConstants.Platform : EthosConstants.IOS
             ])
         }
+        
+        if item.title == "Profile" {
+            Mixpanel.mainInstance().trackWithLogs(
+                event: EthosConstants.Profile,
+                properties: [
+                    EthosConstants.Email : Userpreference.email,
+                    EthosConstants.UID : Userpreference.userID,
+                    EthosConstants.Gender : Userpreference.gender,
+                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                    EthosConstants.Platform : EthosConstants.IOS
+                ])
+        }
     }
 }

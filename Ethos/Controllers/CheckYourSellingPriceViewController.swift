@@ -181,6 +181,20 @@ class CheckYourSellingPriceViewController: UIViewController {
     @IBAction func btnSubmitDidTapped(_ sender: UIButton) {
         if validateFields() {
             guard let product = product else { return }
+            btnSubmit.isEnabled = false
+            self.view.endEditing(true)
+            Mixpanel.mainInstance().trackWithLogs(
+                event: EthosConstants.CheckSellingPriceFormSubmitted,
+                properties: [
+                    EthosConstants.Email : Userpreference.email,
+                    EthosConstants.UID : Userpreference.userID,
+                    EthosConstants.Gender : Userpreference.gender,
+                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                    EthosConstants.Platform : EthosConstants.IOS,
+                    EthosConstants.ProductName : product.extensionAttributes?.ethProdCustomeData?.productName,
+                    EthosConstants.SKU :  (product.sku ?? "").replacingOccurrences(of: "+", with: " "),
+                    EthosConstants.Price : "\(product.price ?? 0)"
+                ])
             let params : [String : String] = [
                 EthosConstants.Name: self.tf1.text ?? "",
                 EthosConstants.Email : self.tf2.text ?? "",
@@ -188,7 +202,6 @@ class CheckYourSellingPriceViewController: UIViewController {
                 EthosConstants.city: self.tf4.text ?? "",
                 EthosConstants.Sku : (product.sku ?? "").replacingOccurrences(of: "+", with: " ")
             ]
-            btnSubmit.isEnabled = false
             viewModel.callApiForCheckOurSellingPrice(product: product, params: params, site: self.isForPreOwned ? .secondMovement : .ethos)
         }
     }

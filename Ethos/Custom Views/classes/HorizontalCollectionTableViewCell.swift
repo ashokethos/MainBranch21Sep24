@@ -206,7 +206,7 @@ class HorizontalCollectionTableViewCell: UITableViewCell  {
     func setTitle(title : String) {
         labelHeading.setAttributedTitleWithProperties(
             title: title,
-            font: EthosFont.Brother1816Medium(size: 12),
+            font: EthosFont.Brother1816Bold(size: 12),
             kern: 1
         )
     }

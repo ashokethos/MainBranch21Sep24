@@ -15,7 +15,8 @@ class EditorNotesTableViewCell: UITableViewCell {
     var descriptionString : String? {
         didSet {
             if let callibreDescription = self.descriptionString {
-                self.descriptionLbl.setAttributedTitleWithProperties(title: callibreDescription.htmlToAttributedString?.string ?? "", font: EthosFont.Brother1816Regular(size: 14), lineHeightMultiple: 1.25, kern: 0.5)
+                let htmlStr = (callibreDescription).replacingOccurrences(of: "<p>",with: "<br>",options: .caseInsensitive).replacingOccurrences(of: "</p>",with: "</br>", options: .caseInsensitive)
+                self.descriptionLbl.setAttributedTitleWithProperties(title: htmlStr.htmlToAttributedString?.string ?? "", font: EthosFont.Brother1816Regular(size: 12), lineHeightMultiple: 1.25, kern: 0.5)
             }
         }
     }

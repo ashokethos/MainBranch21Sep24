@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import SkeletonView
+import Mixpanel
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
@@ -145,6 +146,18 @@ class ProductCollectionViewCell: UICollectionViewCell {
                     }) {
                         DataBaseModel().checkProductExists(product: product) { exist in
                             if  exist {
+                                Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.Wishlistremoved, properties: [
+                                    EthosConstants.Email : Userpreference.email,
+                                    EthosConstants.UID : Userpreference.userID,
+                                    EthosConstants.Gender : Userpreference.gender,
+                                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                                    EthosConstants.Platform : EthosConstants.IOS,
+                                    EthosConstants.UserLocation : Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines),
+                                    EthosConstants.ProductType : product.extensionAttributes?.ethProdCustomeData?.brand,
+                                    EthosConstants.ProductName : product.extensionAttributes?.ethProdCustomeData?.productName,
+                                    EthosConstants.SKU :  product.sku,
+                                    EthosConstants.Price : product.price,
+                                ])
                                 DataBaseModel().unsaveProduct(product: product) {
                                     self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.reloadCollectionView])
                                 }

@@ -22,7 +22,7 @@ class PasswordChangeAlertController: UIViewController {
     
     var delegate : SuperViewDelegate?
     var viewModel = AuthenticationViewModel()
-    let bottomConstant = 50
+    let bottomConstant = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class PasswordChangeAlertController: UIViewController {
     }
     
     func setup() {
-        setKeyBoard()
+//        setKeyBoard()
         viewModel.delegate = self
         self.lblTitle.setAttributedTitleWithProperties(title: EthosConstants.ChangePassword, font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24), alignment: .center, kern: 0.1)
        
@@ -113,7 +113,7 @@ class PasswordChangeAlertController: UIViewController {
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        constraintBottom.constant = 50
+        constraintBottom.constant = 20
         self.view.layoutIfNeeded()
     }
     

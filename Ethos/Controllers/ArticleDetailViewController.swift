@@ -13,6 +13,7 @@ import SkeletonView
 
 class ArticleDetailViewController: UIViewController {
     
+    @IBOutlet weak var webUIView: UIView!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var scrollViewMain: UIScrollView!
     @IBOutlet weak var btnViewAllTrendingArticles: UIButton!
@@ -27,6 +28,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var constraintHeightShopThisLook: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightSpacingShopThisLook: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightWebView: NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightWebUiView: NSLayoutConstraint!
     @IBOutlet weak var appTitleLogo: UIImageView!
     @IBOutlet weak var constraintSpacingShopThisLook: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightTrendingArticles: NSLayoutConstraint!
@@ -40,11 +42,13 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var textViewTitle: UITextView!
     @IBOutlet weak var imageViewAuthor: UIImageView!
     @IBOutlet weak var lblAuthorName: UILabel!
+    @IBOutlet weak var lblAuthorDate: UILabel!
     @IBOutlet weak var viewJustInProducts: UIView!
     @IBOutlet weak var viewArticleDescription: UIView!
     @IBOutlet weak var viewTrendingArticles: UIView!
     @IBOutlet weak var viewShopThisLook: UIView!
     
+    var webView: WKWebView?
     let userActivityModel = UserActivityViewModel()
     var story : Banner?
     var articleId : Int?
@@ -59,11 +63,12 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup()
+        //        self.setup()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.setup()
         if self.readStartTime != nil {
             readStartTime = Date()
         }
@@ -158,7 +163,7 @@ class ArticleDetailViewController: UIViewController {
     
     func setup() {
         self.setupTextView(textView: self.textViewTitle)
-        self.webViewArticleDetail.scrollView.addObserver(self, forKeyPath: EthosConstants.contentSize, options: .new, context: nil)
+        self.webView?.scrollView.addObserver(self, forKeyPath: EthosConstants.contentSize, options: .new, context: nil)
         self.collectionViewFeaturedWatches.registerCell(className: ProductCollectionViewCell.self)
         self.collectionViewTrendingArticles.registerCell(className: HomeCollectionViewCell.self)
         self.collectionViewShopThisLook.registerCell(className: ProductCollectionViewCell.self)
@@ -287,6 +292,18 @@ class ArticleDetailViewController: UIViewController {
                     }
                 }
             } else {
+                Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.Articlebookmarked, properties: [
+                    EthosConstants.Email : Userpreference.email,
+                    EthosConstants.UID : Userpreference.userID,
+                    EthosConstants.Gender : Userpreference.gender,
+                    EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                    EthosConstants.Platform : EthosConstants.IOS,
+                    EthosConstants.UserLocation : Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    EthosConstants.ArticleID : article.id,
+                    EthosConstants.ArticleTitle : article.title,
+                    EthosConstants.ArticleCategory : article.category
+                ])
+                
                 
                 DataBaseModel().checkArticleExists(article: article) { found in
                     if !found {
@@ -356,21 +373,16 @@ class ArticleDetailViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
-    func reloadViewWhenChangeInWebViewHeight() {
+    func reloadViewWhenChangeInWebViewHeight(height: CGFloat) {
         URLCache.shared.removeAllCachedResponses()
         URLCache.shared.diskCapacity = 0
         URLCache.shared.memoryCapacity = 0
         removeCookies()
         WKWebsiteDataStore.default().removeData(ofTypes: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache], modifiedSince: Date(timeIntervalSince1970: 0), completionHandler:{
             DispatchQueue.main.async {
-//                self.constraintHeightWebView.constant = 0
-//                self.view.layoutIfNeeded()
-//                
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                    self.constraintHeightWebView.constant = self.webViewArticleDetail.scrollView.contentSize.height
-                    
-                    self.view.layoutIfNeeded()
-//                }
+//                self.constraintHeightWebView.constant = height
+                self.constraintHeightWebUiView.constant = height
+                self.view.layoutIfNeeded()
             }
         }
         )
@@ -381,6 +393,41 @@ class ArticleDetailViewController: UIViewController {
         
         for cookie in cookieJar.cookies ?? [] {
             cookieJar.deleteCookie(cookie)
+        }
+    }
+    
+    func adjustWebViewHeightUsingJavaScript() {
+            let javascript = "document.documentElement.scrollHeight"
+            
+        webView?.evaluateJavaScript(javascript) { (result, error) in
+                if let height = result as? CGFloat {
+                    let dynamicHeight = height + 20 // Optional margin
+                    self.webView?.heightAnchor.constraint(equalToConstant: dynamicHeight).isActive = true
+                    print("Dynamic height from JS: \(dynamicHeight)")
+                    DispatchQueue.main.async {
+                        self.constraintHeightWebUiView.constant = height
+                        self.view.layoutIfNeeded()
+                    }
+                } else {
+                    print("Failed to get height: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+        }
+    
+    func clearWebViewCache() {
+        let websiteDataStore = WKWebsiteDataStore.default()
+        let dataTypes: Set<String> = [
+            WKWebsiteDataTypeMemoryCache,
+            WKWebsiteDataTypeDiskCache,
+            WKWebsiteDataTypeCookies,
+            WKWebsiteDataTypeLocalStorage,
+            WKWebsiteDataTypeSessionStorage,
+            WKWebsiteDataTypeIndexedDBDatabases,
+            WKWebsiteDataTypeWebSQLDatabases
+        ]
+        
+        websiteDataStore.removeData(ofTypes: dataTypes, modifiedSince: Date.distantPast) {
+            print("WebView cache cleared.")
         }
     }
 }
@@ -601,12 +648,51 @@ extension ArticleDetailViewController : GetArticleDetailsViewModelDelegate {
             if self.isForPreOwned {
                 let urlComp = urlStr + "?eapp=1&ver=2&device=ios"
                 if let url =  URL(string:  urlComp) {
-                    self.webViewArticleDetail.load( URLRequest(url: url))
+//                    self.webViewArticleDetail.load( URLRequest(url: url))
+                    let webConfiguration = WKWebViewConfiguration()
+                    webView = WKWebView(frame: .zero, configuration: webConfiguration)
+                    webView?.translatesAutoresizingMaskIntoConstraints = false
+                    webUIView.addSubview(webView!)
+                    self.webView?.scrollView.addObserver(self, forKeyPath: EthosConstants.contentSize, options: .new, context: nil)
+                    
+                    self.webView?.navigationDelegate = self
+                    self.webView?.scrollView.isScrollEnabled = false
+                    NSLayoutConstraint.activate([
+                        webView!.topAnchor.constraint(equalTo: webUIView.topAnchor),
+                        webView!.bottomAnchor.constraint(equalTo: webUIView.bottomAnchor),
+                        webView!.leadingAnchor.constraint(equalTo: webUIView.leadingAnchor),
+                        webView!.trailingAnchor.constraint(equalTo: webUIView.trailingAnchor)
+                    ])
+                    clearWebViewCache()
+                    if let url = URL(string: urlComp) {
+                        let request = URLRequest(url: url)
+                        webView?.load(request)
+                    }
                 }
             } else {
                 let urlComp = urlStr + "?eapp=1&ver=2&device=ios"
-                if let url =  URL(string:  urlComp) {
-                    self.webViewArticleDetail.load( URLRequest(url: url))
+                //                if let url =  URL(string:  urlComp) {
+                //                    self.webViewArticleDetail.load( URLRequest(url: url))
+                //                }
+                
+                let webConfiguration = WKWebViewConfiguration()
+                webView = WKWebView(frame: .zero, configuration: webConfiguration)
+                webView?.translatesAutoresizingMaskIntoConstraints = false
+                webUIView.addSubview(webView!)
+                self.webView?.scrollView.addObserver(self, forKeyPath: EthosConstants.contentSize, options: .new, context: nil)
+                
+                self.webView?.navigationDelegate = self
+                self.webView?.scrollView.isScrollEnabled = false
+                NSLayoutConstraint.activate([
+                    webView!.topAnchor.constraint(equalTo: webUIView.topAnchor),
+                    webView!.bottomAnchor.constraint(equalTo: webUIView.bottomAnchor),
+                    webView!.leadingAnchor.constraint(equalTo: webUIView.leadingAnchor),
+                    webView!.trailingAnchor.constraint(equalTo: webUIView.trailingAnchor)
+                ])
+                clearWebViewCache()
+                if let url = URL(string: urlComp) {
+                    let request = URLRequest(url: url)
+                    webView?.load(request)
                 }
             }
             
@@ -663,12 +749,13 @@ extension ArticleDetailViewController : GetArticleDetailsViewModelDelegate {
         
         let joiner = NSMutableAttributedString(string: "   •   ", attributes: [NSAttributedString.Key.font : EthosFont.MrsEavesXLSerifNarOTRegItalic(size: 14), NSAttributedString.Key.foregroundColor : EthosColor.red])
         
-        let date = NSMutableAttributedString(string: EthosDateAndTimeHelper().getStringFromDate(str: self.articleDetailViewModel.articleDetails?.pubdate ?? ""), attributes: [NSAttributedString.Key.font : EthosFont.MrsEavesXLSerifNarOTRegItalic(size: 14), NSAttributedString.Key.foregroundColor : EthosColor.darkGrey])
+        let date = NSMutableAttributedString(string: EthosDateAndTimeHelper().getStringFromDate(str: self.articleDetailViewModel.articleDetails?.pubdate ?? ""), attributes: [NSAttributedString.Key.font : EthosFont.MrsEavesXLSerifNarOTRegItalic(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.darkGrey])
         
-        attributedAuthor.append(joiner)
-        attributedAuthor.append(date)
+//        attributedAuthor.append(joiner)
+//        attributedAuthor.append(date)
         
         self.lblAuthorName.attributedText = attributedAuthor
+        self.lblAuthorDate.attributedText = date
         self.readStartTime = Date()
         
     }
@@ -756,23 +843,32 @@ extension ArticleDetailViewController : WKNavigationDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == EthosConstants.contentSize {
-            if let scroll = object as? UIScrollView {
-                if scroll.contentSize.height != lastSavedHeight {
-                    self.lastSavedHeight = scroll.contentSize.height
-                    self.reloadViewWhenChangeInWebViewHeight()
+            getWebViewContentHeight()
+//            adjustWebViewHeightUsingJavaScript()
+        }
+    }
+    
+    private func getWebViewContentHeight() {
+        DispatchQueue.main.async {
+            self.webView?.evaluateJavaScript("document.body.scrollHeight") { [weak self] (result, error) in
+                if let height = result as? CGFloat {
+                    print("Web content height: \(height)")
+                    DispatchQueue.main.async {
+                        self?.reloadViewWhenChangeInWebViewHeight(height: height)
+                    }
+                } else if let error = error {
+                    print("Error getting height: \(error.localizedDescription)")
                 }
             }
         }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        DispatchQueue.main.async {
-            self.reloadViewWhenChangeInWebViewHeight()
-        }
+        getWebViewContentHeight()
+//        adjustWebViewHeightUsingJavaScript()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
         if navigationAction.navigationType == .linkActivated  {
             if let url = navigationAction.request.url {
                 if url.absoluteString.contains("app-data?data="){

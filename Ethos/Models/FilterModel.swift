@@ -12,12 +12,14 @@ class FilterModel : NSObject {
     var attributeCode : String?
     var attributeName : String?
     var values : [FilterValue]?
+    var category_id : [String]?
     var alphabeticFilterValues : [AlphabeticFilters]?
     
-    init(attributeId: Int? = nil, attributeCode: String? = nil, attributeName: String? = nil, values: [FilterValue]? = nil) {
+    init(attributeId: Int? = nil, attributeCode: String? = nil, attributeName: String? = nil, category_id: [String]? = nil, values: [FilterValue]? = nil) {
         self.attributeId = attributeId
         self.attributeCode = attributeCode
         self.attributeName = attributeName
+        self.category_id = category_id
         self.values = values
     }
     
@@ -34,6 +36,10 @@ class FilterModel : NSObject {
         
         if let name = json[EthosConstants.attrName] as? String {
             self.attributeName = name
+        }
+        
+        if let categoryId = json[EthosConstants.categoryId] as? [String] {
+            self.category_id = categoryId
         }
         
         if let values = json[EthosConstants.value] as? [[String : Any]] {

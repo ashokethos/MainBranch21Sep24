@@ -20,7 +20,6 @@ class GetAppSettingViewModel : NSObject {
                 
                 for setting in arrSettings {
                     if let key = setting["setting_key"] as? String {
-                        
                         switch key {
                             
                         case "shop_status" :

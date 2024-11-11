@@ -1,5 +1,5 @@
 {
-  "originHash" : "a6be1fdf22842fa56f65e673e319fd71875930db56675fe52469cb08bbd315ab",
+  "originHash" : "7519f6f793a104133384981bd11e4c8d3c429c1e1bf14e6ba33186500a35176c",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -119,6 +119,15 @@
       }
     },
     {
+      "identity" : "ios-mobile-insights-artifacts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wingify/ios-mobile-insights-artifacts.git",
+      "state" : {
+        "revision" : "b968f4a4dd71ea6001786d77ac307f5c73c6fd91",
+        "version" : "0.4.12"
+      }
+    },
+    {
       "identity" : "iqkeyboardmanager",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
@@ -188,15 +197,6 @@
       "state" : {
         "revision" : "68685956124c710cdc9112bc696ad30e2f58538b",
         "version" : "5.1.3"
-      }
-    },
-    {
-      "identity" : "posthog-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/PostHog/posthog-ios.git",
-      "state" : {
-        "revision" : "08b53e64abd503ca3e5f0eebd6b89a32fbe33850",
-        "version" : "3.6.1"
       }
     },
     {

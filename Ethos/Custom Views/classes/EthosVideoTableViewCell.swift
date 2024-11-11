@@ -67,7 +67,7 @@ class EthosVideoTableViewCell: UITableViewCell {
                 let id = url.getVimeoId()
                 
                 if let title = productVideo?.title {
-                    self.lblTitle.setAttributedTitleWithProperties(title: title.uppercased(), font: EthosFont.Brother1816Medium(size: 10),alignment: .center, foregroundColor: .black, kern : 0.5)
+                    self.lblTitle.setAttributedTitleWithProperties(title: title.uppercased(), font: EthosFont.Brother1816Medium(size: 12),alignment: .center, foregroundColor: .black, kern : 0.5)
                 }
                 
                 self.viewModel.getVideoUrlFromId(id: id, index: IndexPath())

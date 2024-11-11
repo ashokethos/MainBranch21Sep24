@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class EthosTextField: UITextField {
     private var placeHolderColor = UIColor.black
@@ -16,7 +17,7 @@ class EthosTextField: UITextField {
     private var underLineColor = EthosColor.seperatorColor
     private var errUnderLineColor = UIColor.red
     private var txtColor = UIColor.black
-    private var txtTintColor = UIColor.red
+    private var txtTintColor = EthosColor.red
     private var errImage : UIImage? = UIImage(named: EthosConstants.required)
     private var textInset : CGFloat = 0
     
@@ -31,7 +32,7 @@ class EthosTextField: UITextField {
     func initWithUIParameters (
         placeHolderText : String,
         textColor : UIColor = .black,
-        txtTintColor : UIColor = .red,
+        txtTintColor : UIColor = EthosColor.red,
         leftView : UIView? = nil,
         rightView : UIView? = nil,
         placeholderColor : UIColor = .black,
@@ -100,7 +101,8 @@ class EthosTextField: UITextField {
     
     func showError(str : String) {
         self.underLineView.frame = CGRect(x: Int(frame.minX), y: Int(frame.maxY), width: Int(frame.width), height: 1)
-        self.errorLabel.frame = CGRect(x: Int(frame.minX), y:  Int(frame.maxY) + 5, width: Int(frame.width), height: 20)
+        self.errorLabel.frame = CGRect(x: Int(frame.minX), y:  Int(frame.maxY) + 5, width: Int(frame.width) + Int(str.count), height: 20)
+        self.errorLabel.titleLabel?.numberOfLines = 0
         self.errorLabel.setTitle(" " + str, for: .normal)
         self.errorLabel.isHidden = false
         self.underLineView.backgroundColor = self.errUnderLineColor
@@ -144,6 +146,64 @@ class EthosTextField: UITextField {
         
         return valid
     }
+    
+    func validateAgainstLastName() -> Bool {
+            var valid = true
+            if self.text?.isBlank ?? true {
+                self.showError(str: "Please enter last name")
+                valid = false
+            } else if self.text?.count ?? 0 < 3 {
+                self.showError(str: "Please enter at least 3 characters")
+                valid = false
+            } else if self.text?.count ?? 0 > 30 {
+                self.showError(str: "Please enter maximum 30 characters")
+                valid = false
+            } else if self.text?.containsOneSpecialCharacterForNCS ?? true {
+                self.showError(str: "Special characters not allowed")
+                valid = false
+            } else if self.text?.containsHtmlCharacters ?? true {
+                self.showError(str: "Special characters not allowed")
+                valid = false
+            } else if self.text?.containsOneNumericValue ?? true {
+                self.showError(str: "Numbers not allowed")
+                valid = false
+            }
+            
+            if valid == true {
+                self.removeError()
+            }
+            
+            return valid
+        }
+        
+        func validateAgainstFirstName() -> Bool {
+            var valid = true
+            if self.text?.isBlank ?? true {
+                self.showError(str: "Please enter first name")
+                valid = false
+            } else if self.text?.count ?? 0 < 3 {
+                self.showError(str: "Please enter at least 3 characters")
+                valid = false
+            } else if self.text?.count ?? 0 > 30 {
+                self.showError(str: "Please enter maximum 30 characters")
+                valid = false
+            } else if self.text?.containsOneSpecialCharacterForNCS ?? true {
+                self.showError(str: "Special characters not allowed")
+                valid = false
+            } else if self.text?.containsHtmlCharacters ?? true {
+                self.showError(str: "Special characters not allowed")
+                valid = false
+            } else if self.text?.containsOneNumericValue ?? true {
+                self.showError(str: "Numbers not allowed")
+                valid = false
+            }
+            
+            if valid == true {
+                self.removeError()
+            }
+            
+            return valid
+        }
     
     func validateAgainstName() -> Bool {
         var valid = true

@@ -60,24 +60,28 @@ class SpecificationPairTableViewCell: UITableViewCell {
     var attribute : (NSAttributedString?, NSAttributedString?, NSAttributedString?, NSAttributedString?)? {
         didSet {
             if let text = attribute?.0 {
+                print(text)
                 self.textView1.attributedText = text
             } else {
                 self.textView1.attributedText = nil
             }
             
             if let text = attribute?.1 {
+                print(text)
                 self.textView2.attributedText = text
             } else {
                 self.textView2.attributedText = nil
             }
             
             if let text = attribute?.2 {
+                print(text)
                 self.textView3.attributedText = text
             } else {
                 self.textView3.attributedText = nil
             }
             
             if let text = attribute?.3 {
+                print(text)
                 self.textView4.attributedText = text
             } else {
                 self.textView4.attributedText = nil

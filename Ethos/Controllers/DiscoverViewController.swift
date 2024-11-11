@@ -262,7 +262,13 @@ class DiscoverViewController: UIViewController {
         let application = UIApplication.shared
         
         if application.canOpenURL(appURL) {
-            application.open(appURL)
+            application.open(appURL){ success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         }
     }
     
@@ -271,7 +277,13 @@ class DiscoverViewController: UIViewController {
         let application = UIApplication.shared
         
         if application.canOpenURL(appURL) {
-            application.open(appURL)
+            application.open(appURL){ success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         }
     }
     
@@ -286,15 +298,16 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            if viewArticleModel.articles.count > 5{
-                return 6
-            }else{
-                if viewArticleModel.articles.count == 0{
-                    return 1
-                }else{
-                    return 1 + viewArticleModel.articles.count
-                }
-            }
+            return 1
+//            if viewArticleModel.articles.count > 5{
+//                return 6
+//            }else{
+//                if viewArticleModel.articles.count == 0{
+//                    return 1
+//                }else{
+//                    return 1 + viewArticleModel.articles.count
+//                }
+//            }
         }else if section == 8 {
             if self .loadingWatchGlossary {
                 return 4
@@ -389,7 +402,7 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
         case 2:
             if loadingRevolution{
 //                if indexPath.section == 2{
-                    if indexPath.row == 0 {
+//                    if indexPath.row == 0 {
                         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RevolutionTableViewHeaderCell.self)) as? RevolutionTableViewHeaderCell {
                             cell.showAnimatedGradientSkeleton()
                             cell.viewAllBtn.tag = indexPath.row
@@ -422,50 +435,58 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
                                 lineHeightMultiple: 1.25,
                                 kern: 0.1
                             )
+                            cell.delegate = self
+                            cell.setSpacing(height: 9, color: UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0000))
+                            cell.articles = viewArticleModel.articles
+                            cell.revolutionArticleTableView.reloadData()
+                            cell.heightConstraintRevolutionArticleTableView.constant = cell.revolutionArticleTableView.contentSize.height
+                            cell.revolutionArticleTableView.layoutIfNeeded()
+                            cell.revolutionArticleTableView.beginUpdates()
+                            cell.revolutionArticleTableView.endUpdates()
                             return cell
                         }
-                    }else{
-                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RevolutionReviewTableViewCell.self)) as? RevolutionReviewTableViewCell {
-                            if viewArticleModel.articles.count > 0{
-                                if let url = URL(string: (viewArticleModel.articles[indexPath.row - 1].topFeaturedImage ?? "")) {
-                                    cell.revolutionImg.kf.setImage(with: url)
-                                }
-                                cell.reviewLbl.setAttributedTitleWithProperties(
-                                    title: viewArticleModel.articles[indexPath.row - 1].category?.uppercased() ?? "",
-                                    font: EthosFont.Brother1816Regular(size: 10),
-                                    foregroundColor: EthosColor.red,
-                                    kern: 0.5
-                                )
-                                cell.reviewTitleLbl.numberOfLines = 3
-                                cell.reviewTitleLbl.setAttributedTitleWithProperties(
-                                    title: viewArticleModel.articles[indexPath.row - 1].title ?? "",
-                                    font: EthosFont.MrsEavesXLSerifNarOTReg(size: 18),
-                                    lineHeightMultiple: 1.25,
-                                    kern: 0.1
-                                )
-                                if let createdDate = viewArticleModel.articles[indexPath.row - 1].createdDate {
-                                    let strCreatedDate = EthosDateAndTimeHelper().getStringFromTimeStamp(timeStamp:createdDate)
-                                    cell.dateLbl.setAttributedTitleWithProperties(
-                                        title: strCreatedDate,
-                                        font: EthosFont.MrsEavesXLSerifNarOTRegItalic(size: 14),
-                                        foregroundColor: EthosColor.darkGrey,
-                                        lineHeightMultiple: 1.43,
-                                        kern: 0.1
-                                    )
-                                }
-                                
-                                if indexPath.row == viewArticleModel.articles.count{
-                                    cell.bottomLineView.isHidden = true
-                                    cell.setSpacing(height: 9, color: UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0000))
-                                }else{
-                                    cell.bottomLineView.isHidden = false
-                                    cell.setSpacing(height: 0, color: .clear)
-                                }
-                            }
-                            
-                            return cell
-                        }
-                    }
+//                    }else{
+//                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RevolutionReviewTableViewCell.self)) as? RevolutionReviewTableViewCell {
+//                            if viewArticleModel.articles.count > 0{
+//                                if let url = URL(string: (viewArticleModel.articles[indexPath.row - 1].topFeaturedImage ?? "")) {
+//                                    cell.revolutionImg.kf.setImage(with: url)
+//                                }
+//                                cell.reviewLbl.setAttributedTitleWithProperties(
+//                                    title: viewArticleModel.articles[indexPath.row - 1].category?.uppercased() ?? "",
+//                                    font: EthosFont.Brother1816Regular(size: 10),
+//                                    foregroundColor: EthosColor.red,
+//                                    kern: 0.5
+//                                )
+//                                cell.reviewTitleLbl.numberOfLines = 3
+//                                cell.reviewTitleLbl.setAttributedTitleWithProperties(
+//                                    title: viewArticleModel.articles[indexPath.row - 1].title ?? "",
+//                                    font: EthosFont.MrsEavesXLSerifNarOTReg(size: 18),
+//                                    lineHeightMultiple: 1.25,
+//                                    kern: 0.1
+//                                )
+//                                if let createdDate = viewArticleModel.articles[indexPath.row - 1].createdDate {
+//                                    let strCreatedDate = EthosDateAndTimeHelper().getStringFromTimeStamp(timeStamp:createdDate)
+//                                    cell.dateLbl.setAttributedTitleWithProperties(
+//                                        title: strCreatedDate,
+//                                        font: EthosFont.MrsEavesXLSerifNarOTRegItalic(size: 14),
+//                                        foregroundColor: EthosColor.darkGrey,
+//                                        lineHeightMultiple: 1.43,
+//                                        kern: 0.1
+//                                    )
+//                                }
+//                                
+//                                if indexPath.row == viewArticleModel.articles.count{
+//                                    cell.bottomLineView.isHidden = true
+//                                    cell.setSpacing(height: 9, color: UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0000))
+//                                }else{
+//                                    cell.bottomLineView.isHidden = false
+//                                    cell.setSpacing(height: 0, color: .clear)
+//                                }
+//                            }
+//                            
+//                            return cell
+//                        }
+//                    }
 //                }
             }
         case 3 :
@@ -734,25 +755,7 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2{
-            if indexPath.row != 0{
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ArticleDetailViewController.self)) as? ArticleDetailViewController {
-                    vc.isForPreOwned = false
-                    vc.articleId = viewArticleModel.articles[indexPath.row - 1].id
-                    Mixpanel.mainInstance().track(event: EthosConstants.ArticleClicked, properties: [
-                        EthosConstants.Email : Userpreference.email,
-                        EthosConstants.UID : Userpreference.userID,
-                        EthosConstants.Gender : Userpreference.gender,
-                        EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
-                        EthosConstants.Platform : EthosConstants.IOS,
-                        EthosConstants.ArticleID : viewArticleModel.articles[indexPath.row - 1].id,
-                        EthosConstants.ArticleTitle : viewArticleModel.articles[indexPath.row - 1].title,
-                        EthosConstants.ArticleCategory : viewArticleModel.articles[indexPath.row - 1].category
-                    ])
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-        } else if indexPath.section == 8 {
+        if indexPath.section == 8 {
             if self.watchGlossaryViewModel.glossary.count > self.watchGlossaryViewModel.selectedIndex {
                 self.watchGlossaryViewModel.glossary[self.watchGlossaryViewModel.selectedIndex].data[indexPath.row].isExpanded = !self.watchGlossaryViewModel.glossary[self.watchGlossaryViewModel.selectedIndex].data[indexPath.row].isExpanded
                 self.tableViewDiscover.reloadData()
@@ -775,6 +778,26 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
         
         if cell is FeaturedVideoTableViewCell {
             (cell as? FeaturedVideoTableViewCell)?.pauseVideo()
+        }
+    }
+}
+
+extension DiscoverViewController : RevolutionTableViewCellDelegate {
+    func didPressCell(sender: IndexPath){
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ArticleDetailViewController.self)) as? ArticleDetailViewController {
+            vc.isForPreOwned = false
+            vc.articleId = viewArticleModel.articles[sender.row].id
+            Mixpanel.mainInstance().track(event: EthosConstants.ArticleClicked, properties: [
+                EthosConstants.Email : Userpreference.email,
+                EthosConstants.UID : Userpreference.userID,
+                EthosConstants.Gender : Userpreference.gender,
+                EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                EthosConstants.Platform : EthosConstants.IOS,
+                EthosConstants.ArticleID : viewArticleModel.articles[sender.row].id,
+                EthosConstants.ArticleTitle : viewArticleModel.articles[sender.row].title,
+                EthosConstants.ArticleCategory : viewArticleModel.articles[sender.row].category
+            ])
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

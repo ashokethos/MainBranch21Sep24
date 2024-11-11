@@ -68,21 +68,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-extension SceneDelegate {
-    
-    func startIndicator() {
-        DispatchQueue.main.async {
-            let topController = UIApplication.topViewController()
-            EthosLoader.shared.show(view: topController?.view ?? UIView(), frame: topController?.view.frame ?? CGRect.zero)
-
-        }
-    }
-    
-    func stopIndicator() {
-        DispatchQueue.main.async {
-            EthosLoader.shared.hide()
-        }
-    }
-    
-}
+//extension SceneDelegate {
+//    
+//    func startIndicator() {
+//        DispatchQueue.main.async {
+//            let topController = UIApplication.topViewController()
+//            EthosLoader.shared.show(view: topController?.view ?? UIView(), frame: topController?.view.frame ?? CGRect.zero)
+//
+//        }
+//    }
+//    
+//    func stopIndicator() {
+//        DispatchQueue.main.async {
+//            EthosLoader.shared.hide()
+//        }
+//    }
+//    
+//}
 

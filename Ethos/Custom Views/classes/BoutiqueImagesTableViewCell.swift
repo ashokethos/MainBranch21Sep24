@@ -199,9 +199,7 @@ class BoutiqueImagesTableViewCell: UITableViewCell {
             
             var foundADay = false
             for timing in timingsArr {
-                if timing.day?.lowercased() == today.lowercased(),
-                   let startTime = timing.startTime,
-                   let endTime = timing.endTime {
+                if timing.day?.lowercased() == today.lowercased(), let startTime = timing.startTime, let endTime = timing.endTime {
                     var startT: String?
                     var endT: String?
                     if startTime.uppercased().contains("AM") {
@@ -277,8 +275,24 @@ class BoutiqueImagesTableViewCell: UITableViewCell {
                     let attributedTitle = NSMutableAttributedString(string: "Open " , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.red, NSAttributedString.Key.kern : 0.5])
                     attributedTitle.append(attrStr)
                     self.btnStoreTiming.setAttributedTitle(attributedTitle, for: .normal)
+                }else if str.lowercased().contains("24 hours"){
+//                    var str = str.split(separator: "\n")
+//                    for (i, item) in str.enumerated(){
+//                        if item.lowercased().contains(today.lowercased()){
+//                            let attrStrFromApi = NSMutableAttributedString(string: String(item) , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.darkGrey, NSAttributedString.Key.kern : 0.5])
+//                            let attributedTitle = NSMutableAttributedString(string: "Open Now - " , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.green, NSAttributedString.Key.kern : 0.5])
+//                            attributedTitle.append(attrStrFromApi)
+//                            self.btnStoreTiming.setAttributedTitle(attributedTitle, for: .normal)
+//                        }
+//                    }
+                    let attrStrFromApi = NSMutableAttributedString(string: String("Open 24 hours (Today)") , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.darkGrey, NSAttributedString.Key.kern : 0.5])
+                    let attributedTitle = NSMutableAttributedString(string: "Open Now - " , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.green, NSAttributedString.Key.kern : 0.5])
+                    attributedTitle.append(attrStrFromApi)
+                    self.btnStoreTiming.setAttributedTitle(attributedTitle, for: .normal)
                 } else {
-                    self.btnStoreTiming.setAttributedTitle(attrStr, for: .normal)
+                    let attributedTitle = NSMutableAttributedString(string: "Open Now - " , attributes: [ NSAttributedString.Key.font : EthosFont.Brother1816Regular(size: 12), NSAttributedString.Key.foregroundColor : EthosColor.green, NSAttributedString.Key.kern : 0.5])
+                    attributedTitle.append(attrStr)
+                    self.btnStoreTiming.setAttributedTitle(attributedTitle, for: .normal)
                 }
                 
             }
@@ -402,7 +416,13 @@ class BoutiqueImagesTableViewCell: UITableViewCell {
                     "Boutique Name" : self.store?.storeName,
                     "Connect Option" : "Email"
                 ])
-                UIApplication.shared.open(mailIdUrl)
+                UIApplication.shared.open(mailIdUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -548,7 +568,13 @@ extension BoutiqueImagesTableViewCell : SuperViewDelegate {
                         "Boutique Name" : self.store?.storeName,
                         "Connect Option" : "Phone"
                     ])
-                    UIApplication.shared.open(numberUrl)
+                    UIApplication.shared.open(numberUrl){ success in
+                        if success {
+                            print("URL opened successfully")
+                        } else {
+                            print("Failed to open URL")
+                        }
+                    }
                 }
             }
         }

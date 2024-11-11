@@ -35,7 +35,13 @@ class RepairAndServiceContactsCell: UITableViewCell {
     
     @IBAction func btnVisitOurBoutiqueTapped(_ sender: UIButton) {
         if let url = URL(string: EthosIdentifiers.mapUrl), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(url) { success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         }
     }
     
@@ -48,7 +54,13 @@ class RepairAndServiceContactsCell: UITableViewCell {
         let phoneNumber = lblPhoneNumber1.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -57,7 +69,13 @@ class RepairAndServiceContactsCell: UITableViewCell {
         let phoneNumber = lblPhoneNumber2.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }
@@ -66,7 +84,13 @@ class RepairAndServiceContactsCell: UITableViewCell {
         let phoneNumber = lblEmail.text?.replacingOccurrences(of: " " , with:  "") ?? ""
         if let numberUrl = URL(string: "mailto:\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(numberUrl) {
-                UIApplication.shared.open(numberUrl)
+                UIApplication.shared.open(numberUrl){ success in
+                    if success {
+                        print("URL opened successfully")
+                    } else {
+                        print("Failed to open URL")
+                    }
+                }
             }
         }
     }

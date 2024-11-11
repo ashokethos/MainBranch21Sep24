@@ -8,7 +8,7 @@
 import Foundation
 
 class EthosIdentifiers {
-//    static let baseurl = "https://dev-middleware-app.ethoswatches.com/api"
+    static let baseurl1 = "https://dev-middleware-app.ethoswatches.com/api"
     static let baseurl = "https://middleware-app.ethoswatches.com/api"
     static let baseVideoUrl = "https://middleware-app.ethoswatches.com/static/get-vm-token.php"
     static let appLink = "https://apps.apple.com/in/app/ethos-watches/id6462850321"
@@ -26,8 +26,11 @@ class EthosIdentifiers {
     static let latitudeOfStore = 28.52709896455652
     static let longitudeOfStore = 77.22105485259367
     
-    static let postHogApiKey = "phc_AxnpYxtU94wYKnlbVEjykRV8YUqt6gVJ59K1Zp6W5B0"
-    static let postHogHost = "https://app-ses.ethoswatches.com"
+//    static let postHogApiKey = "phc_AxnpYxtU94wYKnlbVEjykRV8YUqt6gVJ59K1Zp6W5B0"
+//    static let postHogHost = "https://app-ses.ethoswatches.com"
+    
+    static let vWOAccountID = "975972"
+    static let vWOSDKKey = "0eab0dac84525c224931b0aea0eeac3e"
     
     static let oneSignalApiKey = "0a4ded8d-aab5-4ff0-acbb-1c270db0538f"
     

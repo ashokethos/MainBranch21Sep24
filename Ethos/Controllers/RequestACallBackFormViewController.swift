@@ -213,7 +213,7 @@ class RequestACallBackFormViewController: UIViewController {
                 EthosConstants.message: self.tf6.text ?? "",
             ]
             
-            Mixpanel.mainInstance().trackWithLogs(event: "Repair Call Back Requested", properties: [
+            Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.RepairCallBackRequested, properties: [
                 EthosConstants.Email : Userpreference.email,
                 EthosConstants.UID : Userpreference.userID,
                 EthosConstants.Gender : Userpreference.gender,

@@ -11,7 +11,6 @@ import SkeletonView
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var constraintHeightSearchView: NSLayoutConstraint!
     @IBOutlet weak var constraintheightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var tableViewData: UITableView!
     @IBOutlet weak var textFieldSearch: EthosTextField!
@@ -23,7 +22,12 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var recentSearchTitleBackView: UIView!
     @IBOutlet weak var recentSearchTitleLbl: UILabel!
     @IBOutlet var recentSearchCollectionView: UICollectionView!
+    @IBOutlet weak var cancelSearchBtn: UIButton!
     @IBOutlet weak var recentSearchDropDownView: UIView!
+    @IBOutlet weak var btnRedDotSortBy: UIImageView!
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var btnRedDot: UIImageView!
+    @IBOutlet weak var viewFilterAndSortBy: UIView!
     
     var recentSearchDataArr = [GetSearchSuggestionModel]()
     var preOwnedRecentSearchDataArr = [GetSearchSuggestionModel]()
@@ -37,7 +41,9 @@ class SearchViewController: UIViewController {
     var delegate : SuperViewDelegate?
     var emptyMsg = ""
     var finalSearchString = ""
-    
+    var screenType = ""
+    var searchBtnPressStatus = false
+    var categoryId = 0
     var isForPreOwned = false
     
     var apiType: String?
@@ -74,6 +80,7 @@ class SearchViewController: UIViewController {
             } else {
                 collectionViewData.isHidden = false
                 tableViewData.isHidden = true
+                self.collectionViewSearchedData.isHidden = false
                 if self.productViewModel.products.count == 0 {
                     lblNoData.isHidden = false
                     self.constraintheightCollectionView.constant = 50
@@ -94,12 +101,19 @@ class SearchViewController: UIViewController {
             recentSearchCollectionView.isHidden = false
             recentSearchTitleBackView.isHidden = false
             constraintheightCollectionView.constant = 0
+            viewFilterAndSortBy.isHidden = true
         }
         
         DispatchQueue.main.async {
             self.tableViewData.reloadData()
             self.collectionViewData.reloadData()
             self.collectionViewSearchedData.reloadData()
+            if self.productViewModel.products.count > 20 && self.selectedIndexForSearch == 0 {
+//            self.collectionViewSearchedData.scrollToItem(at: IndexPath(item: self.productViewModel.products.count - 1, section: 0), at: .bottom, animated: false)
+                self.collectionViewSearchedData.scrollToItem(at: IndexPath(item: 10 , section: 0), at: .centeredHorizontally, animated: true)
+                self.collectionViewSearchedData.setNeedsLayout()
+            }
+            
             self.view.layoutIfNeeded()
         }
         
@@ -109,11 +123,25 @@ class SearchViewController: UIViewController {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setTextField()
         setup()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let properties : Dictionary<String, any MixpanelType> = [
+            "Email": Userpreference.email,
+            "UID" : Userpreference.userID,
+            "Gender" : Userpreference.gender,
+            "Registered" : ((Userpreference.token == nil || Userpreference.token == "") ? "N" : "Y"),
+            "Platform" : "IOS"
+        ]
+        Mixpanel.mainInstance().trackWithLogs(event: "Search Clicked" , properties: properties)
     }
     
     deinit {
@@ -145,36 +173,31 @@ class SearchViewController: UIViewController {
             if isSearching {
                 if selectedIndexForSearch == 1 {
                     self.lblNoData.isHidden = true
+                    self.viewFilterAndSortBy.isHidden = true
                     self.articleViewModel.getArticles(site : isForPreOwned ? .secondMovement : .ethos , searchString: self.finalSearchString)
                 } else {
                     self.productViewModel.initiate(id: 0) {
                         self.lblNoData.isHidden = true
-                        self.productViewModel.getProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.finalSearchString == "" ? " " : self.finalSearchString)
+                        self.productViewModel.categoryId = self.categoryId
+                        self.productViewModel.getNewProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.finalSearchString == "" ? " " : self.finalSearchString, searchStatus: self.searchBtnPressStatus)
                     }
                 }
             }
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTextField()
-        setup()
-        let properties : Dictionary<String, any MixpanelType> = [
-            "Email": Userpreference.email,
-            "UID" : Userpreference.userID,
-            "Gender" : Userpreference.gender,
-            "Registered" : ((Userpreference.token == nil || Userpreference.token == "") ? "N" : "Y"),
-            "Platform" : "IOS"
-        ]
-        Mixpanel.mainInstance().trackWithLogs(event: "Search Clicked" , properties: properties)
-    }
-    
     func setup() {
-        
+        viewFilterAndSortBy.isHidden = true
+        btnRedDotSortBy.clipsToBounds = true
+        btnRedDotSortBy.layer.cornerRadius = 2.5
+        btnRedDot.clipsToBounds = true
+        btnRedDot.layer.cornerRadius = 2.5
+        viewFilterAndSortBy.clipsToBounds = true
+        viewFilterAndSortBy.layer.cornerRadius = 20
         tableViewData.isSkeletonable = true
         collectionViewSearchedData.isSkeletonable = true
         addTapGestureToDissmissKeyBoard()
+        cancelSearchBtn.setAttributedTitleWithProperties(title: EthosConstants.Cancel, font: EthosFont.Brother1816Regular(size: 12),foregroundColor: .black,kern: 0.5)
         collectionViewData.registerCell(className: SearchCollectionViewCell.self)
         recentSearchCollectionView.registerCell(className: RecentSearchCollectionViewCell.self)
         tableViewData.registerCell(className: HeadingCell.self)
@@ -211,11 +234,12 @@ class SearchViewController: UIViewController {
             }
         }
         
-        let columnLayout = CustomViewFlowLayout()
-        columnLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        recentSearchCollectionView.collectionViewLayout = columnLayout
-        recentSearchCollectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-        
+//        let columnLayout = CustomViewFlowLayout()
+//        columnLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        recentSearchCollectionView.collectionViewLayout = columnLayout
+//        recentSearchCollectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        guard let collectionView = recentSearchCollectionView, let flowLayout = recentSearchCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+            flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
             textFieldSearch.text = ""
@@ -276,6 +300,11 @@ class SearchViewController: UIViewController {
         }
         
         if recentSearchSelectedData[index].type == "category" || recentSearchSelectedData[index].type == "filter_query"{
+            view.endEditing(true)
+            self.productViewModel.selectedFilters = []
+            self.productViewModel.upperPriceLimit = nil
+            self.productViewModel.lowerPriceLimit = nil
+            self.productViewModel.products.removeAll()
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewCatalogViewController.self)) as? NewCatalogViewController {
                 vc.isForPreOwned = isForPreOwned
                 if recentSearchSelectedData[index].type == "filter_query"{
@@ -314,6 +343,7 @@ class SearchViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }else{
+            view.endEditing(true)
             if self.isForPreOwned {
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SecondMovementProductDetailsVC.self)) as? SecondMovementProductDetailsVC {
                     vc.sku = recentSearchSelectedData[index].sku
@@ -336,17 +366,94 @@ class SearchViewController: UIViewController {
     }
     
     func setTextField() {
-        
         textFieldSearch.delegate = self
-        viewTextField.setBorder(borderWidth: 1, borderColor: EthosColor.lightGrey, radius: 25)
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneButtonClicked))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.items = [flexSpace, doneButton]
+        
+        textFieldSearch.inputAccessoryView = toolbar
+        viewTextField.setBorder(borderWidth: 1, borderColor: EthosColor.lightGrey, radius: viewTextField.frame.height/2)
         let btnCross = UIButton(type: .custom)
         btnCross.setImage(UIImage.imageWithName(name: EthosConstants.cross), for: .normal)
         btnCross.backgroundColor = .white
         btnCross.addTarget(self, action: #selector(btnCrossDidTapped(_ :)), for: .touchUpInside)
         
-        textFieldSearch.initWithUIParameters(placeHolderText: EthosConstants.SearchPlaceHolder, placeholderColor: UIColor(white: 0, alpha: 0.3),  underLineColor: .clear, errUnderLineColor: .clear, textInset: 0)
+        textFieldSearch.initWithUIParameters(placeHolderText: EthosConstants.SearchNewPlaceHolder, placeholderColor: UIColor(white: 0, alpha: 0.3),  underLineColor: .clear, errUnderLineColor: .clear, textInset: 0)
         
         textFieldSearch.adjustsFontSizeToFitWidth = true
+    }
+    
+    @objc func doneButtonClicked(_ sender: Any) {
+        textFieldSearch.resignFirstResponder()
+        recentSearchCollectionView.isHidden = true
+        recentSearchTitleBackView.isHidden = true
+        dropDown.hide()
+        view.endEditing(true)
+        if textFieldSearch.text == "" {
+            viewFilterAndSortBy.isHidden = true
+            self.selectedIndexForSearch = Userpreference.preferSearchProducts == true ? 0 : 1
+            self.finishSearching()
+        } else if isSearching == false {
+            searchBtnPressStatus = true
+            self.startSearching()
+            self.callApiForSearch()
+        } else {
+            searchBtnPressStatus = true
+            self.callApiForSearch()
+        }
+    }
+    
+    @IBAction func btnSortByDidTapped(_ sender: UIButton) {
+        searchBtnPressStatus = false
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosBottomSheetTableViewControllerWithTitle.self)) as? EthosBottomSheetTableViewControllerWithTitle {
+            vc.delegate = self
+            vc.data = self.productViewModel.availableSortBy
+            vc.key = .forSortBy
+            vc.title = "SORT BY"
+            if let selectedSortBy = self.productViewModel.selectedSortBy {
+                vc.selectedItem = selectedSortBy
+            }
+            
+            vc.superController = self
+            
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
+        }
+    }
+    
+    @IBAction func btnFiltersDidTapped(_ sender: UIButton) {
+        searchBtnPressStatus = false
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: FiltersViewController.self)) as? FiltersViewController {
+            vc.isForPreOwned = self.isForPreOwned
+            vc.screenType = self.screenType
+            vc.viewModel.filters = productViewModel.filters
+            vc.viewModel.filterProductCount = productViewModel.totalCount
+            vc.viewModel.initiate(id: self.productViewModel.categoryId, categoryName: self.productViewModel.categoryName, selectedSortBy: self.productViewModel.selectedSortBy) {
+                var selectedValues = [SelectedFilterData]()
+                for filter in self.productViewModel.selectedFilters {
+                    for value in filter.values ?? [] {
+                        let item = SelectedFilterData(filterModelName: filter.attributeName ?? "", filterModelCode: filter.attributeCode ?? "", filterModelId: filter.attributeId ?? 0, filtervalue: value)
+                        selectedValues.append(item)
+                    }
+                }
+                vc.viewModel.minPriceLimit = self.productViewModel.minPriceLimit
+                vc.viewModel.maxPriceLimit = self.productViewModel.maxPriceLimit
+                
+                vc.viewModel.lowerPriceLimit = self.productViewModel.lowerPriceLimit
+                vc.viewModel.upperPriceLimit = self.productViewModel.upperPriceLimit
+                vc.viewModel.selectedFilters = self.productViewModel.selectedFilters
+                vc.viewModel.selectedValues = selectedValues
+                vc.delegate = self
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: false)
+            }
+        }
     }
     
     @IBAction func btnCrossDidTapped(_ sender : UIButton) {
@@ -360,18 +467,36 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func getFilters() {
+        self.productViewModel.delegate = self
+        self.productViewModel.getFilters(site: isForPreOwned ? .secondMovement : .ethos, screenType: self.screenType, loader: true)
+    }
     
     func callApiForSearch() {
-        self.selectedIndexForSearch = Userpreference.preferSearchProducts == true ? 0 : 1
+        //        self.selectedIndexForSearch = Userpreference.preferSearchProducts == true ? 0 : 1
         if isSearching {
             emptyMsg = ""
             if self.selectedIndexForSearch == 1 {
                 self.lblNoData.isHidden = true
+                self.viewFilterAndSortBy.isHidden = true
                 self.articleViewModel.getArticles(site: self.isForPreOwned ? .secondMovement : .ethos, searchString : finalSearchString)
             } else {
                 self.productViewModel.initiate(id: 0) {
+                    self.productViewModel.minPriceLimit = nil
+                    self.productViewModel.maxPriceLimit = nil
+                    self.productViewModel.lowerPriceLimit = nil
+                    self.productViewModel.upperPriceLimit = nil
+                    self.productViewModel.selectedSortBy = EthosConstants.bestSeller
+                    self.productViewModel.filters.removeAll()
+                    self.productViewModel.selectedFilters.removeAll()
+                    self.collectionViewSearchedData.isHidden = false
                     self.lblNoData.isHidden = true
-                    self.productViewModel.getProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.finalSearchString == "" ? " " : self.finalSearchString)
+                    self.resetData()
+                    DispatchQueue.main.async {
+                        self.tableViewData.showAnimatedGradientSkeleton()
+                        self.collectionViewSearchedData.showAnimatedGradientSkeleton()
+                    }
+                    self.productViewModel.getNewProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.finalSearchString == "" ? " " : self.finalSearchString, searchStatus: self.searchBtnPressStatus)
                 }
             }
             
@@ -402,12 +527,15 @@ extension SearchViewController : UITextFieldDelegate {
             dropDown.hide()
             view.endEditing(true)
             if textField.text == "" {
+                viewFilterAndSortBy.isHidden = true
                 self.selectedIndexForSearch = Userpreference.preferSearchProducts == true ? 0 : 1
                 self.finishSearching()
             } else if isSearching == false {
+                searchBtnPressStatus = true
                 self.startSearching()
                 self.callApiForSearch()
             } else {
+                searchBtnPressStatus = true
                 self.callApiForSearch()
             }
         }
@@ -416,10 +544,13 @@ extension SearchViewController : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == textFieldSearch{
-            if range.length > 0 {
-                finalSearchString = "\(textField.text?.dropLast() ?? "")"
-            } else {
-                finalSearchString = "\((textField.text ?? "") + string)"
+//            if range.length > 0 {
+//                finalSearchString = "\(textField.text?.dropLast() ?? "")"
+//            } else {
+//                finalSearchString = "\((textField.text ?? "") + string)"
+//            }
+            if let text = textField.text, let textRange = Range(range, in: text) {
+                finalSearchString = text.replacingCharacters(in: textRange, with: string)
             }
             print(finalSearchString)
             if finalSearchString != ""{
@@ -431,7 +562,11 @@ extension SearchViewController : UITextFieldDelegate {
                 }
             }else{
                 dropDown.hide()
-                self.callApiForSearch()
+                searchBtnPressStatus = true
+                self.textFieldSearch.text = ""
+                self.textFieldSearch.endEditing(true)
+                self.finishSearching()
+                //                self.callApiForSearch()
             }
         }
         
@@ -454,6 +589,19 @@ extension SearchViewController : UITextFieldDelegate {
         productViewModel.products.removeAll()
         articleViewModel.articles.removeAll()
         reloadUI()
+    }
+    
+    func updateView() {
+        if self.productViewModel.selectedSortBy == self.productViewModel.defaultSortBy {
+            self.btnRedDotSortBy.isHidden = true
+        } else {
+            self.btnRedDotSortBy.isHidden = false
+        }
+        if self.productViewModel.selectedFilters.count == 0 && self.productViewModel.lowerPriceLimit == nil && self.productViewModel.upperPriceLimit == nil {
+            self.btnRedDot.isHidden = true
+        } else {
+            self.btnRedDot.isHidden = false
+        }
     }
 }
 
@@ -498,13 +646,21 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
             return isSearching ? ArrSearchedItemsHeader.count : 0
             
         case recentSearchCollectionView:
-            recentSearchTitleLbl.text = apiType == "popularSearch" ? "Popular Searches" : "Recent Searches"
+            recentSearchTitleLbl.setAttributedTitleWithProperties(title: apiType == "popularSearch" ? "TRENDING SEARCHES" : "RECENT SEARCHES", font: EthosFont.Brother1816Medium(size: 10),foregroundColor: .black, kern: 0.5)
             if apiType == "popularSearch" {
                 return popularSearchDataArr.count
             } else if isForPreOwned {
-                return preOwnedRecentSearchDataArr.count
+                if preOwnedRecentSearchDataArr.count > 5{
+                    return 5
+                }else{
+                    return preOwnedRecentSearchDataArr.count
+                }
             } else {
-                return recentSearchDataArr.count
+                if recentSearchDataArr.count > 5{
+                    return 5
+                }else{
+                    return recentSearchDataArr.count
+                }
             }
             
         case collectionViewSearchedData:
@@ -512,11 +668,11 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
                 return 0
             }
             lblNoData.text = emptyMsg
-//            if productViewModel.products.count == 0{
-//                collectionViewSearchedData.setEmptyMessage(emptyMsg)
-//            }else{
-//                collectionViewSearchedData.restore()
-//            }
+            //            if productViewModel.products.count == 0{
+            //                collectionViewSearchedData.setEmptyMessage(emptyMsg)
+            //            }else{
+            //                collectionViewSearchedData.restore()
+            //            }
             return productViewModel.products.count
             
         default:
@@ -528,12 +684,12 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
         if collectionView == self.collectionViewData {
             return CGSize(width: 20, height: 50)
         } else if collectionView == recentSearchCollectionView {
-            return CGSize(width: 20, height: 10)
+            return CGSize(width: recentSearchCollectionView.frame.width, height: 35)
         }else if collectionView == collectionViewSearchedData {
             if let flowLayout = collectionViewSearchedData.collectionViewLayout as? UICollectionViewFlowLayout {
                 let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right + (flowLayout.minimumInteritemSpacing * CGFloat(2 - 1))
                 let size = CGFloat((self.view.frame.width - totalSpace) / CGFloat(2))
-                return CGSize(width: size, height: (indexPath.row == 0 || indexPath.row == 1) ? 356 : 346)
+                return CGSize(width: size, height: (indexPath.row == 0 || indexPath.row == 1) ? 366 : 346)
             }
         }
         return CGSize()
@@ -555,15 +711,23 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
             }
         } else if collectionView == recentSearchCollectionView {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecentSearchCollectionViewCell.self), for: indexPath) as? RecentSearchCollectionViewCell{
+                if indexPath.row == 0{
+                    cell.topConstraintTitleLbl.constant = 22
+                }else{
+                    cell.topConstraintTitleLbl.constant = 16
+                }
                 if apiType == "popularSearch"{
-                    cell.titleLbl?.text = (popularSearchDataArr[indexPath.row].title)?.shorted(to: 36)
+                    cell.titleLbl?.setAttributedTitleWithProperties(title: popularSearchDataArr[indexPath.row].title ?? "", font: EthosFont.Brother1816Regular(size: 10),foregroundColor: .black, kern: 0.5)
+//                    (popularSearchDataArr[indexPath.row].title)?.shorted(to: 36)
                 }else{
                     if isForPreOwned{
                         if preOwnedRecentSearchDataArr.count > 0{
-                            cell.titleLbl?.text = (preOwnedRecentSearchDataArr[indexPath.row].title)?.shorted(to: 36)
+                            cell.titleLbl?.setAttributedTitleWithProperties(title: preOwnedRecentSearchDataArr[indexPath.row].title ?? "", font: EthosFont.Brother1816Regular(size: 10),foregroundColor: .black, kern: 0.5)
+//                            (preOwnedRecentSearchDataArr[indexPath.row].title)?.shorted(to: 36)
                         }
                     }else{
-                        cell.titleLbl?.text = (recentSearchDataArr[indexPath.row].title)?.shorted(to: 36)
+                        cell.titleLbl?.setAttributedTitleWithProperties(title: recentSearchDataArr[indexPath.row].title ?? "", font: EthosFont.Brother1816Regular(size: 10),foregroundColor: .black, kern: 0.5)
+//                        (recentSearchDataArr[indexPath.row].title)?.shorted(to: 36)
                     }
                 }
                 return cell
@@ -768,10 +932,20 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView == collectionViewSearchedData && indexPath.item == self.productViewModel.products.count - 1 && self.selectedIndexForSearch == 0 && self.isSearching {
-            self.productViewModel.initiate(id: 0) {
-                self.productViewModel.getNewProducts(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.textFieldSearch.text ?? "")
+        if self.productViewModel.products.count > 4{
+            if collectionView == collectionViewSearchedData && indexPath.item == self.productViewModel.products.count - 1 && self.selectedIndexForSearch == 0 && self.isSearching {
+                self.productViewModel.initiate(id: 0) {
+                    self.productViewModel.getNewProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.textFieldSearch.text ?? "", searchStatus: self.searchBtnPressStatus)
+                }
             }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if selectedIndexForSearch == 0 {
+            return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
+        }else{
+            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         }
     }
 }
@@ -793,11 +967,11 @@ extension SearchViewController : UITableViewDataSource, UITableViewDelegate {
                 }
                 return articleViewModel.articles.count
             } else {
-//                if productViewModel.products.count == 0{
-//                    tableView.setEmptyMessage(emptyMsg)
-//                }else{
-//                    tableView.restore()
-//                }
+                //                if productViewModel.products.count == 0{
+                //                    tableView.setEmptyMessage(emptyMsg)
+                //                }else{
+                //                    tableView.restore()
+                //                }
                 lblNoData.text = emptyMsg
                 return productViewModel.products.count
             }
@@ -981,13 +1155,75 @@ extension SearchViewController : UITableViewDataSource, UITableViewDelegate {
 
 extension SearchViewController : GetProductViewModelDelegate {
     func didGetProducts(site : Site?, CategoryId : Int?) {
+        DispatchQueue.main.async {
+            self.tableViewData.hideSkeleton()
+            self.collectionViewSearchedData.hideSkeleton()
+        }
         if productViewModel.products.count == 0 {
             emptyMsg = "SORRY, NO RESULTS WERE FOUND."
+            DispatchQueue.main.async {
+                self.viewFilterAndSortBy.isHidden = true
+            }
         }else{
             emptyMsg = ""
+            if CategoryId ?? 0 == 0{
+                DispatchQueue.main.async {
+                    self.viewFilterAndSortBy.isHidden = true
+                }
+            }else{
+                DispatchQueue.main.async {
+                    if self.selectedIndexForSearch == 0{
+                        if self.productViewModel.products.count == 0{
+                            self.viewFilterAndSortBy.isHidden = true
+                        }else if self.productViewModel.products.count == 1 && self.productViewModel.selectedFilters.count == 0{
+                            self.viewFilterAndSortBy.isHidden = true
+                        }else{
+                            self.viewFilterAndSortBy.isHidden = false
+                        }
+                        
+                    }
+                }
+            }
         }
+        
         DispatchQueue.main.async {
+            self.productViewModel.categoryName = self.textFieldSearch.text ?? ""
+        }
+        
+        categoryId = CategoryId ?? 0
+        
+        DispatchQueue.main.async {
+            self.updateView()
             self.reloadUI()
+        }
+        
+        if searchBtnPressStatus{
+            if productViewModel.searchInputData?.filter?.values?.count ?? 0 > 0{
+                let attrValueId = productViewModel.searchInputData?.filter?.values?[0].attributeValueId ?? 0
+                let attributeId: Int? = attrValueId
+                
+                let attributeCode = productViewModel.searchInputData?.filter?.attributeCode
+                let attributeName = productViewModel.searchInputData?.filter?.attributeName
+                if attributeName?.uppercased() == EthosConstants.collection.uppercased() || attributeName?.uppercased() == EthosConstants.series.uppercased(){
+                    screenType = "search"
+                }else{
+                    screenType = ""
+                }
+                
+                var filterValues: [FilterValue] = []
+                for model in (productViewModel.searchInputData?.filter?.values ?? []) {
+                    if let attrValueIdStr = model.attributeValueId {
+                        let filterValue = FilterValue(attributeValueId: attrValueIdStr, attributeValueName: model.attributeValueName)
+                        filterValues.append(filterValue)
+                    }
+                }
+                
+                let filterModel = FilterModel(attributeId: attributeId, attributeCode: attributeCode, attributeName: attributeName, values: filterValues)
+                if let filters = [filterModel] as? [FilterModel] {
+                    productViewModel.selectedFilters = filters
+                }
+            }
+            getFilters()
         }
         
     }
@@ -1041,6 +1277,9 @@ extension SearchViewController : GetProductViewModelDelegate {
 
 extension SearchViewController : GetArticlesViewModelDelegate {
     func didGetArticles(category: String, offset: Int, limit: Int, articleModel: GetArticles, site: Site, searchString: String, featuredVideo: Bool, watchGuide: Bool) {
+        DispatchQueue.main.async {
+            self.viewFilterAndSortBy.isHidden = true
+        }
         if articleViewModel.articles.count == 0{
             emptyMsg = "SORRY, NO RESULTS WERE FOUND."
         }else{
@@ -1053,6 +1292,74 @@ extension SearchViewController : GetArticlesViewModelDelegate {
     
     func errorInGettingArticles(error: String) {
         
+    }
+}
+
+extension SearchViewController : SuperViewDelegate {
+    func updateView(info: [EthosKeys : Any?]?) {
+        if let key = info?[EthosKeys.key] as? EthosKeys,
+           key == .reloadCollectionView,
+           let value = info?[EthosKeys.value] as? String,
+           let bottomSheetKey : BottomSheetKey = info?[EthosKeys.type] as? BottomSheetKey {
+            switch bottomSheetKey {
+            case .forSortBy:
+                self.productViewModel.selectedSortBy = value
+            case .forSelectBrand:
+                break
+            case .forSelectConcern:
+                break
+            case .forPhoneNumber:
+                break
+            }
+            
+            updateView()
+            selectedIndexForSearch = 0
+        }
+        
+        if let key = info?[EthosKeys.key] as? EthosKeys, key == .openWebPage, let urlstr = info?[EthosKeys.url] as? String {
+            UserActivityViewModel().getDataFromActivityUrl(url: urlstr)
+        }
+        
+        if let key = info?[EthosKeys.key] as? EthosKeys, key == .applyFilters, let filters = info? [EthosKeys.filters] as? [FilterModel] , let selectedFilters = info? [EthosKeys.selectedFilters] as? [FilterModel]{
+            if let minPriceLimit = info?[EthosKeys.minPriceLimit] as? Int,
+               let maxPriceLimit = info?[EthosKeys.maxPriceLimit] as? Int {
+                self.productViewModel.minPriceLimit = minPriceLimit
+                self.productViewModel.maxPriceLimit = maxPriceLimit
+            }
+            
+            if let lowerPriceLimit = info?[EthosKeys.lowerPriceLimit] as? Int,
+               let upperPriceLimit = info?[EthosKeys.upperPriceLimit] as? Int {
+                self.productViewModel.lowerPriceLimit = lowerPriceLimit
+                self.productViewModel.upperPriceLimit = upperPriceLimit
+            }
+            self.productViewModel.selectedFilters = selectedFilters
+            self.productViewModel.filters = filters
+            updateView()
+            selectedIndexForSearch = 0
+            
+            Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.catalogFilterUsed, properties: [
+                EthosConstants.Email: Userpreference.email,
+                EthosConstants.UID : Userpreference.userID,
+                EthosConstants.Gender : Userpreference.gender,
+                EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                EthosConstants.Platform : EthosConstants.IOS,
+                EthosConstants.Category : self.productViewModel.categoryName,
+                EthosConstants.Brand : self.productViewModel.categoryName,
+                EthosConstants.RestOfTheFilters : self.productViewModel.getRequestBodyFromData()[EthosConstants.filters]
+            ])
+        }
+        
+        if let key = info?[EthosKeys.key] as? EthosKeys, key == .resetFilters {
+            self.productViewModel.selectedFilters = []
+            self.productViewModel.upperPriceLimit = nil
+            self.productViewModel.lowerPriceLimit = nil
+            self.productViewModel.products.removeAll()
+            //            self.btnFilter.isEnabled = false
+            UserDefaults.standard.removeObject(forKey: "filtersData")
+            updateView()
+            searchBtnPressStatus = true
+            selectedIndexForSearch = 0
+        }
     }
 }
 
@@ -1103,21 +1410,28 @@ extension SearchViewController : SkeletonCollectionViewDataSource {
     }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
 }
 
 class CustomViewFlowLayout: UICollectionViewFlowLayout {
     let cellSpacing: CGFloat = 10
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func prepare() {
+        super.prepare()
         self.minimumLineSpacing = 10.0
         self.sectionInset = UIEdgeInsets(top: 12.0, left: 16.0, bottom: 0.0, right: 16.0)
-        let attributes = super.layoutAttributesForElements(in: rect)
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard let attributes = super.layoutAttributesForElements(in: rect) else {
+            return nil
+        }
         
         var leftMargin = sectionInset.left
         var maxY: CGFloat = -1.0
-        attributes?.forEach { layoutAttribute in
+        
+        for layoutAttribute in attributes {
             if layoutAttribute.frame.origin.y >= maxY {
                 leftMargin = sectionInset.left
             }
@@ -1125,6 +1439,7 @@ class CustomViewFlowLayout: UICollectionViewFlowLayout {
             leftMargin += layoutAttribute.frame.width + cellSpacing
             maxY = max(layoutAttribute.frame.maxY, maxY)
         }
+        
         return attributes
     }
 }

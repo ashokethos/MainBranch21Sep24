@@ -150,6 +150,7 @@ class ProductDetailViewController: UIViewController {
         checkSellingPriceBackView.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 3, scale: true)
         checkSellingPriceBtn.setBorder(borderWidth: 0, borderColor: .clear, radius: 0)
         self.addTapGestureToDissmissKeyBoard()
+        
         self.tableViewProductDetails.registerCell(className: SingleCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: SpecificationPairTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: EditorNotesTableViewCell.self)
@@ -158,6 +159,7 @@ class ProductDetailViewController: UIViewController {
         self.tableViewProductDetails.registerCell(className: HeadingCell.self)
         self.tableViewProductDetails.registerCell(className: EthosVideoTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HtmlContainerForAboutCollectionTableViewCell.self)
+        self.tableViewProductDetails.registerCell(className: ForAboutCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: HorizontalCollectionTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: SpacingTableViewCell.self)
         self.tableViewProductDetails.registerCell(className: FavreLeubaHeaderTableViewCell.self)
@@ -313,11 +315,21 @@ class ProductDetailViewController: UIViewController {
         }
         
         if product.aboutCollection?.htmlToString != nil && product.aboutCollection?.htmlToString != "" && self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.brand != EthosConstants.FavreLeuba  {
-            self.arrSections.append((EthosConstants.AboutTheCollection,false))
+            let productData = self.viewModel.product!
+            let productName = productData.extensionAttributes?.ethProdCustomeData?.productName ?? ""
+            
+            let productBrand = productData.extensionAttributes?.ethProdCustomeData?.brand ?? ""
+            
+            var title = productBrand + " " + productName
+            
+            if title.last == " " {
+                title.removeLast()
+            }
+            self.arrSections.append(("\(EthosConstants.AboutThe) \(title) \(EthosConstants.Collection)",false))
         }
         
         if product.extensionAttributes?.ethProdCustomeData?.showMovement == true && self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.brand != EthosConstants.FavreLeuba {
-            self.arrSections.append(((EthosConstants.Movement), false))
+            self.arrSections.append(((EthosConstants.AboutTheMovement), false))
             if let movement = product.extensionAttributes?.ethProdCustomeData?.movement {
                 self.calbreImage = product.extensionAttributes?.ethProdCustomeData?.calibreImage
                 self.movement = movement
@@ -326,16 +338,16 @@ class ProductDetailViewController: UIViewController {
         
         DispatchQueue.main.async {
             if let btnText = product.extensionAttributes?.ethProdCustomeData?.buttonText, btnText != "" {
-                self.checkSellingPriceBtn.setAttributedTitleWithProperties(title: btnText.uppercased(), font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 12 : 10),foregroundColor: .white,kern: 0.5)
+                self.checkSellingPriceBtn.setAttributedTitleWithProperties(title: btnText.uppercased(), font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 11 : 9),foregroundColor: .white,kern: 0.5)
             } else {
-                self.checkSellingPriceBtn.setAttributedTitleWithProperties(title: "Check our selling price".uppercased(), font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 12 : 10),foregroundColor: .white,kern: 0.5)
+                self.checkSellingPriceBtn.setAttributedTitleWithProperties(title: "Check our selling price".uppercased(), font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 11 : 9),foregroundColor: .white,kern: 0.5)
             }
             
             if let price = product.price, let currency = product.currency {
 //                if self.isForPreOwned == true {
 //                    self.priceLbl.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.RupeesSymbol : (currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: 12), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
 //                } else {
-                self.priceLbl.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.MRPWithRupeesSymbol : (EthosConstants.MRP + " " + currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 12 : 10), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
+                self.priceLbl.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.MRPWithRupeesSymbol : (EthosConstants.MRP + " " + currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: self.view.frame.width > 390 ? 11 : 9), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
 //                }
             }
             self.tableViewProductDetails.reloadData()
@@ -361,7 +373,6 @@ class ProductDetailViewController: UIViewController {
                 ])
             self.checkSellingPriceDelegate?.updateView(info: [EthosKeys.key : EthosKeys.checkOurSellingPrice, EthosKeys.Product : product])
     }
-    
 }
 
 extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSource {
@@ -431,6 +442,7 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     cell.setHeading(
                         title: EthosConstants.FullSpecification.uppercased(),
+                        font: EthosFont.Brother1816Bold(size: 12),
                         leading: 30,
                         trailling: 30,
                         showDisclosure: true,
@@ -440,7 +452,6 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                         disclosureHeight: 16,
                         disclosureWidth: 16,
                         showTopLine: true,
-                        
                         action: {
                             
                         })
@@ -459,6 +470,7 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeadingCell.self)) as? HeadingCell {
                     cell.setHeading(
                         title: arrSections[section - 3].0.uppercased(),
+                        font: EthosFont.Brother1816Bold(size: 12),
                         leading: 30,
                         trailling: 30,
                         showDisclosure: true,
@@ -728,6 +740,7 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 
+                // Editor Notes
                 if arrSections[indexPath.section - 3].0 == self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.editorHeading?.uppercased() {
                     if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditorNotesTableViewCell.self), for: indexPath) as? EditorNotesTableViewCell {
                         if let descriptionStr = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.editorDescription {
@@ -746,28 +759,70 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 
+                let productData = self.viewModel.product!
+                let productName = productData.extensionAttributes?.ethProdCustomeData?.productName ?? ""
+                
+                let productBrand = productData.extensionAttributes?.ethProdCustomeData?.brand ?? ""
+                
+                var title = productBrand + " " + productName
+                
+                if title.last == " " {
+                    title.removeLast()
+                }
                 // About collection
-                if arrSections[indexPath.section - 3].0 == EthosConstants.AboutTheCollection {
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionTableViewCell {
-                        cell.delegate = self
-                        cell.index = indexPath
-                        cell.webKitView.allowsLinkPreview = true
-                        cell.superTableView = self.tableViewProductDetails
-                        if let html = self.viewModel.product?.aboutCollection {
-                            let imageCount = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
-                            if let collectionImage =  self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.collectionImage {
-                                cell.data = (collectionImage, html)
-                            } else {
-                                cell.htmlString = html
+                if arrSections[indexPath.section - 3].0 == "\(EthosConstants.AboutThe) \(title) \(EthosConstants.Collection)" {
+                    
+//                    if self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionDescription.count == 0 {
+//                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HtmlContainerForAboutCollectionTableViewCell.self), for: indexPath) as? HtmlContainerForAboutCollectionTableViewCell {
+//                            cell.delegate = self
+//                            cell.index = indexPath
+//                            cell.webKitView.allowsLinkPreview = true
+//                            cell.superTableView = self.tableViewProductDetails
+//                            if let html = self.viewModel.product?.aboutCollection {
+//                                let imageCount = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
+//                                if let collectionImage =  self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.collectionImage {
+//                                    cell.data = (collectionImage, html)
+//                                } else {
+//                                    cell.htmlString = html
+//                                }
+//                                
+//                            }
+//                            return cell
+//                        }
+//                    }else{
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForAboutCollectionTableViewCell.self), for: indexPath) as? ForAboutCollectionTableViewCell {
+                            cell.delegate = self
+                            cell.index = indexPath
+                            cell.titleString = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionTitle
+                            if let html = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.newCollectionDescription {
+                                _ = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.images?.gallery.count ?? 0
+                                if let collectionImage =  self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.collectionImage {
+                                    if collectionImage == ""{
+                                        cell.constraintHeightImg.constant = 0
+                                    }
+                                    cell.data = (collectionImage, "")
+                                    cell.imageStr = collectionImage
+                                } else {
+                                    cell.htmlString = ""
+                                }
+                                cell.CollectionDescriptionTextDataArr.removeAll()
+                                for collection in html {
+                                    cell.CollectionDescriptionTextDataArr.append(CollectionDescriptionTextData.init(head: collection.head ?? "", subhead: collection.subhead ?? ""))
+                                }
+                                cell.textDataTableView.reloadData()
+                                cell.heightConstraintTextDataTableView.constant = cell.textDataTableView.contentSize.height
+                                cell.textDataTableView.layoutIfNeeded()
+                                cell.contentView.layoutIfNeeded()
+                                cell.textDataTableView.beginUpdates()
+                                cell.textDataTableView.endUpdates()
                             }
-                            
+                            return cell
                         }
-                        return cell
-                    }
+//                    }
                 }
                 
                 // Movement
-                if arrSections[indexPath.section - 3].0 == EthosConstants.Movement {
+                if arrSections[indexPath.section - 3].0 == EthosConstants.AboutTheMovement {
                     if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovementTableViewCell.self), for: indexPath) as? MovementTableViewCell {
                         cell.calibreImage = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.calibreImage
                         cell.callibreDescription = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.calibreDescription
@@ -782,8 +837,6 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                         return cell
                     }
                 }
-                
-                
             } else {
                 
                 // Similar Products

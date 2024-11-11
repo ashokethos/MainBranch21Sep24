@@ -11,7 +11,7 @@ import UIKit
 class EthosApiManager {
     
     func callApi(endPoint:String, RequestType : RequestType, RequestParameters : [String:String], RequestBody : [String:Any],forVideo : Bool = false ,completionHandler :@escaping (Data?,URLResponse?,Error?) -> ()) {
-        var urlComponents = URLComponents(string:  forVideo ? (EthosIdentifiers.baseVideoUrl) : (EthosIdentifiers.baseurl + endPoint))
+        var urlComponents = URLComponents(string:  forVideo ? (EthosIdentifiers.baseVideoUrl) : ( EthosIdentifiers.baseurl + endPoint))
         if !RequestParameters.isEmpty {
             var queryItems = [URLQueryItem]()
             for (key,value) in RequestParameters {
@@ -34,7 +34,13 @@ class EthosApiManager {
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     DispatchQueue.main.async {
-                        UIApplication.topViewController()?.showAlertWithSingleTitle(title: error.localizedDescription, message: "")
+                        var msg: String?
+                        if error.localizedDescription == "The Internet connection appears to be offline." || error.localizedDescription == "A data connection is not currently allowed."{
+                            msg = "Internet connection appears to be offline."
+                        }else{
+                            msg = error.localizedDescription
+                        }
+                        UIApplication.topViewController()?.showAlertWithSingleTitle(title: msg ?? "", message: "")
                     }
                 }
                 

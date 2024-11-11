@@ -129,9 +129,9 @@ class ProductDetailTableViewCell: UITableViewCell {
         }
         
         
-        self.lblProductName.setAttributedTitleWithProperties(title: title, font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24), foregroundColor: .black, lineHeightMultiple: 1.25, kern: 0.5)
+        self.lblProductName.setAttributedTitleWithProperties(title: title, font: EthosFont.MrsEavesXLSerifNarOTReg(size: 28), foregroundColor: .black, lineHeightMultiple: 1.25, kern: 0.5)
         
-        self.lblProductPriceMessage.setAttributedTitleWithProperties(title: "*Inclusive of all taxes" , font: EthosFont.Brother1816Regular(size: 10), foregroundColor: EthosColor.seperatorDarkColor, lineHeightMultiple: 1, kern: 0.1)
+        self.lblProductPriceMessage.setAttributedTitleWithProperties(title: "*Inclusive of all taxes" , font: EthosFont.Brother1816Regular(size: 12), foregroundColor: EthosColor.seperatorDarkColor, lineHeightMultiple: 1, kern: 0.1)
         
         let displayNameMsg = product.extensionAttributes?.ethProdCustomeData?.attributes?.stockstatus?.value?.displayName ?? ""
         if displayNameMsg.contains("On Special Order") {
@@ -159,9 +159,9 @@ class ProductDetailTableViewCell: UITableViewCell {
         
         if let price = self.isForPreOwned ? product.extensionAttributes?.ethProdCustomeData?.price : product.price, let currency = product.currency {
             if self.isForPreOwned == true {
-                self.lblProductPrice.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.RupeesSymbol : (currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: 12), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
+                self.lblProductPrice.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.RupeesSymbol : (currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: 14), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
             } else {
-                self.lblProductPrice.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.MRPWithRupeesSymbol : (EthosConstants.MRP + " " + currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: 12), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
+                self.lblProductPrice.setAttributedTitleWithProperties(title: (currency == EthosConstants.INR ? EthosConstants.MRPWithRupeesSymbol : (EthosConstants.MRP + " " + currency)) + " " + (price.getCommaSeperatedStringValue() ?? "") , font: EthosFont.Brother1816Bold(size: 14), foregroundColor: .black, lineHeightMultiple: 1, kern: 1)
             }
         }
         

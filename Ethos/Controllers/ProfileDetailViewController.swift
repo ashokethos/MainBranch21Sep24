@@ -13,27 +13,55 @@ import Mixpanel
 
 class ProfileDetailViewController: UIViewController {
     
+    
+    @IBOutlet weak var lblDOB: UILabel!
+    @IBOutlet weak var viewFirstName: UIView!
+    
+    @IBOutlet weak var lblFirstName: UILabel!
+    
+    
+    @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblOccupation: UILabel!
+    @IBOutlet weak var viewLastName: UIView!
+    
+    @IBOutlet weak var viewOccupation: UIView!
+    @IBOutlet weak var viewLocation: UIView!
+    @IBOutlet weak var textFieldLastName: EthosTextField!
+    
+    @IBOutlet weak var viewLock: UIImageView!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var viewEmail: UIView!
+    @IBOutlet weak var viewDOB: UIView!
+    @IBOutlet weak var lblPassword: UILabel!
+    @IBOutlet weak var lblPreferredBrands: UILabel!
+    @IBOutlet weak var lblPrefix: UILabel!
+    @IBOutlet weak var lblLastName: UILabel!
     @IBOutlet weak var btnUploadImage: UIButton!
     @IBOutlet weak var imageProfile: UIImageView!
-    @IBOutlet weak var textFieldName: EthosTextField!
+    @IBOutlet weak var textFieldFirstName: EthosTextField!
     @IBOutlet weak var textFieldMobileNumber: EthosTextField!
     @IBOutlet weak var textFieldEmail: EthosTextField!
     @IBOutlet weak var textFieldDOB: EthosTextField!
     @IBOutlet weak var textFieldOccupation: EthosTextField!
     @IBOutlet weak var textFieldLocation: EthosTextField!
-    @IBOutlet weak var textFieldWatchBrand: EthosTextField!
+   
     @IBOutlet weak var textFieldChangePassword: EthosTextField!
     @IBOutlet weak var btnGenderMale: UIButton!
     @IBOutlet weak var btnGenderFemale: UIButton!
+    
+    @IBOutlet weak var viewTitle: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSave: UIButton!
     
-    @IBOutlet weak var downArrow: UIImageView!
-    @IBOutlet weak var btnWatchBrand: UIButton!
+    @IBOutlet weak var viewGender: UIView!
+    
+    @IBOutlet weak var btnGenderOther: UIButton!
     @IBOutlet weak var viewMobileNumber: UIView!
     @IBOutlet weak var viewWatchBrand: UIView!
     @IBOutlet weak var viewChangePassword: UIView!
     @IBOutlet weak var collectionViewBrands: UICollectionView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+  
+    @IBOutlet weak var lblGender: UILabel!
     @IBOutlet weak var btnCountryCode: UIButton!
     
     var ArrFavouriteWatchBrand = [BrandModel]()
@@ -61,18 +89,21 @@ class ProfileDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.lblTitle.setAttributedTitleWithProperties(title: "EDIT PROFILE INFO", font: EthosFont.Brother1816Bold(size: 10),alignment: .center, foregroundColor: .white, kern: 0.5)
         self.textFieldEmail.isEnabled = false
         self.textFieldMobileNumber.isEnabled = false
         self.btnCountryCode.isEnabled = false
+        self.textFieldChangePassword.isEnabled = false
         
         if let date = Calendar.current.date(byAdding: .year, value: -15, to: Date()) {
             datePicker.maximumDate = date
         }
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
+        
         self.textFieldDOB.inputView = datePicker
         self.textFieldDOB.delegate = self
-        self.textFieldName.delegate = self
+        self.textFieldFirstName.delegate = self
         self.textFieldOccupation.delegate = self
         self.textFieldEmail.delegate = self
         self.textFieldMobileNumber.delegate = self
@@ -80,9 +111,19 @@ class ProfileDetailViewController: UIViewController {
         
         viewModel.getBrands(site: .ethos, isAscending: true, includeRolex: false)
         viewModel.delegate = self
+        collectionViewBrands.delegate = self
+        collectionViewBrands.dataSource = self
         customerModel.delegate = self
         self.collectionViewBrands.registerCell(className: DeletableTextCollectionViewCell.self)
         self.customerModel.getCustomerDetails()
+        
+        // Set up the flow layout's cell alignment:
+        let flowLayout = collectionViewBrands.collectionViewLayout as? AlignedCollectionViewFlowLayout
+        flowLayout?.horizontalAlignment = .leading
+        flowLayout?.verticalAlignment = .top
+        
+        // Enable automatic cell-sizing with Auto Layout:
+        flowLayout?.estimatedItemSize = .init(width: 100, height: 50)
         
     }
     
@@ -98,27 +139,67 @@ class ProfileDetailViewController: UIViewController {
     }
     
     func setUI(customer : Customer) {
+        
+        self.btnUploadImage.setAttributedTitleWithProperties(title: "Update Photo", font: EthosFont.Brother1816Regular(size: 10),showUnderline: true, underLineColor: .black)
+        
+        self.lblDOB.setAttributedTitleWithProperties(title: EthosConstants.DateOfBirth.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        self.lblFirstName.setAttributedTitleWithProperties(title: "First Name".uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        self.lblLastName.setAttributedTitleWithProperties(title: "Last name".uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        self.lblEmail.setAttributedTitleWithProperties(title: EthosConstants.email.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        self.lblGender.setAttributedTitleWithProperties(title: EthosConstants.gender.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        self.lblPrefix.setAttributedTitleWithProperties(title: "prefix".uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        self.lblLocation.setAttributedTitleWithProperties(title: EthosConstants.location.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        self.lblPassword.setAttributedTitleWithProperties(title: EthosConstants.password.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        self.lblPreferredBrands.setAttributedTitleWithProperties(title: "Preferred brands".uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        self.lblOccupation.setAttributedTitleWithProperties(title: EthosConstants.occupation.uppercased(), font: EthosFont.Brother1816Medium(size: 10), alignment: .left, foregroundColor: .black, kern: 0.5)
+        
+        
+        
         for attribute in customer.customAttributes ?? [] {
             if attribute.attributeCode == "mobile" {
-                self.textFieldMobileNumber.text = attribute.value
+                self.textFieldMobileNumber.text = attribute.value?.filter(\.isWhitespace.negated)
+                    //.separate(every: 2, from: 0, with: " ")
             }
         }
         
-        self.textFieldName.text = (customer.firstname ?? "") + " " + (customer.lastname ?? "")
+        self.textFieldFirstName.text = (customer.firstname ?? "")
+        self.textFieldLastName.text = (customer.lastname ?? "")
         self.textFieldEmail.text = customer.email ?? ""
         
         self.textFieldLocation.text = customer.extraAttributes?.location ?? ""
         self.textFieldOccupation.text = customer.extraAttributes?.occupation ?? ""
         
-        self.textFieldDOB.text = customer.dateOfBirth ?? ""
+        
+        if let dob = customer.dateOfBirth {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let date = formatter.date(from: dob) ?? Date()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let modifiedStr = formatter.string(from: date)
+            self.textFieldDOB.text = modifiedStr
+            datePicker.date = date
+        }
+        
+       
         
         if let gender = customer.gender {
             if gender == "male" {
                 self.btnGenderMale.isSelected = true
                 self.btnGenderFemale.isSelected = false
-            } else {
+                self.btnGenderOther.isSelected = false
+            } else if gender == "female" {
                 self.btnGenderFemale.isSelected = true
                 self.btnGenderMale.isSelected = false
+                self.btnGenderOther.isSelected = false
+            } else if gender == "other" {
+                self.btnGenderFemale.isSelected = false
+                self.btnGenderMale.isSelected = false
+                self.btnGenderOther.isSelected = true
             }
         }
         
@@ -140,27 +221,49 @@ class ProfileDetailViewController: UIViewController {
     }
     
     func setBorders() {
-        self.imageProfile.setBorder(borderWidth: 0.1, borderColor: EthosColor.seperatorColor, radius: 50)
+        self.imageProfile.setBorder(borderWidth: 0.1, borderColor: EthosColor.seperatorColor, radius: imageProfile.frame.width/2)
+    }
+    
+    @IBAction func btnSearchDidTapped(_ sender: UIButton) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+            vc.isForPreOwned = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func setTextFields() {
-        self.textFieldName.initWithUIParameters(placeHolderText: EthosConstants.YourName, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldMobileNumber.initWithUIParameters(placeHolderText: EthosConstants.MobileNumber, textInset: 0)
-        self.textFieldEmail.initWithUIParameters(placeHolderText: EthosConstants.Email, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldDOB.initWithUIParameters(placeHolderText: EthosConstants.DateOfBirth, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldOccupation.initWithUIParameters(placeHolderText: EthosConstants.Occupation, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldLocation.initWithUIParameters(placeHolderText: EthosConstants.Location, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldWatchBrand.initWithUIParameters(placeHolderText: EthosConstants.FavouriteWatchBrand, underLineColor: EthosColor.seperatorColor, textInset: 0)
-        self.textFieldChangePassword.initWithUIParameters(placeHolderText: EthosConstants.ChangePassword, underLineColor: EthosColor.seperatorColor, textInset: 0)
+        
+        self.btnSave.setAttributedTitleWithProperties(title:  "CONFIRM CHANGES", font: EthosFont.Brother1816Bold(size: 12),foregroundColor: .white, kern: 1)
+        
+        
+        self.textFieldFirstName.initWithUIParameters(placeHolderText: "First Name", placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+        self.textFieldLastName.initWithUIParameters(placeHolderText: "Last Name", placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+        self.textFieldMobileNumber.initWithUIParameters(placeHolderText: EthosConstants.MobileNumber.capitalized, placeholderColor : EthosColor.lightGrey,textInset: 0)
+        self.textFieldEmail.initWithUIParameters(placeHolderText: EthosConstants.Email, placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+        self.textFieldDOB.initWithUIParameters(placeHolderText: EthosConstants.DateOfBirth.capitalized, placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+        self.textFieldOccupation.initWithUIParameters(placeHolderText: EthosConstants.Occupation.capitalized, placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+        self.textFieldLocation.initWithUIParameters(placeHolderText: EthosConstants.Location.capitalized, placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
+      
+        self.textFieldChangePassword.initWithUIParameters(placeHolderText: EthosConstants.password.capitalized, placeholderColor : EthosColor.lightGrey, underLineColor: .clear, textInset: 0)
     }
     
     @IBAction func btnSaveBtnDidTapped(_ sender: UIButton) {
         if validateFields() {
             let email = self.textFieldEmail.text ?? ""
-            let phone = self.textFieldMobileNumber.text ?? ""
+            let phone = self.textFieldMobileNumber.text?.replacingOccurrences(of: " ", with: "") ?? ""
             let dob = self.textFieldDOB.text ?? ""
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let selectedDate = formatter.date(from: dob) ?? Date()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let strToBePassed = formatter.string(from: selectedDate)
+            
+            
+            
             let location = textFieldLocation.text ?? ""
-            let name = self.textFieldName.text ?? ""
+            let firstName = self.textFieldFirstName.text ?? ""
+            let lastName = self.textFieldLastName.text ?? ""
             let occupation = self.textFieldOccupation.text ?? ""
             
             if let id  = customerModel.customer?.id {
@@ -171,8 +274,8 @@ class ProfileDetailViewController: UIViewController {
                 
                 
                 params["email"] = email
-                params["name"] = name
-                params ["dob"] = dob
+                params["name"] = firstName + " " + lastName
+                params ["dob"] = strToBePassed
                 customAttributtes.append(["attribute_code" :  "mobile" , EthosConstants.value : phone])
                 
                 
@@ -185,6 +288,9 @@ class ProfileDetailViewController: UIViewController {
                     params["gender"] = "2"
                 }
                 
+                if self.btnGenderOther.isSelected {
+                    params["gender"] = "3"
+                }
                 
                 extraAttributes["location"] = location
                 extraAttributes["occupation"] = occupation
@@ -262,13 +368,31 @@ class ProfileDetailViewController: UIViewController {
             print("It is not determined until now")
         case .restricted:
             print("User do not have access to photo album.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!){ success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         case .denied:
             print("User has denied the permission.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!){ success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         case .limited:
             print("User has denied the permissions.")
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!){ success in
+                if success {
+                    print("URL opened successfully")
+                } else {
+                    print("Failed to open URL")
+                }
+            }
         @unknown default:
             print("User has denied the permission default.")
         }
@@ -295,16 +419,20 @@ class ProfileDetailViewController: UIViewController {
         checkCameraPermission()
     }
     
-    @IBAction func collectionViewDidTapped(_ sender: UITapGestureRecognizer) {
-        self.btnFavouriteBrandDidTapped(self.btnWatchBrand)
-    }
+    
     
     @IBAction func selectGenderButton(_ sender: UIButton) {
+        viewGender.removeBottomError()
         sender.isSelected = true
         if sender == btnGenderMale {
             btnGenderFemale.isSelected = false
+            btnGenderOther.isSelected = false
+        }  else if  sender == btnGenderFemale {
+            btnGenderMale.isSelected = false
+            btnGenderOther.isSelected = false
         } else {
             btnGenderMale.isSelected = false
+            btnGenderFemale.isSelected = false
         }
     }
     
@@ -320,11 +448,6 @@ class ProfileDetailViewController: UIViewController {
     }
     
     func reloadUI() {
-        self.collectionViewBrands.isHidden =  self.ArrFavouriteWatchBrand.isEmpty
-        self.btnWatchBrand.isHidden = !self.ArrFavouriteWatchBrand.isEmpty
-        self.textFieldWatchBrand.isHidden = !self.ArrFavouriteWatchBrand.isEmpty
-        self.downArrow.isHidden = !self.ArrFavouriteWatchBrand.isEmpty
-        
         
         if self.textFieldEmail.text?.isEmpty == true {
             self.textFieldEmail.isEnabled = true
@@ -362,11 +485,16 @@ class ProfileDetailViewController: UIViewController {
     }
     
     
+    
     func validateFields() -> Bool {
         
         var valid = true
         
-        if self.textFieldName.validateAgainstFullName() == false {
+        if self.textFieldFirstName.validateAgainstFirstName() == false {
+            valid = false
+        }
+        
+        if self.textFieldLastName.validateAgainstLastName() == false {
             valid = false
         }
         
@@ -391,10 +519,12 @@ class ProfileDetailViewController: UIViewController {
             valid = false
         }
         
-        if !btnGenderMale.isSelected && !btnGenderFemale.isSelected {
-            btnGenderMale.shake()
-            btnGenderFemale.shake()
+        if !btnGenderMale.isSelected && !btnGenderFemale.isSelected && !btnGenderOther.isSelected {
+            viewGender.showBottomError(str: "Please select gender")
+
             valid = false
+        }else{
+            viewGender.removeBottomError()
         }
         
         return valid
@@ -466,14 +596,14 @@ extension ProfileDetailViewController : GetCustomerViewModelDelegate {
     func startProfileIndicator() {
         DispatchQueue.main.async {
             self.showActivityIndicator()
-            //            self.indicator.startAnimating()
+           
         }
     }
     
     func stopProfileIndicator() {
         DispatchQueue.main.async {
             self.hideActivityIndicator()
-            //            self.indicator.stopAnimating()
+          
         }
     }
     
@@ -482,6 +612,9 @@ extension ProfileDetailViewController : GetCustomerViewModelDelegate {
             self.customerModel.getCustomerDetails()
             if let alertController = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
                 alertController.setActions(title: message, message: "", secondActionTitle: "Done")
+                alertController.secondButtonAction = {
+                    self.navigationController?.popViewController(animated: true)
+                }
                 self.present(alertController, animated: true)
             }
         }
@@ -515,13 +648,13 @@ extension ProfileDetailViewController : GetBrandsViewModelDelegate {
     
     func startIndicator() {
         DispatchQueue.main.async {
-            self.indicator.startAnimating()
+          
         }
     }
     
     func stopIndicator() {
         DispatchQueue.main.async {
-            self.indicator.stopAnimating()
+            
         }
     }
     
@@ -530,22 +663,38 @@ extension ProfileDetailViewController : GetBrandsViewModelDelegate {
 
 extension ProfileDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ArrFavouriteWatchBrand.count
+        return ArrFavouriteWatchBrand.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DeletableTextCollectionViewCell.self), for: indexPath) as? DeletableTextCollectionViewCell {
-            cell.index = indexPath.item
-            cell.btnDelete.tag = indexPath.item
-            cell.lblTitle.text = ArrFavouriteWatchBrand[indexPath.item].name
-            cell.delegate = self
-            return cell
+        if indexPath.item == ArrFavouriteWatchBrand.count {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DeletableTextCollectionViewCell.self), for: indexPath) as? DeletableTextCollectionViewCell {
+               
+                cell.lblTitle.setAttributedTitleWithProperties(title: "   +   ", font: EthosFont.Brother1816Regular(size: 10))
+               
+                cell.viewMain.backgroundColor = EthosColor.lightGrey
+              
+                return cell
+            }
+        } else {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DeletableTextCollectionViewCell.self), for: indexPath) as? DeletableTextCollectionViewCell {
+                cell.viewMain.backgroundColor = EthosColor.lightGrey
+               
+                cell.lblTitle.setAttributedTitleWithProperties(title: "   \(ArrFavouriteWatchBrand[indexPath.item].name?.uppercased() ?? "")   ", font: EthosFont.Brother1816Regular(size: 10))
+                
+                return cell
+            }
         }
+        
         return UICollectionViewCell()
     }
     
+ 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        btnFavouriteBrandDidTapped(self.btnWatchBrand)
+        if indexPath.row == ArrFavouriteWatchBrand.count {
+            self.btnFavouriteBrandDidTapped(UIButton())
+        }
+       
     }
 }
 
@@ -555,7 +704,7 @@ extension ProfileDetailViewController : UITextFieldDelegate {
         
         var maxLength = 30
         
-        if textField == textFieldName {
+        if textField == textFieldFirstName {
             maxLength = 30
         }
         
@@ -590,7 +739,7 @@ extension ProfileDetailViewController : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.textFieldDOB {
             let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "yyyy-MM-dd"
+            dateformatter.dateFormat = "dd/MM/yyyy"
             dateformatter.timeZone = .current
             textFieldDOB.text = dateformatter.string(from: datePicker.date)
         }

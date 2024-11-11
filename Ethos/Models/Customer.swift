@@ -82,7 +82,14 @@ class Customer {
         }
         
         if let gender = json[EthosConstants.gender] as? Int {
-            self.gender = gender == 1 ? EthosConstants.male : EthosConstants.female
+            //            self.gender = gender == 1 ? EthosConstants.male : EthosConstants.female
+            if gender == 1 {
+                self.gender = "male"
+            } else if gender == 2 {
+                self.gender = "female"
+            } else if gender == 3 {
+                self.gender = "other"
+            }
         }
         
         if let dateOfBirth = json[EthosConstants.dob] as? String {

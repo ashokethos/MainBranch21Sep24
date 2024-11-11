@@ -11,12 +11,13 @@ class RecentSearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var topConstraintTitleLbl: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 5.0
         backView.layer.masksToBounds = true
-        self.titleLbl.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        self.titleLbl.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        self.titleLbl.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//        self.titleLbl.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 }
