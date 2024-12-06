@@ -40,6 +40,11 @@ class FiltersViewController: UIViewController {
         self.btnApplyFilters.setAttributedTitleWithProperties(title: "APPLY FILTERS", font: EthosFont.Brother1816Medium(size: 12),foregroundColor: .white, backgroundColor: .black, kern: 1)
         self.btnReset.setAttributedTitleWithProperties(title: "RESET", font: EthosFont.Brother1816Medium(size: 12),foregroundColor: .black, backgroundColor: .white, kern: 1)
         self.lblTitle.text = "Filter products".uppercased()
+//        if viewModel.selectedFilters.count > 0 {
+//            btnReset.isHidden = false
+//        }else{
+//            btnReset.isHidden = true
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +72,11 @@ class FiltersViewController: UIViewController {
             self.constraintTextField.constant = 50
         }
         
+//        if viewModel.selectedFilters.count > 0 {
+//            btnReset.isHidden = false
+//        }else{
+//            btnReset.isHidden = true
+//        }
         self.tableViewFilters.reloadData()
         self.tableViewValues.reloadData()
         self.lblTitle.text = "Filter products".uppercased()
@@ -82,20 +92,18 @@ class FiltersViewController: UIViewController {
     
     
     @IBAction func btnBackDidTapped(_ sender: UIButton) {
+        self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.resetFiltersBack])
         self.dismiss(animated: true)
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnResetDidTapped(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.resetFilters])
-        }
+        self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.resetFilters])
+        self.dismiss(animated: true)
     }
     
     @IBAction func btnApplyFiltersDidTapped(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.applyFilters, EthosKeys.selectedFilters : self.viewModel.selectedFilters, EthosKeys.filters : self.viewModel.filters, EthosKeys.lowerPriceLimit : self.viewModel.lowerPriceLimit, EthosKeys.upperPriceLimit : self.viewModel.upperPriceLimit, EthosKeys.minPriceLimit : self.viewModel.minPriceLimit, EthosKeys.maxPriceLimit : self.viewModel.maxPriceLimit])
-        }
+        self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.applyFilters, EthosKeys.selectedFilters : self.viewModel.selectedFilters, EthosKeys.filters : self.viewModel.filters, EthosKeys.lowerPriceLimit : self.viewModel.lowerPriceLimit, EthosKeys.upperPriceLimit : self.viewModel.upperPriceLimit, EthosKeys.minPriceLimit : self.viewModel.minPriceLimit, EthosKeys.maxPriceLimit : self.viewModel.maxPriceLimit])
+        self.dismiss(animated: true)
     }
 }
 
@@ -155,7 +163,6 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
                     } else {
                         cell.setHeading(title: viewModel.selectedFilter?.filteredAlphabeticFilterValues(searchString: self.textFieldSearch.text ?? "")?[section].header.uppercased() ?? "", numberOfLines : 0, leading: 10, trailling: 10, topSpacing: 10, bottomSpacing: 10)
                     }
-                    
                     return cell
                 }
             }
@@ -280,6 +287,11 @@ extension FiltersViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        return footerView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

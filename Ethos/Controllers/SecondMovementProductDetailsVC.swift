@@ -203,7 +203,8 @@ class SecondMovementProductDetailsVC: UIViewController {
     
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = true
             self.navigationController?.pushViewController(vc, animated: true)
         }

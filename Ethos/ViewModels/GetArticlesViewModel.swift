@@ -20,15 +20,8 @@ class GetArticlesViewModel {
     var currentOffset = 0
     let defaultOffset = 0
     
-    func getArticles (
-        category : String = "",
-        site : Site = Site.ethos,
-        searchString : String = "",
-        featuredVideo : Bool = false,
-        watchGuide : Bool = false,
-        forViewAll : Bool = false
-    ) {
-        self.delegate?.startIndicator()
+    func getArticles (category : String = "", site : Site = Site.ethos, searchString : String = "", featuredVideo : Bool = false, watchGuide : Bool = false, forViewAll : Bool = false ) {
+        self.delegate?.startIndicatorArticle()
         EthosApiManager().callApi(
             endPoint: forViewAll ? EthosApiEndPoints.getViewAllArticles : EthosApiEndPoints.getArticles,
             RequestType: .GET,
@@ -43,7 +36,7 @@ class GetArticlesViewModel {
             ],
             RequestBody: [:]
         ) { data, response, error in
-            self.delegate?.stopIndicator()
+            self.delegate?.stopIndicatorArticle()
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 200 {
                     if let data = data {
@@ -58,11 +51,7 @@ class GetArticlesViewModel {
                                 self.currentDataCount = getArticleModel.data?.currentDataCount ?? 0
                                 self.totalCount = getArticleModel.data?.totalCount ?? 0
                                 
-                                self.delegate?.didGetArticles(
-                                    category: category,
-                                    offset: self.currentOffset,
-                                    limit: self.limit,
-                                    articleModel: getArticleModel,
+                                self.delegate?.didGetArticles(category: category,offset: self.currentOffset,limit: self.limit,articleModel: getArticleModel,
                                     site: site,
                                     searchString: searchString,
                                     featuredVideo: featuredVideo,
@@ -76,13 +65,7 @@ class GetArticlesViewModel {
         }
     }
     
-    func getNewArticles(
-        category : String = "",
-        featuredVideo : Bool = false,
-        searchString : String = "",
-        site : Site = Site.ethos,
-        forViewAll : Bool = false
-    ) {
+    func getNewArticles(category : String = "",featuredVideo : Bool = false,searchString : String = "",site : Site = Site.ethos,forViewAll : Bool = false) {
         if !self.gettingNewArticles,
            let dataCount = currentDataCount,
            dataCount >= limit,

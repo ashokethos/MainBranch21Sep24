@@ -164,7 +164,6 @@ class ProfileViewController: UIViewController {
         } else {
             self.tableViewProfile.refreshControl?.endRefreshing()
         }
-        
     }
     
     func updateNotificationCount() {
@@ -190,8 +189,7 @@ class ProfileViewController: UIViewController {
             self.articleCount = articles.count
         }
     }
-    
-    
+
     @IBAction func deleteAccountTapped(_ sender: UIButton) {
         if let alertController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosAlertController.self)) as? EthosAlertController {
             Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.DeleteYourAccountClicked, properties: [
@@ -369,8 +367,7 @@ class ProfileViewController: UIViewController {
             picker.allowsEditing = true
             picker.delegate = self
             checkCameraPermission()
-        }
-        else{
+        }else{
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -403,7 +400,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -467,7 +465,14 @@ extension ProfileViewController : GetCustomerViewModelDelegate {
     func didGetCustomerData(data: Customer) {
         DispatchQueue.main.async {
             self.addRefreshControl()
-            self.profileName.setAttributedTitleWithProperties(title: (data.firstname ?? "") + " " + (data.lastname ?? ""), font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24))
+            let name = (data.firstname ?? "") + " " + (data.lastname ?? "")
+            let truncatedName: String?
+            if name.count > 24 {
+                truncatedName = data.firstname ?? "" //String(name.prefix(24)) + "..."
+            } else {
+                truncatedName = name
+            }
+            self.profileName.setAttributedTitleWithProperties(title: truncatedName ?? "", font: EthosFont.MrsEavesXLSerifNarOTReg(size: 24))
             
             if let location = Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines), location != "", let createdAt = data.createdAt , createdAt != "" {
                 let dateStr = EthosDateAndTimeHelper().getYearFromDate(str: createdAt)
@@ -648,9 +653,7 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
                 
                 cell.setHeading(
                     title: "FOLLOW US",
-                    font: EthosFont.Brother1816Medium(size: 10),
-                    
-                    leading: 0,
+                    font: EthosFont.Brother1816Medium(size: 10),leading: 0,
                     trailling: 0,
                     showDisclosure: true,
                     disclosureImageDefault: self.shouldShowFollowUsIcons == true ? UIImage(named: EthosConstants.upArrow) : UIImage(named: EthosConstants.downArrow),
@@ -704,7 +707,6 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
                     EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
                     EthosConstants.Platform : EthosConstants.IOS
                 ])
-                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             

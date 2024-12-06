@@ -451,6 +451,9 @@
 		AA49A6F12CCF7D3E00A69B13 /* FollowUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49A6F02CCF7D3E00A69B13 /* FollowUsTableViewCell.swift */; };
 		AA49A6F52CCF7DE300A69B13 /* FollowUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA49A6F42CCF7DE300A69B13 /* FollowUsTableViewCell.xib */; };
 		AA5D0C692CB010E500D2C6BF /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */; };
+		AA914BDC2CECABD800E0272E /* SearchArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA914BDA2CECABD800E0272E /* SearchArticleCollectionViewCell.swift */; };
+		AA914BDD2CECABD800E0272E /* SearchArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA914BDB2CECABD800E0272E /* SearchArticleCollectionViewCell.xib */; };
+		AA914BDF2CECAF2200E0272E /* SearchNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA914BDE2CECAF2200E0272E /* SearchNewViewController.swift */; };
 		AAA009BA2C8ED87800C3CEAF /* EditorNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */; };
 		AAA009BB2C8ED87800C3CEAF /* EditorNotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */; };
 		AAA009BD2C92D9F500C3CEAF /* PDFViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */; };
@@ -931,6 +934,9 @@
 		AA49A6F02CCF7D3E00A69B13 /* FollowUsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsTableViewCell.swift; sourceTree = "<group>"; };
 		AA49A6F42CCF7DE300A69B13 /* FollowUsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowUsTableViewCell.xib; sourceTree = "<group>"; };
 		AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
+		AA914BDA2CECABD800E0272E /* SearchArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA914BDB2CECABD800E0272E /* SearchArticleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchArticleCollectionViewCell.xib; sourceTree = "<group>"; };
+		AA914BDE2CECAF2200E0272E /* SearchNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNewViewController.swift; sourceTree = "<group>"; };
 		AAA009B82C8ED87800C3CEAF /* EditorNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorNotesTableViewCell.swift; sourceTree = "<group>"; };
 		AAA009B92C8ED87800C3CEAF /* EditorNotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorNotesTableViewCell.xib; sourceTree = "<group>"; };
 		AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerViewController.swift; sourceTree = "<group>"; };
@@ -954,6 +960,7 @@
 		AAA65A342C450DB500270456 /* GetPurchaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurchaseHistory.swift; sourceTree = "<group>"; };
 		AADE08A02CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForAboutCollectionPreOwnedTableViewCell.swift; sourceTree = "<group>"; };
 		AADE08A12CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForAboutCollectionPreOwnedTableViewCell.xib; sourceTree = "<group>"; };
+		AAF9B00C2CFADC0D005B696A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1112,6 +1119,7 @@
 				AAA65A2E2C4508C300270456 /* PurchaseHistoryViewController.swift */,
 				AAA009BC2C92D9F500C3CEAF /* PDFViewerViewController.swift */,
 				AA5D0C682CB010E500D2C6BF /* DashboardTabBarController.swift */,
+				AA914BDE2CECAF2200E0272E /* SearchNewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1220,6 +1228,8 @@
 				AA0B3BF42C9EEBEE008A3D9C /* ForAboutCollectionTableViewCell.xib */,
 				AADE08A02CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.swift */,
 				AADE08A12CA2991300E6FAC3 /* ForAboutCollectionPreOwnedTableViewCell.xib */,
+				AA914BDA2CECABD800E0272E /* SearchArticleCollectionViewCell.swift */,
+				AA914BDB2CECABD800E0272E /* SearchArticleCollectionViewCell.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1247,6 +1257,7 @@
 		04BDD4E92A9748FE002862F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAF9B00C2CFADC0D005B696A /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1759,7 +1770,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					045C6B162A42C5A600AEC183 = {
@@ -1886,6 +1897,7 @@
 				041A48BC2AA77743000857B4 /* before.txt in Resources */,
 				1697BCBF2BFF64FB00F41B0F /* Brother-1816-Medium-Italic.otf in Resources */,
 				1659667C2BED001700B93651 /* HtmlContainerTableViewCell.xib in Resources */,
+				AA914BDD2CECABD800E0272E /* SearchArticleCollectionViewCell.xib in Resources */,
 				1697BCC72BFF64FB00F41B0F /* MrsEavesXLSerifNarOT-Reg.otf in Resources */,
 				1659668F2BED001700B93651 /* SingleButtonWithDisclosureTableViewCell.xib in Resources */,
 				04CF1F882AB1D64300AF904C /* GoogleService-Info.plist in Resources */,
@@ -2041,6 +2053,7 @@
 				04227FFA2A8DF69B007526F3 /* TitleDescriptionImageModel.swift in Sources */,
 				165967022BED00F500B93651 /* ImageTitleDescriptionTableViewCell.swift in Sources */,
 				168617C32BECF8E100615C6F /* MainText.swift in Sources */,
+				AA914BDF2CECAF2200E0272E /* SearchNewViewController.swift in Sources */,
 				AAA009BA2C8ED87800C3CEAF /* EditorNotesTableViewCell.swift in Sources */,
 				042EFBEF2A96165800266506 /* GetCategory.swift in Sources */,
 				043128EE2B3EBC67000CF78B /* EthosFeaturedVideoCollectionLayout.swift in Sources */,
@@ -2238,6 +2251,7 @@
 				04CD8A712AE155F00014CECA /* EthosBrandsLayout.swift in Sources */,
 				165967172BED00F500B93651 /* ProductImageCell.swift in Sources */,
 				045C6B442A42F5EB00AEC183 /* HomeTabBarController.swift in Sources */,
+				AA914BDC2CECABD800E0272E /* SearchArticleCollectionViewCell.swift in Sources */,
 				048662C12A73D42900B0673C /* LoginOrSignUpViewController.swift in Sources */,
 				AAA65A212C41136400270456 /* GetSearchSuggestion.swift in Sources */,
 				042EFBF12A96169900266506 /* GetCategoryData.swift in Sources */,
@@ -2456,12 +2470,11 @@
 		045C6B2F2A42C5A700AEC183 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ethos/Ethos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5258457F8U;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2481,7 +2494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2498,12 +2511,11 @@
 		045C6B302A42C5A700AEC183 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ethos/Ethos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 5258457F8U;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2523,7 +2535,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethoswatches.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";

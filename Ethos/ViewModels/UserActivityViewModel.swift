@@ -83,7 +83,7 @@ class UserActivityViewModel {
                 site = Site.secondMovement.rawValue
             }
             
-            if url.lowercased().contains("open_app") {
+            if url.lowercased().contains("open_app") || url.lowercased().contains("mens-watches") ||  url.lowercased().contains("ladies-watches") {
                 
                 DispatchQueue.main.async {
                     let topController = UIApplication.topViewController()

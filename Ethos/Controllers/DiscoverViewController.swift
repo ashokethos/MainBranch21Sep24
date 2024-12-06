@@ -232,7 +232,8 @@ class DiscoverViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -343,6 +344,7 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate {
                         cell.contentView.hideSkeleton()
                         cell.collectionViewStories.hideSkeleton()
                         cell.isforPreOwned = false
+                        cell.isDiscover = "Discover"
                         cell.delegate = self
                         cell.superTableView = self.tableViewDiscover
                         cell.viewModel = self.bannerViewModel
@@ -1020,6 +1022,12 @@ extension DiscoverViewController : GetBannersViewModelDelegate {
 }
 
 extension DiscoverViewController : GetArticlesViewModelDelegate {
+    func startIndicatorArticle() {
+    }
+    
+    func stopIndicatorArticle() {
+    }
+    
     func didGetArticles(category: String, offset: Int, limit: Int, articleModel: GetArticles, site: Site, searchString: String, featuredVideo: Bool, watchGuide: Bool) {
         switch category {
         case ArticleCategory.trending.rawValue :

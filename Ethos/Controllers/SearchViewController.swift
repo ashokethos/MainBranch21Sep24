@@ -52,7 +52,7 @@ class SearchViewController: UIViewController {
     
     var ArrSearchedItemsHeader = [TitleDescriptionImageModel(title: EthosConstants.searchProductTitle, description: "", image: EthosConstants.searchWatchesIcon, btnTitle: ""), TitleDescriptionImageModel(title: EthosConstants.searchStoryTitle, description: "", image: EthosConstants.searchStoryIcon, btnTitle: "")]
     
-    var ArrTableViewheader = [TitleDescriptionImageModel(title: EthosConstants.searchStoryTitle, description: "", image: EthosConstants.searchStoryIcon, btnTitle: "") , TitleDescriptionImageModel(title: EthosConstants.searchWatchesTitle, description: "", image: EthosConstants.searchWatchesIcon, btnTitle: "") ,  TitleDescriptionImageModel(title: EthosConstants.searchStoresTitle, description: "", image: EthosConstants.searchStoresIcon, btnTitle: "")]
+    var ArrTableViewheader = [TitleDescriptionImageModel(title: "EthosConstants.searchStoryTitle", description: "", image: EthosConstants.searchStoryIcon, btnTitle: "") , TitleDescriptionImageModel(title: EthosConstants.searchWatchesTitle, description: "", image: EthosConstants.searchWatchesIcon, btnTitle: "") ,  TitleDescriptionImageModel(title: EthosConstants.searchStoresTitle, description: "", image: EthosConstants.searchStoresIcon, btnTitle: "")]
     
     var isSearching = false {
         didSet {
@@ -110,7 +110,7 @@ class SearchViewController: UIViewController {
             self.collectionViewSearchedData.reloadData()
             if self.productViewModel.products.count > 20 && self.selectedIndexForSearch == 0 {
 //            self.collectionViewSearchedData.scrollToItem(at: IndexPath(item: self.productViewModel.products.count - 1, section: 0), at: .bottom, animated: false)
-                self.collectionViewSearchedData.scrollToItem(at: IndexPath(item: 10 , section: 0), at: .centeredHorizontally, animated: true)
+//                self.collectionViewSearchedData.scrollToItem(at: IndexPath(item: 10 , section: 0), at: .centeredHorizontally, animated: true)
                 self.collectionViewSearchedData.setNeedsLayout()
             }
             
@@ -187,6 +187,7 @@ class SearchViewController: UIViewController {
     }
     
     func setup() {
+        btnFilter.isEnabled = false
         viewFilterAndSortBy.isHidden = true
         btnRedDotSortBy.clipsToBounds = true
         btnRedDotSortBy.layer.cornerRadius = 2.5
@@ -606,6 +607,14 @@ extension SearchViewController : UITextFieldDelegate {
 }
 
 extension SearchViewController : UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout, GetSearchSuggestionViewModelDelegate {
+    func startIndicators() {
+        print("startIndicator")
+    }
+    
+    func stopIndicators() {
+        print("stopIndicator")
+    }
+    
     
     func didGetSearchSuggestion(searchSuggestionModel : GetSearchSuggestion, site : Site, searchString : String){
         recentSearchSelectedData = searchSuggestionModel.data ?? []
@@ -935,6 +944,7 @@ extension SearchViewController : UICollectionViewDataSource, UICollectionViewDel
         if self.productViewModel.products.count > 4{
             if collectionView == collectionViewSearchedData && indexPath.item == self.productViewModel.products.count - 1 && self.selectedIndexForSearch == 0 && self.isSearching {
                 self.productViewModel.initiate(id: 0) {
+                    self.productViewModel.categoryId = self.categoryId
                     self.productViewModel.getNewProductsFromCategory(site: self.isForPreOwned ? .secondMovement : .ethos, searchString: self.textFieldSearch.text ?? "", searchStatus: self.searchBtnPressStatus)
                 }
             }
@@ -1201,7 +1211,6 @@ extension SearchViewController : GetProductViewModelDelegate {
             if productViewModel.searchInputData?.filter?.values?.count ?? 0 > 0{
                 let attrValueId = productViewModel.searchInputData?.filter?.values?[0].attributeValueId ?? 0
                 let attributeId: Int? = attrValueId
-                
                 let attributeCode = productViewModel.searchInputData?.filter?.attributeCode
                 let attributeName = productViewModel.searchInputData?.filter?.attributeName
                 if attributeName?.uppercased() == EthosConstants.collection.uppercased() || attributeName?.uppercased() == EthosConstants.series.uppercased(){
@@ -1267,7 +1276,11 @@ extension SearchViewController : GetProductViewModelDelegate {
     }
     
     func didGetFilters() {
-        
+        DispatchQueue.main.async {
+            if self.productViewModel.filters.count > 0 {
+                self.btnFilter.isEnabled = true
+            }
+        }
     }
     
     func errorInGettingFilters() {
@@ -1276,6 +1289,12 @@ extension SearchViewController : GetProductViewModelDelegate {
 }
 
 extension SearchViewController : GetArticlesViewModelDelegate {
+    func startIndicatorArticle() {
+    }
+    
+    func stopIndicatorArticle() {
+    }
+    
     func didGetArticles(category: String, offset: Int, limit: Int, articleModel: GetArticles, site: Site, searchString: String, featuredVideo: Bool, watchGuide: Bool) {
         DispatchQueue.main.async {
             self.viewFilterAndSortBy.isHidden = true
@@ -1313,6 +1332,7 @@ extension SearchViewController : SuperViewDelegate {
             }
             
             updateView()
+            viewFilterAndSortBy.isHidden = true
             selectedIndexForSearch = 0
         }
         
@@ -1335,6 +1355,7 @@ extension SearchViewController : SuperViewDelegate {
             self.productViewModel.selectedFilters = selectedFilters
             self.productViewModel.filters = filters
             updateView()
+            viewFilterAndSortBy.isHidden = true
             selectedIndexForSearch = 0
             
             Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.catalogFilterUsed, properties: [
@@ -1354,10 +1375,14 @@ extension SearchViewController : SuperViewDelegate {
             self.productViewModel.upperPriceLimit = nil
             self.productViewModel.lowerPriceLimit = nil
             self.productViewModel.products.removeAll()
-            //            self.btnFilter.isEnabled = false
+            self.btnFilter.isEnabled = false
             UserDefaults.standard.removeObject(forKey: "filtersData")
             updateView()
-            searchBtnPressStatus = true
+            textFieldSearch.text = ""
+            textFieldSearch.endEditing(true)
+            finishSearching()
+            searchBtnPressStatus = false
+            viewFilterAndSortBy.isHidden = true
             selectedIndexForSearch = 0
         }
     }

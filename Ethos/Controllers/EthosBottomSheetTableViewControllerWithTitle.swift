@@ -43,12 +43,12 @@ class EthosBottomSheetTableViewControllerWithTitle: UIViewController {
     }
     
     @IBAction func btnDoneDidTapped(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.reloadCollectionView, EthosKeys.value : self.selectedItems , EthosKeys.type : self.key])
-        }
+        self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.reloadCollectionView, EthosKeys.value : self.selectedItems , EthosKeys.type : self.key])
+        self.dismiss(animated: true)
     }
     
     @IBAction func btnTransParentBackGroundDidTapped(_ sender: UIButton) {
+        self.delegate?.updateView(info: [EthosKeys.key : EthosKeys.resetFiltersBack])
         self.dismiss(animated: true)
     }
 }

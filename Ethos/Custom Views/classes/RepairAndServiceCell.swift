@@ -478,14 +478,14 @@ extension RepairAndServiceCell : GetArticlesViewModelDelegate {
         print(error)
     }
     
-    func startIndicator() {
+    func startIndicatorArticle() {
         DispatchQueue.main.async {
             self.indicator.startAnimating()
         }
        
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
         DispatchQueue.main.async {
             self.indicator.stopAnimating()
         }

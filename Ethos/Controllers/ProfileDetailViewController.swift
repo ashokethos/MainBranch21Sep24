@@ -14,6 +14,7 @@ import Mixpanel
 class ProfileDetailViewController: UIViewController {
     
     
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var lblDOB: UILabel!
     @IBOutlet weak var viewFirstName: UIView!
     
@@ -225,7 +226,8 @@ class ProfileDetailViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -258,8 +260,6 @@ class ProfileDetailViewController: UIViewController {
             let selectedDate = formatter.date(from: dob) ?? Date()
             formatter.dateFormat = "yyyy-MM-dd"
             let strToBePassed = formatter.string(from: selectedDate)
-            
-            
             
             let location = textFieldLocation.text ?? ""
             let firstName = self.textFieldFirstName.text ?? ""
@@ -311,11 +311,11 @@ class ProfileDetailViewController: UIViewController {
     }
     
     @IBAction func btnCountryCodeDidTapped(_ sender: UIButton) {
-        if let vc = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosTableViewController.self)) as? EthosTableViewController {
-            vc.key = .country
-            vc.delegate = self
-            self.present(vc, animated: true)
-        }
+//        if let vc = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosTableViewController.self)) as? EthosTableViewController {
+//            vc.key = .country
+//            vc.delegate = self
+//            self.present(vc, animated: true)
+//        }
     }
     
     @IBAction func btnUploadImageDidTapped(_ sender: UIButton) {
@@ -491,14 +491,26 @@ class ProfileDetailViewController: UIViewController {
         var valid = true
         
         if self.textFieldFirstName.validateAgainstFirstName() == false {
+            scrollToErrorField(textFieldFirstName)
             valid = false
         }
         
         if self.textFieldLastName.validateAgainstLastName() == false {
+            scrollToErrorField(textFieldLastName)
             valid = false
         }
         
+//        let regex = try! NSRegularExpression(pattern: "\\s{2,}", options: [])
+//        let range = NSRange(location: 0, length: textFieldLastName.text!.utf16.count)
+//        if regex.firstMatch(in: textFieldLastName.text!, options: [], range: range) != nil {
+//            self.textFieldLastName.showError(str: "Please remove extra spaces")
+//            valid = false
+//        } else {
+//            valid = true
+//        }
+        
         if self.textFieldDOB.text?.isBlank ?? true {
+            scrollToErrorField(textFieldDOB)
             self.textFieldDOB.showError(str: "Please enter date of birth")
             valid = false
         } else {
@@ -506,9 +518,11 @@ class ProfileDetailViewController: UIViewController {
         }
         
         if self.textFieldOccupation.text?.isBlank ?? true {
+            scrollToErrorField(textFieldOccupation)
             self.textFieldOccupation.showError(str: "Please enter occupation")
             valid = false
         } else if self.textFieldOccupation.text?.containsOneSpecialCharacterForNCS == true {
+            scrollToErrorField(textFieldOccupation)
             self.textFieldOccupation.showError(str: "Special characters not allowed")
             valid = false
         } else {
@@ -521,13 +535,39 @@ class ProfileDetailViewController: UIViewController {
         
         if !btnGenderMale.isSelected && !btnGenderFemale.isSelected && !btnGenderOther.isSelected {
             viewGender.showBottomError(str: "Please select gender")
-
             valid = false
         }else{
             viewGender.removeBottomError()
         }
         
         return valid
+    }
+    
+    func scrollToErrorField(_ textField: UITextField) {
+        //        if let scrollView = textField.superview?.superview as? UIScrollView {
+        //                scrollView.layoutIfNeeded()
+        //                let textFieldFrameInScrollView = scrollView.convert(textField.frame, from: textField.superview)
+        //                var contentOffset = scrollView.contentOffset
+        //                contentOffset.y = textFieldFrameInScrollView.origin.y - 10
+        //                UIView.animate(withDuration: 0.3) {
+        //                    scrollView.contentOffset = contentOffset
+        //                }
+        //            }
+        
+        let point = textField.frame.origin
+        let maxYOffset = mainScrollView.contentSize.height - mainScrollView.frame.height
+        let clampedY = min(point.y, maxYOffset)
+        let targetPoint = CGPoint(x: 0, y: clampedY)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.mainScrollView.contentOffset = targetPoint
+        }) { _ in
+            // Optionally do something after the animation ends
+        }
+        
+
+//        UIView.animate(withDuration: 0.3) {
+//            self.mainScrollView.contentOffset = point
+//        }
     }
 }
 
@@ -595,15 +635,16 @@ extension ProfileDetailViewController : GetCustomerViewModelDelegate {
     
     func startProfileIndicator() {
         DispatchQueue.main.async {
-            self.showActivityIndicator()
+//            self.showActivityIndicator()
+            EthosLoader.shared.show(view: self.view, frame: self.view.frame)
            
         }
     }
     
     func stopProfileIndicator() {
         DispatchQueue.main.async {
-            self.hideActivityIndicator()
-          
+//            self.hideActivityIndicator()
+            EthosLoader.shared.hide()
         }
     }
     

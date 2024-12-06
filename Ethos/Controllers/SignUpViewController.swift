@@ -255,11 +255,11 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func btnCountryCodeDidTapped(_ sender: UIButton) {
-        if let vc = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosTableViewController.self)) as? EthosTableViewController {
-            vc.key = .country
-            vc.delegate = self
-            self.present(vc, animated: true)
-        }
+//        if let vc = UIStoryboard(name: StoryBoard.home.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: EthosTableViewController.self)) as? EthosTableViewController {
+//            vc.key = .country
+//            vc.delegate = self
+//            self.present(vc, animated: true)
+//        }
     }
     
     @IBAction func btnCreateAccountDidTapped(_ sender: UIButton) {

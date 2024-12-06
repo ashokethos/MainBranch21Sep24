@@ -176,7 +176,8 @@ class ProductDetailViewController: UIViewController {
     
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -684,7 +685,6 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                         if let data = self.viewModel.product?.extensionAttributes?.ethProdCustomeData?.favreLeubaData {
                             cell.data = data
                         }
-                        
                         return cell
                     }
                 } else {
@@ -710,7 +710,6 @@ extension ProductDetailViewController : UITableViewDelegate, UITableViewDataSour
                 }
                 
             } else if indexPath.section < arrSections.count + 3 {
-                
                 // Specifications
                 if arrSections[indexPath.section - 3].0 == EthosConstants.FullSpecification {
                     if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SpecificationPairTableViewCell.self), for: indexPath) as? SpecificationPairTableViewCell {

@@ -100,7 +100,10 @@ class AuthenticationViewModel {
                     }
                 }
             } else {
-                self.delegate?.loginError(error: EthosConstants.error)
+                let result = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
+                let message = result?[EthosConstants.error] as? [String:Any]
+                let messageStr = message?[EthosConstants.message] as? String
+                self.delegate?.loginError(error: messageStr ?? EthosConstants.error)
             }
         }
     }

@@ -84,10 +84,15 @@ class EthosProfileTableViewController: UIViewController {
     
     @IBAction func btnExploreNowDidTapped(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 0
+        
+        DispatchQueue.main.async {
+            UIApplication.topViewController()?.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

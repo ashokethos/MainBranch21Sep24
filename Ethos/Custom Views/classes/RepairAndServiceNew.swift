@@ -315,12 +315,10 @@ extension RepairAndServiceNew : GetArticlesViewModelDelegate {
         print(error)
     }
     
-    func startIndicator() {
-        
-       
+    func startIndicatorArticle() {
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
        
     }
     

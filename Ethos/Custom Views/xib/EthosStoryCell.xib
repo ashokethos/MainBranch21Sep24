@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +30,7 @@
                         </userDefinedRuntimeAttributes>
                     </collectionView>
                     <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E0S-5H-ZPe">
-                        <rect key="frame" x="193.66666666666666" y="548" width="42.666666666666657" height="26"/>
+                        <rect key="frame" x="0.0" y="548" width="430" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="ZXL-6J-qDV"/>
                         </constraints>
@@ -57,6 +57,8 @@
                     <constraint firstItem="1hj-tw-aT0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="I7A-O3-NKQ"/>
                     <constraint firstItem="E0S-5H-ZPe" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Wk4-yk-C3g"/>
                     <constraint firstItem="gnK-OU-FYW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bG9-Uf-5kY"/>
+                    <constraint firstItem="E0S-5H-ZPe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iSY-JN-i5K"/>
+                    <constraint firstAttribute="trailing" secondItem="E0S-5H-ZPe" secondAttribute="trailing" id="ige-Tb-cc9"/>
                     <constraint firstAttribute="trailing" secondItem="gnK-OU-FYW" secondAttribute="trailing" id="rjx-TQ-BR5"/>
                     <constraint firstAttribute="bottom" secondItem="1hj-tw-aT0" secondAttribute="bottom" id="siB-Gs-WMC"/>
                     <constraint firstItem="gnK-OU-FYW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xCU-yB-Jng"/>

@@ -1,24 +1,25 @@
 //
-//  HomeTableViewCell.swift
+//  SearchArticleCollectionViewCell.swift
 //  Ethos
 //
-//  Created by mac on 21/06/23.
+//  Created by Ashok kumar on 19/11/24.
 //
 
 import UIKit
 import Mixpanel
 import SkeletonView
 
-class HomeTableViewCell: UITableViewCell {
+class SearchArticleCollectionViewCell: UICollectionViewCell {
+
     @IBOutlet weak var imgThumbnail: UIImageView!
+    @IBOutlet weak var imageOverLay: UIImageView!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblAuthorNameAndDate: UILabel!
     @IBOutlet weak var viewDuration: UIView!
     @IBOutlet weak var lblDuration: UILabel!
-    @IBOutlet weak var imageOverLay: UIImageView!
     @IBOutlet weak var btnBookmark: UIButton!
     @IBOutlet weak var viewRedline: UIView!
+    @IBOutlet weak var lblAuthorNameAndDate: UILabel!
     
     
     let tapGesture = UITapGestureRecognizer()

@@ -42,11 +42,11 @@ class LatestViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableViewHome.setContentOffset(.zero, animated: true)
+//        tableViewHome.setContentOffset(.zero, animated: true)
         updateNotificationCount()
         callCustomerDetailsApi()
         if tableViewHome.numberOfSections > 0 {
-            self.tableViewHome.contentOffset = .zero
+//            self.tableViewHome.contentOffset = .zero
         }
     }
     
@@ -131,7 +131,8 @@ class LatestViewController: UIViewController {
     
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -327,19 +328,15 @@ extension LatestViewController : GetArticlesViewModelDelegate {
     }
     
     func errorInGettingArticles(error: String) {
-        DispatchQueue.main.async {
-            
-        }
-        
     }
     
-    func startIndicator() {
+    func startIndicatorArticle() {
         DispatchQueue.main.async {
             self.tableViewHome.showAnimatedGradientSkeleton()
         }
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
         DispatchQueue.main.async {
             self.tableViewHome.hideSkeleton()
             self.tableViewHome.refreshControl?.endRefreshing()
@@ -382,7 +379,7 @@ extension LatestViewController : GetCustomerViewModelDelegate {
     
     func startProfileIndicator() {
         DispatchQueue.main.async {
-            self.profileIndicator.startAnimating()
+//            self.profileIndicator.startAnimating()
         }
     }
     
@@ -418,7 +415,14 @@ extension LatestViewController : GetCustomerViewModelDelegate {
     
     func didGetCustomerData(data: Customer) {
         self.profileIndicator.stopAnimating()
-        self.lblUserName.text = (data.firstname ?? "") + " " + (data.lastname ?? "")
+        let name = (data.firstname ?? "") + " " + (data.lastname ?? "")
+        let truncatedName: String?
+        if name.count > 22 || name.count == 22 {
+            truncatedName = (data.firstname ?? "") //String(name.prefix(22)) + "..."
+        } else {
+            truncatedName = name
+        }
+        self.lblUserName.text = truncatedName
         
         if Userpreference.shouldSendSignUpAnalytics == true {
             Userpreference.shouldSendSignUpAnalytics = false

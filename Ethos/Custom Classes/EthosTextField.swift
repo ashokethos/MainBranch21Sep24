@@ -155,7 +155,10 @@ class EthosTextField: UITextField {
             } else if self.text?.count ?? 0 < 3 {
                 self.showError(str: "Please enter at least 3 characters")
                 valid = false
-            } else if self.text?.count ?? 0 > 30 {
+            } else if self.text!.contains(" "){
+                self.showError(str: "Spaces are not allowed")
+                valid = false
+            }else if self.text?.count ?? 0 > 30 {
                 self.showError(str: "Please enter maximum 30 characters")
                 valid = false
             } else if self.text?.containsOneSpecialCharacterForNCS ?? true {
@@ -184,7 +187,10 @@ class EthosTextField: UITextField {
             } else if self.text?.count ?? 0 < 3 {
                 self.showError(str: "Please enter at least 3 characters")
                 valid = false
-            } else if self.text?.count ?? 0 > 30 {
+            } else if self.text!.contains(" "){
+                self.showError(str: "Spaces are not allowed")
+                valid = false
+            }else if self.text?.count ?? 0 > 30 {
                 self.showError(str: "Please enter maximum 30 characters")
                 valid = false
             } else if self.text?.containsOneSpecialCharacterForNCS ?? true {

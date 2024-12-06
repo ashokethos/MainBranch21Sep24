@@ -90,7 +90,8 @@ class ArticleListTableViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = self.isForPreOwn
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -198,7 +199,7 @@ extension ArticleListTableViewController : GetArticlesViewModelDelegate {
         
     }
     
-    func startIndicator() {
+    func startIndicatorArticle() {
         DispatchQueue.main.async {
             if self.tableViewArticles.refreshControl?.isRefreshing != true {
                 self.tableViewArticles.showAnimatedGradientSkeleton()
@@ -206,7 +207,7 @@ extension ArticleListTableViewController : GetArticlesViewModelDelegate {
         }
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
         DispatchQueue.main.async {
             self.tableViewArticles.refreshControl?.endRefreshing()
             self.tableViewArticles.hideSkeleton()

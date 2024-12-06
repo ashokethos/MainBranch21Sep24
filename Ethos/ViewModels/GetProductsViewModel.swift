@@ -56,6 +56,8 @@ class GetProductViewModel : NSObject {
     
     var availableSortBy = [EthosConstants.bestSeller, EthosConstants.priceLowToHigh, EthosConstants.priceHighToLow, EthosConstants.NewArrivals.uppercased()]
     
+    var availableSortByForEOS = [EthosConstants.bestSeller, EthosConstants.priceLowToHigh, EthosConstants.priceHighToLow]
+    
     var filterData : FilterData? {
         let filterData = FilterData()
         let reversedArray = selectedFilters.reversed()
@@ -196,7 +198,7 @@ class GetProductViewModel : NSObject {
         guard let id = self.categoryId else { return }
         
         var filters : [String : Any]? = nil
-        if (self.selectedSortBy != nil || self.selectedFilters.count > 0) && searchStatus == false{
+        if (self.selectedSortBy != nil) && searchStatus == false{
             filters = getRequestBodyFromData()
         }
         
@@ -206,6 +208,7 @@ class GetProductViewModel : NSObject {
                 currentPage = 1
             }else{
                 currentPage += 1
+                self.delegate?.startFooterIndicator()
             }
             
             var body = [String: Any]()
@@ -228,14 +231,10 @@ class GetProductViewModel : NSObject {
                 //            }
             }
             
-            EthosApiManager().callApi (
-                endPoint : EthosApiEndPoints.getNewproducts,
-                RequestType : requestType,
-                RequestParameters : params,
-                RequestBody : body
-            ) { data, response, error in
+            EthosApiManager().callApi ( endPoint : EthosApiEndPoints.getNewproducts, RequestType : requestType, RequestParameters : params, RequestBody : body) { data, response, error in
                 if let response = response as? HTTPURLResponse {
                     self.delegate?.stopIndicator()
+                    self.delegate?.stopFooterIndicator()
                     if response.statusCode == 200 {
                         if let data = data,
                            let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any] {
@@ -261,15 +260,13 @@ class GetProductViewModel : NSObject {
                     }
                 }
             }
+        }else{
+            EthosLoader.shared.hide()
         }
     }
     
     
-    func getNewProducts (
-        site : Site = .ethos,
-        searchString : String = ""
-    ) {
-        
+    func getNewProducts (site : Site = .ethos, searchString : String = "") {
         guard let id = self.categoryId else { return }
         
         var filters : [String : Any]? = nil
@@ -462,7 +459,6 @@ class GetProductViewModel : NSObject {
                             if self.upperPriceLimit == nil {
                                 self.maxPriceLimit = maxprice
                             }
-                            
                         }
                     } else if filter.attributeName?.uppercased() == "PRICE MIN" {
                         if let minPriceStr = filter.values?.first?.attributeValueName, let minprice = Int(minPriceStr) {

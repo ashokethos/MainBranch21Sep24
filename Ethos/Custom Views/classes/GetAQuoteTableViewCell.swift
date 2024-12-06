@@ -200,18 +200,14 @@ class GetAQuoteTableViewCell: UITableViewCell {
         var valid = true
         
         if txtFieldBrand.text?.isEmpty ?? true || self.selectedBrand == nil {
-            txtFieldBrand.showError(
-                str: "Please select brand"
-            )
+            txtFieldBrand.showError(str: "Please select brand")
             valid = false
         } else {
             txtFieldBrand.removeError()
         }
         
         if txtFieldModel.text?.isBlank ?? true  {
-            txtFieldModel.showError(
-                str: EthosConstants.PleaseEnterModel
-            )
+            txtFieldModel.showError(str: EthosConstants.PleaseEnterModel)
             valid = false
         } else {
             txtFieldModel.removeError()
@@ -219,9 +215,7 @@ class GetAQuoteTableViewCell: UITableViewCell {
         
         if arrImages.count == 0 {
             self.superViewPhoto.shake()
-            self.superViewPhoto.showBottomError(
-                str: EthosConstants.PleaseUploadAtLeastOneImage
-            )
+            self.superViewPhoto.showBottomError(str: EthosConstants.PleaseUploadAtLeastOneImage)
             valid = false
         } else {
             self.superViewPhoto.removeBottomError()
@@ -372,8 +366,6 @@ extension GetAQuoteTableViewCell : UITableViewDelegate, UITableViewDataSource {
     
     
 }
-
-
 
 extension GetAQuoteTableViewCell : GetBrandsViewModelDelegate {
     func didGetFormBrands(brands: [FormBrand]) {

@@ -17,7 +17,7 @@ class DashboardTabBarController: UITabBarController, UITabBarControllerDelegate 
         super.viewWillAppear(animated)
         let item1 = DiscoverViewController()
         item1.tabBarItem = UITabBarItem(title: "Latest", image: UIImage(named: "latest"), selectedImage: UIImage(named: "latest"))
-        let controllers = [item1]  //array of the root view controllers displayed by the tab bar interface
+        let controllers = [item1]
         self.viewControllers = controllers
     }
 

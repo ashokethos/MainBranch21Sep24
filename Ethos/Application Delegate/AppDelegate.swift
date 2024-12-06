@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestPhotoLibraryPermission()
         FirebaseApp.configure()
         
-        
         DispatchQueue.main.async {
             if Userpreference.testingMode == true {
                 Mixpanel.initialize(token: EthosIdentifiers.mixPanelTestingKey, trackAutomaticEvents: false)
@@ -79,13 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             EthosConstants.Platform : EthosConstants.IOS
             ]
         print(properties.debugDescription)
-
-        Mixpanel.mainInstance().trackWithLogs(
-            event: EthosConstants.AppClose,
-            properties: properties
-        )
+        Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.AppClose, properties: properties)
     }
-    
     
     
     func applicationDidBecomeActive(_ application: UIApplication) {

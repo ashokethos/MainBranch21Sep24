@@ -48,6 +48,7 @@ enum EthosKeys {
     case updateLocation
     case applyFilters
     case resetFilters
+    case resetFiltersBack
     case filters
     case selectedFilters
     case delete

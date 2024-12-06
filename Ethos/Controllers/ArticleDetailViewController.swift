@@ -157,7 +157,7 @@ class ArticleDetailViewController: UIViewController {
         textView.contentInsetAdjustmentBehavior = .never
         textView.textContainerInset = UIEdgeInsets.zero
         textView.layoutMargins = .zero
-        textView.textContainer.lineFragmentPadding = 0;
+        textView.textContainer.lineFragmentPadding = 0
         
     }
     
@@ -235,7 +235,8 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = self.isForPreOwned
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -382,7 +383,11 @@ class ArticleDetailViewController: UIViewController {
             DispatchQueue.main.async {
 //                self.constraintHeightWebView.constant = height
                 self.constraintHeightWebUiView.constant = height
+                let contentHeight = self.webView!.scrollView.contentSize.height
+                self.webView!.frame = CGRect(x: 0, y: 0, width: self.webView!.frame.width, height: contentHeight)
+                self.webView!.layoutIfNeeded()
                 self.view.layoutIfNeeded()
+//                self.webView!.reload()
             }
         }
         )
@@ -683,6 +688,7 @@ extension ArticleDetailViewController : GetArticleDetailsViewModelDelegate {
                 
                 self.webView?.navigationDelegate = self
                 self.webView?.scrollView.isScrollEnabled = false
+                self.webView?.configuration.preferences.javaScriptEnabled = true
                 NSLayoutConstraint.activate([
                     webView!.topAnchor.constraint(equalTo: webUIView.topAnchor),
                     webView!.bottomAnchor.constraint(equalTo: webUIView.bottomAnchor),
@@ -848,16 +854,51 @@ extension ArticleDetailViewController : WKNavigationDelegate {
         }
     }
     
+//    private func getWebViewContentHeight() {
+//        DispatchQueue.main.async {
+//            self.webView?.evaluateJavaScript("document.body.scrollHeight") { [weak self] (result, error) in
+//                if let height = result as? CGFloat {
+//                    print("Web content height: \(height)")
+//                    DispatchQueue.main.async {
+//                        self?.constraintHeightWebUiView.constant = height
+//                        let contentHeight = self?.webView!.scrollView.contentSize.height
+//                        self?.webView!.frame = CGRect(x: 0, y: 0, width: self!.webView!.frame.width, height: contentHeight ?? 0)
+//                        self?.webView!.layoutIfNeeded()
+//                        self?.view.layoutIfNeeded()
+//                        self?.reloadViewWhenChangeInWebViewHeight(height: height)
+//                    }
+//                } else if let error = error {
+//                    print("Error getting height: \(error.localizedDescription)")
+//                }
+//            }
+//        }
+//    }
+    
     private func getWebViewContentHeight() {
         DispatchQueue.main.async {
             self.webView?.evaluateJavaScript("document.body.scrollHeight") { [weak self] (result, error) in
-                if let height = result as? CGFloat {
+                if let error = error {
+                    print("Error getting height: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self?.constraintHeightWebUiView.constant = CGFloat(0)
+                        self?.webView!.layoutIfNeeded()
+                        self?.reloadViewWhenChangeInWebViewHeight(height: CGFloat(0))
+                        self?.view.layoutIfNeeded()
+                    }
+                    return
+                }
+                
+                if let result = result as? NSNumber {
+                    let height = result.doubleValue
                     print("Web content height: \(height)")
                     DispatchQueue.main.async {
-                        self?.reloadViewWhenChangeInWebViewHeight(height: height)
+                        self?.constraintHeightWebUiView.constant = CGFloat(height)
+                        self?.webView!.layoutIfNeeded()
+                        self?.reloadViewWhenChangeInWebViewHeight(height: CGFloat(height))
+                        self?.view.layoutIfNeeded()
                     }
-                } else if let error = error {
-                    print("Error getting height: \(error.localizedDescription)")
+                } else {
+                    print("Unexpected result type: \(String(describing: result))")
                 }
             }
         }
@@ -917,5 +958,11 @@ extension ArticleDetailViewController : GetArticlesViewModelDelegate {
     
     func errorInGettingArticles(error: String) {
         self.loadingTrendingArticles = false
+    }
+    
+    func startIndicatorArticle() {
+    }
+    
+    func stopIndicatorArticle() {
     }
 }

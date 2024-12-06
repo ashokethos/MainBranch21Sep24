@@ -819,13 +819,13 @@ extension HorizontalCollectionTableViewCell : GetArticlesViewModelDelegate {
         printContent(error)
     }
     
-    func startIndicator() {
+    func startIndicatorArticle() {
         DispatchQueue.main.async {
             self.collectionView.showAnimatedGradientSkeleton()
         }
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
         DispatchQueue.main.async {
             self.collectionView.hideSkeleton()
         }
@@ -841,6 +841,12 @@ extension HorizontalCollectionTableViewCell : GetArticlesViewModelDelegate {
 }
 
 extension HorizontalCollectionTableViewCell : GetProductViewModelDelegate {
+    func startIndicator() {
+    }
+    
+    func stopIndicator() {
+    }
+    
     
     func errorInGettingFilters() {
         

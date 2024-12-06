@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Mixpanel
 import AVFoundation
 import SkeletonView
 
@@ -19,6 +20,7 @@ class EthosStoryCell: UITableViewCell {
     var superTableView : UITableView?
     var currentPlayingStoryIndex = 0
     var isforPreOwned = false
+    var isDiscover = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -124,6 +126,18 @@ extension EthosStoryCell : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? EthosStoryCollectionViewCell {
+            let properties : Dictionary<String, any MixpanelType> = [
+                EthosConstants.Email : Userpreference.email,
+                EthosConstants.UID : Userpreference.userID,
+                EthosConstants.Gender : Userpreference.gender,
+                EthosConstants.Registered : ((Userpreference.token == nil || Userpreference.token == "") ? EthosConstants.N : EthosConstants.Y),
+                EthosConstants.Platform : EthosConstants.IOS,
+                EthosConstants.UserLocation : Userpreference.location?.trimmingCharacters(in: .whitespacesAndNewlines),
+                EthosConstants.Screen : isforPreOwned == true ? EthosConstants.PreownedScreen : isDiscover == "Discover" ? EthosConstants.Discover : EthosConstants.ShopScreen,
+                EthosConstants.BannerNumber : "Banner \(indexPath.row + 1)"
+            ]
+            
+            Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.bannerClicked , properties: properties)
             cell.didTapActionBtn(UIButton())
         }
     }

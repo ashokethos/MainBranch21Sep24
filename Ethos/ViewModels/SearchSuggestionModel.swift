@@ -25,7 +25,7 @@ class GetSearchSuggestionViewModel {
             ],
             RequestBody: [:]
         ) { data, response, error in
-            self.delegate?.stopIndicator()
+            self.delegate?.stopIndicators()
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 200 {
                     if let data = data {

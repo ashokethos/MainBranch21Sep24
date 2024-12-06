@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let userActivity = connectionOptions.userActivities.first, let url = userActivity.webpageURL {
-            self.userActivityModel.getDataFromActivityUrl(url: url.absoluteString)
+            if url.absoluteString.lowercased().contains("mens-watches") ||  url.absoluteString.lowercased().contains("ladies-watches"){
+                self.userActivityModel.getDataFromActivityUrl(url: url.absoluteString)
+            }
         }
     }
     
@@ -30,8 +32,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        let url = userActivity.webpageURL
-        self.userActivityModel.getDataFromActivityUrl(url: url?.absoluteString ?? "")
+        if let url = userActivity.webpageURL {
+            if url.absoluteString.lowercased().contains("mens-watches") ||  url.absoluteString.lowercased().contains("ladies-watches"){
+                self.userActivityModel.getDataFromActivityUrl(url: url.absoluteString)
+            }
+        }
     }
     
     func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {
@@ -68,21 +73,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-//extension SceneDelegate {
-//    
-//    func startIndicator() {
-//        DispatchQueue.main.async {
-//            let topController = UIApplication.topViewController()
-//            EthosLoader.shared.show(view: topController?.view ?? UIView(), frame: topController?.view.frame ?? CGRect.zero)
-//
-//        }
-//    }
-//    
-//    func stopIndicator() {
-//        DispatchQueue.main.async {
-//            EthosLoader.shared.hide()
-//        }
-//    }
-//    
-//}
+extension SceneDelegate {
+    
+    func startIndicator() {
+        DispatchQueue.main.async {
+            let topController = UIApplication.topViewController()
+            EthosLoader.shared.show(view: topController?.view ?? UIView(), frame: topController?.view.frame ?? CGRect.zero)
+
+        }
+    }
+    
+    func stopIndicator() {
+        DispatchQueue.main.async {
+            EthosLoader.shared.hide()
+        }
+    }
+    
+}
 

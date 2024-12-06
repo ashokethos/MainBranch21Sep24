@@ -252,8 +252,6 @@ class PreOwnedViewController: UIViewController {
         default:
             break
         }
-       
-        
         
         self.staffPicksProductViewModel.initiate(id: 22, limit: 100, selectedSortBy: EthosConstants.bestSeller){
             self.staffPicksProductViewModel.getProductsFromCategory(site: .secondMovement)
@@ -398,7 +396,8 @@ class PreOwnedViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.delegate = self
             vc.isForPreOwned = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -965,8 +964,6 @@ extension PreOwnedViewController : UITableViewDataSource, UITableViewDelegate {
                             return cell
                         }
                     }
-                
-                
             case 8 :
                 
                 if self.loadingArticleCategories {
@@ -1414,7 +1411,6 @@ extension PreOwnedViewController : SuperViewDelegate {
                         default:
                             break
                         }
-                        
                     }
                     
                     if let filters = info?[EthosKeys.filters] as? [FilterModel] {
@@ -1571,6 +1567,13 @@ extension PreOwnedViewController : PHPickerViewControllerDelegate {
                 dispatchGroup.enter()
                 imageItem.loadObject(ofClass: UIImage.self) { image, _ in
                     if let image = image as? UIImage {
+                        let imgData = NSData(data: image.jpegData(compressionQuality: 1) ?? Data())
+                        let imageSize: Int = imgData.count
+                        let imageSizeinKB = imageSize/1024
+                        guard imageSizeinKB < 5120 else {
+                            self.showAlertWithSingleTitle(title: "Image size should be less then 5 MB.", message: "", actionTitle: "OK")
+                            return
+                        }
                         images.append(image)
                     }
                     dispatchGroup.leave()
@@ -1601,11 +1604,11 @@ extension PreOwnedViewController : GetArticlesViewModelDelegate {
         self.loadingArticles = false
     }
     
-    func startIndicator() {
+    func startIndicatorArticle() {
         
     }
     
-    func stopIndicator() {
+    func stopIndicatorArticle() {
         
     }
     
@@ -1623,6 +1626,12 @@ extension PreOwnedViewController : GetArticlesViewModelDelegate {
 }
 
 extension PreOwnedViewController : GetProductViewModelDelegate {
+    func startIndicator() {
+    }
+    
+    func stopIndicator() {
+    }
+    
     func didGetProducts(site : Site?, CategoryId : Int?) {
         if CategoryId == 6 && site == .secondMovement {
             self.loadingNewArrivalProducts = false

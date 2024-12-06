@@ -192,6 +192,8 @@ class GetCustomerViewModel {
                     }
                 }
             }
+        }else{
+            self.delegatePurchaseHistory?.didGetPurchaseHistory(purchaseHistoryData:  [])
         }
     }
     

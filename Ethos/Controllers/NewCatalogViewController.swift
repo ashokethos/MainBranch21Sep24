@@ -73,15 +73,15 @@ class NewCatalogViewController: UIViewController {
     }
     
     func setup() {
-        self.viewFilterAndSortBy.isHidden = true
-        self.productTableView.isSkeletonable = true
-        self.productTableView.showAnimatedGradientSkeleton()
-        self.btnRedDotSortBy.clipsToBounds = true
-        self.btnRedDotSortBy.layer.cornerRadius = 2.5
-        self.btnRedDot.clipsToBounds = true
-        self.btnRedDot.layer.cornerRadius = 2.5
-        self.lblTitle.isHidden = true
-        self.addTapGestureToDissmissKeyBoard()
+        viewFilterAndSortBy.isHidden = true
+        productTableView.isSkeletonable = true
+        productTableView.showAnimatedGradientSkeleton()
+        btnRedDotSortBy.clipsToBounds = true
+        btnRedDotSortBy.layer.cornerRadius = 2.5
+        btnRedDot.clipsToBounds = true
+        btnRedDot.layer.cornerRadius = 2.5
+        lblTitle.isHidden = true
+        addTapGestureToDissmissKeyBoard()
         productTableView.registerCell(className: ProductPairTableViewCell.self)
         
         productTableView.register(UINib(nibName: String(describing: AdvertisementHeaderFooterView.self), bundle: nil), forHeaderFooterViewReuseIdentifier: String(describing: AdvertisementHeaderFooterView.self))
@@ -118,7 +118,13 @@ class NewCatalogViewController: UIViewController {
     @IBAction func btnSortByDidTapped(_ sender: UIButton) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EthosBottomSheetTableViewControllerWithTitle.self)) as? EthosBottomSheetTableViewControllerWithTitle {
             vc.delegate = self
-            vc.data = self.productViewModel.availableSortBy
+            if productViewModel.categoryId == 93 && isForPreOwned == false{
+                vc.data = self.productViewModel.availableSortByForEOS
+            }else if productViewModel.categoryId == 4 && isForPreOwned == true{
+                vc.data = self.productViewModel.availableSortByForEOS
+            }else{
+                vc.data = self.productViewModel.availableSortBy
+            }
             vc.key = .forSortBy
             vc.title = "SORT BY"
             if let selectedSortBy = self.productViewModel.selectedSortBy {
@@ -134,11 +140,25 @@ class NewCatalogViewController: UIViewController {
     }
     
     @IBAction func btnSearchDidTapped(_ sender: UIButton) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as? SearchViewController {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as? SearchNewViewController {
             vc.isForPreOwned = self.isForPreOwned
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
+//        if let navController = self.navigationController {
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SearchNewViewController.self)) as! SearchNewViewController
+//            vc.isForPreOwned = self.isForPreOwned
+//            if let existingVC = navController.viewControllers.first(where: {
+//                if let existing = $0 as? SearchNewViewController {
+//                    return existing.isForPreOwned == vc.isForPreOwned
+//                }
+//                return false
+//            }) {
+//                navController.popToViewController(existingVC, animated: true)
+//            } else {
+//                navController.pushViewController(vc, animated: true)
+//            }
+//        }
     }
     
     @IBAction func btnFiltersDidTapped(_ sender: UIButton) {
@@ -405,8 +425,11 @@ extension NewCatalogViewController : SuperViewDelegate {
                 break
             }
             updateView()
-            self.productViewModel.products.removeAll()
-            self.productTableView.reloadData()
+            productViewModel.products.removeAll()
+            productTableView.reloadData()
+            productViewModel.currentPage = 1
+            viewFilterAndSortBy.isHidden = true
+            productViewModel.currentPage = 0
             callApi()
         }
         
@@ -426,11 +449,13 @@ extension NewCatalogViewController : SuperViewDelegate {
                 self.productViewModel.lowerPriceLimit = lowerPriceLimit
                 self.productViewModel.upperPriceLimit = upperPriceLimit
             }
-            self.productViewModel.selectedFilters = selectedFilters
-            self.productViewModel.filters = filters
+            productViewModel.selectedFilters = selectedFilters
+            productViewModel.filters = filters
             updateView()
-            self.productViewModel.products.removeAll()
-            self.productTableView.reloadData()
+            productViewModel.products.removeAll()
+            productTableView.reloadData()
+            viewFilterAndSortBy.isHidden = true
+            productViewModel.currentPage = 0
             callApi()
             
             Mixpanel.mainInstance().trackWithLogs(event: EthosConstants.catalogFilterUsed, properties: [
@@ -452,9 +477,11 @@ extension NewCatalogViewController : SuperViewDelegate {
             self.productViewModel.products.removeAll()
             self.btnFilter.isEnabled = false
             UserDefaults.standard.removeObject(forKey: "filtersData")
-            self.getFilters()
+            getFilters()
             updateView()
-            self.productTableView.reloadData()
+            productTableView.reloadData()
+            viewFilterAndSortBy.isHidden = true
+            productViewModel.currentPage = 0
             callApi()
         }
     }

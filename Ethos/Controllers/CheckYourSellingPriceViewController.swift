@@ -212,7 +212,8 @@ extension CheckYourSellingPriceViewController : CheckOurSellingPriceViewModelDel
         DispatchQueue.main.async {
             self.btnSubmit.isEnabled = false
             self.btnSubmit.backgroundColor = .gray
-            self.indicator.startAnimating()
+//            self.indicator.startAnimating()
+            EthosLoader.shared.show(view: self.view, frame: self.view.frame)
         }
     }
     
@@ -220,7 +221,8 @@ extension CheckYourSellingPriceViewController : CheckOurSellingPriceViewModelDel
         DispatchQueue.main.async {
             self.btnSubmit.isEnabled = true
             self.btnSubmit.backgroundColor = .black
-            self.indicator.stopAnimating()
+//            self.indicator.stopAnimating()
+            EthosLoader.shared.hide()
         }
     }
     
